@@ -14,7 +14,7 @@ Il repository è pubblicato a questo indirizzo
 
 ## Automazione
 
-Ogni modifica viene controllata appena inserita in repository tramite il [seguente workflow](https://github.com/matteobaccan/github-netlify-boilerplate/blob/main/.github/workflows/main.yml)
+Ogni modifica viene controllata appena inserita in repository tramite il [seguente workflow](https://github.com/lollo0547/web_design/blob/main/.github/workflows/main.yml)
 
 ## Test performance
 
