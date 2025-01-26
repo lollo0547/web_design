@@ -1,0 +1,64 @@
+Elementi HTML
+L' elemento HTML è tutto, dal tag di inizio al tag di fine:
+< tagname > Il contenuto va qui... < /tagname >
+
+Esempi di alcuni elementi HTML:
+< h1 > Il mio primo titolo < /h1 >
+< p > Il mio primo paragrafo. < /p >
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Elementi HTML nidificati
+Gli elementi HTML possono essere annidati (ciò significa che gli elementi possono contenere altri elementi).
+Tutti i documenti HTML sono costituiti da elementi HTML nidificati.
+L'esempio seguente contiene quattro elementi HTML ( <html>, <body>, <h1> e <p>):
+
+Esempio
+<!DOCTYPE html>
+<html>
+<body>
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+</body>
+</html>
+
+Esempio spiegato:
+
+L' <html> elemento è l'elemento radice e definisce l'intero documento HTML.
+Ha un tag di inizio <html>e un tag di fine </html>.
+Quindi, all'interno dell'elemento <html>c'è un <body> elemento:
+
+<body>
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+</body>
+
+L' <body> elemento definisce il corpo del documento.
+Ha un tag di inizio <body>e un tag di fine </body>.
+Quindi, all'interno dell'elemento <body> ci sono altri due elementi: <h1> e <p>:
+
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+
+L' <h1>elemento definisce un'intestazione.
+Ha un tag di inizio <h1>e un tag di fine </h1>:
+
+<h1>My First Heading</h1>
+
+L' <p>elemento definisce un paragrafo.
+Ha un tag di inizio <p>e un tag di fine </p>:
+
+<p>My first paragraph.</p>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Elementi HTML vuoti
+Gli elementi HTML senza contenuto sono chiamati elementi vuoti.
+Il <br>tag definisce un'interruzione di riga ed è un elemento vuoto senza tag di chiusura
+
+<p>This is a <br> paragraph with a line break.</p>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

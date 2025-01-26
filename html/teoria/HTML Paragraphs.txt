@@ -1,0 +1,71 @@
+Un paragrafo inizia sempre su una nuova riga e solitamente è un blocco di testo.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Paragrafi HTML
+L'elemento HTML <p>definisce un paragrafo.
+Un paragrafo inizia sempre su una nuova riga e i browser aggiungono automaticamente uno spazio bianco (un margine) prima e dopo un paragrafo.
+
+Esempio
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Visualizzazione HTML
+Non è possibile sapere con certezza come verrà visualizzato l'HTML.
+Schermi grandi o piccoli e finestre ridimensionate produrranno risultati diversi.
+Con HTML non è possibile modificare la visualizzazione aggiungendo spazi o righe extra nel codice HTML.
+Il browser rimuoverà automaticamente tutti gli spazi e le righe extra quando la pagina viene visualizzata:
+
+Esempio
+<p>
+This paragraph
+contains a lot of lines
+in the source code,
+but the browser
+ignores it.
+</p>
+
+<p>
+This paragraph
+contains         a lot of spaces
+in the source         code,
+but the        browser
+ignores it.
+</p>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Regole orizzontali HTML
+Il <hr>tag definisce un'interruzione tematica in una pagina HTML e viene spesso visualizzato come una regola orizzontale.
+L' <hr>elemento viene utilizzato per separare il contenuto (o definire una modifica) in una pagina HTML:
+
+Esempio
+<h1>This is heading 1</h1>
+<p>This is some text.</p>
+<hr>
+<h2>This is heading 2</h2>
+<p>This is some other text.</p>
+<hr>
+
+Il <hr>tag è un tag vuoto, il che significa che non ha un tag di fine.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Interruzioni di riga HTML
+L' <br>elemento HTML definisce un'interruzione di riga.
+Da utilizzare <br>se si desidera un'interruzione di riga (una nuova riga) senza iniziare un nuovo paragrafo:
+
+Esempio
+<p>This is<br>a paragraph<br>with line breaks.</p>
+
+Il <br>tag è un tag vuoto, il che significa che non ha un tag di fine
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'elemento HTML <pre>
+L' <pre>elemento HTML definisce il testo preformattato.
+Il testo all'interno di un <pre>elemento viene visualizzato in un font a larghezza fissa (solitamente Courier) e conserva sia gli spazi che le interruzioni di riga:
+
+Esempio
+<pre>
+  My Bonnie lies over the ocean.
+
+  My Bonnie lies over the sea.
+
+  My Bonnie lies over the ocean.
+
+  Oh, bring back my Bonnie to me.
+</pre>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

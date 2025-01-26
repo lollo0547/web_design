@@ -1,0 +1,20 @@
+Le intestazioni HTML sono titoli o sottotitoli che si desidera visualizzare in una pagina web.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Intestazioni HTML
+Le intestazioni HTML sono definite con i tag <h1>to <h6>.
+
+<h1>definisce il titolo più importante. <h6>definisce il titolo meno importante.
+
+Esempio
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+<h4>Heading 4</h4>
+<h5>Heading 5</h5>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Titoli più grandi
+Ogni intestazione HTML ha una dimensione predefinita. Tuttavia, puoi specificare la dimensione per qualsiasi intestazione con l' attributo, utilizzando la proprietà styleCSS :font-size
+
+Esempio
+<h1 style="font-size:60px;">Heading 1</h1>
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
