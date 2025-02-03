@@ -1,6 +1,26 @@
-body {background-color: rgb(255, 255, 255);}
-h1 {color: rgb(1, 1, 14);}
-h2{color: brown;}
-h3{color: rgb(216, 133, 31);}
-p {color: rgb(207, 46, 46);}
-a {color: black;}
+body {
+    background-color: black;
+
+}           
+
+h1 , h2 , h3  {
+    color: white;
+    text-align: center;
+}
+a {
+    color: white;
+    text-align: center;
+}
+
+p {
+    font-family: Verdana;
+    font-size: 24px;
+}
+* {
+    color: green;
+}
+q, blockquote {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    color: blue;
+}
