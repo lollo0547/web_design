@@ -15,10 +15,10 @@
 
 ---
 
-<p align="center"><strong>TESI</strong></p>
+<p align="center"><strong>Web Design</strong></p>
 
-<p align="center"><strong>“Titolo”</strong></p>
-<p align="center"><em>“Sottotitolo”</em></p>
+<p align="center"><strong>“Elaborato esame”</strong></p>
+<p align="center"><em>“Sito personale”</em></p>
 
 <br><br><br><br>
 
@@ -28,30 +28,20 @@
     <td align="right"><strong>Candidato</strong></td>
   </tr>
   <tr>
-    <td align="left">Prof. Cognome Nome</td>
+    <td align="left">Prof. Baccan Matteo</td>
     <td align="right">Giudici Lorenzo</td>
-  </tr>
-    <tr>
-    <td align="left"></td>
-    <td align="right">Nome Candidato 2</td>
-  </tr>
-  <tr>
-    <td align="left"></td>
-    <td align="right">Nome Candidato 3</td>
-  </tr>
-  <tr>
-    <td align="left"></td>
-    <td align="right">Nome Candidato 4</td>
-  </tr>
   <tr>
     <td align="left"></td>
     <td align="right">Matr. n. 1034</td>
   </tr>
 </table>
 
-<br><br>
 
 <p align="center"><strong>Anno accademico 2024/2025</strong></p>
+
+<br>
+
+---
 
 <p align="center"><strong>Indirizzo di pubblicazione Netlify</strong></p>
 
