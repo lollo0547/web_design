@@ -1,26 +1,32 @@
 body {
-    background-color: black;
-
-}           
-
-h1 , h2 , h3  {
-    color: white;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+h1 {
+    font-size: 2rem;
     text-align: center;
 }
-a {
-    color: white;
-    text-align: center;
+section img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
 }
 
-p {
-    font-family: Verdana;
-    font-size: 24px;
-}
-* {
-    color: green;
-}
-q, blockquote {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: medium;
-    color: blue;
-}
+:root {
+    --background-color: white;
+    --text-color: black;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background-color: #333;
+      --text-color: white;
+    }
+  }
+
