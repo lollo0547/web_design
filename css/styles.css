@@ -21,8 +21,10 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  background-color: rgba(255, 255, 255, 0.8); /* Sfondo trasparente */
   color: var(--text-color);
   z-index: 1000;
+  backdrop-filter: blur(10px); /* Effetto sfocatura */
 }
 
 .navbar-container {
@@ -46,9 +48,9 @@ body {
 
 .navbar-toggle span {
   display: block;
-  width: 20px;
-  height: 2px;
-  background-color: #fff;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-color);
   margin: 5px 0;
 }
 
@@ -68,9 +70,10 @@ body {
 .navbar-menu a {
   color: var(--text-color);
   text-decoration: none;
+  font-size: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) { /* Visualizzazione iPad in giù */
   .navbar-toggle {
     display: block;
   }
@@ -87,6 +90,7 @@ body {
 
   .navbar-menu ul {
     flex-direction: column;
+    align-items: flex-start;
   }
 
   .navbar-menu li {
@@ -95,7 +99,7 @@ body {
   }
 
   .navbar-menu a {
-    font-size: 18px;
+    font-size: 1.2rem;
   }
 
   .navbar-menu.active {
@@ -110,33 +114,21 @@ section {
   align-items: center;
   height: 100vh;
   text-align: center;
+  padding: 20px;
 }
 
 section img {
   max-width: 100%;
   height: auto;
+  margin-top: 20px;
 }
 
 h1 {
-  font-size: 5vw;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  font-size: clamp(2rem, 5vw, 4rem); /* Adatta il font in base alla larghezza */
+  margin: 0;
 }
 
 h2 {
-  font-size: 3vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  font-size: clamp(1.5rem, 4vw, 3rem); /* Adatta il font in base alla larghezza */
+  margin: 10px 0;
 }

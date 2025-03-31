@@ -10,29 +10,35 @@
   <body>
     <nav class="navbar">
       <div class="navbar-container">
-          <div class="navbar-logo">
-              <a href="#"><img src="/immagini/logo.png" alt="Logo"></a>
-          </div>
-          <div class="navbar-toggle">
-              <span></span>
-              <span></span>
-              <span></span>
-          </div>
-          <div class="navbar-menu">
-              <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Chi siamo</a></li>
-                  <li><a href="#">Servizi</a></li>
-                  <li><a href="#">Contatti</a></li>
-              </ul>
-          </div>
+        <div class="navbar-logo">
+          <a href="#"><img src="/immagini/logo.png" alt="Logo"></a>
+        </div>
+        <div class="navbar-toggle" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="navbar-menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Chi siamo</a></li>
+            <li><a href="#">Servizi</a></li>
+            <li><a href="#">Contatti</a></li>
+          </ul>
+        </div>
       </div>
-  </nav>
+    </nav>
     <section>
-      <h1>Portfolio <br>
-      <h2>Lorenzo Giudici </h2>
+      <h1>Portfolio</h1>
+      <h2>Lorenzo Giudici</h2>
       <img src="/immagini/Lorenzo_Giudici_portfolio_accademico_2022-20225_-removebg-preview.png" alt="Lorenzo Giudici's Portfolio">
     </section>
+    <script>
+      function toggleMenu() {
+        const menu = document.querySelector('.navbar-menu');
+        menu.classList.toggle('active');
+      }
+    </script>
   </body>
 </html>
 
