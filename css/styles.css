@@ -56,7 +56,6 @@ position: fixed;
 top: 0;
 left: 0;
 width: 100%;
-background-color: rgba(255, 255, 255, 0.8); /* Sfondo trasparente */
 color: var(--text-color);
 z-index: 1000;
 backdrop-filter: blur(10px); /* Effetto sfocatura per migliorare leggibilità */
