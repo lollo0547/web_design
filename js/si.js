@@ -1,12 +1,15 @@
-// Smooth scrolling for navbar links (ensure only one section is visible at a time)
+// Smooth scrolling for navbar links
 document.querySelectorAll('.navbar a').forEach((link) => {
   link.addEventListener('click', (event) => {
     event.preventDefault();
     const targetId = link.getAttribute('href').substring(1);
     const targetSection = document.getElementById(targetId);
 
+    // Rimuove la classe 'active' da tutte le sezioni
     sections.forEach((section) => section.classList.remove('active'));
+    // Aggiunge la classe 'active' alla sezione target
     targetSection.classList.add('active');
+    // Effettua lo scroll verso la sezione target
     targetSection.scrollIntoView({ behavior: 'smooth' });
   });
 });

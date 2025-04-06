@@ -1,4 +1,4 @@
-/* General styles */
+/* Stili Generali */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
@@ -7,29 +7,23 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
 }
+
+/* Header e Navbar */
 header {
   background: linear-gradient(135deg, #6a11cb, #2575fc);
   color: #fff;
   padding: 2rem 1rem;
   text-align: center;
 }
-nav {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
 .navbar-container {
   position: fixed;
   top: 0;
+  left: 0; /* Allinea la navbar al bordo sinistro */
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem; /* Riduci il padding per evitare sovrapposizioni */
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   z-index: 100;
@@ -52,11 +46,11 @@ nav {
 }
 .burger-menu {
   display: none;
-  background: none;
-  border: none;
-  color: var(--text-color);
   font-size: 2rem;
   cursor: pointer;
+  position: absolute; /* Cambia la posizione a 'absolute' */
+  top: 1rem; /* Allinea verticalmente */
+  right: 1rem; /* Riduci lo spostamento verso destra */
   z-index: 101;
 }
 .navbar {
@@ -66,7 +60,7 @@ nav {
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 2rem;
+  gap: 1.5rem; /* Riduci il gap tra gli elementi */
 }
 .navbar.open {
   display: flex;
@@ -79,6 +73,7 @@ nav {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 99;
   padding: 1rem 0;
+  overflow: visible; /* Assicurati che il contenuto non venga tagliato */
 }
 .navbar li {
   margin: 0;
@@ -93,12 +88,13 @@ nav {
 .navbar a:hover {
   color: var(--accent-color);
 }
+
+/* Hero Section */
 .hero {
   position: relative;
   height: 100vh;
   background: url('/immagini/hero-image.png') no-repeat center center;
   background-size: contain;
-  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,7 +105,6 @@ nav {
   background: rgba(0, 0, 0, 0.6);
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 .hero h1 {
   font-size: 3.5rem;
@@ -125,6 +120,8 @@ nav {
   font-size: 1.2rem;
   margin-top: 1rem;
 }
+
+/* Sezioni Generali */
 section {
   padding: 4rem 2rem;
   margin: 2rem 0;
@@ -138,6 +135,24 @@ section h2 {
   color: #333;
   text-align: center;
 }
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+}
+.skills li {
+  background: #6a11cb;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Griglia Progetti */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -157,22 +172,8 @@ section h2 {
   height: auto;
   border-radius: 8px;
 }
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  list-style: none;
-  padding: 0;
-}
-.skills li {
-  background: #6a11cb;
-  color: #fff;
-  padding: 0.8rem 1.5rem;
-  border-radius: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
+
+/* Modulo Contatti */
 form {
   display: flex;
   flex-direction: column;
@@ -201,22 +202,8 @@ form button {
 form button:hover {
   background: #2575fc;
 }
-social-icons {
-  text-align: center;
-  margin-top: 2rem;
-}
-.social-icons a {
-  margin: 0 1rem;
-  display: inline-block;
-}
-.social-icons img.social-icon {
-  width: 50px;
-  height: 50px;
-  transition: transform 0.3s ease;
-}
-.social-icons img.social-icon:hover {
-  transform: scale(1.2);
-}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 2rem;
@@ -268,7 +255,7 @@ footer {
   color: #6a11cb;
 }
 
-/* Theme variables */
+/* Variabili di Tema */
 :root {
   --background-color: #f9f9f9;
   --text-color: #333;
@@ -280,7 +267,7 @@ footer {
   --accent-color: #2575fc;
 }
 
-/* Responsive styles */
+/* Stili Responsive */
 @media (max-width: 1024px) {
   .hero h1 {
     font-size: 2.5rem;
@@ -302,9 +289,8 @@ footer {
   }
   .navbar.open {
     display: flex;
-  }
-  .project-grid {
-    grid-template-columns: 1fr;
+    padding: 1rem; /* Aggiungi padding per evitare sovrapposizioni */
+    gap: 1rem; /* Riduci il gap per dispositivi mobili */
   }
 }
 
