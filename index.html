@@ -41,18 +41,12 @@
           <div class="project">
             <img src="/immagini/progetto1.jpg" alt="Anteprima Progetto 1">
             <h3>Progetto 1</h3>
-            <button class="preview-button" onclick="showPreview('/immagini/progetto1.jpg')">Preview</button>
           </div>
           <div class="project">
             <img src="/immagini/progetto2.jpg" alt="Anteprima Progetto 2">
             <h3>Progetto 2</h3>
-            <button class="preview-button" onclick="showPreview('/immagini/progetto2.jpg')">Preview</button>
           </div>
           <!-- Add more projects as needed -->
-        </div>
-        <div id="preview-area" class="preview-area" style="display: none;">
-          <button class="close-preview" onclick="closePreview()">Chiudi</button>
-          <img id="preview-image" src="" alt="Anteprima Progetto">
         </div>
       </section>
       <section id="competenze">
@@ -91,18 +85,5 @@
     <footer>
       <p>&copy; 2023 Lorenzo Giudici. Tutti i diritti riservati.</p>
     </footer>
-    <script>
-      function showPreview(imageSrc) {
-        const previewArea = document.getElementById('preview-area');
-        const previewImage = document.getElementById('preview-image');
-        previewImage.src = imageSrc;
-        previewArea.style.display = 'block';
-      }
-
-      function closePreview() {
-        const previewArea = document.getElementById('preview-area');
-        previewArea.style.display = 'none';
-      }
-    </script>
   </body>
 </html>
