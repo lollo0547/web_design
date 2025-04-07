@@ -62,8 +62,7 @@ header {
   list-style: none;
   gap: 0.5rem; /* Riduci il gap tra gli elementi */
   transition: max-height 0.3s ease; /* Smooth transition for opening/closing */
-  max-height: 0; /* Initially hidden */
-  overflow: hidden; /* Prevent content overflow */
+  /* Removed overflow hidden to allow for smooth opening */
 }
 .navbar.open {
   max-height: 300px; /* Adjust based on content height */
