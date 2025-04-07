@@ -533,8 +533,8 @@ footer {
   flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 .profile-image {
-  width: 150px;
-  height: 150px;
+  width: 300px;
+  height: 300px;
   object-fit: cover;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   flex-shrink: 0; /* Prevent the image from shrinking */
@@ -572,4 +572,77 @@ footer {
 /* Slider Controls */
 .slider-controls {
   display: none; /* Hide slider controls */
+}
+
+/* Progetti Section */
+#progetti {
+  padding: 3rem 1rem;
+}
+
+.project-slideshow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.project {
+  background: #6a11cb; /* Blue background */
+  color: #fff; /* White text color */
+  padding: 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 300px; /* Limit the width of each project */
+  width: 100%;
+}
+
+.project img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover; /* Ensure images fit within their container */
+}
+
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 1024px) {
+  .project-slideshow {
+    gap: 1.5rem; /* Reduce gap for medium screens */
+  }
+
+  .project {
+    max-width: 250px; /* Adjust project width for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .project-slideshow {
+    flex-direction: column; /* Stack projects vertically */
+    gap: 1rem;
+  }
+
+  .project {
+    max-width: 100%; /* Allow projects to take full width */
+  }
+}
+
+@media (max-width: 480px) {
+  .project img {
+    border-radius: 5px; /* Slightly reduce border radius for small screens */
+  }
+
+  .project {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    padding: 0.8rem;
+  }
 }
