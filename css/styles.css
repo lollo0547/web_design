@@ -50,7 +50,7 @@ header {
   font-size: 2rem;
   cursor: pointer;
   position: absolute; /* Cambia la posizione a 'absolute' */
-  top: rem; /* Allinea verticalmente */
+  top: 0rem; /* Allinea verticalmente */
   right: 1rem; /* Riduci lo spostamento verso destra */
   z-index: 101;
 }
