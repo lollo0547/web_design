@@ -99,14 +99,32 @@ header {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('/immagini/hero-image.png') no-repeat center center;
-  background-size: contain;
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Blue background */
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   text-align: center;
+  overflow: hidden; /* Ensure slides stay within bounds */
 }
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff; /* White navigation buttons */
+}
+
 .hero-content {
   background: rgba(0, 0, 0, 0.6);
   padding: 2rem;
