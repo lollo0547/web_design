@@ -50,8 +50,8 @@ header {
   font-size: 2rem;
   cursor: pointer;
   position: absolute; /* Cambia la posizione a 'absolute' */
-  top: 1rem; /* Allinea verticalmente */
-  right: 4rem; /* Riduci lo spostamento verso destra */
+  top: rem; /* Allinea verticalmente */
+  right: 1rem; /* Riduci lo spostamento verso destra */
   z-index: 101;
 }
 .navbar {
