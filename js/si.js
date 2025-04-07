@@ -59,3 +59,19 @@ setTheme(systemTheme.matches ? 'dark' : 'light');
 systemTheme.addEventListener('change', (e) => {
   setTheme(e.matches ? 'dark' : 'light');
 });
+
+// Slideshow functionality
+const slides = document.querySelectorAll('.project-slideshow .slide');
+let currentSlide = 0;
+
+document.querySelector('.prev-slide').addEventListener('click', () => {
+  slides[currentSlide].style.display = 'none';
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  slides[currentSlide].style.display = 'flex';
+});
+
+document.querySelector('.next-slide').addEventListener('click', () => {
+  slides[currentSlide].style.display = 'none';
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].style.display = 'flex';
+});

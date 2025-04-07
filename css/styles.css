@@ -173,6 +173,54 @@ section h2 {
   border-radius: 8px;
 }
 
+/* Slideshow styles */
+.project-slideshow {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.slide {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+.project-slideshow .slide:not(:first-child) {
+  display: none; /* Hide all slides except the first */
+}
+.project {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+}
+.slideshow-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.slideshow-controls button {
+  background: #6a11cb;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.3s ease;
+}
+.slideshow-controls button:hover {
+  background: #2575fc;
+}
+
 /* Modulo Contatti */
 form {
   display: flex;
@@ -321,12 +369,29 @@ footer {
   display: flex;
   align-items: center;
   gap: 2rem;
-  width: auto;
-  height: auto;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 .profile-image {
   width: 150px;
   height: 150px;
   object-fit: cover;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Prevent the image from shrinking */
+}
+.profile-block p {
+  font-size: 1rem;
+  line-height: 1.5;
+  flex: 1; /* Allow the text to take up remaining space */
+  margin: 0;
+  text-align: justify; /* Align text to justify */
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profile-block {
+    flex-direction: column; /* Stack image and text vertically */
+    text-align: center; /* Center-align text */
+  }
+  .profile-block p {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
 }
