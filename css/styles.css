@@ -315,3 +315,18 @@ footer {
     height: 40px;
   }
 }
+
+/* Profile Block */
+.profile-block {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: auto;
+  height: auto;
+}
+.profile-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
