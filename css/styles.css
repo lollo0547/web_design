@@ -50,7 +50,7 @@ header {
   cursor: pointer;
   position: absolute; /* Cambia la posizione a 'absolute' */
   top: 1rem; /* Allinea verticalmente */
-  right: 1rem; /* Riduci lo spostamento verso destra */
+  right: 4rem; /* Riduci lo spostamento verso destra */
   z-index: 101;
 }
 .navbar {
@@ -60,7 +60,8 @@ header {
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 1.5rem; /* Riduci il gap tra gli elementi */
+  gap: 0.5rem; /* Riduci il gap tra gli elementi */
+  
 }
 .navbar.open {
   display: flex;
