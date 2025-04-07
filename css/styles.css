@@ -23,11 +23,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem; /* Riduci il padding per evitare sovrapposizioni */
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   z-index: 100;
   transition: background 0.3s ease;
+  /* Removed padding to prevent text overflow */
 }
 .navbar-container[data-theme="dark"] {
   background: rgba(0, 0, 0, 0.8);
@@ -40,6 +40,7 @@ header {
   width: 60px;
   height: auto;
   transition: transform 0.3s ease;
+  padding: 0.5rem; /* Added padding to the image */
 }
 .logo img:hover {
   transform: scale(1.1);
@@ -73,7 +74,7 @@ header {
   background: var(--background-color);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 99;
-  padding: 1rem 0;
+  padding: 1.5rem 0; /* Increase padding for better spacing */
   overflow: visible; /* Assicurati che il contenuto non venga tagliato */
 }
 .navbar li {
@@ -124,7 +125,7 @@ header {
 
 /* Sezioni Generali */
 section {
-  padding: 4rem 2rem;
+  padding: 5rem 3rem; /* Increase padding for sections */
   margin: 2rem 0;
   background: #fff;
   border-radius: 8px;
@@ -257,7 +258,7 @@ section h2 {
 form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem; /* Increase gap between form elements */
 }
 form label {
   font-weight: bold;
