@@ -50,8 +50,9 @@ header {
   font-size: 2rem;
   cursor: pointer;
   position: absolute; /* Cambia la posizione a 'absolute' */
-  top: 0rem; /* Allinea verticalmente */
-  right: 1rem; /* Riduci lo spostamento verso destra */
+  top: 50%; /* Center vertically relative to the navbar */
+  right: 1rem; /* Adjust spacing from the right */
+  transform: translateY(-50%); /* Align vertically with the logo */
   z-index: 101;
 }
 .navbar {
@@ -62,9 +63,12 @@ header {
   padding: 0;
   margin: 0;
   gap: 0.5rem; /* Riduci il gap tra gli elementi */
-  
+  transition: max-height 0.3s ease; /* Smooth transition for opening/closing */
+  max-height: 0; /* Initially hidden */
+  overflow: hidden; /* Prevent content overflow */
 }
 .navbar.open {
+  max-height: 300px; /* Adjust based on content height */
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -363,13 +367,14 @@ footer {
 
 @media (max-width: 768px) {
   .burger-menu {
-    display: block;
+    display: block; /* Show burger menu on smaller screens */
   }
   .navbar {
-    display: none;
+    display: none; /* Hide the navbar by default */
   }
   .navbar.open {
-    display: flex;
+    display: flex; /* Show the navbar when open */
+    flex-direction: column;
     padding: 1rem; /* Aggiungi padding per evitare sovrapposizioni */
     gap: 1rem; /* Riduci il gap per dispositivi mobili */
   }
