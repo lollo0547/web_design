@@ -43,6 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/loghi/icons8-photoshop-48.png",
         "/immagini/loghi/icons8-illustrator-48.png"
       ]
+      sliderTitles: [
+        "Set da caffè",
+      ],
     },
     "La cardanica": {
       sliderImages: [
