@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "Set da caffè": {
       sliderImages: [
         "/immagini/progetto 1/devnwisnvps.jpeg",
-        /
-        /
+        "/immagini/progetto 1/porfolio.png",
+        "/immagini/progetto 1/porfolio (1).png"
       ],
       details: "Durata: 1 mese<br>Anno: 2022",
       icons: [
