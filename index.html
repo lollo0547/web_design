@@ -158,6 +158,11 @@
           <input type="email" id="email" name="email" required>
           <label for="messaggio">Messaggio</label>
           <textarea id="messaggio" name="messaggio" required></textarea>
+          <label for="consenso">
+            <input type="checkbox" id="consenso" name="consenso" required>
+            Acconsento al trattamento dei miei dati personali.
+          </label>
+          <div class="g-recaptcha" data-sitekey="CHIAVE_DEL_TUO_SITO"></div>
           <button type="submit">Invia</button>
         </form>
       </section>
@@ -178,5 +183,6 @@
       </div>
     </footer>
     <script src="/js/si.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </body>
 </html>

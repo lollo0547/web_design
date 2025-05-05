@@ -174,4 +174,29 @@ document.addEventListener("DOMContentLoaded", () => {
       stopAutoplay(); // Stop autoplay when modal closes
     }
   });
+
+  const form = document.querySelector("#contatti form");
+  const consentCheckbox = document.querySelector("#consenso");
+  const recaptchaResponse = document.querySelector(".g-recaptcha-response");
+
+  form.addEventListener("submit", (event) => {
+    let isValid = true;
+
+    // Check if the consent checkbox is checked
+    if (!consentCheckbox.checked) {
+      alert("Devi acconsentire al trattamento dei dati personali.");
+      isValid = false;
+    }
+
+    // Check if reCAPTCHA is completed
+    if (!recaptchaResponse || recaptchaResponse.value === "") {
+      alert("Devi completare il CAPTCHA.");
+      isValid = false;
+    }
+
+    // Prevent form submission if validation fails
+    if (!isValid) {
+      event.preventDefault();
+    }
+  });
 });
