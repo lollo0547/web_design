@@ -172,14 +172,20 @@ section h2 {
   font-size: 1.2rem;
   font-weight: bold;
   display: flex;
+  flex-direction: column; /* Stack content vertically */
   align-items: center;
   gap: 0.5rem;
   justify-content: center; /* Center-align logos */
 }
-.skills li img {
-  width: 40px; /* Ensure logos are properly sized */
-  height: 40px;
-  object-fit: contain; /* Maintain aspect ratio */
+.skills li p {
+  margin: 0.5rem 0 0; /* Add spacing above the text */
+  font-size: 1rem;
+  font-weight: normal;
+}
+.skills li .stars {
+  font-size: 1rem;
+  color: gold; /* Gold color for stars */
+  margin-top: 0.5rem;
 }
 
 /* Interessi Section */

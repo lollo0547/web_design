@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "Set da caffè": {
       sliderImages: [
         "/immagini/progetto 1/devnwisnvps.jpeg",
+        /
+        /
       ],
       details: "Durata: 1 mese<br>Anno: 2022",
       icons: [
@@ -45,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
       ], // Aggiunta virgola mancante
       sliderTitles: [
         "Set da caffè",
+        "Set da caffè - tazzina",
+        "Set da caffè - zuccheriera",
       ],
     },
     "La cardanica": {
