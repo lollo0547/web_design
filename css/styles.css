@@ -47,7 +47,7 @@ header {
 }
 .burger-menu {
   display: none;
-  font-size: 2rem;
+  font-size: 2rem;Set da caffè
   cursor: pointer;
   position: absolute; /* Cambia la posizione a 'absolute' */
   top: 50%; /* Center vertically relative to the navbar */

@@ -32,8 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModal = modal.querySelector(".close");
 
   const projectData = {
-    "SET DA CAFFÈ": {
-      image: "/immagini/progetto 1/devnwisnvps.jpeg",
+    "Set da caffè": {
+      sliderImages: [
+        "/immagini/progetto 1/devnwisnvps.jpeg",
+      ],
       details: "Durata: 1 mese<br>Anno: 2022",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
