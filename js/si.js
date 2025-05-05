@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/loghi/icons8-solidworks-48.png",
         "/immagini/loghi/icons8-photoshop-48.png",
         "/immagini/loghi/icons8-illustrator-48.png"
-      ]
+      ], // Aggiunta virgola mancante
       sliderTitles: [
         "Set da caffè",
       ],
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
       sliderImages: [
         "/immagini/progetto 2/cardanica 600.jpeg",
         "/immagini/progetto 2/cardanica 900.jpeg",
-        "/immagini/progetto 2/cardanica.jpeg" // Moved to the last position
+        "/immagini/progetto 2/cardanica.jpeg"
       ],
       sliderTitles: [
         "Cardanica - 600",
@@ -60,14 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
       ],
       details: "Durata: 2 mesi<br>Anno: 2023",
       icons: [
-        "immagini/loghi/icons8-blender-48.png",
-        "immagini/loghi/icons8-solidworks-48.png",
+        "/immagini/loghi/icons8-blender-48.png",
+        "/immagini/loghi/icons8-solidworks-48.png",
         "/immagini/loghi/icons8-photoshop-48.png",
         "/immagini/loghi/icons8-illustrator-48.png"
       ]
     },
     "Progetto 3": {
-      image: "/immagini/progetto3.jpg",
+      // Rimosso "image" perché non viene utilizzato
       details: "Durata: 3 settimane<br>Anno: 2021",
       icons: [
         "/immagini/loghi/icons8-illustrator-48.png",
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     },
     "Progetto 4": {
-      image: "/immagini/progetto4.jpg",
+      // Rimosso "image" perché non viene utilizzato
       details: "Durata: 1 anno<br>Anno: 2020",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
