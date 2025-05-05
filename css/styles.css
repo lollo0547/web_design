@@ -5,7 +5,7 @@ body {
   padding: 0;
   line-height: 1.6;
   color: var(--text-color);
-  background-color: var(--background-color); /* Usa la variabile per il colore di sfondo */
+  background-color: var(--background-color);
 }
 
 /* Header e Navbar */
@@ -18,7 +18,7 @@ header {
 .navbar-container {
   position: fixed;
   top: 0;
-  left: 0; /* Allinea la navbar al bordo sinistro */
+  left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -27,45 +27,33 @@ header {
   backdrop-filter: blur(10px);
   z-index: 100;
   transition: background 0.3s ease;
-  /* Removed padding to prevent text overflow */
 }
 .navbar-container[data-theme="dark"] {
   background: rgba(0, 0, 0, 0.8);
 }
-.logo {
-  display: flex;
-  align-items: center;
-}
+
 .logo img {
   width: 60px;
   height: auto;
   transition: transform 0.3s ease;
-  padding: 0.5rem; /* Added padding to the image */
 }
-.logo img:hover {
-  transform: scale(1.1);
-}
+
 .burger-menu {
   display: none;
   font-size: 2rem;
   cursor: pointer;
-  position: absolute; /* Cambia la posizione a 'absolute' */
-  top: 50%; /* Center vertically relative to the navbar */
-  right: 1rem; /* Adjust spacing from the right */
-  transform: translateY(-50%); /* Align vertically with the logo */
-  z-index: 101;
 }
 .navbar {
   display: flex;
   justify-content: center;
   align-items: center;
   list-style: none;
-  gap: 0.5rem; /* Riduci il gap tra gli elementi */
-  transition: max-height 0.3s ease; 
+  gap: 0.5rem;
+  transition: max-height 0.3s ease;
   padding: 0 25px 0 0;
 }
 .navbar.open {
-  max-height: 300px; /* Adjust based on content height */
+  max-height: 300px;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -75,8 +63,7 @@ header {
   background: var(--background-color);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 99;
-  padding: 1.5rem 0; /* Increase padding for better spacing */
-  overflow: visible; /* Assicurati che il contenuto non venga tagliato */
+  padding: 1.5rem 0;
 }
 .navbar li {
   margin: 0;
@@ -96,13 +83,13 @@ header {
 .hero {
   position: relative;
   height: 100vh;
-  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Blue background */
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   text-align: center;
-  overflow: hidden; /* Ensure slides stay within bounds */
+  overflow: hidden;
 }
 
 .swiper-container {
@@ -119,7 +106,7 @@ header {
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #fff; /* White navigation buttons */
+  color: #fff;
 }
 
 .hero-content {
@@ -144,7 +131,7 @@ header {
 
 /* Sezioni Generali */
 section {
-  padding: 5rem 3rem; /* Increase padding for sections */
+  padding: 5rem 3rem;
   margin: 2rem 0;
   background: #fff;
   border-radius: 8px;
@@ -165,26 +152,28 @@ section h2 {
   padding: 0;
 }
 .skills li {
-  background: #6a11cb; /* Blue background */
-  color: #fff; /* White text color */
-  padding: 0.8rem 1.5rem; /* Add padding for the block */
-  border-radius: 20px; /* Rounded corners */
+  background: #6a11cb;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
   font-size: 1.2rem;
   font-weight: bold;
   display: flex;
-  flex-direction: column; /* Stack content vertically */
+  flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  justify-content: center; /* Center-align logos */
+  justify-content: center;
+  width: 150px;
+  height: 150px;
 }
 .skills li p {
-  margin: 0.5rem 0 0; /* Add spacing above the text */
+  margin: 0.5rem 0 0;
   font-size: 1rem;
   font-weight: normal;
 }
 .skills li .stars {
   font-size: 1rem;
-  color: gold; /* Gold color for stars */
+  color: gold;
   margin-top: 0.5rem;
 }
 
@@ -199,15 +188,19 @@ section h2 {
 }
 
 .interests li {
-  background: #6a11cb; /* Same blue background as Competenze */
-  color: #fff; /* White text color */
-  padding: 0.8rem 1.5rem; /* Add padding for the block */
-  border-radius: 20px; /* Rounded corners */
+  background: #6a11cb;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
   font-size: 1.2rem;
   font-weight: bold;
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
 }
 
 /* Griglia Progetti */
@@ -217,16 +210,17 @@ section h2 {
   gap: 2rem;
 }
 .project {
-  background: #6a11cb; /* Blue background */
-  color: #fff; /* White text color */
-  padding: 0.8rem 1.5rem; /* Add padding for the block */
-  border-radius: 20px; /* Rounded corners */
-  font-size: 1.2rem;
+  background: #6a11cb;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
   font-weight: bold;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
+  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .project img {
@@ -255,7 +249,7 @@ section h2 {
   transition: transform 0.5s ease-in-out;
 }
 .project-slideshow .slide:not(:first-child) {
-  display: none; /* Hide all slides except the first */
+  display: none;
 }
 .project {
   text-align: center;
@@ -292,7 +286,7 @@ section h2 {
 form {
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* Increase gap between form elements */
+  gap: 2rem;
 }
 form label {
   font-weight: bold;
@@ -339,7 +333,7 @@ footer {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  overflow: hidden; /* Prevent scrolling inside the modal */
+  overflow: hidden;
 }
 .modal-content {
   background: #fff;
@@ -421,7 +415,7 @@ footer {
   width: 100%;
   max-width: 400px;
   overflow: hidden;
-  display: none; /* Hidden by default, shown only for projects with sliders */
+  display: none;
 }
 .slider-pages {
   display: flex;
@@ -429,7 +423,7 @@ footer {
 }
 .slider-page {
   flex: 0 0 100%;
-  display: none; /* Only the active slide is shown */
+  display: none;
 }
 .slider-prev,
 .slider-next {
@@ -471,12 +465,12 @@ footer {
 
 /* Variabili di Tema */
 :root {
-  --background-color: #f5f5f5; /* Bianco sporco per tema chiaro */
+  --background-color: #f5f5f5;
   --text-color: #333;
   --accent-color: #6a11cb;
 }
 [data-theme="dark"] {
-  --background-color: #2e2e2e; /* Grigio per tema scuro */
+  --background-color: #2e2e2e;
   --text-color: #f9f9f9;
   --accent-color: #2575fc;
 }
@@ -496,16 +490,16 @@ footer {
 
 @media (max-width: 768px) {
   .burger-menu {
-    display: block; /* Show burger menu on smaller screens */
+    display: block;
   }
   .navbar {
-    display: none; /* Hide the navbar by default */
+    display: none;
   }
   .navbar.open {
-    display: flex; /* Show the navbar when open */
+    display: flex;
     flex-direction: column;
-    padding: 1rem; /* Aggiungi padding per evitare sovrapposizioni */
-    gap: 1rem; /* Riduci il gap per dispositivi mobili */
+    padding: 1rem;
+    gap: 1rem;
   }
 }
 
@@ -522,12 +516,8 @@ footer {
   section {
     padding: 2rem 1rem;
   }
-  form input, form textarea, form button {
-    font-size: 0.9rem;
-  }
-  .social-icons img.social-icon {
-    width: 40px;
-    height: 40px;
+  .project img {
+    border-radius: 5px;
   }
 }
 
@@ -536,48 +526,43 @@ footer {
   display: flex;
   align-items: center;
   gap: 2rem;
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  flex-wrap: wrap;
 }
 .profile-image {
   width: 300px;
   height: 300px;
   object-fit: cover;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0; /* Prevent the image from shrinking */
+  flex-shrink: 0;
 }
 .profile-block p {
   font-size: 1rem;
   line-height: 1.5;
-  flex: 1; /* Allow the text to take up remaining space */
+  flex: 1;
   margin: 0;
-  text-align: justify; /* Align text to justify */
+  text-align: justify;
 }
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .profile-block {
-    flex-direction: column; /* Stack image and text vertically */
-    text-align: center; /* Center-align text */
+    flex-direction: column;
+    text-align: center;
   }
   .profile-block p {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    font-size: 0.9rem;
   }
 }
 
 /* Social Icons */
 .social-icons {
   display: flex;
-  justify-content: center; /* Center-align the icons */
-  gap: 1rem; /* Add spacing between icons */
+  justify-content: center;
+  gap: 1rem;
   margin-top: 1rem;
 }
 .social-icons img.social-icon {
   width: 48px;
   height: 48px;
-}
-
-/* Slider Controls */
-.slider-controls {
-  display: none; /* Hide slider controls */
 }
 
 /* Progetti Section */
@@ -592,70 +577,41 @@ footer {
   gap: 2rem;
 }
 
-.project {
-  background: #6a11cb; /* Blue background */
-  color: #fff; /* White text color */
-  padding: 1rem;
-  border-radius: 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 300px; /* Limit the width of each project */
-  width: 100%;
-}
-
-.project img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover; /* Ensure images fit within their container */
-}
-
-.project:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
 @media (max-width: 1024px) {
   .project-slideshow {
-    gap: 1.5rem; /* Reduce gap for medium screens */
+    gap: 1.5rem;
   }
 
   .project {
-    max-width: 250px; /* Adjust project width for medium screens */
+    max-width: 250px;
   }
 }
 
 @media (max-width: 768px) {
   .project-slideshow {
-    flex-direction: column; /* Stack projects vertically */
+    flex-direction: column;
     gap: 1rem;
   }
 
   .project {
-    max-width: 100%; /* Allow projects to take full width */
+    max-width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .project img {
-    border-radius: 5px; /* Slightly reduce border radius for small screens */
+    border-radius: 5px;
   }
 
   .project {
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    font-size: 0.9rem;
     padding: 0.8rem;
   }
 }
 
 /* Sezione Chi Sono */
 #chi-sono {
-  background: linear-gradient(135deg, #f5f5f5, #eaeaea); /* Sfondo chiaro con gradiente */
+  background: linear-gradient(135deg, #f5f5f5, #eaeaea);
   padding: 4rem 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -665,7 +621,7 @@ footer {
   display: flex;
   align-items: center;
   gap: 2rem;
-  flex-wrap: wrap; /* Permette il wrapping su schermi piccoli */
+  flex-wrap: wrap;
 }
 
 .profile-image-container {
