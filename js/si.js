@@ -199,4 +199,28 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
     }
   });
+
+  const slides = document.querySelectorAll(".project-slideshow .slide");
+  const prevButton = document.querySelector(".prev-slide");
+  const nextButton = document.querySelector(".next-slide");
+  let slideshowCurrentSlide = 1;
+
+  const showSlide = (index) => {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
+  };
+
+  prevButton.addEventListener("click", () => {
+    slideshowCurrentSlide = (slideshowCurrentSlide - 1 + slides.length) % slides.length;
+    showSlide(slideshowCurrentSlide);
+  });
+
+  nextButton.addEventListener("click", () => {
+    slideshowCurrentSlide = (slideshowCurrentSlide + 1) % slides.length;
+    showSlide(slideshowCurrentSlide);
+  });
+
+  // Initialize the first slide
+  showSlide(currentSlide);
 });
