@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/progetto 1/porfolio.png",
         "/immagini/progetto 1/porfolio (1).png"
       ],
-      details: "Durata: 1 mese<br>Anno: 2022",
+      details: "Durata: 1 mese<br>Anno: 2022<br>Descrizione: Set da caffè in ceramica con decorazioni artistiche.",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-solidworks-48.png",
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Cardanica - 900",
         "Cardanica - 1200"
       ],
-      details: "Durata: 2 mesi<br>Anno: 2023",
+      details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: Progetto di una cardanica per veicoli.",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-solidworks-48.png",
@@ -70,22 +70,41 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/loghi/icons8-illustrator-48.png"
       ]
     },
-    "Progetto 3": {
-      // Rimosso "image" perché non viene utilizzato
-      details: "Durata: 3 settimane<br>Anno: 2021",
+    "Poltroncina lounge per Milani": {
+      sliderImages: [
+        "immagini/progetto 3/Livello 1.png",
+        "/immagini/progetto 2/cardanica 900.jpeg",
+        "/immagini/progetto 2/cardanica.jpeg"
+      ],
+      sliderTitles: [
+        "Poltroncina lounge per Milani",
+        "Poltroncina lounge per Milani - particolare 1",
+        "Poltroncina lounge per Milani - particolare 2"
+      ],
+      details: "Durata: 3 mesi<br>Anno: 2024<br>Descrizione: Progetto di una poltroncina lounge.",
       icons: [
-        "/immagini/loghi/icons8-illustrator-48.png",
-        "/immagini/loghi/icons8-solidworks-48.png"
+        "/immagini/loghi/icons8-blender-48.png",,
+        "/immagini/loghi/icons8-photoshop-48.png",
+        "/immagini/loghi/icons8-illustrator-48.png"
       ]
     },
-    "Progetto 4": {
-      // Rimosso "image" perché non viene utilizzato
-      details: "Durata: 1 anno<br>Anno: 2020",
+    "progetto 4": {
+      sliderImages: [
+        "/immagini/progetto 2/cardanica 600.jpeg",
+        "/immagini/progetto 2/cardanica 900.jpeg",
+        "/immagini/progetto 2/cardanica.jpeg"
+      ],
+      sliderTitles: [
+        "Cardanica - 600",
+        "Cardanica - 900",
+        "Cardanica - 1200"
+      ],
+      details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: Progetto di una cardanica per veicoli.",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
-        "/immagini/loghi/icons8-photoshop-48.png"
+        "/immagini/loghi/icons8-illustrator-48.png"
       ]
-    }
+    },
   };
 
   let currentSlide = 0;

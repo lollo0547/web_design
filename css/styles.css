@@ -32,6 +32,9 @@ header {
   background: rgba(0, 0, 0, 0.8);
 }
 
+.logo {
+  margin-left: 2rem; /* Add margin to move the logo to the right */
+}
 .logo img {
   width: 60px;
   height: auto;
@@ -39,6 +42,7 @@ header {
 }
 
 .burger-menu {
+  margin-right: 2rem; /* Add margin to move the burger menu to the right */
   display: none;
   font-size: 2rem;
   cursor: pointer;
@@ -539,6 +543,9 @@ footer {
 @media (max-width: 480px) {
   .logo img {
     width: 40px;
+    margin-top: 0.5rem; /* Add proportional top margin */
+    margin-bottom: 0.5rem; /* Add proportional bottom margin */
+    height: auto;
   }
   .hero h1 {
     font-size: 2rem;
@@ -567,6 +574,12 @@ footer {
 
   .modal-left {
     order: 1; /* Keep the logos above the image */
+  }
+  .burger-menu {
+    font-size: 1.5rem; /* Reduce the size of the burger menu icon */
+    margin-top: 0.5rem; /* Add proportional top margin */
+    margin-bottom: 0.5rem; /* Add proportional bottom margin */
+    height: auto; /* Ensure proper height adjustment */
   }
 }
 
