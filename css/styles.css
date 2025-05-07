@@ -552,6 +552,22 @@ footer {
   .project img {
     border-radius: 5px;
   }
+  .modal-content {
+    flex-direction: column; /* Stack content vertically */
+    gap: 1rem; /* Add spacing between stacked elements */
+  }
+
+  .modal-left, .modal-right {
+    width: 100%; /* Ensure full width for both sections */
+  }
+
+  .modal-right {
+    order: 2; /* Move the image below the logos */
+  }
+
+  .modal-left {
+    order: 1; /* Keep the logos above the image */
+  }
 }
 
 /* Profile Block */
