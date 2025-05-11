@@ -399,6 +399,7 @@ footer {
   font-size: 1rem;
   color: #555;
   line-height: 1.5;
+  text-align: justify; /* Rende il testo giustificato */
 }
 .modal-icons {
   display: flex;

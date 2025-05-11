@@ -34,22 +34,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const projectData = {
     "Set da caffè": {
       sliderImages: [
-        "/immagini/progetto 1/devnwisnvps.jpeg",
-        "/immagini/progetto 1/porfolio.png",
-        "/immagini/progetto 1/porfolio (1).png"
+        "/immagini/progetto 1/all 22.png",
+        "/immagini/progetto 1/tazzina_.png",
+        "/immagini/progetto 1/zuccheriera 2_.png"
       ],
-      details: "Durata: 1 mese<br>Anno: 2022<br>Descrizione: Set da caffè in ceramica con decorazioni artistiche.",
+      sliderTitles: [
+        "Set da caffè - ambientato",
+        "Set da caffè - tazzina",
+        "Set da caffè - zuccheriera",
+      ],
+      details: "Durata: 1 mese<br>Anno: 2022<br>Descrizione:Il progetto propone una reinterpretazione contemporanea del classico set da caffè, composto da tazzina, zuccheriera e piattino. L’approccio progettuale unisce estetica e funzionalità, con particolare attenzione alla coerenza formale e alla scelta dei materiali. Le forme si ispirano all’architettura di Shigeru Ban e Renzo Piano, e al design fluido delle lampade parametriche, generando un linguaggio visivo fatto di trasparenze, volumi armonici e superfici sofisticate.",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-solidworks-48.png",
         "/immagini/loghi/icons8-photoshop-48.png",
         "/immagini/loghi/icons8-illustrator-48.png"
       ], // Aggiunta virgola mancante
-      sliderTitles: [
-        "Set da caffè",
-        "Set da caffè - tazzina",
-        "Set da caffè - zuccheriera",
-      ],
     },
     "La cardanica": {
       sliderImages: [
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Cardanica - 900",
         "Cardanica - 1200"
       ],
-      details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: Progetto di una cardanica per veicoli.",
+      details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: “La Cardanica” è un progetto concettuale ispirato al principio del blocco cardanico (gimbal lock), esplorato attraverso una serie di oggetti-scultura che traducono il movimento meccanico in gesto espressivo. Ispirata dallo Ski Sipping Stabilizer di Unnecessary Inventions, l’idea è stata rielaborata in chiave tecnica e poetica, con richiami a sistemi di illuminazione a binario, dimerabilità e guarnizioni con setole. Il progetto indaga equilibrio, instabilità e relazione tra forma e funzione con un approccio sperimentale e dinamico.",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-solidworks-48.png",
@@ -72,34 +72,34 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     "Poltroncina lounge per Milani": {
       sliderImages: [
-        "immagini/progetto 3/Livello 1.png",
-        "/immagini/progetto 2/cardanica 900.jpeg",
-        "/immagini/progetto 2/cardanica.jpeg"
+        "/immagini/progetto 3/untitled555.png",
+        "/immagini/progetto 3/untitled202.png",
+        "/immagini/progetto 3/untitled702.png"
       ],
       sliderTitles: [
-        "Poltroncina lounge per Milani",
+        "Poltroncina lounge per Milani - ambientato",
         "Poltroncina lounge per Milani - particolare 1",
         "Poltroncina lounge per Milani - particolare 2"
       ],
-      details: "Durata: 3 mesi<br>Anno: 2024<br>Descrizione: Progetto di una poltroncina lounge.",
+      details: "Durata: 3 mesi<br>Anno: 2024<br>Descrizione: Progetto sviluppato per il brand SM-Milani, specializzato in arredi di design per casa e ufficio. La poltroncina lounge è pensata per unire comfort ed eleganza con una struttura essenziale ma accogliente. Il concept prende ispirazione dal design contemporaneo e minimalista, con particolare attenzione all'equilibrio tra pieni e vuoti e all’ergonomia. La forma accogliente e la scelta dei materiali puntano a creare un oggetto versatile, adatto a spazi professionali e domestici.",
       icons: [
-        "/immagini/loghi/icons8-blender-48.png",,
+        "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-photoshop-48.png",
         "/immagini/loghi/icons8-illustrator-48.png"
       ]
     },
-    "progetto 4": {
+    "mouse": {
       sliderImages: [
-        "/immagini/progetto 2/cardanica 600.jpeg",
-        "/immagini/progetto 2/cardanica 900.jpeg",
-        "/immagini/progetto 2/cardanica.jpeg"
+        "/immagini/progetto 4/untitled44.png",
+        "/immagini/progetto 4/untitled33.png",
+        "/immagini/progetto 4/untitled.png"
       ],
       sliderTitles: [
-        "Cardanica - 600",
-        "Cardanica - 900",
-        "Cardanica - 1200"
+        "mouse - ambientato",
+        "mouse - particolare 1",
+        "mouse - particolare 2",
       ],
-      details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: Progetto di una cardanica per veicoli.",
+      details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: Il progetto nasce dalla volontà di ripensare il mouse come oggetto quotidiano dal forte impatto ergonomico ed estetico. Ispirato a forme morbide e organiche, il design privilegia la funzionalità e la semplicità d’uso, con particolare attenzione all’ergonomia del palmo e al posizionamento dei tasti. Il risultato è un oggetto compatto e bilanciato, in grado di integrarsi visivamente in ambienti professionali o creativi senza rinunciare alla personalità.",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-illustrator-48.png"
