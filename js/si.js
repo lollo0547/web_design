@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="modal-right">
         <div class="slider">
           <div class="slider-pages">
-            <img class="slider-page" src="" alt="Slider Page 1">
-            <img class="slider-page" src="" alt="Slider Page 2">
-            <img class="slider-page" src="" alt="Slider Page 3">
+            <img class="slider-page" loading="lazy" src="" alt="Slider Page 1">
+            <img class="slider-page" loading="lazy" src="" alt="Slider Page 2">
+            <img class="slider-page" loading="lazy" src="" alt="Slider Page 3">
           </div>
           <div class="slider-overlay"></div>
         </div>
@@ -103,6 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let autoplayInterval;
   let isAutoplaying = true;
 
+  const debounce = (func, delay) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func(...args), delay);
+    };
+  };
+
   const startAutoplay = () => {
     autoplayInterval = setInterval(() => {
       sliderPages[currentSlide].style.display = "none";
@@ -145,6 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
           sliderPages.forEach((page, index) => {
             page.src = data.sliderImages[index] || "";
             page.style.display = index === 0 ? "block" : "none";
+            page.classList.add("loading"); // Add loading animation
+            page.onload = () => page.classList.remove("loading"); // Remove animation on load
           });
           modalTitle.textContent = data.sliderTitles[0]; // Set initial title
           currentSlide = 0;
@@ -221,15 +231,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  prevButton.addEventListener("click", () => {
+  const handlePrevClick = debounce(() => {
     slideshowCurrentSlide = (slideshowCurrentSlide - 1 + slides.length) % slides.length;
     showSlide(slideshowCurrentSlide);
-  });
+  }, 300);
 
-  nextButton.addEventListener("click", () => {
+  const handleNextClick = debounce(() => {
     slideshowCurrentSlide = (slideshowCurrentSlide + 1) % slides.length;
     showSlide(slideshowCurrentSlide);
-  });
+  }, 300);
+
+  prevButton.addEventListener("click", handlePrevClick);
+  nextButton.addEventListener("click", handleNextClick);
 
   // Initialize the first slide
   showSlide(currentSlide);
