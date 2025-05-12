@@ -34,9 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const projectData = {
     "Set da caffè": {
       sliderTitles: [
-        "Set da caffè - ambientato",
-        "Set da caffè - tazzina",
-        "Set da caffè - zuccheriera",
+        "Set da caffè"
       ],
       sliderImages: [
         "/immagini/progetto 1/all 22.png",
@@ -53,9 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     "La cardanica": {
       sliderTitles: [
-        "la cardanica - 600",
-        "la cardanica - 900",
-        "la cardanica - 1200",
+        "la cardanica"
       ],
       sliderImages: [
         "/immagini/progetto 2/cardanica 600.jpeg",
@@ -70,11 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/loghi/icons8-illustrator-48.png"
       ]
     },
-    "Poltroncina Milani": {
+    "Milani": {
       sliderTitles: [
-        "Poltroncina Milani - ambientato",
-        "Poltroncina Milani - particolare 1",
-        "Poltroncina Milani - particolare 2"
+        "Milani"
       ],
       sliderImages: [
         "/immagini/progetto 3/untitled555.png",
@@ -88,11 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/loghi/icons8-illustrator-48.png"
       ]
     },
-    "mouse ergonomico": {
+    "Mouse": {
       sliderTitles: [
-        "mouse ergonomico - ambientato",
-        "mouse ergonomico - particolare 1",
-        "mouse ergonomico - particolare 2",
+        "Mouse"
       ],
       sliderImages: [
         "/immagini/progetto 4/untitled44.png" ,
@@ -241,4 +233,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize the first slide
   showSlide(currentSlide);
+
+  projects.forEach((project) => {
+    const details = project.querySelector(".modal-details");
+    if (details) {
+      const toggleButton = document.createElement("div");
+      toggleButton.classList.add("info-toggle");
+      toggleButton.textContent = "Info ↓";
+      project.appendChild(toggleButton);
+
+      toggleButton.addEventListener("click", () => {
+        const isVisible = details.style.display === "block";
+        details.style.display = isVisible ? "none" : "block";
+        toggleButton.textContent = isVisible ? "Info ↓" : "Info ↑";
+      });
+    }
+  });
 });
