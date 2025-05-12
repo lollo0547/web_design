@@ -116,10 +116,10 @@ document.addEventListener("DOMContentLoaded", () => {
       sliderPages[currentSlide].style.display = "none";
       currentSlide = (currentSlide + 1) % sliderPages.length;
       sliderPages[currentSlide].style.display = "block";
-      const data = projectData["La cardanica"];
-      if (data && data.sliderTitles) {
-        modalTitle.textContent = data.sliderTitles[currentSlide];
-      }
+      // const data = projectData["La cardanica"];
+      // if (data && data.sliderTitles) {
+      //   modalTitle.textContent = data.sliderTitles[currentSlide];
+     // }
     }, 2500); // Change slide every 2 seconds (reduced from 3 seconds)
     isAutoplaying = true;
   };
