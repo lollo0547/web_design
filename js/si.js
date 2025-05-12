@@ -186,7 +186,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const form = document.querySelector("#contatti form");
   const consentCheckbox = document.querySelector("#consenso");
-  const recaptchaResponse = document.querySelector(".g-recaptcha-response");
 
   form.addEventListener("submit", (event) => {
     let isValid = true;
@@ -194,12 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check if the consent checkbox is checked
     if (!consentCheckbox.checked) {
       alert("Devi acconsentire al trattamento dei dati personali.");
-      isValid = false;
-    }
-
-    // Check if reCAPTCHA is completed
-    if (!recaptchaResponse || recaptchaResponse.value === "") {
-      alert("Devi completare il CAPTCHA.");
       isValid = false;
     }
 
