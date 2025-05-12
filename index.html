@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio professionale di Lorenzo Giudici, product designer. Scopri i progetti, competenze e contatti.">
+    <meta name="keywords" content="Portfolio, Lorenzo Giudici, Product Designer, Progetti, Competenze, Contatti">
+    <meta name="author" content="Lorenzo Giudici">
     <link rel="icon" type="image/x-icon" href="/immagini/favicon.ico">
     <link rel="stylesheet" href="/css/styles.css">
   </head>
@@ -14,9 +16,9 @@
       <!-- Navbar -->
       <nav class="navbar-container">
         <a href="/" class="logo">
-          <img src="/immagini/logo.png" alt="Logo di Lorenzo Giudici">
+          <img src="/immagini/logo.png" alt="Logo del portfolio di Lorenzo Giudici">
         </a>
-        <button class="burger-menu" aria-label="Apri menu">☰</button>
+        <button class="burger-menu" aria-label="Apri il menu di navigazione">☰</button>
         <ul class="navbar">
           <li><a href="#chi-sono">Chi Sono</a></li>
           <li><a href="#progetti">Progetti</a></li>
@@ -28,7 +30,7 @@
       <!-- Hero Section -->
       <div class="hero" style="background-image: url('/immagini/Lorenzo_Giudici_portfolio_accademico_2022-20225_-removebg-preview.png'); background-size: cover; background-position: center;">
         <div class="hero-content">
-          <h1>Portfolio</h1>
+          <h1>Portfolio di Lorenzo Giudici</h1>
           <h2>Lorenzo Giudici</h2>
           <p>progetti universitari 2022/2025</p>
         </div>
@@ -37,7 +39,7 @@
     <main>
       <!-- Sezione Chi Sono -->
       <section id="chi-sono">
-        <h2>Chi Sono</h2>
+        <h1>Chi Sono</h1>
         <div class="profile-block">
           <div class="profile-image-container">
             <img src="/immagini/Lorenzo Giudici portfolio accademico 2022-20225 .jpeg" class="profile-image">
@@ -58,14 +60,14 @@
       </section>
       <!-- Sezione Progetti -->
       <section id="progetti">
-        <h2>Progetti</h2>
+        <h1>Progetti</h1>
         <p class="section-description">
           In questa sezione troverai una selezione dei miei progetti accademici e personali, che riflettono la mia passione per il design e la creatività. Ogni progetto è stato realizzato con attenzione ai dettagli e con l'obiettivo di creare soluzioni innovative.
         </p>
         <div class="project-slideshow">
           <div class="slide active">
             <div class="project">
-              <img src="/immagini/progetto 1/all 22.png" alt="Anteprima Set da caffè">
+              <img src="/immagini/progetto 1/all 22.png" alt="Set da caffè - vista ambientata">
               <h3>Set da caffè</h3>
             </div>
             <div class="project">
@@ -79,7 +81,7 @@
               <h3>Poltroncina Milani</h3>
             </div>
             <div class="project">
-              <img src="/immagini/progetto 4/untitled44.png" alt="Anteprima Progetto 4">
+              <img src="/immagini/progetto 4/untitled44.png" alt="Mouse ergonomico - vista ambientata">
               <h3>mouse</h3>
             </div>
           </div>
@@ -164,8 +166,8 @@
       </section>
       <!-- Sezione Contatti -->
       <section id="contatti">
-        <h2>Contatti</h2>
-        <form>
+        <h1>Contatti</h1>
+        <form id="contact-form">
           <label for="nome">Nome</label>
           <input type="text" id="nome" name="nome" required>
           <label for="email">Email</label>
@@ -176,7 +178,8 @@
             <input type="checkbox" id="consenso" name="consenso" required>
             Acconsento al trattamento dei miei dati personali.
           </label>
-          <button type="submit">Invia</button>
+          <button type="submit" aria-label="Invia il modulo di contatto">Invia</button>
+          <p id="form-success-message" style="display: none; color: green;">Modulo inviato con successo!</p>
         </form>
       </section>
     </main>

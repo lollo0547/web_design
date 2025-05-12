@@ -194,22 +194,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const form = document.querySelector("#contatti form");
-  const consentCheckbox = document.querySelector("#consenso");
+  const form = document.querySelector("#contact-form");
+  const successMessage = document.querySelector("#form-success-message");
 
   form.addEventListener("submit", (event) => {
-    let isValid = true;
+    event.preventDefault(); // Prevent default form submission
 
-    // Check if the consent checkbox is checked
-    if (!consentCheckbox.checked) {
-      alert("Devi acconsentire al trattamento dei dati personali.");
-      isValid = false;
+    const nome = form.querySelector("#nome").value.trim();
+    const email = form.querySelector("#email").value.trim();
+    const messaggio = form.querySelector("#messaggio").value.trim();
+    const consentCheckbox = form.querySelector("#consenso");
+
+    if (!nome || !email || !messaggio || !consentCheckbox.checked) {
+      alert("Per favore, compila tutti i campi e accetta il consenso.");
+      return;
     }
 
-    // Prevent form submission if validation fails
-    if (!isValid) {
-      event.preventDefault();
-    }
+    // Simula invio del modulo
+    successMessage.style.display = "block";
+    setTimeout(() => {
+      successMessage.style.display = "none";
+      form.reset(); // Reset form fields
+    }, 3000);
   });
 
   const slides = document.querySelectorAll(".project-slideshow .slide");

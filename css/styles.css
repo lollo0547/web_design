@@ -350,6 +350,12 @@ form button:hover {
   background: #2575fc;
 }
 
+#form-success-message {
+  font-size: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
 /* Footer */
 footer {
   text-align: center;
