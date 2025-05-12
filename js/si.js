@@ -236,5 +236,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize the first slide
   showSlide(currentSlide);
 });
-
-  let currentSlide = 0;
