@@ -88,14 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/loghi/icons8-illustrator-48.png"
       ]
     },
-    "mouse": {
+    "mouse ergonomico": {
       sliderTitles: [
-        "mouse - ambientato",
-        "mouse - particolare 1",
-        "mouse - particolare 2",
+        "mouse ergonomico - ambientato",
+        "mouse ergonomico - particolare 1",
+        "mouse ergonomico - particolare 2",
       ],
       sliderImages: [
-        "/immagini/progetto 4/untitled44.png",
+        "/immagini/progetto 4/untitled44.png" ,
         "/immagini/progetto 4/untitled33.png",
         "/immagini/progetto 4/untitled.png"
       ],
