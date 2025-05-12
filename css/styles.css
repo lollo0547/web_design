@@ -326,13 +326,87 @@ section h2 {
 }
 
 @media (max-width: 480px) {
-  .project img {
-    border-radius: 5px;
+  .logo img {
+    width: 40px;
+    margin: 0.5rem 0; /* Margini proporzionali */
+    height: auto;
   }
 
-  .project {
+  .hero h1 {
+    font-size: 1.8rem; /* Riduzione del titolo */
+  }
+  .hero h2 {
+    font-size: 1.2rem; /* Riduzione del sottotitolo */
+  }
+  .hero p {
+    font-size: 0.9rem; /* Riduzione del paragrafo */
+  }
+
+  section {
+    padding: 2rem 1rem; /* Riduzione del padding */
+  }
+
+  .profile-image {
+    width: 150px; /* Riduzione della dimensione dell'immagine profilo */
+    height: 150px;
+  }
+
+  .profile-text {
+    font-size: 0.9rem; /* Riduzione del testo */
+    line-height: 1.4;
+  }
+
+  .project img {
+    max-width: 100%; /* Adattamento delle immagini dei progetti */
+    height: auto;
+    border-radius: 5px; /* Riduzione del bordo arrotondato */
+  }
+
+  .project h3 {
+    font-size: 1rem; /* Riduzione del titolo dei progetti */
+  }
+
+  .section-description {
+    font-size: 0.9rem; /* Riduzione del testo descrittivo */
+    margin-bottom: 1rem;
+  }
+
+  .skills li, .interests li {
+    width: 120px; /* Riduzione delle dimensioni delle card */
+    height: 120px;
     font-size: 0.9rem;
-    padding: 0.8rem;
+  }
+
+  .skills li img, .interests li img {
+    width: 36px; /* Riduzione delle icone */
+    height: 36px;
+  }
+
+  .modal-content {
+    flex-direction: column; /* Stack content verticalmente */
+    gap: 1rem; /* Spaziatura tra gli elementi */
+  }
+
+  .modal-left, .modal-right {
+    width: 100%; /* Larghezza completa per entrambe le sezioni */
+  }
+
+  .modal-right {
+    order: 2; /* Sposta l'immagine sotto i loghi */
+  }
+
+  .modal-left {
+    order: 1; /* Mantieni i loghi sopra l'immagine */
+  }
+
+  .burger-menu {
+    font-size: 1.5rem; /* Riduzione della dimensione dell'icona */
+    margin: 0.5rem 0; /* Margini proporzionali */
+    height: auto;
+  }
+
+  footer {
+    font-size: 0.8rem; /* Riduzione del testo nel footer */
   }
 }
 
@@ -559,49 +633,6 @@ footer {
   .project-slideshow {
     flex-direction: column;
     gap: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo img {
-    width: 40px;
-    margin-top: 0.5rem; /* Add proportional top margin */
-    margin-bottom: 0.5rem; /* Add proportional bottom margin */
-    height: auto;
-  }
-  .hero h1 {
-    font-size: 2rem;
-  }
-  .hero p {
-    font-size: 0.9rem;
-  }
-  section {
-    padding: 2rem 1rem;
-  }
-  .project img {
-    border-radius: 5px;
-  }
-  .modal-content {
-    flex-direction: column; /* Stack content vertically */
-    gap: 1rem; /* Add spacing between stacked elements */
-  }
-
-  .modal-left, .modal-right {
-    width: 100%; /* Ensure full width for both sections */
-  }
-
-  .modal-right {
-    order: 2; /* Move the image below the logos */
-  }
-
-  .modal-left {
-    order: 1; /* Keep the logos above the image */
-  }
-  .burger-menu {
-    font-size: 1.5rem; /* Reduce the size of the burger menu icon */
-    margin-top: 0.5rem; /* Add proportional top margin */
-    margin-bottom: 0.5rem; /* Add proportional bottom margin */
-    height: auto; /* Ensure proper height adjustment */
   }
 }
 
