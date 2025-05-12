@@ -33,7 +33,8 @@ header {
 }
 
 .logo {
-  margin-left: 2rem; /* Add margin to move the logo to the right */
+  margin-left: 2rem; 
+  margin-top: 7.59px; 
 }
 .logo img {
   width: 60px;
