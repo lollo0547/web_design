@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="modal-right">
         <div class="slider">
           <div class="slider-pages">
-            <img class="slider-page" loading="lazy" src="" alt="Slider Page 1">
-            <img class="slider-page" loading="lazy" src="" alt="Slider Page 2">
-            <img class="slider-page" loading="lazy" src="" alt="Slider Page 3">
+            <img class="slider-page" src="" alt="Slider Page 1">
+            <img class="slider-page" src="" alt="Slider Page 2">
+            <img class="slider-page" src="" alt="Slider Page 3">
           </div>
           <div class="slider-overlay"></div>
         </div>
@@ -33,13 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const projectData = {
     "Set da caffè": {
-      sliderTitles: [
-        "Set da caffè"
-      ],
       sliderImages: [
         "/immagini/progetto 1/all 22.png",
         "/immagini/progetto 1/tazzina_.png",
         "/immagini/progetto 1/zuccheriera 2_.png"
+      ],
+      sliderTitles: [
+        "Set da caffè - ambientato",
+        "Set da caffè - tazzina",
+        "Set da caffè - zuccheriera",
       ],
       details: "Durata: 1 mese<br>Anno: 2022<br>Descrizione:Il progetto propone una reinterpretazione contemporanea del classico set da caffè, composto da tazzina, zuccheriera e piattino. L’approccio progettuale unisce estetica e funzionalità, con particolare attenzione alla coerenza formale e alla scelta dei materiali. Le forme si ispirano all’architettura di Shigeru Ban e Renzo Piano, e al design fluido delle lampade parametriche, generando un linguaggio visivo fatto di trasparenze, volumi armonici e superfici sofisticate.",
       icons: [
@@ -47,16 +49,18 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/loghi/icons8-solidworks-48.png",
         "/immagini/loghi/icons8-photoshop-48.png",
         "/immagini/loghi/icons8-illustrator-48.png"
-      ],
+      ], // Aggiunta virgola mancante
     },
     "La cardanica": {
-      sliderTitles: [
-        "la cardanica"
-      ],
       sliderImages: [
         "/immagini/progetto 2/cardanica 600.jpeg",
         "/immagini/progetto 2/cardanica 900.jpeg",
         "/immagini/progetto 2/cardanica.jpeg"
+      ],
+      sliderTitles: [
+        "Cardanica - 600",
+        "Cardanica - 900",
+        "Cardanica - 1200"
       ],
       details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: “La Cardanica” è un progetto concettuale ispirato al principio del blocco cardanico (gimbal lock), esplorato attraverso una serie di oggetti-scultura che traducono il movimento meccanico in gesto espressivo. Ispirata dallo Ski Sipping Stabilizer di Unnecessary Inventions, l’idea è stata rielaborata in chiave tecnica e poetica, con richiami a sistemi di illuminazione a binario, dimerabilità e guarnizioni con setole. Il progetto indaga equilibrio, instabilità e relazione tra forma e funzione con un approccio sperimentale e dinamico.",
       icons: [
@@ -66,14 +70,16 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/loghi/icons8-illustrator-48.png"
       ]
     },
-    "Milani": {
-      sliderTitles: [
-        "Milani"
-      ],
+    "Poltroncina lounge per Milani": {
       sliderImages: [
         "/immagini/progetto 3/untitled555.png",
         "/immagini/progetto 3/untitled202.png",
         "/immagini/progetto 3/untitled702.png"
+      ],
+      sliderTitles: [
+        "Poltroncina lounge per Milani - ambientato",
+        "Poltroncina lounge per Milani - particolare 1",
+        "Poltroncina lounge per Milani - particolare 2"
       ],
       details: "Durata: 3 mesi<br>Anno: 2024<br>Descrizione: Progetto sviluppato per il brand SM-Milani, specializzato in arredi di design per casa e ufficio. La poltroncina lounge è pensata per unire comfort ed eleganza con una struttura essenziale ma accogliente. Il concept prende ispirazione dal design contemporaneo e minimalista, con particolare attenzione all'equilibrio tra pieni e vuoti e all’ergonomia. La forma accogliente e la scelta dei materiali puntano a creare un oggetto versatile, adatto a spazi professionali e domestici.",
       icons: [
@@ -82,44 +88,38 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/loghi/icons8-illustrator-48.png"
       ]
     },
-    "Mouse": {
-      sliderTitles: [
-        "Mouse"
-      ],
+    "mouse": {
       sliderImages: [
-        "/immagini/progetto 4/untitled44.png" ,
+        "/immagini/progetto 4/untitled44.png",
         "/immagini/progetto 4/untitled33.png",
         "/immagini/progetto 4/untitled.png"
+      ],
+      sliderTitles: [
+        "mouse - ambientato",
+        "mouse - particolare 1",
+        "mouse - particolare 2",
       ],
       details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: Il progetto nasce dalla volontà di ripensare il mouse come oggetto quotidiano dal forte impatto ergonomico ed estetico. Ispirato a forme morbide e organiche, il design privilegia la funzionalità e la semplicità d’uso, con particolare attenzione all’ergonomia del palmo e al posizionamento dei tasti. Il risultato è un oggetto compatto e bilanciato, in grado di integrarsi visivamente in ambienti professionali o creativi senza rinunciare alla personalità.",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-illustrator-48.png"
       ]
-    }
+    },
   };
 
   let currentSlide = 0;
   let autoplayInterval;
   let isAutoplaying = true;
 
-  const debounce = (func, delay) => {
-    let timeout;
-    return (...args) => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func(...args), delay);
-    };
-  };
-
   const startAutoplay = () => {
     autoplayInterval = setInterval(() => {
       sliderPages[currentSlide].style.display = "none";
       currentSlide = (currentSlide + 1) % sliderPages.length;
       sliderPages[currentSlide].style.display = "block";
-      // const data = projectData["La cardanica"];
-      // if (data && data.sliderTitles) {
-      //   modalTitle.textContent = data.sliderTitles[currentSlide];
-     // }
+      const data = projectData["La cardanica"];
+      if (data && data.sliderTitles) {
+        modalTitle.textContent = data.sliderTitles[currentSlide];
+      }
     }, 2500); // Change slide every 2 seconds (reduced from 3 seconds)
     isAutoplaying = true;
   };
@@ -153,8 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
           sliderPages.forEach((page, index) => {
             page.src = data.sliderImages[index] || "";
             page.style.display = index === 0 ? "block" : "none";
-            page.classList.add("loading"); // Add loading animation
-            page.onload = () => page.classList.remove("loading"); // Remove animation on load
           });
           modalTitle.textContent = data.sliderTitles[0]; // Set initial title
           currentSlide = 0;
@@ -196,28 +194,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const form = document.querySelector("#contact-form");
-  const successMessage = document.querySelector("#form-success-message");
+  const form = document.querySelector("#contatti form");
+  const consentCheckbox = document.querySelector("#consenso");
+  const recaptchaResponse = document.querySelector(".g-recaptcha-response");
 
   form.addEventListener("submit", (event) => {
-    event.preventDefault(); // Prevent default form submission
+    let isValid = true;
 
-    const nome = form.querySelector("#nome").value.trim();
-    const email = form.querySelector("#email").value.trim();
-    const messaggio = form.querySelector("#messaggio").value.trim();
-    const consentCheckbox = form.querySelector("#consenso");
-
-    if (!nome || !email || !messaggio || !consentCheckbox.checked) {
-      alert("Per favore, compila tutti i campi e accetta il consenso.");
-      return;
+    // Check if the consent checkbox is checked
+    if (!consentCheckbox.checked) {
+      alert("Devi acconsentire al trattamento dei dati personali.");
+      isValid = false;
     }
 
-    // Simula invio del modulo
-    successMessage.style.display = "block";
-    setTimeout(() => {
-      successMessage.style.display = "none";
-      form.reset(); // Reset form fields
-    }, 3000);
+    // Check if reCAPTCHA is completed
+    if (!recaptchaResponse || recaptchaResponse.value === "") {
+      alert("Devi completare il CAPTCHA.");
+      isValid = false;
+    }
+
+    // Prevent form submission if validation fails
+    if (!isValid) {
+      event.preventDefault();
+    }
   });
 
   const slides = document.querySelectorAll(".project-slideshow .slide");
@@ -231,42 +230,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const handlePrevClick = debounce(() => {
+  prevButton.addEventListener("click", () => {
     slideshowCurrentSlide = (slideshowCurrentSlide - 1 + slides.length) % slides.length;
     showSlide(slideshowCurrentSlide);
-  }, 300);
+  });
 
-  const handleNextClick = debounce(() => {
+  nextButton.addEventListener("click", () => {
     slideshowCurrentSlide = (slideshowCurrentSlide + 1) % slides.length;
     showSlide(slideshowCurrentSlide);
-  }, 300);
-
-  prevButton.addEventListener("click", handlePrevClick);
-  nextButton.addEventListener("click", handleNextClick);
+  });
 
   // Initialize the first slide
   showSlide(currentSlide);
-
-  projects.forEach((project) => {
-    const details = project.querySelector(".modal-details");
-    if (details) {
-      const toggleButton = document.createElement("div");
-      toggleButton.classList.add("info-toggle");
-      toggleButton.textContent = "Info ↓";
-      project.appendChild(toggleButton);
-
-      toggleButton.addEventListener("click", () => {
-        const isVisible = details.style.display === "block";
-        details.style.display = isVisible ? "none" : "block";
-        toggleButton.textContent = isVisible ? "Info ↓" : "Info ↑";
-      });
-    }
+  // Smooth scroll per i link di ancoraggio della navbar
+  document.querySelectorAll('.navbar a').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
   });
 
-  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-  lazyImages.forEach((img) => {
-    img.addEventListener("load", () => {
-      img.classList.add("loaded");
-    });
+  // Pulsante "Torna su"
+  const backToTopBtn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.style.display = 'flex';
+    } else {
+      backToTopBtn.style.display = 'none';
+    }
+  });
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
