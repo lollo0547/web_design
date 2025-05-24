@@ -268,3 +268,53 @@ document.addEventListener("DOMContentLoaded", () => {
     burgerMenu.setAttribute('aria-expanded', isOpen);
   });
 });
+
+// Timeline toggle + filtro (solo per timeline diplomi/certificazioni)
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById('toggle-timeline-btn');
+  const timelineContainer = document.getElementById('timeline-container');
+  const filter = document.getElementById('timeline-filter');
+  const timelineBlocks = document.querySelectorAll('.timeline-block');
+
+  // Utility: determina se un blocco è diploma (logo diploma) o certificazione (logo pergamena)
+  function getBlockType(block) {
+    const img = block.querySelector('.timeline-dot img');
+    if (!img) return '';
+    const src = img.getAttribute('src') || '';
+    if (src.includes('icons8-diploma-50.png')) return 'diplomi';
+    if (src.includes('icons8-pergamena-di-laurea-50.png')) return 'certificazioni';
+    return '';
+  }
+
+  function toggleTimeline(show) {
+    timelineContainer.style.display = show ? 'block' : 'none';
+    filter.style.display = show ? 'inline-block' : 'none';
+    btn.setAttribute('aria-expanded', show);
+    btn.textContent = show ? 'Nascondi percorso studi' : 'Mostra percorso studi';
+  }
+
+  function applyTimelineFilter() {
+    const value = filter.value;
+    timelineBlocks.forEach(block => {
+      const type = getBlockType(block);
+      block.style.display = (type === value) ? '' : 'none';
+    });
+  }
+
+  if (btn && timelineContainer && filter) {
+    toggleTimeline(false);
+
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      const isOpen = timelineContainer.style.display !== 'none';
+      toggleTimeline(!isOpen);
+      if (!isOpen) {
+        applyTimelineFilter();
+      }
+    });
+
+    filter.addEventListener('change', applyTimelineFilter);
+
+    filter.value = "certificazioni";
+  }
+});

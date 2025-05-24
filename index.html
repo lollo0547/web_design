@@ -282,32 +282,5 @@
     </footer>
     <button id="back-to-top" aria-label="Torna su">↑</button>
     <script src="/js/si.js"></script>
-    <script>
-      // Timeline toggle + filtro
-      document.addEventListener('DOMContentLoaded', function () {
-        const btn = document.getElementById('toggle-timeline-btn');
-        const timeline = document.getElementById('timeline-container');
-        const filter = document.getElementById('timeline-filter');
-        if (btn && timeline && filter) {
-          btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            const isOpen = timeline.style.display !== 'none';
-            timeline.style.display = isOpen ? 'none' : '';
-            filter.style.display = isOpen ? 'none' : '';
-            btn.setAttribute('aria-expanded', !isOpen);
-            btn.textContent = isOpen ? 'Mostra percorso studi' : 'Nascondi percorso studi';
-          });
-          filter.addEventListener('change', function () {
-            const value = filter.value;
-            document.querySelectorAll('.timeline-block').forEach(block => {
-              block.style.display = (block.getAttribute('data-type') === value) ? '' : 'none';
-            });
-          });
-          // Imposta filtro di default su "certificazioni"
-          filter.value = "certificazioni";
-          filter.dispatchEvent(new Event('change'));
-        }
-      });
-    </script>
   </body>
 </html>
