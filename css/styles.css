@@ -548,10 +548,18 @@ footer {
   top: 32px;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
-.timeline-block:hover .timeline-dot {
-  border-color: #2575fc;
-  box-shadow: 0 0 0 12px #2575fc22, 0 2px 18px #6a11cb33;
+.timeline-block .timeline-dot img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  pointer-events: none;
 }
 .timeline-block .timeline-content {
   background: #f8f9fa;
@@ -560,8 +568,12 @@ footer {
   box-shadow: 0 4px 16px rgba(106,17,203,0.10);
   text-align: center;
   margin-top: 3.2rem;
-  min-width: 140px;
+  min-width: 220px;
   max-width: 220px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border: 1.5px solid #e3e6f0;
   position: relative;
   transition: box-shadow var(--transition), border var(--transition), background var(--transition);
@@ -596,21 +608,20 @@ footer {
 
 /* Desktop timeline migliorata */
 @media (min-width: 1201px) and (min-height: 801px) {
-  .timeline-horizontal {
-    gap: 0;
-    max-width: 1400px;
-    padding: 0 40px;
-  }
-  .timeline-block {
-    min-width: 180px;
+   .timeline-block {
+    min-width: 220px;
     max-width: 220px;
     padding: 0 24px;
   }
   .timeline-block .timeline-content {
     font-size: 1.12rem;
-    min-width: 160px;
-    max-width: 240px;
+    min-width: 220px;
+    max-width: 220px;
+    height: 220px;
     padding: 1.5rem 1.3rem 1.1rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .timeline-block .timeline-dot {
     width: 40px;
@@ -761,4 +772,15 @@ footer {
 main {
   /* Evita margine sopra la prima section */
   margin-top: 0;
+}
+#timeline-container {
+  transition: max-height 0.4s cubic-bezier(.4,0,.2,1), opacity 0.3s;
+  overflow: hidden;
+  max-height: 2000px;
+  opacity: 1;
+}
+#timeline-container[style*="display: none"] {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  padding: 0 !important;
 }

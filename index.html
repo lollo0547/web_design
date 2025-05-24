@@ -50,73 +50,98 @@
               La passione per la montagna, invece, mi è stata trasmessa dai miei nonni durante l'infanzia, ma è rimasta in secondo piano fino a poco
               prima del periodo del Covid.
             </p>
-            <a href="#contatti" class="btn-primary">Contattami</a>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="#contatti" class="btn-primary">Contattami</a>
+              <a href="#timeline" class="btn-primary" id="toggle-timeline-btn" aria-expanded="true" aria-controls="timeline-container">Percorso studi</a>
+              <select id="timeline-filter" style="display:none; margin-left:1rem; border-radius:5px; padding:0.5rem;">
+                <option value="certificazioni">Solo certificazioni</option>
+                <option value="lauree">diplomi</option>
+              </select>
+            </div>
           </div>
         </div>
       </section>
-      <div class="timeline-horizontal" aria-label="Percorso di studi">
-        <div class="timeline-block">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2017/18</span>
-            <h4>1° anno CAT</h4>
-            <p>Inizio percorso tecnico: basi di disegno e costruzioni.</p>
+      <div id="timeline-container">
+        <div class="timeline-horizontal" id="timeline" aria-label="Percorso di studi">
+          <div class="timeline-block" data-type="certificazioni">
+            <div class="timeline-dot">
+              <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">12/04/2019</span>
+              <h4>2D Computer Aided Design</h4>
+              <p>certificazione per il disegno tecnico 2d<br>software: autocad</p>
+            </div>
           </div>
-        </div>
-        <div class="timeline-block">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2018/19</span>
-            <h4>2° anno CAT</h4>
-            <p>Approfondimento materie tecniche e prime esperienze pratiche.</p>
+          <div class="timeline-block" data-type="certificazioni">
+            <div class="timeline-dot">
+              <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">31/03/2022</span>
+              <h4>Mechanical Design</h4>
+              <p>certificazione per il disegno tecnico 3d<br>software: Solidworks</p>
+            </div>
           </div>
-        </div>
-        <div class="timeline-block">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2019/20</span>
-            <h4>3° anno CAT</h4>
-            <p>Progetti CAD e introduzione a software di modellazione.</p>
+          <div class="timeline-block" data-type="diplomi">
+            <div class="timeline-dot">
+              <img src="/immagini/loghi 4/icons8-diploma-50.png" >
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">2022</span>
+              <h4>Diplomi di scuola secondaria di secondo grado</h4>
+              <p>diploma di istruzione tecnica nell'indirizzo di Meccanica e meccatronica</p>
+            </div>
           </div>
-        </div>
-        <div class="timeline-block">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2020/21</span>
-            <h4>4° anno CAT</h4>
-            <p>Stage e lavori di gruppo su casi reali di progettazione.</p>
+          <div class="timeline-block" data-type="certificazioni">
+            <div class="timeline-dot">
+              <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">13/04/2024</span>
+              <h4>ICDL - Computer e Online essential</h4>
+              <p>certificazione per competenze informatiche<br>software: nessuno</p>
+            </div>
           </div>
-        </div>
-        <div class="timeline-block">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2021/22</span>
-            <h4>5° anno CAT</h4>
-            <p>Diploma e progetto finale: approfondimento su sostenibilità.</p>
+          <div class="timeline-block" data-type="certificazioni">
+            <div class="timeline-dot">
+              <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">31/05/2024</span>
+              <h4>Trinity - b2</h4>
+              <p>certificazione per competenze linguistiche<br>lingua: Inglese</p>
+            </div>
           </div>
-        </div>
-        <div class="timeline-block">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2022/23</span>
-            <h4>1° anno IUAV</h4>
-            <p>Inizio università: basi di design del prodotto industriale.</p>
+          <div class="timeline-block" data-type="certificazioni">
+            <div class="timeline-dot">
+              <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">09/06/2024</span>
+              <h4>ICDL - Word processing</h4>
+              <p>certificazione per competenze informatiche<br>software: Word</p>
+            </div>
           </div>
-        </div>
-        <div class="timeline-block">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2023/24</span>
-            <h4>2° anno IUAV</h4>
-            <p>Progetti avanzati, modellazione 3D e rendering.</p>
+          <div class="timeline-block" data-type="certificazioni">
+            <div class="timeline-dot">
+              <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">06/07/2024</span>
+              <h4>ICDL - Spreadsheets</h4>
+              <p>certificazione per competenze informatiche<br>software: Excel</p>
+            </div>
           </div>
-        </div>
-        <div class="timeline-block">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2024/25</span>
-            <h4>3° anno IUAV</h4>
-            <p>Prossima laurea e tesi su design innovativo.</p>
+          <div class="timeline-block" data-type="diplomi">
+            <div class="timeline-dot">
+              <img src="/immagini/loghi 4/icons8-diploma-50.png" >
+            </div>
+            <div class="timeline-content">
+              <span class="timeline-date">09/2025</span>
+              <h4>Laurea triennale </h4>
+              <p>Laurea triennale in Design del prodotto industriale</p>
+            </div>
           </div>
         </div>
       </div>
@@ -257,5 +282,32 @@
     </footer>
     <button id="back-to-top" aria-label="Torna su">↑</button>
     <script src="/js/si.js"></script>
+    <script>
+      // Timeline toggle + filtro
+      document.addEventListener('DOMContentLoaded', function () {
+        const btn = document.getElementById('toggle-timeline-btn');
+        const timeline = document.getElementById('timeline-container');
+        const filter = document.getElementById('timeline-filter');
+        if (btn && timeline && filter) {
+          btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const isOpen = timeline.style.display !== 'none';
+            timeline.style.display = isOpen ? 'none' : '';
+            filter.style.display = isOpen ? 'none' : '';
+            btn.setAttribute('aria-expanded', !isOpen);
+            btn.textContent = isOpen ? 'Mostra percorso studi' : 'Nascondi percorso studi';
+          });
+          filter.addEventListener('change', function () {
+            const value = filter.value;
+            document.querySelectorAll('.timeline-block').forEach(block => {
+              block.style.display = (block.getAttribute('data-type') === value) ? '' : 'none';
+            });
+          });
+          // Imposta filtro di default su "certificazioni"
+          filter.value = "certificazioni";
+          filter.dispatchEvent(new Event('change'));
+        }
+      });
+    </script>
   </body>
 </html>
