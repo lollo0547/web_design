@@ -269,52 +269,85 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Timeline toggle + filtro (solo per timeline diplomi/certificazioni)
+// Timeline toggle + filtro (nuovo comportamento dropdown)
 document.addEventListener('DOMContentLoaded', function () {
   const btn = document.getElementById('toggle-timeline-btn');
   const timelineContainer = document.getElementById('timeline-container');
-  const filter = document.getElementById('timeline-filter');
+  const filterDropdown = document.getElementById('timeline-filter-dropdown');
+  const filterOptions = filterDropdown ? filterDropdown.querySelectorAll('.timeline-filter-option') : [];
+  const selectedLabel = document.getElementById('timeline-selected-label');
   const timelineBlocks = document.querySelectorAll('.timeline-block');
+  let isDropdownOpen = false;
 
-  // Utility: determina se un blocco è diploma (logo diploma) o certificazione (logo pergamena)
   function getBlockType(block) {
     const img = block.querySelector('.timeline-dot img');
     if (!img) return '';
     const src = img.getAttribute('src') || '';
-    if (src.includes('icons8-diploma-50.png')) return 'diplomi';
-    if (src.includes('icons8-pergamena-di-laurea-50.png')) return 'certificazioni';
+    if (src.includes('icons8-diploma-50.png')) return 'Diplomi';
+    if (src.includes('icons8-pergamena-di-laurea-50.png')) return 'Certificazioni';
     return '';
   }
 
-  function toggleTimeline(show) {
+  function showTimeline(show) {
     timelineContainer.style.display = show ? 'block' : 'none';
-    filter.style.display = show ? 'inline-block' : 'none';
-    btn.setAttribute('aria-expanded', show);
-    btn.textContent = show ? 'Nascondi percorso studi' : 'Mostra percorso studi';
+    btn.setAttribute('aria-expanded', show && isDropdownOpen ? 'true' : 'false');
+    if (selectedLabel) selectedLabel.style.display = show ? 'inline' : 'none';
+    filterDropdown.style.display = (show && isDropdownOpen) ? 'block' : 'none';
   }
 
-  function applyTimelineFilter() {
-    const value = filter.value;
+  function applyTimelineFilter(value) {
     timelineBlocks.forEach(block => {
       const type = getBlockType(block);
       block.style.display = (type === value) ? '' : 'none';
     });
+    if (selectedLabel) selectedLabel.textContent = value;
+    filterOptions.forEach(opt => {
+      opt.style.fontWeight = (opt.dataset.value === value) ? 'bold' : 'normal';
+      opt.style.background = (opt.dataset.value === value) ? '#f0f4ff' : 'none';
+      opt.setAttribute('aria-selected', opt.dataset.value === value ? 'true' : 'false');
+    });
   }
 
-  if (btn && timelineContainer && filter) {
-    toggleTimeline(false);
+  const closeTimelineBtn = document.getElementById('close-timeline-btn');
+
+  if (btn && timelineContainer && filterDropdown) {
+    // Stato iniziale
+    isDropdownOpen = false;
+    showTimeline(false);
+    applyTimelineFilter('Certificazioni');
+    filterDropdown.style.display = 'none';
 
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      const isOpen = timelineContainer.style.display !== 'none';
-      toggleTimeline(!isOpen);
-      if (!isOpen) {
-        applyTimelineFilter();
+      // Se la timeline è chiusa, apri timeline e dropdown
+      if (timelineContainer.style.display === 'none' || timelineContainer.style.display === '') {
+        isDropdownOpen = true;
+        showTimeline(true);
+      } else {
+        // Se la timeline è aperta, alterna la visibilità del dropdown
+        isDropdownOpen = !isDropdownOpen;
+        showTimeline(true);
       }
     });
 
-    filter.addEventListener('change', applyTimelineFilter);
+    filterOptions.forEach(opt => {
+      opt.addEventListener('click', function (e) {
+        e.stopPropagation();
+        applyTimelineFilter(this.dataset.value);
+        // Il dropdown resta visibile dopo la selezione
+      });
+    });
 
-    filter.value = "certificazioni";
+    // Bottone "Nascondi percorso studi"
+    if (closeTimelineBtn) {
+      closeTimelineBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        isDropdownOpen = false;
+        timelineContainer.style.display = 'none';
+        filterDropdown.style.display = 'none';
+        btn.setAttribute('aria-expanded', 'false');
+        if (selectedLabel) selectedLabel.style.display = 'none';
+      });
+    }
   }
 });

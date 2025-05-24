@@ -50,20 +50,27 @@
               La passione per la montagna, invece, mi è stata trasmessa dai miei nonni durante l'infanzia, ma è rimasta in secondo piano fino a poco
               prima del periodo del Covid.
             </p>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; position: relative;">
               <a href="#contatti" class="btn-primary">Contattami</a>
-              <a href="#timeline" class="btn-primary" id="toggle-timeline-btn" aria-expanded="true" aria-controls="timeline-container">Percorso studi</a>
-              <select id="timeline-filter" style="display:none; margin-left:1rem; border-radius:5px; padding:0.5rem;">
-                <option value="certificazioni">Solo certificazioni</option>
-                <option value="lauree">diplomi</option>
-              </select>
+              <div class="timeline-filter-wrapper">
+                <button class="btn-primary" id="toggle-timeline-btn" aria-expanded="false" aria-controls="timeline-container" type="button">
+                  Percorso studi
+                  <span id="timeline-selected-label">Certificazioni</span>
+                  <svg style="width:1em;height:1em;vertical-align:middle;" viewBox="0 0 20 20"><path fill="currentColor" d="M5.5 8l4.5 4 4.5-4z"/></svg>
+                </button>
+                <div id="timeline-filter-dropdown">
+                  <button class="timeline-filter-option" data-value="Certificazioni" aria-selected="true">Certificazioni</button>
+                  <button class="timeline-filter-option" data-value="Diplomi">Diplomi</button>
+                  <button id="close-timeline-btn" class="btn-primary" style="margin: 0.5rem 1rem 0.5rem 1rem; padding: 0.5rem 1.2rem; font-size: 0.98em; background: #e3e6f0; color: #5a2d82; border-radius: 7px; font-weight: 600;">Nascondi percorso studi</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
       <div id="timeline-container">
         <div class="timeline-horizontal" id="timeline" aria-label="Percorso di studi">
-          <div class="timeline-block" data-type="certificazioni">
+          <div class="timeline-block" data-type="Certificazioni">
             <div class="timeline-dot">
               <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
             </div>
@@ -73,7 +80,7 @@
               <p>certificazione per il disegno tecnico 2d<br>software: autocad</p>
             </div>
           </div>
-          <div class="timeline-block" data-type="certificazioni">
+          <div class="timeline-block" data-type="Certificazioni">
             <div class="timeline-dot">
               <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
             </div>
@@ -83,7 +90,7 @@
               <p>certificazione per il disegno tecnico 3d<br>software: Solidworks</p>
             </div>
           </div>
-          <div class="timeline-block" data-type="diplomi">
+          <div class="timeline-block" data-type="Diplomi">
             <div class="timeline-dot">
               <img src="/immagini/loghi 4/icons8-diploma-50.png" >
             </div>
@@ -93,7 +100,7 @@
               <p>diploma di istruzione tecnica nell'indirizzo di Meccanica e meccatronica</p>
             </div>
           </div>
-          <div class="timeline-block" data-type="certificazioni">
+          <div class="timeline-block" data-type="Certificazioni">
             <div class="timeline-dot">
               <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
             </div>
@@ -103,7 +110,7 @@
               <p>certificazione per competenze informatiche<br>software: nessuno</p>
             </div>
           </div>
-          <div class="timeline-block" data-type="certificazioni">
+          <div class="timeline-block" data-type="Certificazioni">
             <div class="timeline-dot">
               <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
             </div>
@@ -113,7 +120,7 @@
               <p>certificazione per competenze linguistiche<br>lingua: Inglese</p>
             </div>
           </div>
-          <div class="timeline-block" data-type="certificazioni">
+          <div class="timeline-block" data-type="Certificazioni">
             <div class="timeline-dot">
               <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
             </div>
@@ -123,7 +130,7 @@
               <p>certificazione per competenze informatiche<br>software: Word</p>
             </div>
           </div>
-          <div class="timeline-block" data-type="certificazioni">
+          <div class="timeline-block" data-type="Certificazioni">
             <div class="timeline-dot">
               <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
             </div>
@@ -133,7 +140,7 @@
               <p>certificazione per competenze informatiche<br>software: Excel</p>
             </div>
           </div>
-          <div class="timeline-block" data-type="diplomi">
+          <div class="timeline-block" data-type="Diplomi">
             <div class="timeline-dot">
               <img src="/immagini/loghi 4/icons8-diploma-50.png" >
             </div>
