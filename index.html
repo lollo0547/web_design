@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="it" data-theme="light">
   <head>
-    <!-- Meta e informazioni generali -->
     <title>Portfolio di Lorenzo Giudici</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -13,21 +12,19 @@
   </head>
   <body>
     <header>
-      <!-- Navbar -->
-      <nav class="navbar-container">
+      <nav class="navbar-container" aria-label="Menu principale">
         <a href="/" class="logo">
-          <img src="/immagini/logo.png" alt="Logo del portfolio di Lorenzo Giudici">
+          <img src="/immagini/logo.png" alt="Logo portfolio Lorenzo Giudici">
         </a>
-        <button class="burger-menu" aria-label="Apri il menu di navigazione">☰</button>
-        <ul class="navbar">
+        <button class="burger-menu" aria-label="Apri il menu di navigazione" aria-controls="main-nav" aria-expanded="false">☰</button>
+        <ul class="navbar" id="main-nav">
           <li><a href="#chi-sono">Chi Sono</a></li>
           <li><a href="#progetti">Progetti</a></li>
-          <li><a href="#Software skills">Software skills</a></li>
-          <li><a href="#Interessi">Interessi</a></li>
+          <li><a href="#software-skills">Software skills</a></li>
+          <li><a href="#interessi">Interessi</a></li>
           <li><a href="#contatti">Contatti</a></li>
         </ul>
       </nav>
-      <!-- Hero Section -->
       <div class="hero" style="background-image: url('/immagini/Lorenzo_Giudici_portfolio_accademico_2022-20225_-removebg-preview.png'); background-size: cover; background-position: center;">
         <div class="hero-content">
           <h1>Portfolio di Lorenzo Giudici</h1>
@@ -35,30 +32,94 @@
           <p>progetti universitari 2022/2025</p>
         </div>
       </div>
-    </header> 
+    </header>
     <main>
-      <!-- Sezione Chi Sono -->
       <section id="chi-sono">
         <h2>Chi Sono</h2>
         <div class="profile-block">
           <div class="profile-image-container">
-            <img src="/immagini/Lorenzo Giudici portfolio accademico 2022-20225 .jpeg" class="profile-image">
+            <img src="/immagini/Lorenzo Giudici portfolio accademico 2022-20225 .jpeg" class="profile-image" alt="Lorenzo Giudici">
           </div>
           <div class="profile-text">
             <p>
-              A differenza di molti miei colleghi, non posso dire di aver coltivato fin da bambino una passione per il disegno e la progettazione. 
-              Il mio interesse per il disegno tecnico è nato durante gli anni delle superiori, mentre la scelta di intraprendere un percorso universitario 
+              A differenza di molti miei colleghi, non posso dire di aver coltivato fin da bambino una passione per il disegno e la progettazione.
+              Il mio interesse per il disegno tecnico è nato durante gli anni delle superiori, mentre la scelta di intraprendere un percorso universitario
               nel design è stata ispirata da mia sorella, anch'essa designer.
             </p>
             <p>
-              La passione per la montagna, invece, mi è stata trasmessa dai miei nonni durante l'infanzia, ma è rimasta in secondo piano fino a poco 
+              La passione per la montagna, invece, mi è stata trasmessa dai miei nonni durante l'infanzia, ma è rimasta in secondo piano fino a poco
               prima del periodo del Covid.
             </p>
             <a href="#contatti" class="btn-primary">Contattami</a>
           </div>
         </div>
       </section>
-      <!-- Sezione Progetti -->
+      <div class="timeline-horizontal" aria-label="Percorso di studi">
+        <div class="timeline-block">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2017/18</span>
+            <h4>1° anno CAT</h4>
+            <p>Inizio percorso tecnico: basi di disegno e costruzioni.</p>
+          </div>
+        </div>
+        <div class="timeline-block">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2018/19</span>
+            <h4>2° anno CAT</h4>
+            <p>Approfondimento materie tecniche e prime esperienze pratiche.</p>
+          </div>
+        </div>
+        <div class="timeline-block">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2019/20</span>
+            <h4>3° anno CAT</h4>
+            <p>Progetti CAD e introduzione a software di modellazione.</p>
+          </div>
+        </div>
+        <div class="timeline-block">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2020/21</span>
+            <h4>4° anno CAT</h4>
+            <p>Stage e lavori di gruppo su casi reali di progettazione.</p>
+          </div>
+        </div>
+        <div class="timeline-block">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2021/22</span>
+            <h4>5° anno CAT</h4>
+            <p>Diploma e progetto finale: approfondimento su sostenibilità.</p>
+          </div>
+        </div>
+        <div class="timeline-block">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2022/23</span>
+            <h4>1° anno IUAV</h4>
+            <p>Inizio università: basi di design del prodotto industriale.</p>
+          </div>
+        </div>
+        <div class="timeline-block">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2023/24</span>
+            <h4>2° anno IUAV</h4>
+            <p>Progetti avanzati, modellazione 3D e rendering.</p>
+          </div>
+        </div>
+        <div class="timeline-block">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2024/25</span>
+            <h4>3° anno IUAV</h4>
+            <p>Prossima laurea e tesi su design innovativo.</p>
+          </div>
+        </div>
+      </div>
       <section id="progetti">
         <h2>Progetti</h2>
         <p class="section-description">
@@ -66,33 +127,32 @@
         </p>
         <div class="project-slideshow">
           <div class="slide active">
-            <div class="project">
+            <div class="project" tabindex="0" aria-label="Set da caffè">
               <img src="/immagini/progetto 1/all 22.png" alt="Set da caffè - vista ambientata">
               <h3>Set da caffè</h3>
             </div>
-            <div class="project">
+            <div class="project" tabindex="0" aria-label="La cardanica">
               <img src="/immagini/progetto 2/cardanica.jpeg" alt="Anteprima cardanica">
               <h3>La cardanica</h3>
             </div>
           </div>
-          <div class="slide active">
-            <div class="project">
-              <img src="/immagini/progetto 3/untitled555.png" alt="Milani">
-              <h3>Milani</h3>
+          <div class="slide">
+            <div class="project" tabindex="0" aria-label="Poltroncina lounge per Milani">
+              <img src="/immagini/progetto 3/untitled555.png" alt="Poltroncina lounge per Milani">
+              <h3>Poltroncina lounge per Milani</h3>
             </div>
-            <div class="project">
-              <img src="/immagini/progetto 4/untitled44.png" alt="Mouse ">
-              <h3>Mouse</h3>
+            <div class="project" tabindex="0" aria-label="Mouse">
+              <img src="/immagini/progetto 4/untitled44.png" alt="Mouse">
+              <h3>mouse</h3>
             </div>
           </div>
         </div>
         <div class="slideshow-controls">
-          <button class="prev-slide">❮</button>
-          <button class="next-slide">❯</button>
+          <button class="prev-slide" aria-label="Slide precedente">❮</button>
+          <button class="next-slide" aria-label="Slide successiva">❯</button>
         </div>
       </section>
-      <!-- Sezione Competenze -->
-      <section id="Software skills">
+      <section id="software-skills">
         <h2>Software skills</h2>
         <p class="section-description">
           Qui puoi trovare una panoramica dei software che utilizzo per il design e la progettazione. Ogni competenza è accompagnata da una valutazione che riflette il mio livello di esperienza.
@@ -135,8 +195,7 @@
           </li>
         </ul>
       </section>
-      <!-- Sezione Interessi -->
-      <section id="Interessi">
+      <section id="interessi">
         <h2>Interessi</h2>
         <p class="section-description">
           Oltre al design, coltivo diverse passioni che arricchiscono la mia creatività e il mio approccio progettuale. Scopri di più sui miei interessi personali.
@@ -161,13 +220,12 @@
           <li>
             <img src="/immagini/loghi 3/icons8-film-projector-48.png" alt="Cinema" title="Cinema">
             <p>Cinema</p>
-          </li>         
+          </li>
         </ul>
       </section>
-      <!-- Sezione Contatti -->
       <section id="contatti">
-        <h1>Contatti</h1>
-        <form id="contact-form">
+        <h2>Contatti</h2>
+        <form id="contact-form" autocomplete="off">
           <label for="nome">Nome</label>
           <input type="text" id="nome" name="nome" required>
           <label for="email">Email</label>
@@ -183,18 +241,17 @@
         </form>
       </section>
     </main>
-    <!-- Footer -->
     <footer>
       <p>&copy; 2025 Lorenzo Giudici. Tutti i diritti riservati.</p>
       <div class="social-icons">
-        <a href="https://linkedin.com" target="_blank">
-          <img src="/immagini/loghi2/icons8-linkedin-48.png" alt="LinkedIn" class="social-icon">
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <img src="/immagini/loghi 2/icons8-linkedin-48.png" alt="LinkedIn" class="social-icon">
         </a>
-        <a href="https://instagram.com" target="_blank">
-          <img src="/immagini/loghi2/icons8-instagram-logo-48.png" alt="Instagram" class="social-icon">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <img src="/immagini/loghi 2/icons8-instagram-logo-48.png" alt="Instagram" class="social-icon">
         </a>
-        <a href="https://behance.net" target="_blank">
-          <img src="/immagini/loghi2/icons8-behance-48.png" alt="Behance" class="social-icon">
+        <a href="https://behance.net" target="_blank" rel="noopener noreferrer">
+          <img src="/immagini/loghi 2/icons8-behance-48.png" alt="Behance" class="social-icon">
         </a>
       </div>
     </footer>

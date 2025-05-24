@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Modal e dati progetti
   const projects = document.querySelectorAll(".project");
   const modal = document.createElement("div");
   modal.classList.add("modal");
   modal.innerHTML = `
     <div class="modal-content">
-      <span class="close">&times;</span>
+      <span class="close" tabindex="0" aria-label="Chiudi">&times;</span>
       <div class="modal-left">
         <h1 class="modal-title"></h1>
         <p class="modal-details"></p>
@@ -49,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/loghi/icons8-solidworks-48.png",
         "/immagini/loghi/icons8-photoshop-48.png",
         "/immagini/loghi/icons8-illustrator-48.png"
-      ], // Aggiunta virgola mancante
+      ]
     },
     "La cardanica": {
       sliderImages: [
@@ -104,66 +105,69 @@ document.addEventListener("DOMContentLoaded", () => {
         "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-illustrator-48.png"
       ]
-    },
+    }
   };
 
   let currentSlide = 0;
   let autoplayInterval;
   let isAutoplaying = true;
 
-  const startAutoplay = () => {
+  function startAutoplay(projectKey) {
+    stopAutoplay();
     autoplayInterval = setInterval(() => {
       sliderPages[currentSlide].style.display = "none";
       currentSlide = (currentSlide + 1) % sliderPages.length;
       sliderPages[currentSlide].style.display = "block";
-      const data = projectData["La cardanica"];
+      const data = projectData[projectKey];
       if (data && data.sliderTitles) {
         modalTitle.textContent = data.sliderTitles[currentSlide];
       }
-    }, 2500); // Change slide every 2 seconds (reduced from 3 seconds)
+    }, 2500);
     isAutoplaying = true;
-  };
+  }
 
-  const stopAutoplay = () => {
+  function stopAutoplay() {
     clearInterval(autoplayInterval);
     isAutoplaying = false;
-  };
+  }
 
-  const showOverlayIcon = (icon) => {
+  function showOverlayIcon(icon) {
     sliderOverlay.textContent = icon;
     sliderOverlay.style.opacity = "1";
     setTimeout(() => {
       sliderOverlay.style.opacity = "0";
-    }, 500); // Show the icon for 500ms
-  };
+    }, 500);
+  }
 
   projects.forEach((project) => {
     project.addEventListener("click", () => {
       const projectTitle = project.querySelector("h3").textContent;
       const data = projectData[projectTitle];
-
       if (data) {
-        modalTitle.textContent = projectTitle;
+        modalTitle.textContent = data.sliderTitles ? data.sliderTitles[0] : projectTitle;
         modalDetails.innerHTML = data.details;
         modalIcons.innerHTML = data.icons
           .map((icon) => `<img src="${icon}" alt="Icona">`)
           .join("");
-
         if (data.sliderImages) {
           sliderPages.forEach((page, index) => {
             page.src = data.sliderImages[index] || "";
             page.style.display = index === 0 ? "block" : "none";
           });
-          modalTitle.textContent = data.sliderTitles[0]; // Set initial title
           currentSlide = 0;
           modal.querySelector(".slider").style.display = "block";
-          startAutoplay(); // Start autoplay when modal opens
+          startAutoplay(projectTitle);
         } else {
           modal.querySelector(".slider").style.display = "none";
         }
-
         modal.style.display = "flex";
-        document.body.style.overflow = "hidden"; // Disable scrolling
+        document.body.style.overflow = "hidden";
+      }
+    });
+    // Accessibilità: apri modale anche con Invio/Spazio
+    project.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        project.click();
       }
     });
   });
@@ -172,63 +176,54 @@ document.addEventListener("DOMContentLoaded", () => {
     page.addEventListener("click", () => {
       if (isAutoplaying) {
         stopAutoplay();
-        showOverlayIcon("⏸"); // Show stop icon
+        showOverlayIcon("⏸");
       } else {
-        startAutoplay();
-        showOverlayIcon("▶"); // Show play icon
+        startAutoplay(modalTitle.textContent);
+        showOverlayIcon("▶");
       }
     });
   });
 
   closeModal.addEventListener("click", () => {
     modal.style.display = "none";
-    document.body.style.overflow = ""; // Enable scrolling
-    stopAutoplay(); // Stop autoplay when modal closes
+    document.body.style.overflow = "";
+    stopAutoplay();
+  });
+  closeModal.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      closeModal.click();
+    }
   });
 
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
       modal.style.display = "none";
-      document.body.style.overflow = ""; // Enable scrolling
-      stopAutoplay(); // Stop autoplay when modal closes
+      document.body.style.overflow = "";
+      stopAutoplay();
     }
   });
 
+  // Form contatti: solo controllo consenso (rimosso controllo reCAPTCHA non presente)
   const form = document.querySelector("#contatti form");
   const consentCheckbox = document.querySelector("#consenso");
-  const recaptchaResponse = document.querySelector(".g-recaptcha-response");
-
   form.addEventListener("submit", (event) => {
-    let isValid = true;
-
-    // Check if the consent checkbox is checked
     if (!consentCheckbox.checked) {
       alert("Devi acconsentire al trattamento dei dati personali.");
-      isValid = false;
-    }
-
-    // Check if reCAPTCHA is completed
-    if (!recaptchaResponse || recaptchaResponse.value === "") {
-      alert("Devi completare il CAPTCHA.");
-      isValid = false;
-    }
-
-    // Prevent form submission if validation fails
-    if (!isValid) {
       event.preventDefault();
     }
   });
 
+  // Slideshow progetti
   const slides = document.querySelectorAll(".project-slideshow .slide");
   const prevButton = document.querySelector(".prev-slide");
   const nextButton = document.querySelector(".next-slide");
-  let slideshowCurrentSlide = 1;
+  let slideshowCurrentSlide = 0;
 
-  const showSlide = (index) => {
+  function showSlide(index) {
     slides.forEach((slide, i) => {
       slide.classList.toggle("active", i === index);
     });
-  };
+  }
 
   prevButton.addEventListener("click", () => {
     slideshowCurrentSlide = (slideshowCurrentSlide - 1 + slides.length) % slides.length;
@@ -240,8 +235,8 @@ document.addEventListener("DOMContentLoaded", () => {
     showSlide(slideshowCurrentSlide);
   });
 
-  // Initialize the first slide
-  showSlide(currentSlide);
+  showSlide(slideshowCurrentSlide);
+
   // Smooth scroll per i link di ancoraggio della navbar
   document.querySelectorAll('.navbar a').forEach(link => {
     link.addEventListener('click', function (e) {
@@ -259,13 +254,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Pulsante "Torna su"
   const backToTopBtn = document.getElementById('back-to-top');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      backToTopBtn.style.display = 'flex';
-    } else {
-      backToTopBtn.style.display = 'none';
-    }
+    backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
   });
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Burger menu mobile
+  const burgerMenu = document.querySelector('.burger-menu');
+  const navbar = document.querySelector('.navbar');
+  burgerMenu.addEventListener('click', () => {
+    const isOpen = navbar.classList.toggle('open');
+    burgerMenu.setAttribute('aria-expanded', isOpen);
   });
 });
