@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const projectData = {
     "Set da caffè": {
+      enKey: "Coffee set",
       sliderImages: [
         "/immagini/progetto 1/all 22.png",
         "/immagini/progetto 1/tazzina_.png",
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Set da caffè - zuccheriera",
       ],
       details: "Durata: 1 mese<br>Anno: 2022<br>Descrizione:Il progetto propone una reinterpretazione contemporanea del classico set da caffè, composto da tazzina, zuccheriera e piattino. L’approccio progettuale unisce estetica e funzionalità, con particolare attenzione alla coerenza formale e alla scelta dei materiali. Le forme si ispirano all’architettura di Shigeru Ban e Renzo Piano, e al design fluido delle lampade parametriche, generando un linguaggio visivo fatto di trasparenze, volumi armonici e superfici sofisticate.",
+      details_en: "Duration: 1 month<br>Year: 2022<br>Description: The project offers a contemporary reinterpretation of the classic coffee set, consisting of cup, sugar bowl and saucer. The design approach combines aesthetics and functionality, with particular attention to formal consistency and material selection. The shapes are inspired by the architecture of Shigeru Ban and Renzo Piano, and by the fluid design of parametric lamps, generating a visual language made of transparencies, harmonious volumes and sophisticated surfaces.",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-solidworks-48.png",
@@ -53,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     },
     "La cardanica": {
+      enKey: "The Cardanica",
       sliderImages: [
         "/immagini/progetto 2/cardanica 600.jpeg",
         "/immagini/progetto 2/cardanica 900.jpeg",
@@ -64,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Cardanica - 1200"
       ],
       details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: “La Cardanica” è un progetto concettuale ispirato al principio del blocco cardanico (gimbal lock), esplorato attraverso una serie di oggetti-scultura che traducono il movimento meccanico in gesto espressivo. Ispirata dallo Ski Sipping Stabilizer di Unnecessary Inventions, l’idea è stata rielaborata in chiave tecnica e poetica, con richiami a sistemi di illuminazione a binario, dimerabilità e guarnizioni con setole. Il progetto indaga equilibrio, instabilità e relazione tra forma e funzione con un approccio sperimentale e dinamico.",
+      details_en: "Duration: 2 months<br>Year: 2023<br>Description: “The Cardanica” is a conceptual project inspired by the principle of gimbal lock, explored through a series of object-sculptures that translate mechanical movement into expressive gesture. Inspired by the Ski Sipping Stabilizer by Unnecessary Inventions, the idea was reworked in a technical and poetic way, with references to track lighting systems, dimmability and bristle seals. The project investigates balance, instability and the relationship between form and function with an experimental and dynamic approach.",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-solidworks-48.png",
@@ -72,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     },
     "Poltroncina lounge per Milani": {
+      enKey: "Lounge chair for Milani",
       sliderImages: [
         "/immagini/progetto 3/untitled555.png",
         "/immagini/progetto 3/untitled202.png",
@@ -83,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Poltroncina lounge per Milani - particolare 2"
       ],
       details: "Durata: 3 mesi<br>Anno: 2024<br>Descrizione: Progetto sviluppato per il brand SM-Milani, specializzato in arredi di design per casa e ufficio. La poltroncina lounge è pensata per unire comfort ed eleganza con una struttura essenziale ma accogliente. Il concept prende ispirazione dal design contemporaneo e minimalista, con particolare attenzione all'equilibrio tra pieni e vuoti e all’ergonomia. La forma accogliente e la scelta dei materiali puntano a creare un oggetto versatile, adatto a spazi professionali e domestici.",
+      details_en: "Duration: 3 months<br>Year: 2024<br>Description: Project developed for the SM-Milani brand, specialized in designer furniture for home and office. The lounge chair is designed to combine comfort and elegance with an essential yet welcoming structure. The concept is inspired by contemporary and minimalist design, with particular attention to the balance between solids and voids and ergonomics. The welcoming shape and choice of materials aim to create a versatile object, suitable for professional and domestic spaces.",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-photoshop-48.png",
@@ -90,6 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ]
     },
     "mouse": {
+      enKey: "mouse",
       sliderImages: [
         "/immagini/progetto 4/untitled44.png",
         "/immagini/progetto 4/untitled33.png",
@@ -101,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "mouse - particolare 2",
       ],
       details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: Il progetto nasce dalla volontà di ripensare il mouse come oggetto quotidiano dal forte impatto ergonomico ed estetico. Ispirato a forme morbide e organiche, il design privilegia la funzionalità e la semplicità d’uso, con particolare attenzione all’ergonomia del palmo e al posizionamento dei tasti. Il risultato è un oggetto compatto e bilanciato, in grado di integrarsi visivamente in ambienti professionali o creativi senza rinunciare alla personalità.",
+      details_en: "Duration: 2 months<br>Year: 2023<br>Description: The project was born from the desire to rethink the mouse as an everyday object with a strong ergonomic and aesthetic impact. Inspired by soft and organic shapes, the design favors functionality and ease of use, with particular attention to palm ergonomics and button placement. The result is a compact and balanced object, able to visually integrate into professional or creative environments without sacrificing personality.",
       icons: [
         "/immagini/loghi/icons8-blender-48.png",
         "/immagini/loghi/icons8-illustrator-48.png"
@@ -108,19 +116,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Helper to get project key by current language and h3 text
+  function getProjectKeyByTitle(title) {
+    for (const key in projectData) {
+      if (title === key) return key;
+      if (title === projectData[key].enKey) return key;
+    }
+    return title;
+  }
+
   let currentSlide = 0;
   let autoplayInterval;
   let isAutoplaying = true;
 
-  function startAutoplay(projectKey) {
+  function startAutoplay(projectKey, lang) {
     stopAutoplay();
+    const data = projectData[projectKey];
     autoplayInterval = setInterval(() => {
       sliderPages[currentSlide].style.display = "none";
       currentSlide = (currentSlide + 1) % sliderPages.length;
       sliderPages[currentSlide].style.display = "block";
-      const data = projectData[projectKey];
       if (data && data.sliderTitles) {
-        modalTitle.textContent = data.sliderTitles[currentSlide];
+        if (lang === 'en' && data.sliderTitles_en) {
+          modalTitle.textContent = data.sliderTitles_en[currentSlide];
+        } else {
+          modalTitle.textContent = data.sliderTitles[currentSlide];
+        }
       }
     }, 2500);
     isAutoplaying = true;
@@ -141,11 +162,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   projects.forEach((project) => {
     project.addEventListener("click", () => {
-      const projectTitle = project.querySelector("h3").textContent;
-      const data = projectData[projectTitle];
+      // Prendi titolo visibile (in lingua attiva)
+      const lang = document.querySelector('.lang-btn[aria-current="true"]')?.getAttribute('data-lang') || 'it';
+      const h3 = project.querySelector("h3");
+      let projectTitle = h3.querySelector('.lang-it')?.textContent.trim();
+      if (lang === 'en') {
+        projectTitle = h3.querySelector('.lang-en')?.textContent.trim();
+      }
+      const key = getProjectKeyByTitle(projectTitle);
+      const data = projectData[key];
       if (data) {
-        modalTitle.textContent = data.sliderTitles ? data.sliderTitles[0] : projectTitle;
-        modalDetails.innerHTML = data.details;
+        // Titolo slide
+        if (data.sliderTitles) {
+          modalTitle.textContent = lang === 'en'
+            ? (data.sliderTitles_en ? data.sliderTitles_en[0] : data.sliderTitles[0])
+            : data.sliderTitles[0];
+        } else {
+          modalTitle.textContent = projectTitle;
+        }
+        // Dettagli
+        modalDetails.innerHTML = lang === 'en' && data.details_en ? data.details_en : data.details;
         modalIcons.innerHTML = data.icons
           .map((icon) => `<img src="${icon}" alt="Icona">`)
           .join("");
@@ -156,41 +192,62 @@ document.addEventListener("DOMContentLoaded", () => {
           });
           currentSlide = 0;
           modal.querySelector(".slider").style.display = "block";
-          startAutoplay(projectTitle);
+          startAutoplay(key, lang);
         } else {
           modal.querySelector(".slider").style.display = "none";
         }
         modal.style.display = "flex";
         document.body.style.overflow = "hidden";
+        lastFocusedElement = document.activeElement;
+        // Set initial focus to close button for accessibility
+        closeModal.focus();
       }
     });
     // Accessibilità: apri modale anche con Invio/Spazio
     project.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
         project.click();
       }
     });
   });
 
-  sliderPages.forEach((page) => {
-    page.addEventListener("click", () => {
-      if (isAutoplaying) {
-        stopAutoplay();
-        showOverlayIcon("⏸");
+  // Trap focus inside modal when open
+  modal.addEventListener("keydown", (e) => {
+    if (modal.style.display !== "flex") return;
+    const focusable = modal.querySelectorAll('button, [tabindex="0"], a, input, textarea, select');
+    const focusableArr = Array.prototype.slice.call(focusable);
+    const first = focusableArr[0];
+    const last = focusableArr[focusableArr.length - 1];
+    if (e.key === "Tab") {
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
       } else {
-        startAutoplay(modalTitle.textContent);
-        showOverlayIcon("▶");
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
-    });
+    }
+    // ESC per chiudere la modale
+    if (e.key === "Escape") {
+      closeModal.click();
+    }
   });
 
   closeModal.addEventListener("click", () => {
     modal.style.display = "none";
     document.body.style.overflow = "";
     stopAutoplay();
+    // Ritorna il focus all’elemento che aveva il focus prima della modale
+    if (lastFocusedElement) lastFocusedElement.focus();
   });
   closeModal.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
       closeModal.click();
     }
   });
@@ -200,24 +257,18 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.style.display = "none";
       document.body.style.overflow = "";
       stopAutoplay();
+      if (lastFocusedElement) lastFocusedElement.focus();
     }
   });
 
-  // Form contatti: solo controllo consenso (rimosso controllo reCAPTCHA non presente)
-  const form = document.querySelector("#contatti form");
-  const consentCheckbox = document.querySelector("#consenso");
-  form.addEventListener("submit", (event) => {
-    if (!consentCheckbox.checked) {
-      alert("Devi acconsentire al trattamento dei dati personali.");
-      event.preventDefault();
-    }
-  });
-
-  // Slideshow progetti
+  // Slider: accessibilità per click/tastiera
   const slides = document.querySelectorAll(".project-slideshow .slide");
   const prevButton = document.querySelector(".prev-slide");
   const nextButton = document.querySelector(".next-slide");
   let slideshowCurrentSlide = 0;
+
+  prevButton.setAttribute("tabindex", "0");
+  nextButton.setAttribute("tabindex", "0");
 
   function showSlide(index) {
     slides.forEach((slide, i) => {
@@ -229,44 +280,95 @@ document.addEventListener("DOMContentLoaded", () => {
     slideshowCurrentSlide = (slideshowCurrentSlide - 1 + slides.length) % slides.length;
     showSlide(slideshowCurrentSlide);
   });
-
   nextButton.addEventListener("click", () => {
     slideshowCurrentSlide = (slideshowCurrentSlide + 1) % slides.length;
     showSlide(slideshowCurrentSlide);
   });
 
+  prevButton.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      prevButton.click();
+    }
+  });
+  nextButton.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      nextButton.click();
+    }
+  });
+
+  // Mostra la slide iniziale all'avvio
   showSlide(slideshowCurrentSlide);
 
-  // Smooth scroll per i link di ancoraggio della navbar
-  document.querySelectorAll('.navbar a').forEach(link => {
-    link.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
+  // FAQ: accessibilità tastiera
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.setAttribute('tabindex', '0');
+    btn.addEventListener('keydown', function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        btn.click();
       }
     });
   });
 
-  // Pulsante "Torna su"
-  const backToTopBtn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    backToTopBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
-  });
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Timeline dropdown: accessibilità tastiera
+  document.querySelectorAll('#timeline-filter-dropdown .timeline-filter-option, #close-timeline-btn').forEach(btn => {
+    btn.setAttribute('tabindex', '0');
+    btn.addEventListener('keydown', function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        btn.click();
+      }
+    });
   });
 
-  // Burger menu mobile
-  const burgerMenu = document.querySelector('.burger-menu');
-  const navbar = document.querySelector('.navbar');
-  burgerMenu.addEventListener('click', () => {
-    const isOpen = navbar.classList.toggle('open');
-    burgerMenu.setAttribute('aria-expanded', isOpen);
+  // Timeline toggle button: accessibilità tastiera
+  const timelineToggleBtn = document.getElementById('toggle-timeline-btn');
+  if (timelineToggleBtn) {
+    timelineToggleBtn.setAttribute('tabindex', '0');
+    timelineToggleBtn.addEventListener('keydown', function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        timelineToggleBtn.click();
+      }
+    });
+  }
+
+  // Reveal on scroll per le sezioni principali
+  const revealSections = document.querySelectorAll('main > section, #timeline-container, #faq');
+  revealSections.forEach(section => {
+    section.classList.add('reveal-on-scroll');
   });
+  function revealOnScroll() {
+    revealSections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 60) {
+        section.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('DOMContentLoaded', revealOnScroll);
+  revealOnScroll();
+
+  // Pulsante "Torna su": aggiungi classe show per animazione
+  const backToTopBtn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.style.display = 'flex';
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.style.display = 'none';
+      backToTopBtn.classList.remove('show');
+    }
+  });
+  // Rendi funzionante il click sul bottone "Torna su"
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 });
 
 // Timeline toggle + filtro (nuovo comportamento dropdown)
@@ -350,4 +452,98 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+});
+
+// FAQ accordion
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      // Chiudi tutte le risposte
+      document.querySelectorAll('.faq-question').forEach(b => b.setAttribute('aria-expanded', 'false'));
+      document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+      if (!expanded) {
+        this.setAttribute('aria-expanded', 'true');
+        const answer = this.nextElementSibling;
+        if (answer) answer.style.display = 'block';
+      }
+    });
+  });
+});
+
+// Language switcher
+document.addEventListener('DOMContentLoaded', function () {
+  const langBtns = document.querySelectorAll('.lang-btn');
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const lang = this.getAttribute('data-lang');
+      // Aggiorna stato attivo
+      langBtns.forEach(b => b.setAttribute('aria-current', b === this ? 'true' : 'false'));
+      // Mostra/nasconde testi
+      document.querySelectorAll('.lang-it').forEach(el => {
+        el.style.display = lang === 'it' ? '' : 'none';
+      });
+      document.querySelectorAll('.lang-en').forEach(el => {
+        el.style.display = lang === 'en' ? '' : 'none';
+      });
+
+      // Aggiorna label timeline filter
+      const timelineSelectedLabel = document.getElementById('timeline-selected-label');
+      if (timelineSelectedLabel) {
+        timelineSelectedLabel.querySelectorAll('.lang-it').forEach(el => el.style.display = lang === 'it' ? '' : 'none');
+        timelineSelectedLabel.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+      }
+      // Aggiorna dropdown timeline filter
+      document.querySelectorAll('#timeline-filter-dropdown .timeline-filter-option').forEach(opt => {
+        opt.querySelectorAll('.lang-it').forEach(el => el.style.display = lang === 'it' ? '' : 'none');
+        opt.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+      });
+      // Aggiorna bottone chiudi timeline
+      const closeTimelineBtn = document.getElementById('close-timeline-btn');
+      if (closeTimelineBtn) {
+        closeTimelineBtn.querySelectorAll('.lang-it').forEach(el => el.style.display = lang === 'it' ? '' : 'none');
+        closeTimelineBtn.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
+      }
+    });
+  });
+});
+
+// Aggiorna aria-label dei bottoni slider e burger menu in base alla lingua
+document.addEventListener('DOMContentLoaded', function () {
+  const langBtns = document.querySelectorAll('.lang-btn');
+  const prevButton = document.querySelector('.prev-slide');
+  const nextButton = document.querySelector('.next-slide');
+  const burgerMenu = document.querySelector('.burger-menu');
+
+  function updateAriaLabels(lang) {
+    // Slider controls
+    if (prevButton) {
+      prevButton.setAttribute('aria-label', lang === 'en'
+        ? (prevButton.getAttribute('aria-label-en') || 'Previous slide')
+        : 'Slide precedente');
+    }
+    if (nextButton) {
+      nextButton.setAttribute('aria-label', lang === 'en'
+        ? (nextButton.getAttribute('aria-label-en') || 'Next slide')
+        : 'Slide successiva');
+    }
+    // Burger menu
+    if (burgerMenu) {
+      burgerMenu.setAttribute('aria-label', lang === 'en'
+        ? (burgerMenu.getAttribute('aria-label-en') || 'Open navigation menu')
+        : 'Apri il menu di navigazione');
+    }
+  }
+
+  // Inizializza aria-labels corretti
+  const initialLang = document.querySelector('.lang-btn[aria-current="true"]')?.getAttribute('data-lang') || 'it';
+  updateAriaLabels(initialLang);
+
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const lang = this.getAttribute('data-lang');
+      // ...existing code...
+      updateAriaLabels(lang);
+    });
+  });
 });

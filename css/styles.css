@@ -205,13 +205,14 @@ section h2 {
   width: 150px;
   height: 150px;
   box-shadow: 0 2px 8px rgba(90,45,130,0.10);
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), filter 0.3s;
 }
 .skills li:hover, .interests li:hover,
 .skills li:focus-within, .interests li:focus-within {
   transform: translateY(-6px) scale(1.04);
   background: #2575fc;
   box-shadow: 0 6px 18px rgba(37,117,252,0.13);
+  filter: brightness(1.07) drop-shadow(0 4px 16px #2575fc22);
   outline: none;
 }
 .skills li p {
@@ -239,7 +240,7 @@ section h2 {
   align-items: center;
   gap: 1rem;
   text-align: center;
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), filter 0.3s;
   box-shadow: 0 2px 8px rgba(90,45,130,0.10);
   cursor: pointer;
 }
@@ -255,6 +256,7 @@ section h2 {
   transform: translateY(-7px) scale(1.03);
   background: #2575fc;
   box-shadow: 0 8px 24px rgba(37,117,252,0.16);
+  filter: brightness(1.07) drop-shadow(0 4px 16px #2575fc22);
   outline: none;
 }
 
@@ -295,13 +297,17 @@ section h2 {
   font-size: 1.3rem;
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(90,45,130,0.10);
-  transition: background var(--transition), transform var(--transition);
+  transition: background var(--transition), transform var(--transition), box-shadow 0.2s;
 }
 .slideshow-controls button:hover,
 .slideshow-controls button:focus {
   background: #2575fc;
   transform: scale(1.08);
   outline: none;
+}
+.slideshow-controls button:active {
+  transform: scale(0.96) rotate(-4deg);
+  box-shadow: 0 2px 12px #2575fc33;
 }
 
 /* Modulo Contatti */
@@ -723,11 +729,14 @@ footer {
   display: none;
   align-items: center;
   justify-content: center;
-  transition: background 0.3s, opacity 0.3s;
+  transition: background 0.3s, opacity 0.3s, transform 0.4s;
 }
 #back-to-top:hover, #back-to-top:focus {
   background: #2575fc;
   outline: none;
+}
+#back-to-top.show {
+  animation: fadeInUp 0.5s;
 }
 
 /* Profile Block */
@@ -961,4 +970,140 @@ main {
   background: #d0d7e6;
   color: #2575fc;
   outline: none;
+}
+
+/* FAQ Section */
+#faq {
+  margin: 3rem auto 2rem auto;
+  padding: 3rem 1.5rem;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  max-width: 800px;
+}
+#faq h2 {
+  text-align: center;
+  color: var(--accent-color);
+  margin-bottom: 1.2rem;
+}
+.faq-list {
+  margin: 0 auto;
+  max-width: 700px;
+}
+.faq-item {
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid #e3e6f0;
+  padding-bottom: 0.7rem;
+}
+.faq-question {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 1.13rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  padding: 0.5em 0;
+  transition: color 0.2s;
+}
+.faq-question[aria-expanded="true"] {
+  color: #2575fc;
+}
+.faq-question:focus {
+  outline: 2px solid #2575fc;
+}
+.faq-answer {
+  margin-top: 0.5em;
+  color: #444;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  display: none;
+  transition: max-height 0.3s;
+}
+.faq-answer.open {
+  display: block;
+}
+
+/* Selettore lingua: stile base */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 1.05em;
+  cursor: pointer;
+  padding: 0.2em 0.6em;
+  border-radius: 5px;
+  transition: background 0.2s, color 0.2s;
+}
+.lang-btn[aria-current="true"], .lang-btn.active {
+  background: #f0f4ff;
+  color: #2575fc;
+}
+.lang-btn:focus {
+  outline: 2px solid #2575fc;
+}
+
+/* Focus visibile per accessibilità */
+a:focus, button:focus, [tabindex="0"]:focus, input:focus, textarea:focus, select:focus {
+  outline: 2.5px solid #2575fc !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px #a3c8ff55;
+  z-index: 10;
+}
+
+/* Focus visibile per elementi custom (FAQ, timeline, slider, ecc.) */
+.faq-question:focus,
+#toggle-timeline-btn:focus,
+#close-timeline-btn:focus,
+.timeline-filter-option:focus,
+.burger-menu:focus,
+.prev-slide:focus,
+.next-slide:focus {
+  outline: 2.5px solid #2575fc !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px #a3c8ff55;
+  background: #f0f4ff;
+  color: #2575fc;
+}
+
+/* Micro-animazioni su hover per cards progetti, skills, interests */
+.project,
+.skills li,
+.interests li {
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), filter 0.3s;
+}
+.project:hover, .project:focus-within,
+.skills li:hover, .skills li:focus-within,
+.interests li:hover, .interests li:focus-within {
+  filter: brightness(1.07) drop-shadow(0 4px 16px #2575fc22);
+}
+
+/* Animazione fade-in per sezioni al reveal */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+section.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+  will-change: opacity, transform;
+}
+section.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1);
 }
