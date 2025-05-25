@@ -7,8 +7,23 @@
     <meta name="description" content="Portfolio professionale di Lorenzo Giudici, product designer. Scopri i progetti, competenze e contatti.">
     <meta name="keywords" content="Portfolio, Lorenzo Giudici, Product Designer, Progetti, Competenze, Contatti">
     <meta name="author" content="Lorenzo Giudici">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Portfolio di Lorenzo Giudici">
+    <meta property="og:description" content="Portfolio professionale di Lorenzo Giudici, product designer. Scopri i progetti, competenze e contatti.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.example.com/">
+    <meta property="og:image" content="https://yourdomain.example.com/immagini/logo.png">
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio di Lorenzo Giudici">
+    <meta name="twitter:description" content="Portfolio professionale di Lorenzo Giudici, product designer. Scopri i progetti, competenze e contatti.">
+    <meta name="twitter:image" content="https://yourdomain.example.com/immagini/logo.png">
     <link rel="icon" type="image/x-icon" href="/immagini/favicon.ico">
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+    </noscript>
   </head>
   <body>
     <header>
@@ -16,52 +31,119 @@
         <a href="/" class="logo">
           <img src="/immagini/logo.png" alt="Logo portfolio Lorenzo Giudici">
         </a>
-        <button class="burger-menu" aria-label="Apri il menu di navigazione" aria-controls="main-nav" aria-expanded="false">☰</button>
+        <!-- Language Switcher -->
+        <div class="lang-switcher" style="margin-right:1rem;">
+          <button class="lang-btn" data-lang="it" aria-current="true">IT</button>
+          <span style="color:#888;">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button class="burger-menu" aria-label="Apri il menu di navigazione" aria-label-en="Open navigation menu" aria-controls="main-nav" aria-expanded="false">☰</button>
         <ul class="navbar" id="main-nav">
-          <li><a href="#chi-sono">Chi Sono</a></li>
-          <li><a href="#progetti">Progetti</a></li>
-          <li><a href="#software-skills">Software skills</a></li>
-          <li><a href="#interessi">Interessi</a></li>
-          <li><a href="#contatti">Contatti</a></li>
+          <li>
+            <a href="#chi-sono">
+              <span class="lang-it">Chi Sono</span>
+              <span class="lang-en" style="display:none;">About Me</span>
+            </a>
+          </li>
+          <li>
+            <a href="#progetti">
+              <span class="lang-it">Progetti</span>
+              <span class="lang-en" style="display:none;">Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="#software-skills">
+              <span class="lang-it">Software skills</span>
+              <span class="lang-en" style="display:none;">Software skills</span>
+            </a>
+          </li>
+          <li>
+            <a href="#interessi">
+              <span class="lang-it">Interessi</span>
+              <span class="lang-en" style="display:none;">Interests</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contatti">
+              <span class="lang-it">Contatti</span>
+              <span class="lang-en" style="display:none;">Contacts</span>
+            </a>
+          </li>
         </ul>
       </nav>
       <div class="hero" style="background-image: url('/immagini/Lorenzo_Giudici_portfolio_accademico_2022-20225_-removebg-preview.png'); background-size: cover; background-position: center;">
         <div class="hero-content">
-          <h1>Portfolio di Lorenzo Giudici</h1>
+          <h1>
+            <span class="lang-it">Portfolio di Lorenzo Giudici</span>
+            <span class="lang-en" style="display:none;">Lorenzo Giudici's Portfolio</span>
+          </h1>
           <h2>Lorenzo Giudici</h2>
-          <p>progetti universitari 2022/2025</p>
+          <p>
+            <span class="lang-it">progetti universitari 2022/2025</span>
+            <span class="lang-en" style="display:none;">university projects 2022/2025</span>
+          </p>
         </div>
       </div>
     </header>
     <main>
       <section id="chi-sono">
-        <h2>Chi Sono</h2>
+        <h2>
+          <span class="lang-it">Chi Sono</span>
+          <span class="lang-en" style="display:none;">About Me</span>
+        </h2>
         <div class="profile-block">
           <div class="profile-image-container">
             <img src="/immagini/Lorenzo Giudici portfolio accademico 2022-20225 .jpeg" class="profile-image" alt="Lorenzo Giudici">
           </div>
           <div class="profile-text">
             <p>
-              A differenza di molti miei colleghi, non posso dire di aver coltivato fin da bambino una passione per il disegno e la progettazione.
-              Il mio interesse per il disegno tecnico è nato durante gli anni delle superiori, mentre la scelta di intraprendere un percorso universitario
-              nel design è stata ispirata da mia sorella, anch'essa designer.
+              <span class="lang-it">
+                A differenza di molti miei colleghi, non posso dire di aver coltivato fin da bambino una passione per il disegno e la progettazione.
+                Il mio interesse per il disegno tecnico è nato durante gli anni delle superiori, mentre la scelta di intraprendere un percorso universitario
+                nel design è stata ispirata da mia sorella, anch'essa designer.
+              </span>
+              <span class="lang-en" style="display:none;">
+                Unlike many of my colleagues, I can't say I've always had a passion for drawing and design since childhood.
+                My interest in technical drawing began during high school, and my decision to pursue a university path in design was inspired by my sister, who is also a designer.
+              </span>
             </p>
             <p>
-              La passione per la montagna, invece, mi è stata trasmessa dai miei nonni durante l'infanzia, ma è rimasta in secondo piano fino a poco
-              prima del periodo del Covid.
+              <span class="lang-it">
+                La passione per la montagna, invece, mi è stata trasmessa dai miei nonni durante l'infanzia, ma è rimasta in secondo piano fino a poco
+                prima del periodo del Covid.
+              </span>
+              <span class="lang-en" style="display:none;">
+                My passion for the mountains was passed on to me by my grandparents during childhood, but it remained in the background until shortly before the Covid period.
+              </span>
             </p>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap; position: relative;">
-              <a href="#contatti" class="btn-primary">Contattami</a>
+              <a href="#contatti" class="btn-primary">
+                <span class="lang-it">Contattami</span>
+                <span class="lang-en" style="display:none;">Contact me</span>
+              </a>
               <div class="timeline-filter-wrapper">
                 <button class="btn-primary" id="toggle-timeline-btn" aria-expanded="false" aria-controls="timeline-container" type="button">
-                  Percorso studi
-                  <span id="timeline-selected-label">Certificazioni</span>
+                  <span class="lang-it">Percorso studi</span>
+                  <span class="lang-en" style="display:none;">Education</span>
+                  <span id="timeline-selected-label">
+                    <span class="lang-it">Certificazioni</span>
+                    <span class="lang-en" style="display:none;">Certifications</span>
+                  </span>
                   <svg style="width:1em;height:1em;vertical-align:middle;" viewBox="0 0 20 20"><path fill="currentColor" d="M5.5 8l4.5 4 4.5-4z"/></svg>
                 </button>
                 <div id="timeline-filter-dropdown">
-                  <button class="timeline-filter-option" data-value="Certificazioni" aria-selected="true">Certificazioni</button>
-                  <button class="timeline-filter-option" data-value="Diplomi">Diplomi</button>
-                  <button id="close-timeline-btn" class="btn-primary" style="margin: 0.5rem 1rem 0.5rem 1rem; padding: 0.5rem 1.2rem; font-size: 0.98em; background: #e3e6f0; color: #5a2d82; border-radius: 7px; font-weight: 600;">Nascondi percorso studi</button>
+                  <button class="timeline-filter-option" data-value="Certificazioni" aria-selected="true">
+                    <span class="lang-it">Certificazioni</span>
+                    <span class="lang-en" style="display:none;">Certifications</span>
+                  </button>
+                  <button class="timeline-filter-option" data-value="Diplomi">
+                    <span class="lang-it">Diplomi</span>
+                    <span class="lang-en" style="display:none;">Degrees</span>
+                  </button>
+                  <button id="close-timeline-btn" class="btn-primary" style="margin: 0.5rem 1rem 0.5rem 1rem; padding: 0.5rem 1.2rem; font-size: 0.98em; background: #e3e6f0; color: #5a2d82; border-radius: 7px; font-weight: 600;">
+                    <span class="lang-it">Nascondi percorso studi</span>
+                    <span class="lang-en" style="display:none;">Hide education</span>
+                  </button>
                 </div>
               </div>
             </div>
@@ -76,8 +158,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">12/04/2019</span>
-              <h4>2D Computer Aided Design</h4>
-              <p>certificazione per il disegno tecnico 2d<br>software: autocad</p>
+              <h4>
+                <span class="lang-it">2D Computer Aided Design</span>
+                <span class="lang-en" style="display:none;">2D Computer Aided Design</span>
+              </h4>
+              <p>
+                <span class="lang-it">certificazione per il disegno tecnico 2d<br>software: autocad</span>
+                <span class="lang-en" style="display:none;">certification for 2D technical drawing<br>software: autocad</span>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Certificazioni">
@@ -86,8 +174,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">31/03/2022</span>
-              <h4>Mechanical Design</h4>
-              <p>certificazione per il disegno tecnico 3d<br>software: Solidworks</p>
+              <h4>
+                <span class="lang-it">Mechanical Design</span>
+                <span class="lang-en" style="display:none;">Mechanical Design</span>
+              </h4>
+              <p>
+                <span class="lang-it">certificazione per il disegno tecnico 3d<br>software: Solidworks</span>
+                <span class="lang-en" style="display:none;">certification for 3D technical drawing<br>software: Solidworks</span>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Diplomi">
@@ -96,8 +190,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">2022</span>
-              <h4>Diplomi di scuola secondaria di secondo grado</h4>
-              <p>diploma di istruzione tecnica nell'indirizzo di Meccanica e meccatronica</p>
+              <h4>
+                <span class="lang-it">Diplomi di scuola secondaria di secondo grado</span>
+                <span class="lang-en" style="display:none;">High School Diploma</span>
+              </h4>
+              <p>
+                <span class="lang-it">diploma di istruzione tecnica nell'indirizzo di Meccanica e meccatronica</span>
+                <span class="lang-en" style="display:none;">Technical diploma in Mechanics and Mechatronics</span>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Certificazioni">
@@ -106,8 +206,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">13/04/2024</span>
-              <h4>ICDL - Computer e Online essential</h4>
-              <p>certificazione per competenze informatiche<br>software: nessuno</p>
+              <h4>
+                <span class="lang-it">ICDL - Computer e Online essential</span>
+                <span class="lang-en" style="display:none;">ICDL - Computer and Online essential</span>
+              </h4>
+              <p>
+                <span class="lang-it">certificazione per competenze informatiche<br>software: nessuno</span>
+                <span class="lang-en" style="display:none;">certification for IT skills<br>software: none</span>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Certificazioni">
@@ -116,8 +222,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">31/05/2024</span>
-              <h4>Trinity - b2</h4>
-              <p>certificazione per competenze linguistiche<br>lingua: Inglese</p>
+              <h4>
+                <span class="lang-it">Trinity - b2</span>
+                <span class="lang-en" style="display:none;">Trinity - B2</span>
+              </h4>
+              <p>
+                <span class="lang-it">certificazione per competenze linguistiche<br>lingua: Inglese</span>
+                <span class="lang-en" style="display:none;">certification for language skills<br>language: English</span>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Certificazioni">
@@ -126,8 +238,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">09/06/2024</span>
-              <h4>ICDL - Word processing</h4>
-              <p>certificazione per competenze informatiche<br>software: Word</p>
+              <h4>
+                <span class="lang-it">ICDL - Word processing</span>
+                <span class="lang-en" style="display:none;">ICDL - Word processing</span>
+              </h4>
+              <p>
+                <span class="lang-it">certificazione per competenze informatiche<br>software: Word</span>
+                <span class="lang-en" style="display:none;">certification for IT skills<br>software: Word</span>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Certificazioni">
@@ -136,8 +254,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">06/07/2024</span>
-              <h4>ICDL - Spreadsheets</h4>
-              <p>certificazione per competenze informatiche<br>software: Excel</p>
+              <h4>
+                <span class="lang-it">ICDL - Spreadsheets</span>
+                <span class="lang-en" style="display:none;">ICDL - Spreadsheets</span>
+              </h4>
+              <p>
+                <span class="lang-it">certificazione per competenze informatiche<br>software: Excel</span>
+                <span class="lang-en" style="display:none;">certification for IT skills<br>software: Excel</span>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Diplomi">
@@ -146,48 +270,82 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">09/2025</span>
-              <h4>Laurea triennale </h4>
-              <p>Laurea triennale in Design del prodotto industriale</p>
+              <h4>
+                <span class="lang-it">Laurea triennale</span>
+                <span class="lang-en" style="display:none;">Bachelor's degree</span>
+              </h4>
+              <p>
+                <span class="lang-it">Laurea triennale in Design del prodotto industriale</span>
+                <span class="lang-en" style="display:none;">Bachelor's degree in Industrial Product Design</span>
+              </p>
             </div>
           </div>
         </div>
       </div>
       <section id="progetti">
-        <h2>Progetti</h2>
+        <h2>
+          <span class="lang-it">Progetti</span>
+          <span class="lang-en" style="display:none;">Projects</span>
+        </h2>
         <p class="section-description">
-          In questa sezione troverai una selezione dei miei progetti accademici e personali, che riflettono la mia passione per il design e la creatività. Ogni progetto è stato realizzato con attenzione ai dettagli e con l'obiettivo di creare soluzioni innovative.
+          <span class="lang-it">
+            In questa sezione troverai una selezione dei miei progetti accademici e personali, che riflettono la mia passione per il design e la creatività. Ogni progetto è stato realizzato con attenzione ai dettagli e con l'obiettivo di creare soluzioni innovative.
+          </span>
+          <span class="lang-en" style="display:none;">
+            In this section you will find a selection of my academic and personal projects, reflecting my passion for design and creativity. Each project was carried out with attention to detail and the aim of creating innovative solutions.
+          </span>
         </p>
         <div class="project-slideshow">
           <div class="slide active">
             <div class="project" tabindex="0" aria-label="Set da caffè">
               <img src="/immagini/progetto 1/all 22.png" alt="Set da caffè - vista ambientata">
-              <h3>Set da caffè</h3>
+              <h3>
+                <span class="lang-it">Set da caffè</span>
+                <span class="lang-en" style="display:none;">Coffee set</span>
+              </h3>
             </div>
             <div class="project" tabindex="0" aria-label="La cardanica">
               <img src="/immagini/progetto 2/cardanica.jpeg" alt="Anteprima cardanica">
-              <h3>La cardanica</h3>
+              <h3>
+                <span class="lang-it">La cardanica</span>
+                <span class="lang-en" style="display:none;">The Cardanica</span>
+              </h3>
             </div>
           </div>
           <div class="slide">
             <div class="project" tabindex="0" aria-label="Poltroncina lounge per Milani">
               <img src="/immagini/progetto 3/untitled555.png" alt="Poltroncina lounge per Milani">
-              <h3>Poltroncina lounge per Milani</h3>
+              <h3>
+                <span class="lang-it">Poltroncina lounge per Milani</span>
+                <span class="lang-en" style="display:none;">Lounge chair for Milani</span>
+              </h3>
             </div>
             <div class="project" tabindex="0" aria-label="Mouse">
               <img src="/immagini/progetto 4/untitled44.png" alt="Mouse">
-              <h3>mouse</h3>
+              <h3>
+                <span class="lang-it">mouse</span>
+                <span class="lang-en" style="display:none;">mouse</span>
+              </h3>
             </div>
           </div>
         </div>
         <div class="slideshow-controls">
-          <button class="prev-slide" aria-label="Slide precedente">❮</button>
-          <button class="next-slide" aria-label="Slide successiva">❯</button>
+          <button class="prev-slide" aria-label="Slide precedente" aria-label-en="Previous slide">❮</button>
+          <button class="next-slide" aria-label="Slide successiva" aria-label-en="Next slide">❯</button>
         </div>
       </section>
       <section id="software-skills">
-        <h2>Software skills</h2>
+        <h2>
+          <span class="lang-it">Software skills</span>
+          <span class="lang-en" style="display:none;">Software skills</span>
+        </h2>
         <p class="section-description">
-          Qui puoi trovare una panoramica dei software che utilizzo per il design e la progettazione. Ogni competenza è accompagnata da una valutazione che riflette il mio livello di esperienza.
+          <span class="lang-it">
+            Qui puoi trovare una panoramica dei software che utilizzo per il design e la progettazione. Ogni competenza è accompagnata da una valutazione che riflette il mio livello di esperienza.
+          </span>
+          <span class="lang-en" style="display:none;">
+            Here you can find an overview of the software I use for design and planning. Each skill is accompanied by a rating that reflects my level of experience.
+          </span>
         </p>
         <ul class="skills">
           <li>
@@ -228,51 +386,147 @@
         </ul>
       </section>
       <section id="interessi">
-        <h2>Interessi</h2>
+        <h2>
+          <span class="lang-it">Interessi</span>
+          <span class="lang-en" style="display:none;">Interests</span>
+        </h2>
         <p class="section-description">
-          Oltre al design, coltivo diverse passioni che arricchiscono la mia creatività e il mio approccio progettuale. Scopri di più sui miei interessi personali.
+          <span class="lang-it">
+            Oltre al design, coltivo diverse passioni che arricchiscono la mia creatività e il mio approccio progettuale. Scopri di più sui miei interessi personali.
+          </span>
+          <span class="lang-en" style="display:none;">
+            Besides design, I cultivate various passions that enrich my creativity and design approach. Discover more about my personal interests.
+          </span>
         </p>
         <ul class="interests">
           <li>
             <img src="/immagini/loghi 3/icons8-mountain-48.png" alt="Montagna" title="Montagna">
-            <p>Montagna</p>
+            <p>
+              <span class="lang-it">Montagna</span>
+              <span class="lang-en" style="display:none;">Mountains</span>
+            </p>
           </li>
           <li>
             <img src="/immagini/loghi 3/icons8-trekking-48.png" alt="Trekking" title="Trekking">
-            <p>Trekking</p>
+            <p>
+              <span class="lang-it">Trekking</span>
+              <span class="lang-en" style="display:none;">Trekking</span>
+            </p>
           </li>
           <li>
             <img src="/immagini/loghi 3/icons8-modern-art-48.png" alt="Arte" title="Arte">
-            <p>Arte</p>
+            <p>
+              <span class="lang-it">Arte</span>
+              <span class="lang-en" style="display:none;">Art</span>
+            </p>
           </li>
           <li>
             <img src="/immagini/loghi 3/icons8-architecture-48.png" alt="Architetura" title="Architetura">
-            <p>Architetura</p>
+            <p>
+              <span class="lang-it">Architetura</span>
+              <span class="lang-en" style="display:none;">Architecture</span>
+            </p>
           </li>
           <li>
             <img src="/immagini/loghi 3/icons8-film-projector-48.png" alt="Cinema" title="Cinema">
-            <p>Cinema</p>
+            <p>
+              <span class="lang-it">Cinema</span>
+              <span class="lang-en" style="display:none;">Cinema</span>
+            </p>
           </li>
         </ul>
       </section>
       <section id="contatti">
-        <h2>Contatti</h2>
+        <h2>
+          <span class="lang-it">Contatti</span>
+          <span class="lang-en" style="display:none;">Contacts</span>
+        </h2>
         <form id="contact-form" autocomplete="off">
-          <label for="nome">Nome</label>
+          <label for="nome">
+            <span class="lang-it">Nome</span>
+            <span class="lang-en" style="display:none;">Name</span>
+          </label>
           <input type="text" id="nome" name="nome" required>
-          <label for="email">Email</label>
+          <label for="email">
+            <span class="lang-it">Email</span>
+            <span class="lang-en" style="display:none;">Email</span>
+          </label>
           <input type="email" id="email" name="email" required>
-          <label for="messaggio">Messaggio</label>
+          <label for="messaggio">
+            <span class="lang-it">Messaggio</span>
+            <span class="lang-en" style="display:none;">Message</span>
+          </label>
           <textarea id="messaggio" name="messaggio" required></textarea>
           <label for="consenso">
             <input type="checkbox" id="consenso" name="consenso" required>
-            Acconsento al trattamento dei miei dati personali.
+            <span class="lang-it">Acconsento al trattamento dei miei dati personali.</span>
+            <span class="lang-en" style="display:none;">I consent to the processing of my personal data.</span>
           </label>
-          <button type="submit" aria-label="Invia il modulo di contatto">Invia</button>
-          <p id="form-success-message" style="display: none; color: green;">Modulo inviato con successo!</p>
+          <button type="submit" aria-label="Invia il modulo di contatto">
+            <span class="lang-it">Invia</span>
+            <span class="lang-en" style="display:none;">Send</span>
+          </button>
+          <p id="form-success-message" style="display: none; color: green;">
+            <span class="lang-it">Modulo inviato con successo!</span>
+            <span class="lang-en" style="display:none;">Form sent successfully!</span>
+          </p>
         </form>
       </section>
-    </main>
+    <!-- FAQ Section -->
+    <section id="faq">
+      <h2>
+        <span class="lang-it">FAQ</span>
+        <span class="lang-en" style="display:none;">FAQ</span>
+      </h2>
+      <div class="section-description">
+        <span class="lang-it">Risposte alle domande più frequenti sul mio percorso, stile e disponibilità.</span>
+        <span class="lang-en" style="display:none;">Answers to the most frequently asked questions about my background, style and availability.</span>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="lang-it">Qual è il tuo stile di design?</span>
+            <span class="lang-en" style="display:none;">What is your design style?</span>
+          </button>
+          <div class="faq-answer" style="display:none;">
+            <span class="lang-it">
+              Il mio stile si basa su linee pulite, attenzione ai dettagli e funzionalità, con ispirazioni dall’architettura contemporanea e dal design parametrico.
+            </span>
+            <span class="lang-en" style="display:none;">
+              My style is based on clean lines, attention to detail and functionality, with inspiration from contemporary architecture and parametric design.
+            </span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="lang-it">Sei disponibile per collaborazioni?</span>
+            <span class="lang-en" style="display:none;">Are you available for collaborations?</span>
+          </button>
+          <div class="faq-answer" style="display:none;">
+            <span class="lang-it">
+              Sì, sono aperto a nuove collaborazioni e progetti. Puoi contattarmi tramite il modulo nella sezione Contatti.
+            </span>
+            <span class="lang-en" style="display:none;">
+              Yes, I am open to new collaborations and projects. You can contact me via the form in the Contacts section.
+            </span>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span class="lang-it">Che software utilizzi principalmente?</span>
+            <span class="lang-en" style="display:none;">Which software do you mainly use?</span>
+          </button>
+          <div class="faq-answer" style="display:none;">
+            <span class="lang-it">
+              Utilizzo principalmente Blender, Solidworks, Photoshop, Illustrator e altri software di progettazione e modellazione 3D.
+            </span>
+            <span class="lang-en" style="display:none;">
+              I mainly use Blender, Solidworks, Photoshop, Illustrator and other design and 3D modeling software.
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
     <footer>
       <p>&copy; 2025 Lorenzo Giudici. Tutti i diritti riservati.</p>
       <div class="social-icons">
