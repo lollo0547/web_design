@@ -20,8 +20,10 @@
     <meta name="twitter:image" content="https://yourdomain.example.com/immagini/logo.png">
     <link rel="icon" type="image/x-icon" href="/immagini/favicon.ico">
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+    </noscript>
   </head>
   <body>
     <header>
@@ -30,12 +32,12 @@
           <img src="/immagini/logo.png" alt="Logo portfolio Lorenzo Giudici">
         </a>
         <!-- Language Switcher -->
-        <div class="lang-switcher">
+        <div class="lang-switcher" style="margin-right:1rem;">
           <button class="lang-btn" data-lang="it" aria-current="true">IT</button>
-          <span>|</span>
+          <span style="color:#888;">|</span>
           <button class="lang-btn" data-lang="en">EN</button>
         </div>
-        <button class="burger-menu" aria-label="Apri il menu di navigazione" aria-controls="main-nav" aria-expanded="false">☰</button>
+        <button class="burger-menu" aria-label="Apri il menu di navigazione" aria-label-en="Open navigation menu" aria-controls="main-nav" aria-expanded="false">☰</button>
         <ul class="navbar" id="main-nav">
           <li>
             <a href="#chi-sono">
@@ -68,7 +70,6 @@
             </a>
           </li>
         </ul>
-        <button id="theme-toggle" aria-label="Cambia tema">🌓</button>
       </nav>
       <div class="hero" style="background-image: url('/immagini/Lorenzo_Giudici_portfolio_accademico_2022-20225_-removebg-preview.png'); background-size: cover; background-position: center;">
         <div class="hero-content">
@@ -157,18 +158,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">12/04/2019</span>
-              <div class="timeline-position">
+              <h4>
                 <span class="lang-it">2D Computer Aided Design</span>
                 <span class="lang-en" style="display:none;">2D Computer Aided Design</span>
-              </div>
-              <div class="timeline-company">
-                <span class="lang-it">Istituto Tecnico</span>
-                <span class="lang-en" style="display:none;">Technical Institute</span>
-              </div>
-              <div class="timeline-desc">
-                <span class="lang-it">Certificazione per il disegno tecnico 2D (Autocad)</span>
-                <span class="lang-en" style="display:none;">Certification for 2D technical drawing (Autocad)</span>
-              </div>
+              </h4>
+              <p>
+                <span class="lang-it">certificazione per il disegno tecnico 2d<br>software: autocad</span>
+                <span class="lang-en" style="display:none;">certification for 2D technical drawing<br>software: autocad</span>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Certificazioni">
@@ -177,18 +174,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">31/03/2022</span>
-              <div class="timeline-position">
+              <h4>
                 <span class="lang-it">Mechanical Design</span>
                 <span class="lang-en" style="display:none;">Mechanical Design</span>
-              </div>
-              <div class="timeline-company">
-                <span class="lang-it">Istituto Tecnico</span>
-                <span class="lang-en" style="display:none;">Technical Institute</span>
-              </div>
-              <div class="timeline-desc">
-                <span class="lang-it">Certificazione per il disegno tecnico 3D (Solidworks)</span>
-                <span class="lang-en" style="display:none;">Certification for 3D technical drawing (Solidworks)</span>
-              </div>
+              </h4>
+              <p>
+                <span class="lang-it">certificazione per il disegno tecnico 3d<br>software: Solidworks</span>
+                <span class="lang-en" style="display:none;">certification for 3D technical drawing<br>software: Solidworks</span>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Diplomi">
@@ -197,18 +190,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">2022</span>
-              <div class="timeline-position">
-                <span class="lang-it">Diploma di scuola secondaria di secondo grado</span>
+              <h4>
+                <span class="lang-it">Diplomi di scuola secondaria di secondo grado</span>
                 <span class="lang-en" style="display:none;">High School Diploma</span>
-              </div>
-              <div class="timeline-company">
-                <span class="lang-it">Istituto Tecnico</span>
-                <span class="lang-en" style="display:none;">Technical Institute</span>
-              </div>
-              <div class="timeline-desc">
-                <span class="lang-it">Meccanica e meccatronica</span>
-                <span class="lang-en" style="display:none;">Mechanics and Mechatronics</span>
-              </div>
+              </h4>
+              <p>
+                <span class="lang-it">diploma di istruzione tecnica nell'indirizzo di Meccanica e meccatronica</span>
+                <span class="lang-en" style="display:none;">Technical diploma in Mechanics and Mechatronics</span>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Certificazioni">
@@ -217,18 +206,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">13/04/2024</span>
-              <div class="timeline-position">
+              <h4>
                 <span class="lang-it">ICDL - Computer e Online essential</span>
                 <span class="lang-en" style="display:none;">ICDL - Computer and Online essential</span>
-              </div>
-              <div class="timeline-company">
-                <span class="lang-it">Ente Certificatore</span>
-                <span class="lang-en" style="display:none;">Certification Body</span>
-              </div>
-              <div class="timeline-desc">
-                <span class="lang-it">Certificazione per competenze informatiche<br>software: nessuno</span>
+              </h4>
+              <p>
+                <span class="lang-it">certificazione per competenze informatiche<br>software: nessuno</span>
                 <span class="lang-en" style="display:none;">certification for IT skills<br>software: none</span>
-              </div>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Certificazioni">
@@ -237,18 +222,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">31/05/2024</span>
-              <div class="timeline-position">
+              <h4>
                 <span class="lang-it">Trinity - b2</span>
                 <span class="lang-en" style="display:none;">Trinity - B2</span>
-              </div>
-              <div class="timeline-company">
-                <span class="lang-it">Ente Certificatore</span>
-                <span class="lang-en" style="display:none;">Certification Body</span>
-              </div>
-              <div class="timeline-desc">
+              </h4>
+              <p>
                 <span class="lang-it">certificazione per competenze linguistiche<br>lingua: Inglese</span>
                 <span class="lang-en" style="display:none;">certification for language skills<br>language: English</span>
-              </div>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Certificazioni">
@@ -257,18 +238,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">09/06/2024</span>
-              <div class="timeline-position">
+              <h4>
                 <span class="lang-it">ICDL - Word processing</span>
                 <span class="lang-en" style="display:none;">ICDL - Word processing</span>
-              </div>
-              <div class="timeline-company">
-                <span class="lang-it">Ente Certificatore</span>
-                <span class="lang-en" style="display:none;">Certification Body</span>
-              </div>
-              <div class="timeline-desc">
+              </h4>
+              <p>
                 <span class="lang-it">certificazione per competenze informatiche<br>software: Word</span>
                 <span class="lang-en" style="display:none;">certification for IT skills<br>software: Word</span>
-              </div>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Certificazioni">
@@ -277,18 +254,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">06/07/2024</span>
-              <div class="timeline-position">
+              <h4>
                 <span class="lang-it">ICDL - Spreadsheets</span>
                 <span class="lang-en" style="display:none;">ICDL - Spreadsheets</span>
-              </div>
-              <div class="timeline-company">
-                <span class="lang-it">Ente Certificatore</span>
-                <span class="lang-en" style="display:none;">Certification Body</span>
-              </div>
-              <div class="timeline-desc">
+              </h4>
+              <p>
                 <span class="lang-it">certificazione per competenze informatiche<br>software: Excel</span>
                 <span class="lang-en" style="display:none;">certification for IT skills<br>software: Excel</span>
-              </div>
+              </p>
             </div>
           </div>
           <div class="timeline-block" data-type="Diplomi">
@@ -297,18 +270,14 @@
             </div>
             <div class="timeline-content">
               <span class="timeline-date">09/2025</span>
-              <div class="timeline-position">
+              <h4>
                 <span class="lang-it">Laurea triennale</span>
                 <span class="lang-en" style="display:none;">Bachelor's degree</span>
-              </div>
-              <div class="timeline-company">
-                <span class="lang-it">Università</span>
-                <span class="lang-en" style="display:none;">University</span>
-              </div>
-              <div class="timeline-desc">
+              </h4>
+              <p>
                 <span class="lang-it">Laurea triennale in Design del prodotto industriale</span>
                 <span class="lang-en" style="display:none;">Bachelor's degree in Industrial Product Design</span>
-              </div>
+              </p>
             </div>
           </div>
         </div>
@@ -326,104 +295,43 @@
             In this section you will find a selection of my academic and personal projects, reflecting my passion for design and creativity. Each project was carried out with attention to detail and the aim of creating innovative solutions.
           </span>
         </p>
-        <div class="glide project-slideshow">
-          <div class="glide__track" data-glide-el="track">
-            <ul class="glide__slides">
-              <li class="glide__slide slide">
-                <div class="project" tabindex="0" aria-label="Set da caffè">
-                  <img src="/immagini/progetto 1/all 22.png" alt="Set da caffè - vista ambientata">
-                  <h3>
-                    <span class="lang-it">Set da caffè</span>
-                    <span class="lang-en" style="display:none;">Coffee set</span>
-                  </h3>
-                  <div class="project-tech">
-                    <img src="/immagini/loghi/icons8-blender-48.png" alt="Blender" title="Blender">
-                    <img src="/immagini/loghi/icons8-solidworks-48.png" alt="Solidworks" title="Solidworks">
-                    <img src="/immagini/loghi/icons8-photoshop-48.png" alt="Photoshop" title="Photoshop">
-                    <img src="/immagini/loghi/icons8-illustrator-48.png" alt="Illustrator" title="Illustrator">
-                  </div>
-                  <div class="project-links">
-                    <a class="project-link" href="https://github.com/lorenzogiudici/set-caffe" target="_blank" rel="noopener">
-                      <span>GitHub</span>
-                    </a>
-                    <a class="project-link" href="#" target="_blank" rel="noopener">
-                      <span>Demo</span>
-                    </a>
-                  </div>
-                </div>
-              </li>
-              <li class="glide__slide slide">
-                <div class="project" tabindex="0" aria-label="La cardanica">
-                  <img src="/immagini/progetto 2/cardanica.jpeg" alt="Anteprima cardanica">
-                  <h3>
-                    <span class="lang-it">La cardanica</span>
-                    <span class="lang-en" style="display:none;">The Cardanica</span>
-                  </h3>
-                  <div class="project-tech">
-                    <img src="/immagini/loghi/icons8-blender-48.png" alt="Blender" title="Blender">
-                    <img src="/immagini/loghi/icons8-solidworks-48.png" alt="Solidworks" title="Solidworks">
-                    <img src="/immagini/loghi/icons8-photoshop-48.png" alt="Photoshop" title="Photoshop">
-                    <img src="/immagini/loghi/icons8-illustrator-48.png" alt="Illustrator" title="Illustrator">
-                  </div>
-                  <div class="project-links">
-                    <a class="project-link" href="https://github.com/lorenzogiudici/cardanica" target="_blank" rel="noopener">
-                      <span>GitHub</span>
-                    </a>
-                    <a class="project-link" href="#" target="_blank" rel="noopener">
-                      <span>Demo</span>
-                    </a>
-                  </div>
-                </div>
-              </li>
-              <li class="glide__slide slide">
-                <div class="project" tabindex="0" aria-label="Poltroncina lounge per Milani">
-                  <img src="/immagini/progetto 3/untitled555.png" alt="Poltroncina lounge per Milani">
-                  <h3>
-                    <span class="lang-it">Poltroncina lounge per Milani</span>
-                    <span class="lang-en" style="display:none;">Lounge chair for Milani</span>
-                  </h3>
-                  <div class="project-tech">
-                    <img src="/immagini/loghi/icons8-blender-48.png" alt="Blender" title="Blender">
-                    <img src="/immagini/loghi/icons8-photoshop-48.png" alt="Photoshop" title="Photoshop">
-                    <img src="/immagini/loghi/icons8-illustrator-48.png" alt="Illustrator" title="Illustrator">
-                  </div>
-                  <div class="project-links">
-                    <a class="project-link" href="https://github.com/lorenzogiudici/louge-milani" target="_blank" rel="noopener">
-                      <span>GitHub</span>
-                    </a>
-                    <a class="project-link" href="#" target="_blank" rel="noopener">
-                      <span>Demo</span>
-                    </a>
-                  </div>
-                </div>
-              </li>
-              <li class="glide__slide slide">
-                <div class="project" tabindex="0" aria-label="Mouse">
-                  <img src="/immagini/progetto 4/untitled44.png" alt="Mouse">
-                  <h3>
-                    <span class="lang-it">mouse</span>
-                    <span class="lang-en" style="display:none;">mouse</span>
-                  </h3>
-                  <div class="project-tech">
-                    <img src="/immagini/loghi/icons8-blender-48.png" alt="Blender" title="Blender">
-                    <img src="/immagini/loghi/icons8-illustrator-48.png" alt="Illustrator" title="Illustrator">
-                  </div>
-                  <div class="project-links">
-                    <a class="project-link" href="https://github.com/lorenzogiudici/mouse-design" target="_blank" rel="noopener">
-                      <span>GitHub</span>
-                    </a>
-                    <a class="project-link" href="#" target="_blank" rel="noopener">
-                      <span>Demo</span>
-                    </a>
-                  </div>
-                </div>
-              </li>
-            </ul>
+        <div class="project-slideshow">
+          <div class="slide active">
+            <div class="project" tabindex="0" aria-label="Set da caffè">
+              <img src="/immagini/progetto 1/all 22.png" alt="Set da caffè - vista ambientata">
+              <h3>
+                <span class="lang-it">Set da caffè</span>
+                <span class="lang-en" style="display:none;">Coffee set</span>
+              </h3>
+            </div>
+            <div class="project" tabindex="0" aria-label="La cardanica">
+              <img src="/immagini/progetto 2/cardanica.jpeg" alt="Anteprima cardanica">
+              <h3>
+                <span class="lang-it">La cardanica</span>
+                <span class="lang-en" style="display:none;">The Cardanica</span>
+              </h3>
+            </div>
           </div>
-          <div class="glide__arrows" data-glide-el="controls">
-            <button class="glide__arrow glide__arrow--left slide-prev" data-glide-dir="<">‹</button>
-            <button class="glide__arrow glide__arrow--right slide-next" data-glide-dir=">">›</button>
+          <div class="slide">
+            <div class="project" tabindex="0" aria-label="Poltroncina lounge per Milani">
+              <img src="/immagini/progetto 3/untitled555.png" alt="Poltroncina lounge per Milani">
+              <h3>
+                <span class="lang-it">Poltroncina lounge per Milani</span>
+                <span class="lang-en" style="display:none;">Lounge chair for Milani</span>
+              </h3>
+            </div>
+            <div class="project" tabindex="0" aria-label="Mouse">
+              <img src="/immagini/progetto 4/untitled44.png" alt="Mouse">
+              <h3>
+                <span class="lang-it">mouse</span>
+                <span class="lang-en" style="display:none;">mouse</span>
+              </h3>
+            </div>
           </div>
+        </div>
+        <div class="slideshow-controls">
+          <button class="prev-slide" aria-label="Slide precedente" aria-label-en="Previous slide">❮</button>
+          <button class="next-slide" aria-label="Slide successiva" aria-label-en="Next slide">❯</button>
         </div>
       </section>
       <section id="software-skills">
@@ -621,13 +529,6 @@
     </section>
     <footer>
       <p>&copy; 2025 Lorenzo Giudici. Tutti i diritti riservati.</p>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#chi-sono">Chi sono</a> ·
-        <a href="#progetti">Progetti</a> ·
-        <a href="#software-skills">Software</a> ·
-        <a href="#interessi">Interessi</a> ·
-        <a href="#contatti">Contatti</a>
-      </nav>
       <div class="social-icons">
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
           <img src="/immagini/loghi 2/icons8-linkedin-48.png" alt="LinkedIn" class="social-icon">
@@ -639,15 +540,8 @@
           <img src="/immagini/loghi 2/icons8-behance-48.png" alt="Behance" class="social-icon">
         </a>
       </div>
-      <a href="#" class="footer-backtotop" aria-label="Torna all’inizio">↑ Torna su</a>
     </footer>
-    <button id="back-to-top" aria-label="Torna su" style="display:none;">↑</button>
-    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/glide.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      if (window.AOS) AOS.init();
-    </script>
+    <button id="back-to-top" aria-label="Torna su">↑</button>
     <script src="/js/si.js"></script>
   </body>
 </html>
