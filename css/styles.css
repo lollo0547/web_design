@@ -9,11 +9,30 @@
     --color-secondary: #888888;
     --bg-primary: #ffffff;
     --bg-secondary: #f5f5f5;
-    --text-primary: #333333;
+    --text-primary: #000000;
     --text-secondary: #666666;
     --text-accent: #5a2d82;
     --link-hover: #8e44ad;
     color-scheme: light dark;
+}
+
+/* Tema scuro: override variabili */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-bg: #111111;
+        --color-bg-alt: #222222;
+        --color-text: #eeeeee;
+        --color-text-alt: #bbbbbb;
+        --color-border: #333333;
+        --color-primary: #ffffff;
+        --color-secondary: #bbbbbb;
+        --bg-primary: #000000;
+        --bg-secondary: #181818;
+        --text-primary: #ffffff;
+        --text-secondary: #bbbbbb;
+        --text-accent: #bfa6e0;
+        --link-hover: #c39be7;
+    }
 }
 
 /* Regole di base: mobile-first (fino a 480px) */
@@ -21,7 +40,7 @@ body {
     font-size: 1rem;
     margin: 0;
     padding: 0;
-    background: var(--bg-primary);
+    background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: 'Poppins', sans-serif;
     line-height: 1.5;
@@ -53,7 +72,6 @@ h6 { font-size: 1rem; }
 a {
     color: var(--text-accent);
     text-decoration: underline;
-    transition: color 0.2s;
 }
 a:hover,
 a:focus {
@@ -117,7 +135,7 @@ a:focus {
 @media (min-width: 481px) and (max-width: 736px) {
     .header {
         flex-direction: row;
-        padding: 1rem 1.5rem;
+        padding: 1.5rem 2rem;
     }
     .nav-menu {
         display: flex;
@@ -214,7 +232,6 @@ a:focus {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: box-shadow 0.2s;
     position: relative;
 }
 
@@ -300,129 +317,162 @@ a:focus {
     }
 }
 
-/* Breakpoint: tablet verticali (481px - 736px) */
+/* Fino a 480px: base (già mobile-first) */
+/* ...existing code... */
+
+/* Da 481px a 736px: tablet verticali */
 @media (min-width: 481px) and (max-width: 736px) {
     .container {
         max-width: 600px;
         margin: 0 auto;
-        /* ...altre regole per tablet verticali... */
     }
     .header {
         flex-direction: row;
-        justify-content: space-between;
+        padding: 1.5rem 2rem;
+    }
+    .about {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 2.5rem;
+        padding: 2.5rem 2rem;
+    }
+    .about-image {
+        width: 140px;
+        height: 140px;
+        margin-bottom: 0;
+        margin-right: 2rem;
     }
     .skills-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 2.5rem 0;
     }
-    .menu-toggle {
-        display: none;
+    .interests-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1.5rem;
+        margin: 2.5rem 0;
     }
-    .nav-menu {
-        display: flex;
-        flex-direction: row;
-        gap: 2rem;
-    }
-    .language-switcher {
-        position: absolute;
-        right: 2rem;
-        top: 1rem;
-        margin: 0;
-        font-size: 1.1rem;
+    .footer {
+        padding: 2.5rem 2rem;
+        font-size: 1.05rem;
     }
 }
 
-/* Breakpoint: tablet orizzontali (737px - 1279px) */
+/* Da 737px a 1279px: tablet orizzontali */
 @media (min-width: 737px) and (max-width: 1279px) {
     .container {
         max-width: 900px;
-        /* ...altre regole per tablet orizzontali... */
+        margin: 0 auto;
+    }
+    .header {
+        flex-direction: row;
+        padding: 2rem 2.5rem;
+    }
+    .about {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 3rem;
+        padding: 3rem 2.5rem;
+    }
+    .about-image {
+        width: 180px;
+        height: 180px;
+        margin-bottom: 0;
+        margin-right: 2.5rem;
     }
     .skills-grid {
         grid-template-columns: 1fr 1fr 1fr;
-    }
-    .menu-toggle {
-        display: none;
-    }
-    .nav-menu {
-        display: flex;
-        flex-direction: row;
         gap: 2rem;
+        margin: 3rem 0;
     }
-    .language-switcher {
-        position: absolute;
-        right: 2rem;
-        top: 1rem;
-        margin: 0;
-        font-size: 1.1rem;
+    .interests-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 2rem;
+        margin: 3rem 0;
+    }
+    .footer {
+        padding: 2.5rem 2.5rem;
+        font-size: 1.08rem;
     }
 }
 
-/* Breakpoint: desktop (1280px - 1689px) */
+/* Da 1280px a 1689px: desktop */
 @media (min-width: 1280px) and (max-width: 1689px) {
     .container {
         max-width: 1200px;
-        /* ...altre regole per desktop... */
+        margin: 0 auto;
+    }
+    .header {
+        flex-direction: row;
+        padding: 3rem 4rem;
+    }
+    .about {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 4rem;
+        padding: 3.5rem 3rem;
+    }
+    .about-image {
+        width: 220px;
+        height: 220px;
+        margin-bottom: 0;
+        margin-right: 3rem;
     }
     .skills-grid {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-    .menu-toggle {
-        display: none;
-    }
-    .nav-menu {
-        display: flex;
-        flex-direction: row;
         gap: 2.5rem;
+        margin: 3.5rem 0;
     }
-    .language-switcher {
-        position: absolute;
-        right: 3rem;
-        top: 1rem;
-        margin: 0;
-        font-size: 1.2rem;
+    .interests-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 2.5rem;
+        margin: 3.5rem 0;
+    }
+    .footer {
+        padding: 3rem 3rem;
+        font-size: 1.12rem;
     }
 }
 
-/* Breakpoint: extra-large (>= 1690px) */
+/* Da 1690px: schermi molto grandi */
 @media (min-width: 1690px) {
     .container {
         max-width: 1600px;
-        /* ...altre regole per schermi extra-large... */
+        margin: 0 auto;
+    }
+    .header {
+        flex-direction: row;
+        padding: 4rem 6rem;
+    }
+    .about {
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 5rem;
+        padding: 4rem 4rem;
+    }
+    .about-image {
+        width: 260px;
+        height: 260px;
+        margin-bottom: 0;
+        margin-right: 4rem;
     }
     .skills-grid {
         grid-template-columns: repeat(5, 1fr);
-    }
-    .menu-toggle {
-        display: none;
-    }
-    .nav-menu {
-        display: flex;
-        flex-direction: row;
         gap: 3rem;
+        margin: 4rem 0;
     }
-    .language-switcher {
-        position: absolute;
-        right: 4rem;
-        top: 1rem;
-        margin: 0;
-        font-size: 1.3rem;
+    .interests-grid {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 3rem;
+        margin: 4rem 0;
     }
-}
-
-/* Tema scuro: preferenze utente */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-bg: #111111;
-        --color-bg-alt: #222222;
-        --color-text: #eeeeee;
-        --color-text-alt: #bbbbbb;
-        --color-border: #333333;
-        --color-primary: #ffffff;
-        --color-secondary: #bbbbbb;
-        --bg-primary: #111111;
-        --bg-secondary: #222222;
-        --text-primary: #eeeeee;
-        --text-secondary: #bbbbbb;
+    .footer {
+        padding: 3.5rem 5rem;
+        font-size: 1.18rem;
     }
 }
 
@@ -492,7 +542,6 @@ a:focus {
     border-radius: 2em;
     cursor: pointer;
     box-shadow: 0 2px 8px 0 rgba(90,45,130,0.08);
-    transition: background 0.2s, color 0.2s;
     text-decoration: none;
 }
 
@@ -732,7 +781,7 @@ a:focus {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    transition: box-shadow 0.2s;
+    position: relative;
 }
 
 .project-slide:hover,
@@ -808,7 +857,6 @@ a:focus {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: box-shadow 0.2s;
     position: relative;
 }
 
@@ -860,5 +908,336 @@ a:focus {
     .interests-grid {
         grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
+    }
+}
+
+/* Sezione Contatti */
+.contact {
+    background: var(--bg-secondary);
+    border-radius: 1rem;
+    padding: 2.5rem 1.5rem;
+    margin: 2.5rem 0;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.03);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-accent);
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+@media (min-width: 737px) {
+    .contact-form {
+        grid-template-columns: 1fr 1fr;
+    }
+    .contact-form textarea,
+    .contact-form button,
+    .contact-form input[type="submit"] {
+        grid-column: 1 / -1;
+    }
+    .contact-form label {
+        grid-column: span 1;
+    }
+}
+
+.contact-form label {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.3em;
+    display: block;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.85em 1em;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5em;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--text-accent);
+    outline: none;
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    max-height: 320px;
+}
+
+.contact-form button,
+.contact-form input[type="submit"] {
+    background: var(--text-accent);
+    color: #fff;
+    border: none;
+    border-radius: 2em;
+    padding: 0.85em 2em;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.5em;
+    box-shadow: 0 2px 8px 0 rgba(90,45,130,0.08);
+    transition: background 0.2s, color 0.2s;
+}
+
+.contact-form button:hover,
+.contact-form button:focus,
+.contact-form input[type="submit"]:hover,
+.contact-form input[type="submit"]:focus {
+    background: var(--link-hover);
+    color: #fff;
+}
+
+.form-field,
+.form-field textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--text-secondary);
+    border-radius: 4px;
+    font-size: 1rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.form-field:focus,
+.form-field textarea:focus {
+    outline: none;
+    border-color: var(--text-primary);
+}
+
+.form-submit {
+    padding: 0.75rem 1.5rem;
+    background: var(--text-primary);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.form-submit:hover,
+.form-submit:focus {
+    opacity: 0.85;
+    background: var(--link-hover);
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .contact {
+        padding: 1.5rem 0.5rem;
+    }
+    .contact-form {
+        padding: 0;
+    }
+}
+
+/* FAQ (domande cliccabili) */
+.faq {
+    background: var(--bg-secondary);
+    border-radius: 1rem;
+    padding: 2.5rem 1.5rem;
+    margin: 2.5rem 0;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.03);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.faq-item {
+    background: var(--bg-primary);
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.04);
+    padding: 1.2rem 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+.faq-item:hover,
+.faq-item:focus-within {
+    box-shadow: 0 4px 16px 0 rgba(90,45,130,0.10);
+}
+
+.faq-question {
+    cursor: pointer;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-accent);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.faq-question:focus {
+    outline: 2px solid var(--text-accent);
+    outline-offset: 2px;
+    background: var(--color-bg-alt);
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.3em;
+    color: var(--text-accent);
+    margin-left: 1em;
+}
+
+.faq-item.open .faq-question::after {
+    content: '-';
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    display: none;
+    padding: 1rem;
+    background: var(--bg-primary);
+    margin-top: 0.8em;
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.faq-item.open .faq-answer {
+    display: block;
+}
+
+/* Footer */
+.footer {
+    width: 100%;
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+    border-top: 1px solid var(--color-border);
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 2rem;
+    letter-spacing: 0.1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-nav ul a {
+    color: var(--text-secondary);
+    text-decoration: underline;
+    font-size: 1rem;
+}
+.footer-nav ul a:hover,
+.footer-nav ul a:focus {
+    color: var(--link-hover);
+}
+
+.footer-nav a {
+    color: var(--text-accent);
+    text-decoration: underline;
+}
+.footer-nav a:hover,
+.footer-nav a:focus {
+    color: var(--link-hover);
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-social a {
+    color: var(--text-accent);
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+.footer-social a:hover,
+.footer-social a:focus {
+    color: var(--link-hover);
+}
+
+.footer-social i {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin: 0 0.5rem;
+    vertical-align: middle;
+}
+
+@media (min-width: 900px) {
+    .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        gap: 0;
+    }
+    .footer-nav {
+        flex-direction: row;
+        gap: 2rem;
+        margin-bottom: 0;
+    }
+    .footer-social {
+        justify-content: flex-end;
+    }
+}
+
+/* Icone e immagini: contrasto per dark mode */
+@media (prefers-color-scheme: dark) {
+    /* Icone SVG o immagini con classe .theme-invert saranno invertite in dark mode */
+    .theme-invert,
+    .footer-social i,
+    .interest-icon,
+    .skill-icon {
+        filter: invert(1) brightness(1.2) contrast(1.1);
+    }
+
+    /* Se usi immagini di profilo o loghi chiari, puoi annullare l'inversione */
+    .no-invert {
+        filter: none !important;
     }
 }
