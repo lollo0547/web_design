@@ -170,7 +170,7 @@ header {
   height: auto;
 }
 
-/* Hero section critical styles */
+/* Hero section - soluzione completa rivista */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -181,108 +181,169 @@ header {
   color: #fff;
   text-align: center;
   overflow: hidden;
-  background-size: auto 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url('./immagini/webp/hero/Lorenzo_hero.webp');
-  scroll-snap-align: start; /* Aggiunto per scroll fluido */
 }
 
-/* Rimozione bordi arrotondati dal logo */
-.centered-logo img {
-  border-radius: 0;
+/* Hero background con posizionamento avanzato */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./immagini/webp/hero/Lorenzo_hero.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  animation: slight-zoom 20s infinite alternate ease-in-out;
+}
+
+/* Overlay sfumato viola per migliorare la leggibilità */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(90,15,165,0.4) 0%, rgba(30,93,204,0.2) 100%);
+  z-index: -1;
+}
+
+@keyframes slight-zoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
 }
 
 .hero-content {
-  background: rgba(0,0,0,0.35); /* Ridotta l'opacità da 0.55 a 0.35 */
-  padding: 2.5rem 2rem;
+  background: rgba(0,0,0,0.25); /* Più trasparente */
+  padding: 2.5rem 2.5rem;
   border-radius: var(--border-radius);
-  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   max-width: 480px;
   margin: auto;
-  backdrop-filter: blur(2px); /* Aggiunto un leggero effetto blur */
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-content:hover {
+  background: rgba(0,0,0,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
 .hero h1 {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   margin: 0;
   font-weight: 700;
   letter-spacing: -1px;
+  background: linear-gradient(135deg, #9b6eff 0%, #6e9fff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0px 2px 10px rgba(0,0,0,0.15);
 }
 
-.hero h2 {
-  font-size: 2rem;
-  margin: 0.5rem 0 0.2rem 0;
-  font-weight: 400;
-  opacity: 0.92;
+/* Design migliorato per il testo Product Designer */
+.typing-animation {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  color: rgba(255,255,255,0.9);
+}
+
+.typing-animation::after {
+  content: '|';
+  position: absolute;
+  right: -8px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .scroll-indicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: 2.5rem;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   color: white;
   font-size: 0.9rem;
   cursor: pointer;
-  padding: 10px;
-  animation: pulse 2s infinite;
   z-index: 10;
-  transition: all 0.3s ease;
-  background-color: rgba(76, 29, 115, 0.2);
+  transition: all 0.4s ease;
+  background: rgba(76, 29, 115, 0.2);
   backdrop-filter: blur(4px);
-  border-radius: 30px;
-  padding: 10px 20px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 50px;
+  padding: 12px 24px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: float 3s ease-in-out infinite;
 }
 
 .scroll-indicator:hover {
-  background-color: rgba(76, 29, 115, 0.4);
-  transform: translateX(-50%) translateY(-5px);
-}
-
-.scroll-arrow {
-  width: 15px;
-  height: 15px;
-  border-right: 2px solid white;
-  border-bottom: 2px solid white;
-  transform: rotate(45deg);
-  margin: 8px auto 0;
-  animation: float 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-  }
+  background: rgba(76, 29, 115, 0.4);
+  padding: 12px 28px;
 }
 
 @keyframes float {
   0%, 100% {
-    transform: rotate(45deg) translateY(0);
+    transform: translateY(0) translateX(-50%);
   }
   50% {
-    transform: rotate(45deg) translateY(5px);
+    transform: translateY(-10px) translateX(-50%);
   }
 }
 
-/* Aggiungiamo smooth scroll al body */
-html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
+.scroll-arrow {
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+  margin: 8px auto 0;
+  display: inline-block;
 }
 
-/* Ottimizziamo il contenuto principale per scroll migliore */
-main {
-  scroll-snap-align: start;
+/* Aggiungi una seconda freccia per effetto migliore */
+.scroll-arrow + .scroll-arrow {
+  margin-top: -6px;
+  animation-delay: 0.2s;
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+  
+  .hero-content {
+    padding: 2rem 1.5rem;
+    max-width: 85%;
+  }
+  
+  .typing-animation {
+    font-size: 1.2rem;
+  }
+}
+
+/* Per schermi molto piccoli */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
 }
     </style>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -294,14 +355,7 @@ main {
   </head>
   <body>
     <header>
-      <!-- Logo centrato in alto -->
-      <a href="/" class="centered-logo">
-        <picture>
-          <source srcset="immagini/logo.webp" type="image/webp">
-          <img src="immagini/logo.webp" alt="Logo portfolio Lorenzo Giudici" 
-             width="60" height="60" loading="eager">
-        </picture>
-      </a>
+      <!-- Rimosso il logo centrato in alto -->
       
       <!-- Navbar nascosta inizialmente, visibile solo dopo scroll -->
       <nav class="navbar-container" aria-label="Menu principale">
@@ -339,22 +393,31 @@ main {
           </li>
         </ul>
       </nav>
-      <div class="hero" role="banner" aria-labelledby="hero-title" data-bg-webp="./immagini/webp/hero/Lorenzo_hero.webp" data-bg-fallback="./immagini/webp/profile/lorenzo_profile.webp">
+      
+      <div class="hero" role="banner" aria-labelledby="hero-title">
         <div class="hero-content centered">
           <h1 id="hero-title" class="gradient-flow">
             <span class="lang-it">Lorenzo Giudici</span>
             <span class="lang-en" style="display:none;">Lorenzo Giudici</span>
           </h1>
-          <p class="text-xl typing-animation" data-text="Product Designer" aria-label="Professione">
+          <p class="typing-animation" data-text="Product Designer" aria-label="Professione">
             <span class="lang-it">Product Designer</span>
             <span class="lang-en" style="display:none;">Product Designer</span>
           </p>
         </div>
         
-        <!-- Indicatore di scroll migliorato -->
+        <!-- Logo posizionato in basso a sinistra -->
+        <a href="/" class="bottom-left-logo">
+          <picture>
+            <source srcset="immagini/logo.webp" type="image/webp">
+            <img src="immagini/logo.webp" alt="Logo portfolio Lorenzo Giudici" 
+               width="30" height="30" loading="eager">
+          </picture>
+        </a>
+        
+        <!-- Indicatore di scroll senza testo -->
         <div class="scroll-indicator" id="scrollIndicator">
-          <span class="lang-it">Scopri di più</span>
-          <span class="lang-en" style="display:none;">Discover more</span>
+          <div class="scroll-arrow"></div>
           <div class="scroll-arrow"></div>
         </div>
       </div>
@@ -1222,7 +1285,7 @@ main {
           });
         }
         
-        // Gestione scroll per mostrare navbar
+        // Gestione scroll per mostrare navbar e parallax
         let lastScrollTop = 0;
         
         window.addEventListener('scroll', function() {
@@ -1236,51 +1299,38 @@ main {
           }
           
           // Nascondi indicatore di scroll quando si scende
-          if (scrollIndicator && scrollTop > 100) {
+          if (scrollIndicator && scrollTop > 50) {
             scrollIndicator.style.opacity = '0';
+            scrollIndicator.style.visibility = 'hidden';
           } else if (scrollIndicator) {
             scrollIndicator.style.opacity = '1';
+            scrollIndicator.style.visibility = 'visible';
+          }
+          
+          // Effetto parallax su hero background
+          const hero = document.querySelector('.hero');
+          if (hero && scrollTop < window.innerHeight) {
+            const yPos = -(scrollTop * 0.3);
+            hero.style.backgroundPositionY = yPos + 'px';
           }
           
           lastScrollTop = scrollTop;
         });
-
-        // Precarica e imposta correttamente l'immagine di sfondo
-        const hero = document.querySelector('.hero');
-        if (hero) {
-          const img = new Image();
-          const webpSrc = hero.getAttribute('data-bg-webp');
-          const fallbackSrc = hero.getAttribute('data-bg-fallback');
-          
-          img.onload = function() {
-            hero.style.backgroundImage = `url(${webpSrc})`;
-          };
-          
-          img.onerror = function() {
-            if (fallbackSrc) {
-              hero.style.backgroundImage = `url(${fallbackSrc})`;
-            }
-          };
-          
-          if (webpSrc) {
-            img.src = webpSrc;
-          }
-        }
         
         // Permetti lo scroll anche senza click sull'indicatore
         document.addEventListener('wheel', function(e) {
-          const heroSection = document.querySelector('.hero');
           if (window.scrollY < 10 && e.deltaY > 0) {
             // Se siamo all'inizio e scrolliamo verso il basso
+            e.preventDefault();
             mainContent.scrollIntoView({behavior: 'smooth'});
           }
-        });
+        }, {passive: false});
         
         // Supporto touch per dispositivi mobili
         let touchStartY = 0;
         document.addEventListener('touchstart', function(e) {
           touchStartY = e.touches[0].clientY;
-        });
+        }, {passive: true});
         
         document.addEventListener('touchend', function(e) {
           const touchEndY = e.changedTouches[0].clientY;
@@ -1290,7 +1340,31 @@ main {
             // Swipe up nella hero section
             mainContent.scrollIntoView({behavior: 'smooth'});
           }
-        });
+        }, {passive: true});
+        
+        // Effetto typing per il testo "Product Designer"
+        const typingElement = document.querySelector('.typing-animation');
+        if (typingElement) {
+          const text = typingElement.getAttribute('data-text');
+          if (text) {
+            typingAnimation(typingElement.querySelector('.lang-it'), text);
+          }
+        }
+        
+        function typingAnimation(element, text) {
+          let index = 0;
+          element.textContent = '';
+          
+          function type() {
+            if (index < text.length) {
+              element.textContent += text.charAt(index);
+              index++;
+              setTimeout(type, 100);
+            }
+          }
+          
+          setTimeout(type, 1000);
+        }
       });
     </script>
   </body>
