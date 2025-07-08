@@ -818,7 +818,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Timeline toggle + filtro (comportamento dropdown migliorato)
+// Timeline toggle + filtro (nuovo comportamento dropdown)
 document.addEventListener('DOMContentLoaded', function () {
   const btn = document.getElementById('toggle-timeline-btn');
   const timelineContainer = document.getElementById('timeline-container');
@@ -826,90 +826,38 @@ document.addEventListener('DOMContentLoaded', function () {
   const filterOptions = filterDropdown ? filterDropdown.querySelectorAll('.timeline-filter-option') : [];
   const selectedLabel = document.getElementById('timeline-selected-label');
   const timelineBlocks = document.querySelectorAll('.timeline-block');
-  const closeTimelineBtn = document.getElementById('close-timeline-btn');
   let isDropdownOpen = false;
 
-  // Funzione per ottenere il tipo di blocco timeline
   function getBlockType(block) {
-    // Usa l'attributo data-type invece dell'immagine per maggiore affidabilità
-    return block.dataset.type || '';
+    const img = block.querySelector('.timeline-dot img');
+    if (!img) return '';
+    const src = img.getAttribute('src') || '';
+    if (src.includes('icons8-diploma-50.png')) return 'Diplomi';
+    if (src.includes('icons8-pergamena-di-laurea-50.png')) return 'Certificazioni';
+    return '';
   }
 
-  // Funzione per mostrare/nascondere la timeline
   function showTimeline(show) {
     timelineContainer.style.display = show ? 'block' : 'none';
-    btn.setAttribute('aria-expanded', isDropdownOpen ? 'true' : 'false');
-    
-    // Gestione del dropdown
-    if (show && isDropdownOpen) {
-      positionDropdown();
-      filterDropdown.style.display = 'block';
-    } else {
-      filterDropdown.style.display = 'none';
-    }
+    btn.setAttribute('aria-expanded', show && isDropdownOpen ? 'true' : 'false');
+    if (selectedLabel) selectedLabel.style.display = show ? 'inline' : 'none';
+    filterDropdown.style.display = (show && isDropdownOpen) ? 'block' : 'none';
   }
 
-  // Funzione per posizionare il dropdown correttamente
-  function positionDropdown() {
-    // Reset delle proprietà di posizionamento
-    filterDropdown.style.left = '0';
-    filterDropdown.style.right = 'auto';
-    
-    // Su mobile occupa tutta la larghezza
-    if (window.innerWidth < 768) {
-      filterDropdown.style.width = '100%';
-      return;
-    }
-    
-    // Su desktop posiziona il dropdown in base allo spazio disponibile
-    setTimeout(() => {
-      const btnRect = btn.getBoundingClientRect();
-      const dropdownRect = filterDropdown.getBoundingClientRect();
-      
-      // Se il dropdown esce dallo schermo a destra
-      if (btnRect.left + dropdownRect.width > window.innerWidth) {
-        filterDropdown.style.left = 'auto';
-        filterDropdown.style.right = '0';
-      }
-      
-      // Assicura che il dropdown sia sopra altri elementi
-      filterDropdown.style.zIndex = '25';
-    }, 0);
-  }
-
-  // Funzione per applicare il filtro alla timeline
   function applyTimelineFilter(value) {
     timelineBlocks.forEach(block => {
       const type = getBlockType(block);
-      block.style.display = (type === value || value === 'All') ? 'flex' : 'none';
+      block.style.display = (type === value) ? '' : 'none';
     });
-    
-    // Aggiorna l'etichetta del filtro selezionato
-    if (selectedLabel) {
-      const selectedOption = document.querySelector(`.timeline-filter-option[data-value="${value}"]`);
-      if (selectedOption) {
-        // Clona il contenuto dell'opzione per l'etichetta
-        selectedLabel.innerHTML = '';
-        
-        // Copia sia la versione italiana che inglese
-        const itText = selectedOption.querySelector('.lang-it');
-        const enText = selectedOption.querySelector('.lang-en');
-        
-        if (itText) selectedLabel.appendChild(itText.cloneNode(true));
-        if (enText) selectedLabel.appendChild(enText.cloneNode(true));
-      }
-    }
-    
-    // Aggiorna lo stato visivo e ARIA delle opzioni
+    if (selectedLabel) selectedLabel.textContent = value;
     filterOptions.forEach(opt => {
-      const isSelected = opt.dataset.value === value;
-      opt.setAttribute('aria-selected', isSelected ? 'true' : 'false');
-      opt.classList.toggle('selected', isSelected);
+      opt.style.fontWeight = (opt.dataset.value === value) ? 'bold' : 'normal';
+      opt.style.background = (opt.dataset.value === value) ? '#f0f4ff' : 'none';
+      opt.setAttribute('aria-selected', opt.dataset.value === value ? 'true' : 'false');
     });
-    
-    // Mostra il container della timeline
-    timelineContainer.style.display = 'block';
   }
+
+  const closeTimelineBtn = document.getElementById('close-timeline-btn');
 
   if (btn && timelineContainer && filterDropdown) {
     // Stato iniziale
@@ -918,11 +866,8 @@ document.addEventListener('DOMContentLoaded', function () {
     applyTimelineFilter('Certificazioni');
     filterDropdown.style.display = 'none';
 
-    // Gestione click sul bottone principale
     btn.addEventListener('click', function (e) {
       e.preventDefault();
-      e.stopPropagation();
-      
       // Se la timeline è chiusa, apri timeline e dropdown
       if (timelineContainer.style.display === 'none' || timelineContainer.style.display === '') {
         isDropdownOpen = true;
@@ -934,17 +879,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    // Gestione click sulle opzioni di filtro
     filterOptions.forEach(opt => {
       opt.addEventListener('click', function (e) {
         e.stopPropagation();
         applyTimelineFilter(this.dataset.value);
-        
-        // Chiudi il dropdown dopo la selezione
-        setTimeout(() => {
-          isDropdownOpen = false;
-          showTimeline(true); // Mantiene la timeline visibile ma nasconde il dropdown
-        }, 150);
+        // Il dropdown resta visibile dopo la selezione
       });
     });
 
@@ -956,23 +895,9 @@ document.addEventListener('DOMContentLoaded', function () {
         timelineContainer.style.display = 'none';
         filterDropdown.style.display = 'none';
         btn.setAttribute('aria-expanded', 'false');
+        if (selectedLabel) selectedLabel.style.display = 'none';
       });
     }
-    
-    // Chiudi dropdown al click fuori
-    document.addEventListener('click', function(e) {
-      if (isDropdownOpen && !filterDropdown.contains(e.target) && e.target !== btn) {
-        isDropdownOpen = false;
-        showTimeline(true); // Mantiene la timeline visibile ma nasconde il dropdown
-      }
-    });
-    
-    // Gestione del resize per riposizionare correttamente il dropdown
-    window.addEventListener('resize', function() {
-      if (isDropdownOpen) {
-        positionDropdown();
-      }
-    });
   }
 });
 

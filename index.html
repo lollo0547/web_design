@@ -262,7 +262,7 @@ header {
                 My passion for the mountains was passed on to me by my grandparents during childhood, but it remained in the background until shortly before the Covid period.
               </span>
             </p>
-            <div class="buttons-container">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; position: relative;">
               <a href="#contatti" class="btn-primary">
                 <span class="lang-it">Contattami</span>
                 <span class="lang-en" style="display:none;">Contact me</span>
@@ -278,22 +278,18 @@ header {
                   <svg style="width:1em;height:1em;vertical-align:middle;" viewBox="0 0 20 20"><path fill="currentColor" d="M5.5 8l4.5 4 4.5-4z"/></svg>
                 </button>
                 <div id="timeline-filter-dropdown">
-                  <div class="timeline-filter-options">
-                    <button class="timeline-filter-option" data-value="Certificazioni" aria-selected="true">
-                      <span class="lang-it">Certificazioni</span>
-                      <span class="lang-en" style="display:none;">Certifications</span>
-                    </button>
-                    <button class="timeline-filter-option" data-value="Diplomi">
-                      <span class="lang-it">Diplomi</span>
-                      <span class="lang-en" style="display:none;">Degrees</span>
-                    </button>
-                  </div>
-                  <div class="timeline-filter-actions">
-                    <button id="close-timeline-btn" class="btn-close-timeline">
-                      <span class="lang-it">Nascondi percorso studi</span>
-                      <span class="lang-en" style="display:none;">Hide education</span>
-                    </button>
-                  </div>
+                  <button class="timeline-filter-option" data-value="Certificazioni" aria-selected="true">
+                    <span class="lang-it">Certificazioni</span>
+                    <span class="lang-en" style="display:none;">Certifications</span>
+                  </button>
+                  <button class="timeline-filter-option" data-value="Diplomi">
+                    <span class="lang-it">Diplomi</span>
+                    <span class="lang-en" style="display:none;">Degrees</span>
+                  </button>
+                  <button id="close-timeline-btn" class="btn-primary" style="margin: 0.5rem 1rem 0.5rem 1rem; padding: 0.5rem 1.2rem; font-size: 0.98em; background: #e3e6f0; color: #5a2d82; border-radius: 7px; font-weight: 600;">
+                    <span class="lang-it">Nascondi percorso studi</span>
+                    <span class="lang-en" style="display:none;">Hide education</span>
+                  </button>
                 </div>
               </div>
             </div>

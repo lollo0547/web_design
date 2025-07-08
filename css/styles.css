@@ -1645,19 +1645,6 @@ main {
   vertical-align: top;
 }
 
-/* Ensure buttons are aligned on desktop */
-@media (min-width: 768px) {
-  .buttons-container {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-  
-  .timeline-filter-wrapper {
-    display: inline-flex;
-  }
-}
-
 #toggle-timeline-btn {
   display: inline-block;
   padding: 0.8rem 1.5rem;
@@ -1709,13 +1696,8 @@ main {
   position: absolute;
   top: 110%;
   left: 0;
-  z-index: 25; /* Higher z-index to prevent being covered */
+  z-index: 20;
   background: #fff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  min-width: 200px;
-  border: 1px solid rgba(0,0,0,0.1);
   border-radius: 12px;
   min-width: 200px;
   border: 2px solid #e3e6f0;
@@ -1727,40 +1709,508 @@ main {
   pointer-events: auto;
 }
 
-.timeline-filter-option {
+#timeline-filter-dropdown .timeline-filter-option {
   display: block;
   width: 100%;
-  padding: 0.7rem 1.2rem;
-  text-align: left;
-  background: transparent;
+  padding: 1rem 1.2rem;
   border: none;
-  border-radius: 0;
+  background: none;
+  text-align: left;
   cursor: pointer;
-  font-size: 0.96rem;
-  transition: all var(--transition);
-  position: relative;
+  font-size: 1.08rem;
+  color: #23272f;
+  transition: background 0.18s, color 0.18s;
+  border-radius: 0;
+  font-weight: 500;
 }
-
-.timeline-filter-option:hover,
-.timeline-filter-option:focus {
-  background-color: rgba(90,45,130,0.06);
+#timeline-filter-dropdown .timeline-filter-option:first-child {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
-
-.timeline-filter-option[aria-selected="true"],
-.timeline-filter-option.selected {
-  background-color: rgba(90,45,130,0.1);
-  font-weight: var(--font-weight-medium);
-  position: relative;
+#timeline-filter-dropdown .timeline-filter-option:last-child {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
-
-.timeline-filter-option[aria-selected="true"]::after {
-  content: '✓';
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--accent-color);
+#timeline-filter-dropdown .timeline-filter-option:hover,
+#timeline-filter-dropdown .timeline-filter-option:focus,
+#timeline-filter-dropdown .timeline-filter-option[aria-selected="true"] {
+  background: #f0f4ff;
+  color: #2575fc;
+  outline: none;
   font-weight: bold;
+}
+
+/* Responsive: dropdown sotto il bottone su mobile */
+@media (max-width: 600px) {
+  #timeline-filter-dropdown {
+    min-width: 120px;
+    font-size: 0.95rem;
+    left: 0;
+    right: auto;
+  }
+  #toggle-timeline-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.1rem;
+  }
+}
+
+#close-timeline-btn {
+  display: block;
+  width: 90%;
+  margin: 0.7rem auto 0.5rem auto;
+  background: #e3e6f0;
+  color: #5a2d82;
+  border: none;
+  border-radius: 7px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  box-shadow: 0 1px 4px rgba(90,45,130,0.07);
+}
+#close-timeline-btn:hover,
+#close-timeline-btn:focus {
+  background: #d0d7e6;
+  color: #2575fc;
+  outline: none;
+}
+
+/* FAQ Section */
+#faq {
+  margin: 3rem auto 2rem auto;
+  padding: 3rem 1.5rem;
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  max-width: 800px;
+}
+#faq h2 {
+  text-align: center;
+  color: var(--accent-color);
+  margin-bottom: 1.2rem;
+}
+.faq-list {
+  margin: 0 auto;
+  max-width: 700px;
+}
+.faq-item {
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid #e3e6f0;
+  padding-bottom: 0.7rem;
+}
+.faq-question {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 1.13rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  padding: 0.5em 0;
+  transition: color 0.2s;
+}
+.faq-question[aria-expanded="true"] {
+  color: #2575fc;
+}
+.faq-question:focus {
+  outline: 2px solid #2575fc;
+}
+.faq-answer {
+  margin-top: 0.5em;
+  color: #444;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  display: none;
+  transition: max-height 0.3s;
+}
+.faq-answer.open {
+  display: block;
+}
+
+/* Selettore lingua: stile base */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-weight: 700;
+  font-size: 1.05em;
+  cursor: pointer;
+  padding: 0.2em 0.6em;
+  border-radius: 5px;
+  transition: background 0.2s, color 0.2s;
+}
+.lang-btn[aria-current="true"], .lang-btn.active {
+  background: #f0f4ff;
+  color: #2575fc;
+}
+.lang-btn:focus {
+  outline: 2px solid #2575fc;
+}
+
+/* Focus visibile per accessibilità */
+a:focus, button:focus, [tabindex="0"]:focus, select:focus {
+  outline: 2.5px solid #2575fc !important;
+  outline-offset: 2px;
+}
+
+/* Focus per form inputs con stile speciale */
+input:focus, textarea:focus {
+  outline: 2px solid #2575fc !important;
+  outline-offset: 0;
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2) !important;
+  box-shadow: 0 0 0 3px #a3c8ff55;
+  z-index: 10;
+}
+
+/* Focus visibile per elementi custom (FAQ, timeline, slider, ecc.) */
+.faq-question:focus,
+#toggle-timeline-btn:focus,
+#close-timeline-btn:focus,
+.timeline-filter-option:focus,
+.burger-menu:focus,
+.prev-slide:focus,
+.next-slide:focus {
+  outline: 2.5px solid #2575fc !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px #a3c8ff55;
+  background: #f0f4ff;
+  color: #2575fc;
+}
+
+/* Micro-animazioni su hover per cards progetti, skills, interests */
+.project,
+.skills li,
+.interests li {
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), filter 0.3s;
+}
+.project:hover, .project:focus-within,
+.skills li:hover, .skills li:focus-within,
+.interests li:hover, .interests li:focus-within {
+  filter: brightness(1.07) drop-shadow(0 4px 16px #2575fc22);
+}
+
+/* Animazione fade-in per sezioni al reveal */
+@keyframes motion-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+section.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, transform;
+}
+section.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: motion-fadeInUp 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  animation-fill-mode: both;
+}
+
+/* INTERSECTION OBSERVER ANIMATIONS E STATES */
+
+/* Reveal animations per sezioni */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animations per elementi multipli */
+.reveal-on-scroll:nth-child(1) { transition-delay: 0ms; }
+.reveal-on-scroll:nth-child(2) { transition-delay: 100ms; }
+.reveal-on-scroll:nth-child(3) { transition-delay: 200ms; }
+.reveal-on-scroll:nth-child(4) { transition-delay: 300ms; }
+.reveal-on-scroll:nth-child(5) { transition-delay: 400ms; }
+
+/* Image loading states */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+img.loaded,
+img[loading="lazy"]:not([data-src]) {
+  opacity: 1;
+}
+
+/* Fallback per browser senza IntersectionObserver */
+.no-intersection-observer .reveal-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.no-intersection-observer img[loading="lazy"] {
+  opacity: 1;
+}
+
+/* Performance: reduce animations on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    transition: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  img[loading="lazy"] {
+    transition: none;
+    opacity: 1;
+  }
+}
+
+/* Smooth transitions per active navbar links */
+.navbar a {
+  position: relative;
+  transition: color var(--transition), background var(--transition);
+}
+
+.navbar a.active {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.navbar a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: var(--accent-gradient);
+  border-radius: 1px;
+  animation: motion-slideIn 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  animation-fill-mode: both;
+}
+
+@keyframes motion-slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 80%;
+    opacity: 1;
+  }
+}
+
+/* Loading shimmer animation per immagini */
+@keyframes effect-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+img[loading="lazy"]:not(.loaded) {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: effect-shimmer 1.5s infinite linear;
+  animation-fill-mode: forwards;
+}
+
+/* Ottimizzazioni contenment per performance */
+.reveal-on-scroll {
+  contain: layout style;
+}
+
+.navbar {
+  contain: layout style;
+}
+
+/* CSS CONTENMENT per performance */
+.modal,
+.project-slideshow,
+.timeline-horizontal {
+  contain: layout style paint;
+}
+
+/* Critical rendering path optimization */
+.hero {
+  contain: layout style;
+}
+
+/* MOBILE MENU MIGLIORAMENTI */
+
+/* Burger menu button improvements */
+.burger-menu {
+  position: relative;
+  z-index: 101;
+  transition: color var(--transition), transform var(--transition);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.burger-menu:hover,
+.burger-menu:focus {
+  transform: scale(1.1);
+  background: rgba(76, 29, 115, 0.1);
+}
+
+.burger-menu:active {
+  transform: scale(0.95);
+}
+
+/* Burger menu icon animation */
+.burger-menu[aria-expanded="true"] {
+  color: var(--accent-color);
+  transform: rotate(90deg);
+}
+
+/* Mobile navbar improvements */
+.navbar {
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.3s;
+}
+
+.navbar.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Focus management per menu mobile */
+.navbar.open a {
+  transition: background var(--transition), color var(--transition), transform 0.2s;
+}
+
+.navbar.open a:focus {
+  transform: translateX(5px);
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Staggered animation per menu items */
+.navbar.open li:nth-child(1) a { transition-delay: 0ms; }
+.navbar.open li:nth-child(2) a { transition-delay: 50ms; }
+.navbar.open li:nth-child(3) a { transition-delay: 100ms; }
+.navbar.open li:nth-child(4) a { transition-delay: 150ms; }
+.navbar.open li:nth-child(5) a { transition-delay: 200ms; }
+
+/* Backdrop per menu mobile */
+.navbar.open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+  opacity: 0;
+  animation: effect-fadeIn 0.3s var(--transition-smooth) forwards;
+}
+
+@keyframes effect-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Menu mobile: migliore touch target */
+@media (max-width: 767px) {
+  .navbar a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px 0;
+  }
+  
+  .burger-menu {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .burger-menu {
+    border: 1px solid currentColor;
+  }
+  
+  .navbar.open {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .burger-menu,
+  .navbar,
+  .navbar a {
+    transition: none;
+  }
+  
+  .burger-menu[aria-expanded="true"] {
+    transform: none;
+  }
+  
+  .navbar.open::before {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Ripple effect per bottoni */
+@keyframes effect-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.btn-primary, form button {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after, form button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: scale(0) translate(-50%, -50%);
+  transform-origin: 0 0;
+  pointer-events: none;
 }
 
 /* ==========================================================================
