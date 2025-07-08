@@ -7,7 +7,15 @@
   --card-bg: #fff;
   --card-shadow: 0 2px 12px rgba(76,29,115,0.08); /* Aggiornato per nuovo accent */
   --border-radius: 14px;
-  --transition: 0.25s cubic-bezier(.4,0,.2,1);
+  
+  /* Sistema di transizioni ottimizzato */
+  --transition: 0.25s cubic-bezier(.4,0,.2,1); /* Base - Material Design inspired */
+  --transition-fast: 0.15s cubic-bezier(.4,0,.2,1); /* Per piccoli elementi */
+  --transition-slow: 0.4s cubic-bezier(.4,0,.2,1); /* Per elementi grandi */
+  --transition-bounce: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effetto rimbalzo */
+  --transition-elastic: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Effetto elastico */
+  --transition-smooth: 0.3s cubic-bezier(0.25, 1, 0.5, 1); /* Smooth accelerate-decelerate */
+  
   --secondary-text: #4a4a4a; /* Nuovo: per testo secondario con contrasto 7:1 */
   --muted-text: #6b6b6b; /* Nuovo: per testo meno importante con contrasto 4.5:1 */
 }
@@ -206,6 +214,15 @@ header {
   /* Compensa la navbar fissa */
   margin-top: 0;
   padding-top: 0;
+  /* Preparazione per parallax */
+  will-change: background-position;
+  background-size: cover;
+  background-attachment: fixed;
+  
+  /* Support fallback for older browsers */
+  @supports not (background-attachment: fixed) {
+    background-attachment: scroll;
+  }
 }
 .hero-content {
   background: rgba(0,0,0,0.55);
@@ -275,14 +292,16 @@ section h2 {
   width: 150px;
   height: 150px;
   box-shadow: 0 2px 8px rgba(90,45,130,0.10);
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), filter 0.3s;
+  transition: transform var(--transition-elastic), 
+              box-shadow var(--transition), 
+              background-color var(--transition-fast);
+  will-change: transform;
 }
 .skills li:hover, .interests li:hover,
 .skills li:focus-within, .interests li:focus-within {
-  transform: translateY(-6px) scale(1.04);
+  transform: translateY(-8px) scale(1.05);
   background: #2575fc;
-  box-shadow: 0 6px 18px rgba(37,117,252,0.13);
-  filter: brightness(1.07) drop-shadow(0 4px 16px #2575fc22);
+  box-shadow: 0 8px 22px rgba(37,117,252,0.18);
   outline: none;
 }
 .skills li p {
@@ -310,9 +329,12 @@ section h2 {
   align-items: center;
   gap: 1rem;
   text-align: center;
-  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), filter 0.3s;
+  transition: transform var(--transition-bounce), 
+              box-shadow var(--transition), 
+              background-color var(--transition);
   box-shadow: 0 2px 8px rgba(90,45,130,0.10);
   cursor: pointer;
+  will-change: transform;
 }
 .project img {
   width: 100%;
@@ -321,13 +343,16 @@ section h2 {
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(90,45,130,0.08);
   background: #fff;
+  transition: transform var(--transition-fast);
 }
 .project:hover, .project:focus-within {
-  transform: translateY(-7px) scale(1.03);
+  transform: translateY(-8px) scale(1.03);
   background: #2575fc;
-  box-shadow: 0 8px 24px rgba(37,117,252,0.16);
-  filter: brightness(1.07) drop-shadow(0 4px 16px #2575fc22);
+  box-shadow: 0 10px 25px rgba(37,117,252,0.2);
   outline: none;
+}
+.project:hover img, .project:focus-within img {
+  transform: scale(1.03);
 }
 
 /* Slideshow */
@@ -404,6 +429,60 @@ form input:focus, form textarea:focus {
   outline: none;
   box-shadow: 0 2px 8px rgba(90,45,130,0.10);
 }
+
+/* Form validation styles */
+.form-error {
+  color: #e53935;
+  font-size: 0.9rem;
+  margin-top: -1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  min-height: 20px;
+  transition: all 0.3s ease;
+}
+
+input.error, textarea.error {
+  border-color: #e53935;
+  background-color: rgba(229, 57, 53, 0.05);
+}
+
+input.valid, textarea.valid {
+  border-color: #43a047;
+  background-color: rgba(67, 160, 71, 0.05);
+}
+
+/* Form submission states */
+.submitting button[type="submit"] {
+  opacity: 0.7;
+  cursor: wait;
+  position: relative;
+}
+
+.submitting button[type="submit"]::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: calc(50% - 10px);
+  right: 1rem;
+  border: 2px solid white;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#form-success-message {
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  background-color: rgba(67, 160, 71, 0.1);
+  text-align: center;
+  font-weight: 600;
+}
 form button {
   background: var(--accent-gradient);
   color: #fff;
@@ -411,11 +490,16 @@ form button {
   cursor: pointer;
   font-weight: 700;
   letter-spacing: 0.5px;
-  transition: background var(--transition), transform var(--transition);
+  transition: background-color var(--transition-fast), 
+              transform var(--transition-elastic),
+              box-shadow var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 form button:hover, form button:focus {
   background: #2575fc;
-  transform: scale(1.04);
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37,117,252,0.25);
   outline: none;
 }
 
@@ -925,7 +1009,8 @@ footer {
   outline: none;
 }
 #back-to-top.show {
-  animation: fadeInUp 0.5s;
+  animation: motion-fadeInUp 0.5s var(--transition-smooth);
+  animation-fill-mode: both;
 }
 
 /* Profile Block */
@@ -1240,9 +1325,17 @@ main {
 }
 
 /* Focus visibile per accessibilità */
-a:focus, button:focus, [tabindex="0"]:focus, input:focus, textarea:focus, select:focus {
+a:focus, button:focus, [tabindex="0"]:focus, select:focus {
   outline: 2.5px solid #2575fc !important;
   outline-offset: 2px;
+}
+
+/* Focus per form inputs con stile speciale */
+input:focus, textarea:focus {
+  outline: 2px solid #2575fc !important;
+  outline-offset: 0;
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2) !important;
   box-shadow: 0 0 0 3px #a3c8ff55;
   z-index: 10;
 }
@@ -1275,7 +1368,7 @@ a:focus, button:focus, [tabindex="0"]:focus, input:focus, textarea:focus, select
 }
 
 /* Animazione fade-in per sezioni al reveal */
-@keyframes fadeInUp {
+@keyframes motion-fadeInUp {
   from {
     opacity: 0;
     transform: translateY(40px);
@@ -1288,13 +1381,15 @@ a:focus, button:focus, [tabindex="0"]:focus, input:focus, textarea:focus, select
 section.reveal-on-scroll {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.6s cubic-bezier(.4,0,.2,1), transform 0.6s cubic-bezier(.4,0,.2,1);
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: opacity, transform;
 }
 section.reveal-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
-  animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1);
+  animation: motion-fadeInUp 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  animation-fill-mode: both;
 }
 
 /* INTERSECTION OBSERVER ANIMATIONS E STATES */
@@ -1376,10 +1471,11 @@ img[loading="lazy"]:not([data-src]) {
   height: 2px;
   background: var(--accent-gradient);
   border-radius: 1px;
-  animation: slideIn 0.3s ease-out;
+  animation: motion-slideIn 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  animation-fill-mode: both;
 }
 
-@keyframes slideIn {
+@keyframes motion-slideIn {
   from {
     width: 0;
     opacity: 0;
@@ -1391,7 +1487,7 @@ img[loading="lazy"]:not([data-src]) {
 }
 
 /* Loading shimmer animation per immagini */
-@keyframes shimmer {
+@keyframes effect-shimmer {
   0% {
     background-position: -200% 0;
   }
@@ -1403,7 +1499,8 @@ img[loading="lazy"]:not([data-src]) {
 img[loading="lazy"]:not(.loaded) {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  animation: effect-shimmer 1.5s infinite linear;
+  animation-fill-mode: forwards;
 }
 
 /* Ottimizzazioni contenment per performance */
@@ -1503,10 +1600,11 @@ img[loading="lazy"]:not(.loaded) {
   background: rgba(0, 0, 0, 0.3);
   z-index: -1;
   opacity: 0;
-  animation: fadeInBackdrop 0.3s forwards;
+  animation: effect-fadeIn 0.3s var(--transition-smooth) forwards;
 }
 
-@keyframes fadeInBackdrop {
+@keyframes effect-fadeIn {
+  from { opacity: 0; }
   to { opacity: 1; }
 }
 
@@ -1553,4 +1651,45 @@ img[loading="lazy"]:not(.loaded) {
     animation: none;
     opacity: 1;
   }
+}
+
+/* Ripple effect per bottoni */
+@keyframes effect-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.btn-primary, form button {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after, form button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: scale(0) translate(-50%, -50%);
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+
+/* Supporto per ripple dinamico */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: effect-ripple 0.6s var(--transition-smooth) forwards;
+  pointer-events: none;
+  z-index: 10;
 }

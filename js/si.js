@@ -1,3 +1,190 @@
+// FORM VALIDATION
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contact-form');
+  if (!contactForm) return;
+  
+  // Cache di elementi DOM per migliorare performance
+  const nomeInput = document.getElementById('nome');
+  const emailInput = document.getElementById('email');
+  const messaggioInput = document.getElementById('messaggio');
+  const consensoInput = document.getElementById('consenso');
+  
+  // Cache per error messages
+  const nomeError = document.getElementById('nome-help');
+  const emailError = document.getElementById('email-help');
+  const messaggioError = document.getElementById('messaggio-help');
+  const consensoError = document.getElementById('consenso-help');
+  const successMessage = document.getElementById('form-success-message');
+  
+  // Regex per validazione email più robusta (supporta i nuovi TLD e caratteri internazionali)
+  const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  
+  // Messaggi di errore in italiano e inglese
+  const errorMessages = {
+    required: {
+      it: 'Questo campo è obbligatorio',
+      en: 'This field is required'
+    },
+    email: {
+      it: 'Inserisci un indirizzo email valido',
+      en: 'Enter a valid email address'
+    },
+    consent: {
+      it: 'Devi accettare i termini per proseguire',
+      en: 'You must accept the terms to proceed'
+    },
+    minLength: {
+      it: (min) => `Inserisci almeno ${min} caratteri`,
+      en: (min) => `Enter at least ${min} characters`
+    }
+  };
+  
+  // Ottieni la lingua corrente
+  function getCurrentLang() {
+    return document.querySelector('.lang-btn[aria-current="true"]')?.getAttribute('data-lang') || 'it';
+  }
+  
+  // Funzione di validazione campo
+  function validateField(input, errorEl, validations) {
+    const value = input.value.trim();
+    const lang = getCurrentLang();
+    let isValid = true;
+    let errorMessage = '';
+    
+    // Rimuove classi di errore/successo
+    input.classList.remove('error', 'valid');
+    
+    // Controlla validazioni
+    if (validations.required && value === '') {
+      isValid = false;
+      errorMessage = errorMessages.required[lang];
+    } else if (validations.email && !emailRegex.test(value)) {
+      isValid = false;
+      errorMessage = errorMessages.email[lang];
+    } else if (validations.minLength && value.length < validations.minLength) {
+      isValid = false;
+      errorMessage = errorMessages.minLength[lang](validations.minLength);
+    } else if (validations.consent && !input.checked) {
+      isValid = false;
+      errorMessage = errorMessages.consent[lang];
+    }
+    
+    // Aggiorna UI in base al risultato
+    if (!isValid) {
+      input.classList.add('error');
+      errorEl.textContent = errorMessage;
+    } else {
+      input.classList.add('valid');
+      errorEl.textContent = '';
+    }
+    
+    return isValid;
+  }
+  
+  // Validazione nome
+  function validateNome() {
+    return validateField(nomeInput, nomeError, { required: true });
+  }
+  
+  // Validazione email
+  function validateEmail() {
+    return validateField(emailInput, emailError, { required: true, email: true });
+  }
+  
+  // Validazione messaggio
+  function validateMessaggio() {
+    return validateField(messaggioInput, messaggioError, { required: true, minLength: 10 });
+  }
+  
+  // Validazione consenso
+  function validateConsenso() {
+    return validateField(consensoInput, consensoError, { consent: true });
+  }
+  
+  // Validazione di tutti i campi
+  function validateAll() {
+    const isNomeValid = validateNome();
+    const isEmailValid = validateEmail();
+    const isMessaggioValid = validateMessaggio();
+    const isConsensoValid = validateConsenso();
+    
+    return isNomeValid && isEmailValid && isMessaggioValid && isConsensoValid;
+  }
+  
+  // Event listeners per validazione in tempo reale
+  nomeInput.addEventListener('blur', validateNome);
+  nomeInput.addEventListener('input', function() {
+    if (nomeInput.classList.contains('error')) validateNome();
+  });
+  
+  emailInput.addEventListener('blur', validateEmail);
+  emailInput.addEventListener('input', function() {
+    if (emailInput.classList.contains('error')) validateEmail();
+  });
+  
+  messaggioInput.addEventListener('blur', validateMessaggio);
+  messaggioInput.addEventListener('input', function() {
+    if (messaggioInput.classList.contains('error')) validateMessaggio();
+  });
+  
+  consensoInput.addEventListener('change', validateConsenso);
+  
+  // Event listener per validazione all'invio
+  contactForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Nascondi eventuali messaggi di successo precedenti
+    successMessage.style.display = 'none';
+    
+    // Validazione completa
+    if (validateAll()) {
+      // Qui andrà l'invio del form (AJAX o altro)
+      // Per ora simuliamo l'invio con un timeout
+      contactForm.classList.add('submitting');
+      
+      setTimeout(() => {
+        // Resetta il form
+        contactForm.reset();
+        
+        // Rimuovi classi di validazione
+        nomeInput.classList.remove('valid');
+        emailInput.classList.remove('valid');
+        messaggioInput.classList.remove('valid');
+        consensoInput.classList.remove('valid');
+        
+        // Mostra messaggio di successo
+        successMessage.style.display = 'block';
+        
+        // Rimuovi classe submitting
+        contactForm.classList.remove('submitting');
+        
+        // Focus su messaggio di successo per screen reader
+        successMessage.focus();
+      }, 1000);
+    } else {
+      // Focus sul primo campo con errore
+      if (!nomeInput.classList.contains('valid')) {
+        nomeInput.focus();
+      } else if (!emailInput.classList.contains('valid')) {
+        emailInput.focus();
+      } else if (!messaggioInput.classList.contains('valid')) {
+        messaggioInput.focus();
+      } else if (!consensoInput.classList.contains('valid')) {
+        consensoInput.focus();
+      }
+    }
+  });
+  
+  // Aggiunta listener per cambi di lingua
+  document.addEventListener('languageChanged', function() {
+    // Ri-valida i campi con la nuova lingua se hanno già errori
+    if (nomeInput.classList.contains('error')) validateNome();
+    if (emailInput.classList.contains('error')) validateEmail();
+    if (messaggioInput.classList.contains('error')) validateMessaggio();
+    if (consensoInput.classList.contains('error')) validateConsenso();
+  });
+});
+
 // FEATURE DETECTION E UTILITY PER INTERSECTION OBSERVER
 const IOSupport = {
   // Verifica supporto IntersectionObserver
@@ -59,16 +246,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const projects = document.querySelectorAll(".project");
   const modal = document.createElement("div");
   modal.classList.add("modal");
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-modal", "true");
+  modal.setAttribute("aria-labelledby", "modal-title");
+  modal.setAttribute("aria-describedby", "modal-details");
+  modal.setAttribute("tabindex", "-1");
   modal.innerHTML = `
     <div class="modal-content">
-      <span class="close" tabindex="0" aria-label="Chiudi">&times;</span>
+      <button class="close" aria-label="Chiudi" data-aria-label-en="Close">&times;</button>
       <div class="modal-left">
-        <h1 class="modal-title"></h1>
-        <p class="modal-details"></p>
-        <div class="modal-icons"></div>
+        <h2 id="modal-title" class="modal-title"></h2>
+        <p id="modal-details" class="modal-details"></p>
+        <div class="modal-icons" aria-label="Software utilizzati" data-aria-label-en="Software used"></div>
       </div>
       <div class="modal-right">
-        <div class="slider">
+        <div class="slider" aria-roledescription="carousel" aria-label="Immagini del progetto" data-aria-label-en="Project images">
           <div class="slider-pages">
             <img class="slider-page" src="" alt="Slider Page 1">
             <img class="slider-page" src="" alt="Slider Page 2">
@@ -92,9 +284,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "Set da caffè": {
       enKey: "Coffee set",
       sliderImages: [
-        "/immagini/progetto 1/all 22.png",
-        "/immagini/progetto 1/tazzina_.png",
-        "/immagini/progetto 1/zuccheriera 2_.png"
+        "/immagini/webp/progetto 1/all 22.webp",
+        "/immagini/webp/progetto 1/tazzina_.webp",
+        "/immagini/webp/progetto 1/zuccheriera 2_.webp"
       ],
       sliderTitles: [
         "Set da caffè - ambientato",
@@ -104,18 +296,18 @@ document.addEventListener("DOMContentLoaded", () => {
       details: "Durata: 1 mese<br>Anno: 2022<br>Descrizione:Il progetto propone una reinterpretazione contemporanea del classico set da caffè, composto da tazzina, zuccheriera e piattino. L’approccio progettuale unisce estetica e funzionalità, con particolare attenzione alla coerenza formale e alla scelta dei materiali. Le forme si ispirano all’architettura di Shigeru Ban e Renzo Piano, e al design fluido delle lampade parametriche, generando un linguaggio visivo fatto di trasparenze, volumi armonici e superfici sofisticate.",
       details_en: "Duration: 1 month<br>Year: 2022<br>Description: The project offers a contemporary reinterpretation of the classic coffee set, consisting of cup, sugar bowl and saucer. The design approach combines aesthetics and functionality, with particular attention to formal consistency and material selection. The shapes are inspired by the architecture of Shigeru Ban and Renzo Piano, and by the fluid design of parametric lamps, generating a visual language made of transparencies, harmonious volumes and sophisticated surfaces.",
       icons: [
-        "/immagini/loghi/icons8-blender-48.png",
-        "/immagini/loghi/icons8-solidworks-48.png",
-        "/immagini/loghi/icons8-photoshop-48.png",
-        "/immagini/loghi/icons8-illustrator-48.png"
+        "/immagini/webp/loghi/icons8-blender-48.webp",
+        "/immagini/webp/loghi/icons8-solidworks-48.webp",
+        "/immagini/webp/loghi/icons8-photoshop-48.webp",
+        "/immagini/webp/loghi/icons8-illustrator-48.webp"
       ]
     },
     "La cardanica": {
       enKey: "The Cardanica",
       sliderImages: [
-        "/immagini/progetto 2/cardanica 600.jpeg",
-        "/immagini/progetto 2/cardanica 900.jpeg",
-        "/immagini/progetto 2/cardanica.jpeg"
+        "/immagini/webp/progetto 2/cardanica 600.webp",
+        "/immagini/webp/progetto 2/cardanica 900.webp",
+        "/immagini/webp/progetto 2/cardanica.webp"
       ],
       sliderTitles: [
         "Cardanica - 600",
@@ -125,18 +317,18 @@ document.addEventListener("DOMContentLoaded", () => {
       details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: “La Cardanica” è un progetto concettuale ispirato al principio del blocco cardanico (gimbal lock), esplorato attraverso una serie di oggetti-scultura che traducono il movimento meccanico in gesto espressivo. Ispirata dallo Ski Sipping Stabilizer di Unnecessary Inventions, l’idea è stata rielaborata in chiave tecnica e poetica, con richiami a sistemi di illuminazione a binario, dimerabilità e guarnizioni con setole. Il progetto indaga equilibrio, instabilità e relazione tra forma e funzione con un approccio sperimentale e dinamico.",
       details_en: "Duration: 2 months<br>Year: 2023<br>Description: “The Cardanica” is a conceptual project inspired by the principle of gimbal lock, explored through a series of object-sculptures that translate mechanical movement into expressive gesture. Inspired by the Ski Sipping Stabilizer by Unnecessary Inventions, the idea was reworked in a technical and poetic way, with references to track lighting systems, dimmability and bristle seals. The project investigates balance, instability and the relationship between form and function with an experimental and dynamic approach.",
       icons: [
-        "/immagini/loghi/icons8-blender-48.png",
-        "/immagini/loghi/icons8-solidworks-48.png",
-        "/immagini/loghi/icons8-photoshop-48.png",
-        "/immagini/loghi/icons8-illustrator-48.png"
+        "/immagini/webp/loghi/icons8-blender-48.webp",
+        "/immagini/webp/loghi/icons8-solidworks-48.webp",
+        "/immagini/webp/loghi/icons8-photoshop-48.webp",
+        "/immagini/webp/loghi/icons8-illustrator-48.webp"
       ]
     },
     "Poltroncina lounge per Milani": {
       enKey: "Lounge chair for Milani",
       sliderImages: [
-        "/immagini/progetto 3/untitled555.png",
-        "/immagini/progetto 3/untitled202.png",
-        "/immagini/progetto 3/untitled702.png"
+        "/immagini/webp/progetto 3/untitled555.webp",
+        "/immagini/webp/progetto 3/untitled202.webp",
+        "/immagini/webp/progetto 3/untitled702.webp"
       ],
       sliderTitles: [
         "Poltroncina lounge per Milani - ambientato",
@@ -146,17 +338,17 @@ document.addEventListener("DOMContentLoaded", () => {
       details: "Durata: 3 mesi<br>Anno: 2024<br>Descrizione: Progetto sviluppato per il brand SM-Milani, specializzato in arredi di design per casa e ufficio. La poltroncina lounge è pensata per unire comfort ed eleganza con una struttura essenziale ma accogliente. Il concept prende ispirazione dal design contemporaneo e minimalista, con particolare attenzione all'equilibrio tra pieni e vuoti e all’ergonomia. La forma accogliente e la scelta dei materiali puntano a creare un oggetto versatile, adatto a spazi professionali e domestici.",
       details_en: "Duration: 3 months<br>Year: 2024<br>Description: Project developed for the SM-Milani brand, specialized in designer furniture for home and office. The lounge chair is designed to combine comfort and elegance with an essential yet welcoming structure. The concept is inspired by contemporary and minimalist design, with particular attention to the balance between solids and voids and ergonomics. The welcoming shape and choice of materials aim to create a versatile object, suitable for professional and domestic spaces.",
       icons: [
-        "/immagini/loghi/icons8-blender-48.png",
-        "/immagini/loghi/icons8-photoshop-48.png",
-        "/immagini/loghi/icons8-illustrator-48.png"
+        "/immagini/webp/loghi/icons8-blender-48.webp",
+        "/immagini/webp/loghi/icons8-photoshop-48.webp",
+        "/immagini/webp/loghi/icons8-illustrator-48.webp"
       ]
     },
     "mouse": {
       enKey: "mouse",
       sliderImages: [
-        "/immagini/progetto 4/untitled44.png",
-        "/immagini/progetto 4/untitled33.png",
-        "/immagini/progetto 4/untitled.png"
+        "/immagini/webp/progetto 4/untitled44.webp",
+        "/immagini/webp/progetto 4/untitled33.webp",
+        "/immagini/webp/progetto 4/untitled.webp"
       ],
       sliderTitles: [
         "mouse - ambientato",
@@ -166,8 +358,8 @@ document.addEventListener("DOMContentLoaded", () => {
       details: "Durata: 2 mesi<br>Anno: 2023<br>Descrizione: Il progetto nasce dalla volontà di ripensare il mouse come oggetto quotidiano dal forte impatto ergonomico ed estetico. Ispirato a forme morbide e organiche, il design privilegia la funzionalità e la semplicità d’uso, con particolare attenzione all’ergonomia del palmo e al posizionamento dei tasti. Il risultato è un oggetto compatto e bilanciato, in grado di integrarsi visivamente in ambienti professionali o creativi senza rinunciare alla personalità.",
       details_en: "Duration: 2 months<br>Year: 2023<br>Description: The project was born from the desire to rethink the mouse as an everyday object with a strong ergonomic and aesthetic impact. Inspired by soft and organic shapes, the design favors functionality and ease of use, with particular attention to palm ergonomics and button placement. The result is a compact and balanced object, able to visually integrate into professional or creative environments without sacrificing personality.",
       icons: [
-        "/immagini/loghi/icons8-blender-48.png",
-        "/immagini/loghi/icons8-illustrator-48.png"
+        "/immagini/webp/loghi/icons8-blender-48.webp",
+        "/immagini/webp/loghi/icons8-illustrator-48.webp"
       ]
     }
   };
@@ -217,8 +409,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   projects.forEach((project) => {
-    project.addEventListener("click", () => {
-      // Prendi titolo visibile (in lingua attiva)
+    // Make each project element focusable for keyboard accessibility
+    if (!project.hasAttribute('tabindex')) {
+      project.setAttribute('tabindex', '0');
+    }
+    
+    // Add ARIA attributes to indicate it's clickable and opens a dialog
+    project.setAttribute('aria-haspopup', 'dialog');
+    
+    function openProjectModal() {
+      // Get visible title in the active language
       const lang = document.querySelector('.lang-btn[aria-current="true"]')?.getAttribute('data-lang') || 'it';
       const h3 = project.querySelector("h3");
       let projectTitle = h3.querySelector('.lang-it')?.textContent.trim();
@@ -227,8 +427,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       const key = getProjectKeyByTitle(projectTitle);
       const data = projectData[key];
+      
       if (data) {
-        // Titolo slide
+        // Set modal title
         if (data.sliderTitles) {
           modalTitle.textContent = lang === 'en'
             ? (data.sliderTitles_en ? data.sliderTitles_en[0] : data.sliderTitles[0])
@@ -236,15 +437,31 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           modalTitle.textContent = projectTitle;
         }
-        // Dettagli
+        
+        // Set details with proper HTML
         modalDetails.innerHTML = lang === 'en' && data.details_en ? data.details_en : data.details;
+        
+        // Set software icons with improved alt text
         modalIcons.innerHTML = data.icons
-          .map((icon) => `<img src="${icon}" alt="Icona">`)
+          .map((icon, index) => {
+            // Extract software name from the path
+            const softwareName = icon.split('/').pop().split('-')[1]?.split('.')[0] || `Software ${index + 1}`;
+            return `<img src="${icon}" alt="${softwareName}" title="${softwareName}">`;
+          })
           .join("");
+          
+        // Set up slider images
         if (data.sliderImages) {
           sliderPages.forEach((page, index) => {
-            page.src = data.sliderImages[index] || "";
-            page.style.display = index === 0 ? "block" : "none";
+            if (data.sliderImages[index]) {
+              page.src = data.sliderImages[index];
+              // Set better alt text for each slide
+              const altText = data.sliderTitles ? data.sliderTitles[index] : `${projectTitle} - Image ${index + 1}`;
+              page.alt = altText;
+              page.style.display = index === 0 ? "block" : "none";
+            } else {
+              page.style.display = "none";
+            }
           });
           currentSlide = 0;
           modal.querySelector(".slider").style.display = "block";
@@ -252,35 +469,82 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           modal.querySelector(".slider").style.display = "none";
         }
+        
+        // Store the element that had focus before opening the modal
+        lastFocusedElement = document.activeElement;
+        
+        // Announce to screen readers that the dialog is open
+        const announcer = document.getElementById('modal-open-announcer') || 
+                        (() => {
+                          const el = document.createElement('div');
+                          el.id = 'modal-open-announcer';
+                          el.setAttribute('aria-live', 'polite');
+                          el.className = 'sr-only';
+                          document.body.appendChild(el);
+                          return el;
+                        })();
+        announcer.textContent = lang === 'en' ? `Project details dialog opened: ${projectTitle}` : `Finestra di dialogo dettagli progetto aperta: ${projectTitle}`;
+        
+        // Show the modal and set focus
         modal.style.display = "flex";
         document.body.style.overflow = "hidden";
-        lastFocusedElement = document.activeElement;
-        // Set initial focus to close button for accessibility
+        
+        // Move focus into the modal for accessibility
         closeModal.focus();
       }
-    });
-    // Accessibilità: apri modale anche con Invio/Spazio
+    }
+    
+    // Open modal on click
+    project.addEventListener("click", openProjectModal);
+    // Improved keyboard accessibility: open modal with Enter/Space
     project.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        project.click();
+        openProjectModal();
       }
     });
+    
+    // Add appropriate ARIA labels based on the current language
+    function updateProjectAriaLabel() {
+      const lang = document.querySelector('.lang-btn[aria-current="true"]')?.getAttribute('data-lang') || 'it';
+      const h3 = project.querySelector("h3");
+      const projectTitle = lang === 'en' 
+        ? h3.querySelector('.lang-en')?.textContent.trim() 
+        : h3.querySelector('.lang-it')?.textContent.trim();
+      
+      project.setAttribute('aria-label', 
+        lang === 'en' 
+          ? `View project details for ${projectTitle}`
+          : `Visualizza dettagli progetto ${projectTitle}`
+      );
+    }
+    
+    // Set initial ARIA label
+    updateProjectAriaLabel();
+    
+    // Update ARIA label when language changes
+    document.addEventListener('languageChanged', updateProjectAriaLabel);
   });
 
-  // Trap focus inside modal when open
+  // Improved focus trap inside modal
   modal.addEventListener("keydown", (e) => {
     if (modal.style.display !== "flex") return;
-    const focusable = modal.querySelectorAll('button, [tabindex="0"], a, input, textarea, select');
-    const focusableArr = Array.prototype.slice.call(focusable);
+    
+    // Get all focusable elements in the modal
+    const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const focusableArr = Array.from(focusable);
     const first = focusableArr[0];
     const last = focusableArr[focusableArr.length - 1];
+    
+    // Handle tab key navigation
     if (e.key === "Tab") {
+      // If shift+tab and on first element, go to last element
       if (e.shiftKey) {
         if (document.activeElement === first) {
           e.preventDefault();
           last.focus();
         }
+      // If tab and on last element, loop back to first element
       } else {
         if (document.activeElement === last) {
           e.preventDefault();
@@ -288,32 +552,52 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     }
-    // ESC per chiudere la modale
+    
+    // ESC key closes the modal
     if (e.key === "Escape") {
       closeModal.click();
     }
   });
 
-  closeModal.addEventListener("click", () => {
+  // Create a function to handle modal closing
+  function closeModalHandler() {
     modal.style.display = "none";
     document.body.style.overflow = "";
     stopAutoplay();
-    // Ritorna il focus all’elemento che aveva il focus prima della modale
+    
+    // Announce to screen readers that the modal is closed
+    const announcer = document.getElementById('modal-close-announcer') || 
+                    (() => {
+                      const el = document.createElement('div');
+                      el.id = 'modal-close-announcer';
+                      el.setAttribute('aria-live', 'polite');
+                      el.className = 'sr-only';
+                      document.body.appendChild(el);
+                      return el;
+                    })();
+    
+    // Update the announcer with the appropriate language
+    const lang = document.querySelector('.lang-btn[aria-current="true"]')?.getAttribute('data-lang') || 'it';
+    announcer.textContent = lang === 'en' ? 'Dialog closed' : 'Finestra di dialogo chiusa';
+    
+    // Return focus to the element that had focus before the modal was opened
     if (lastFocusedElement) lastFocusedElement.focus();
+  }
+
+  closeModal.addEventListener("click", () => {
+    closeModalHandler();
   });
+  
   closeModal.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      closeModal.click();
+      closeModalHandler();
     }
   });
 
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
-      modal.style.display = "none";
-      document.body.style.overflow = "";
-      stopAutoplay();
-      if (lastFocusedElement) lastFocusedElement.focus();
+      closeModalHandler();
     }
   });
 
@@ -550,18 +834,76 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-// FAQ accordion
+// FAQ accordion - improved for accessibility
 document.addEventListener('DOMContentLoaded', function () {
+  // Add ARIA role for accordion structure
+  const faqList = document.querySelector('.faq-list');
+  if (faqList) {
+    faqList.setAttribute('role', 'region');
+  }
+  
   document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', function () {
-      const expanded = this.getAttribute('aria-expanded') === 'true';
-      // Chiudi tutte le risposte
-      document.querySelectorAll('.faq-question').forEach(b => b.setAttribute('aria-expanded', 'false'));
-      document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
-      if (!expanded) {
-        this.setAttribute('aria-expanded', 'true');
-        const answer = this.nextElementSibling;
-        if (answer) answer.style.display = 'block';
+    // Function to toggle FAQ items
+    function toggleFaq() {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answer = document.getElementById(btn.getAttribute('aria-controls'));
+      
+      // Close all answers
+      document.querySelectorAll('.faq-question').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+      });
+      
+      document.querySelectorAll('.faq-answer').forEach(a => {
+        a.style.display = 'none';
+        a.classList.remove('open');
+      });
+      
+      // If wasn't expanded before, expand it
+      if (!expanded && answer) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.display = 'block';
+        answer.classList.add('open');
+        
+        // Announce to screen readers
+        const lang = document.querySelector('.lang-btn[aria-current="true"]')?.getAttribute('data-lang') || 'it';
+        const announcer = document.getElementById('faq-announcer') || 
+                        (() => {
+                          const el = document.createElement('div');
+                          el.id = 'faq-announcer';
+                          el.setAttribute('aria-live', 'polite');
+                          el.className = 'sr-only';
+                          document.body.appendChild(el);
+                          return el;
+                        })();
+        announcer.textContent = lang === 'en' ? 'FAQ answer expanded' : 'Risposta FAQ espansa';
+      }
+    }
+    
+    // Click handler
+    btn.addEventListener('click', toggleFaq);
+    
+    // Keyboard handler for better accessibility
+    btn.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleFaq();
+      }
+      
+      // Up/Down arrows for navigation between FAQ questions
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        
+        const questions = Array.from(document.querySelectorAll('.faq-question'));
+        const currentIndex = questions.indexOf(this);
+        let nextIndex;
+        
+        if (e.key === 'ArrowDown') {
+          nextIndex = (currentIndex + 1) % questions.length;
+        } else {
+          nextIndex = (currentIndex - 1 + questions.length) % questions.length;
+        }
+        
+        questions[nextIndex].focus();
       }
     });
   });
@@ -1372,3 +1714,99 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
     }
   }, 30000);
 }
+
+// PARALLAX EFFECT
+document.addEventListener('DOMContentLoaded', function() {
+  // Seleziona l'elemento hero
+  const hero = document.querySelector('.hero');
+  const parallaxFactor = 0.35; // Fattore di parallasse (maggiore = effetto più pronunciato)
+  let ticking = false;
+  
+  // Verifica se siamo su un dispositivo che non preferisce movimenti ridotti
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  function updateParallax() {
+    if (prefersReducedMotion || !hero) return;
+    
+    const scrollTop = window.pageYOffset;
+    
+    // Applica la trasformazione solo se l'elemento è visibile
+    const heroRect = hero.getBoundingClientRect();
+    if (heroRect.bottom > 0 && heroRect.top < window.innerHeight) {
+      // Calcola il valore di traslazione basato sullo scroll
+      const translateY = scrollTop * parallaxFactor;
+      
+      // Applica la trasformazione con GPU acceleration
+      hero.style.backgroundPosition = `center ${translateY}px`;
+    }
+    
+    ticking = false;
+  }
+  
+  function requestParallax() {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+  
+  // Throttle dell'evento scroll per performance
+  const throttledParallax = PerformanceUtils.throttle(requestParallax, 10);
+  
+  // Aggiungi l'evento scroll solo se necessario
+  if (hero && !prefersReducedMotion) {
+    window.addEventListener('scroll', throttledParallax, { passive: true });
+    // Applica subito per la posizione iniziale
+    requestParallax();
+  }
+});
+
+// RIPPLE EFFECT AVANZATO
+document.addEventListener('DOMContentLoaded', function() {
+  // Seleziona tutti i bottoni con effetto ripple
+  const buttons = document.querySelectorAll('.btn-primary, form button');
+  
+  // Funzione per creare l'effetto ripple dinamico
+  function createRipple(event) {
+    const button = event.currentTarget;
+    
+    // Rimuovi vecchi ripple se esistono
+    const existingRipple = button.querySelector('.ripple');
+    if (existingRipple) {
+      existingRipple.remove();
+    }
+    
+    // Crea un nuovo elemento ripple
+    const ripple = document.createElement('span');
+    ripple.classList.add('ripple');
+    
+    // Imposta lo stile
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    ripple.style.width = ripple.style.height = `${diameter}px`;
+    
+    // Posiziona il ripple dove è avvenuto il click
+    const rect = button.getBoundingClientRect();
+    ripple.style.left = `${event.clientX - rect.left - (diameter / 2)}px`;
+    ripple.style.top = `${event.clientY - rect.top - (diameter / 2)}px`;
+    
+    // Aggiungi il ripple al bottone
+    ripple.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+    ripple.style.borderRadius = '50%';
+    ripple.style.position = 'absolute';
+    ripple.style.transform = 'scale(0)';
+    ripple.style.animation = 'effect-ripple 0.6s var(--transition-smooth) forwards';
+    button.appendChild(ripple);
+    
+    // Rimuovi il ripple dopo l'animazione
+    setTimeout(() => {
+      if (ripple && ripple.parentNode === button) {
+        button.removeChild(ripple);
+      }
+    }, 600);
+  }
+  
+  // Aggiungi event listener a tutti i bottoni
+  buttons.forEach(button => {
+    button.addEventListener('click', createRipple);
+  });
+});
