@@ -1600,12 +1600,12 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         }
       }
-    });
 
-    // Focus sul primo elemento quando apri la modal
-    if (firstFocusable) {
-      firstFocusable.focus();
-    }
+      // Focus sul primo elemento quando apri la modal
+      if (firstFocusable) {
+        firstFocusable.focus();
+      }
+    });
   }
 
   // Apply focus trap quando modal è aperta
@@ -1936,5 +1936,94 @@ document.addEventListener('DOMContentLoaded', function() {
       const newTheme = event.matches ? 'dark' : 'light';
       applyTheme(newTheme);
     }
+  });
+});
+
+// ENHANCED MICRO-INTERACTIONS - FIXED VERSION
+document.addEventListener('DOMContentLoaded', function() {
+  // Add ripple effect to buttons
+  const buttons = document.querySelectorAll('button:not(.lang-btn):not(.theme-toggle)');
+  
+  buttons.forEach(button => {
+    button.addEventListener('mousedown', function(e) {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple-effect');
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+      
+      button.appendChild(ripple);
+      
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+  });
+  
+  // Form fields focus effects
+  const formControls = document.querySelectorAll('.form-control');
+  
+  formControls.forEach(control => {
+    // Initial state check
+    if (control.value) {
+      control.classList.add('has-value');
+    }
+    
+    // Handle input changes
+    control.addEventListener('input', function() {
+      if (control.value) {
+        control.classList.add('has-value');
+      } else {
+        control.classList.remove('has-value');
+      }
+    });
+    
+    // Handle focus
+    control.addEventListener('focus', function() {
+      const formGroup = control.closest('.form-group');
+      if (formGroup) {
+        formGroup.classList.add('focused');
+      }
+    });
+    
+    // Handle blur
+    control.addEventListener('blur', function() {
+      const formGroup = control.closest('.form-group');
+      if (formGroup) {
+        formGroup.classList.remove('focused');
+      }
+    });
+  });
+  
+  // Card hover 3D effect
+  const projectCards = document.querySelectorAll('.project');
+  
+  projectCards.forEach(card => {
+    card.addEventListener('mousemove', function(e) {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      // Calculate position percentage
+      const xPercent = Math.floor((x / rect.width) * 100);
+      const yPercent = Math.floor((y / rect.height) * 100);
+      
+      card.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+      
+      // Calculate tilt
+      const tiltX = -((y / rect.height) - 0.5) * 5;
+      const tiltY = ((x / rect.width) - 0.5) * 5;
+      
+      card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.03)`;
+    });
+    
+    // Reset on mouse leave
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = '';
+      card.style.transformOrigin = '';
+    });
   });
 });

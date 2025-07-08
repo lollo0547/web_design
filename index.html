@@ -665,34 +665,51 @@ header {
           <span class="lang-en" style="display:none;">Contacts</span>
         </h2>
         <form id="contact-form" autocomplete="off" aria-labelledby="contatti-heading" novalidate>
-          <label for="nome">
-            <span class="lang-it">Nome</span>
-            <span class="lang-en" style="display:none;">Name</span>
-          </label>
-          <input type="text" id="nome" name="nome" required aria-describedby="nome-help">
-          <div id="nome-help" class="form-error" aria-live="polite"></div>
-          <label for="email">
-            <span class="lang-it">Email</span>
-            <span class="lang-en" style="display:none;">Email</span>
-          </label>
-          <input type="email" id="email" name="email" required aria-describedby="email-help">
-          <div id="email-help" class="form-error" aria-live="polite"></div>
-          <label for="messaggio">
-            <span class="lang-it">Messaggio</span>
-            <span class="lang-en" style="display:none;">Message</span>
-          </label>
-          <textarea id="messaggio" name="messaggio" required aria-describedby="messaggio-help"></textarea>
-          <div id="messaggio-help" class="form-error" aria-live="polite"></div>
-          <label for="consenso">
-            <input type="checkbox" id="consenso" name="consenso" required>
-            <span class="lang-it">Acconsento al trattamento dei miei dati personali.</span>
-            <span class="lang-en" style="display:none;">I consent to the processing of my personal data.</span>
-          </label>
-          <div id="consenso-help" class="form-error" aria-live="polite"></div>
-          <button type="submit" aria-label="Invia il modulo di contatto">
-            <span class="lang-it">Invia</span>
-            <span class="lang-en" style="display:none;">Send</span>
-          </button>
+          <div class="form-group">
+            <input type="text" id="nome" name="nome" required aria-describedby="nome-help" placeholder=" " class="form-control">
+            <label for="nome">
+              <span class="lang-it">Nome</span>
+              <span class="lang-en" style="display:none;">Name</span>
+            </label>
+            <div id="nome-help" class="form-error" aria-live="polite"></div>
+          </div>
+
+          <div class="form-group">
+            <input type="email" id="email" name="email" required aria-describedby="email-help" placeholder=" " class="form-control">
+            <label for="email">
+              <span class="lang-it">Email</span>
+              <span class="lang-en" style="display:none;">Email</span>
+            </label>
+            <div id="email-help" class="form-error" aria-live="polite"></div>
+          </div>
+
+          <div class="form-group">
+            <textarea id="messaggio" name="messaggio" required aria-describedby="messaggio-help" placeholder=" " class="form-control"></textarea>
+            <label for="messaggio">
+              <span class="lang-it">Messaggio</span>
+              <span class="lang-en" style="display:none;">Message</span>
+            </label>
+            <div id="messaggio-help" class="form-error" aria-live="polite"></div>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" id="consenso" name="consenso" required class="form-check-input">
+            <label for="consenso" class="form-check-label">
+              <span class="lang-it">Acconsento al trattamento dei miei dati personali.</span>
+              <span class="lang-en" style="display:none;">I consent to the processing of my personal data.</span>
+            </label>
+            <div id="consenso-help" class="form-error" aria-live="polite"></div>
+          </div>
+
+          <div class="form-btn-group">
+            <button type="submit" aria-label="Invia il modulo di contatto" class="btn-submit">
+              <span class="btn-text">
+                <span class="lang-it">Invia</span>
+                <span class="lang-en" style="display:none;">Send</span>
+              </span>
+              <span class="btn-icon">→</span>
+            </button>
+          </div>
           <p id="form-success-message" style="display: none; color: green;">
             <span class="lang-it">Modulo inviato con successo!</span>
             <span class="lang-en" style="display:none;">Form sent successfully!</span>
