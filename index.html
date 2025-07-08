@@ -157,6 +157,12 @@ header {
   z-index: 100;
   box-shadow: 0 2px 8px rgba(90,45,130,0.06);
   padding: 0.5rem 1rem;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar-container.visible {
+  transform: translateY(0);
 }
 
 .logo img {
@@ -175,19 +181,26 @@ header {
   color: #fff;
   text-align: center;
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  /* Fallback background image in case JavaScript fails */
+  background-size: auto 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
   background-image: url('./immagini/webp/hero/Lorenzo_hero.webp');
+  scroll-snap-align: start; /* Aggiunto per scroll fluido */
+}
+
+/* Rimozione bordi arrotondati dal logo */
+.centered-logo img {
+  border-radius: 0;
 }
 
 .hero-content {
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.35); /* Ridotta l'opacità da 0.55 a 0.35 */
   padding: 2.5rem 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--card-shadow);
   max-width: 480px;
   margin: auto;
+  backdrop-filter: blur(2px); /* Aggiunto un leggero effetto blur */
 }
 
 .hero h1 {
@@ -203,6 +216,74 @@ header {
   font-weight: 400;
   opacity: 0.92;
 }
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 10px;
+  animation: pulse 2s infinite;
+  z-index: 10;
+  transition: all 0.3s ease;
+  background-color: rgba(76, 29, 115, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 30px;
+  padding: 10px 20px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scroll-indicator:hover {
+  background-color: rgba(76, 29, 115, 0.4);
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.scroll-arrow {
+  width: 15px;
+  height: 15px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+  margin: 8px auto 0;
+  animation: float 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: rotate(45deg) translateY(0);
+  }
+  50% {
+    transform: rotate(45deg) translateY(5px);
+  }
+}
+
+/* Aggiungiamo smooth scroll al body */
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+/* Ottimizziamo il contenuto principale per scroll migliore */
+main {
+  scroll-snap-align: start;
+}
     </style>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -212,10 +293,6 @@ header {
     </noscript>
   </head>
   <body>
-    <a href="#main-content" class="skip-to-content">
-      <span class="lang-it">Vai al contenuto</span>
-      <span class="lang-en" style="display:none;">Skip to content</span>
-    </a>
     <header>
       <!-- Logo centrato in alto -->
       <a href="/" class="centered-logo">
@@ -274,10 +351,10 @@ header {
           </p>
         </div>
         
-        <!-- Indicatore di scroll -->
-        <div class="scroll-indicator">
-          <span class="lang-it">Scorri</span>
-          <span class="lang-en" style="display:none;">Scroll</span>
+        <!-- Indicatore di scroll migliorato -->
+        <div class="scroll-indicator" id="scrollIndicator">
+          <span class="lang-it">Scopri di più</span>
+          <span class="lang-en" style="display:none;">Discover more</span>
           <div class="scroll-arrow"></div>
         </div>
       </div>
@@ -1129,6 +1206,91 @@ header {
             alert('Maggiori informazioni sui cookie utilizzati.');
           });
         }
+      });
+    </script>
+    <!-- Script per migliorare lo scroll -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Impostazione scroll fluido
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        const mainContent = document.querySelector('#main-content');
+        const navbar = document.querySelector('.navbar-container');
+        
+        if (scrollIndicator) {
+          scrollIndicator.addEventListener('click', function() {
+            mainContent.scrollIntoView({behavior: 'smooth'});
+          });
+        }
+        
+        // Gestione scroll per mostrare navbar
+        let lastScrollTop = 0;
+        
+        window.addEventListener('scroll', function() {
+          let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+          // Mostra navbar quando scorriamo oltre la hero section
+          if (scrollTop > window.innerHeight * 0.7) {
+            navbar.classList.add('visible');
+          } else {
+            navbar.classList.remove('visible');
+          }
+          
+          // Nascondi indicatore di scroll quando si scende
+          if (scrollIndicator && scrollTop > 100) {
+            scrollIndicator.style.opacity = '0';
+          } else if (scrollIndicator) {
+            scrollIndicator.style.opacity = '1';
+          }
+          
+          lastScrollTop = scrollTop;
+        });
+
+        // Precarica e imposta correttamente l'immagine di sfondo
+        const hero = document.querySelector('.hero');
+        if (hero) {
+          const img = new Image();
+          const webpSrc = hero.getAttribute('data-bg-webp');
+          const fallbackSrc = hero.getAttribute('data-bg-fallback');
+          
+          img.onload = function() {
+            hero.style.backgroundImage = `url(${webpSrc})`;
+          };
+          
+          img.onerror = function() {
+            if (fallbackSrc) {
+              hero.style.backgroundImage = `url(${fallbackSrc})`;
+            }
+          };
+          
+          if (webpSrc) {
+            img.src = webpSrc;
+          }
+        }
+        
+        // Permetti lo scroll anche senza click sull'indicatore
+        document.addEventListener('wheel', function(e) {
+          const heroSection = document.querySelector('.hero');
+          if (window.scrollY < 10 && e.deltaY > 0) {
+            // Se siamo all'inizio e scrolliamo verso il basso
+            mainContent.scrollIntoView({behavior: 'smooth'});
+          }
+        });
+        
+        // Supporto touch per dispositivi mobili
+        let touchStartY = 0;
+        document.addEventListener('touchstart', function(e) {
+          touchStartY = e.touches[0].clientY;
+        });
+        
+        document.addEventListener('touchend', function(e) {
+          const touchEndY = e.changedTouches[0].clientY;
+          const diff = touchStartY - touchEndY;
+          
+          if (window.scrollY < 10 && diff > 50) {
+            // Swipe up nella hero section
+            mainContent.scrollIntoView({behavior: 'smooth'});
+          }
+        });
       });
     </script>
   </body>
