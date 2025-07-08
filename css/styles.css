@@ -136,6 +136,21 @@
   --glow-color: rgba(0, 119, 255, 0.3);
 }
 
+/* Stile per il logo centrato */
+.centered-logo {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.centered-logo img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
 /* ------------------------------
    2. RESET E STILI BASE
 --------------------------------*/
@@ -345,7 +360,7 @@ h2:hover::after {
 :where(.p-xl) { padding: var(--space-xl); }
 
 :where(.py-2xs) { padding-top: var(--space-2xs); padding-bottom: var(--space-2xs); }
-:where(.py-xs) { padding-top: var(--space-xs); padding-bottom: var(--space-xs); }
+:where(.py-xs) { padding-top: var(--space-xs); padding-bottom: var(--space-2xs); }
 :where(.py-sm) { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
 :where(.py-md) { padding-top: var(--space-md); padding-bottom: var(--space-md); }
 :where(.py-lg) { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
@@ -479,23 +494,21 @@ header {
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centrato orizzontalmente */
   align-items: center;
-  padding: var(--space-xs) var(--space-sm);
-  background: rgba(14, 14, 17, 0.85);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  z-index: var(--z-fixed);
-  transition: all var(--transition-normal);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 1rem;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(90,45,130,0.06);
+  transform: translateY(-100%); /* Inizialmente nascosta */
+  transition: transform 0.3s ease;
 }
 
-.navbar-container.scrolled {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  background: rgba(14, 14, 17, 0.95);
+.navbar-container.visible {
+  transform: translateY(0); /* Visibile dopo lo scroll */
 }
 
 [data-theme="light"] .navbar-container {
@@ -735,16 +748,19 @@ header {
 --------------------------------*/
 .hero {
   position: relative;
+  min-height: 100vh;
   height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  color: #fff;
-  overflow: hidden;
-  padding: 0 var(--space-sm);
+  background-repeat: no-repeat;
+  image-rendering: -webkit-optimize-contrast; /* Per Chrome/Safari */
+  image-rendering: crisp-edges; /* Per Firefox */
 }
 
 .hero::before {
@@ -1444,8 +1460,48 @@ footer {
   background: var(--bg-color-secondary);
   color: var(--text-color-secondary);
   padding: var(--space-lg) var(--space-sm);
-  text-align: center;
   margin-top: var(--space-xl);
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.footer-center {
+  flex: 2;
+  text-align: center;
+}
+
+.footer-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .footer-left, .footer-center, .footer-right {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
 }
 
 .social-icons {
@@ -2828,4 +2884,25 @@ footer {
 .secret-message.visible {
   transform: translateY(0);
   opacity: 1;
+}
+
+/* Stile per il blocco dello scroll */
+.scroll-locked {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Ottimizzazione immagine di sfondo della hero */
+.hero {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  image-rendering: -webkit-optimize-contrast; /* Per Chrome/Safari */
+  image-rendering: crisp-edges; /* Per Firefox */
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .hero {
+    background-image: url('./immagini/webp/hero/Lorenzo_hero.webp'); /* Immagine ottimizzata */
+  }
 }

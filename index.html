@@ -217,27 +217,17 @@ header {
       <span class="lang-en" style="display:none;">Skip to content</span>
     </a>
     <header>
+      <!-- Logo centrato in alto -->
+      <a href="/" class="centered-logo">
+        <picture>
+          <source srcset="immagini/logo.webp" type="image/webp">
+          <img src="immagini/logo.webp" alt="Logo portfolio Lorenzo Giudici" 
+             width="60" height="60" loading="eager">
+        </picture>
+      </a>
+      
+      <!-- Navbar nascosta inizialmente, visibile solo dopo scroll -->
       <nav class="navbar-container" aria-label="Menu principale">
-        <a href="/" class="logo">
-          <picture>
-            <source srcset="immagini/logo.webp" type="image/webp">
-            <img src="immagini/logo.webp" alt="Logo portfolio Lorenzo Giudici" 
-               width="60" height="60" loading="eager">
-          </picture>
-        </a>
-        <!-- Language Switcher -->
-        <div class="lang-switcher" role="group" aria-label="Selettore lingua">
-          <button class="lang-btn" data-lang="it" aria-current="true" aria-pressed="true" aria-label="Italiano - lingua attiva">IT</button>
-          <span style="color:#888;" aria-hidden="true">|</span>
-          <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English - switch language">EN</button>
-        </div>
-        <!-- Theme toggle button -->
-        <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema" data-aria-label-en="Toggle theme">
-          <span class="theme-icon theme-icon-light" aria-hidden="true">☀️</span>
-          <span class="theme-icon theme-icon-dark" aria-hidden="true">🌙</span>
-          <span class="sr-only theme-label-it">Cambia tema</span>
-          <span class="sr-only theme-label-en">Toggle theme</span>
-        </button>
         <button class="burger-menu" aria-label="Apri il menu di navigazione" data-aria-label-en="Open navigation menu" aria-controls="main-nav" aria-expanded="false" aria-haspopup="true">☰</button>
         <ul class="navbar" id="main-nav" role="menubar">
           <li role="none">
@@ -273,7 +263,7 @@ header {
         </ul>
       </nav>
       <div class="hero" role="banner" aria-labelledby="hero-title" data-bg-webp="./immagini/webp/hero/Lorenzo_hero.webp" data-bg-fallback="./immagini/webp/profile/lorenzo_profile.webp">
-        <div class="hero-content">
+        <div class="hero-content centered">
           <h1 id="hero-title" class="gradient-flow">
             <span class="lang-it">Lorenzo Giudici</span>
             <span class="lang-en" style="display:none;">Lorenzo Giudici</span>
@@ -282,19 +272,13 @@ header {
             <span class="lang-it">Product Designer</span>
             <span class="lang-en" style="display:none;">Product Designer</span>
           </p>
-          <div class="hero-buttons mt-md">
-            <a href="#progetti" class="btn btn-neumorphic" aria-label="Scopri i miei progetti" aria-label-en="Discover my projects">
-              <span class="btn-text lang-it">Scopri</span>
-              <span class="btn-text lang-en" style="display:none;">Discover</span>
-            </a>
-            <a href="#contatti" class="btn btn-gradient-border ripple-effect" aria-label="Contattami" aria-label-en="Contact me">
-              <span class="btn-text lang-it">Contattami</span>
-              <span class="btn-text lang-en" style="display:none;">Contact me</span>
-            </a>
-          </div>
         </div>
-        <div class="hero-background">
-          <canvas id="particles-canvas" class="particle-canvas" aria-hidden="true"></canvas>
+        
+        <!-- Indicatore di scroll -->
+        <div class="scroll-indicator">
+          <span class="lang-it">Scorri</span>
+          <span class="lang-en" style="display:none;">Scroll</span>
+          <div class="scroll-arrow"></div>
         </div>
       </div>
     </header>
@@ -1003,47 +987,71 @@ header {
       </div>
     </section>
     <footer role="contentinfo">
-      <p>&copy; 2025 Lorenzo Giudici. Tutti i diritti riservati.</p>
-      <div class="social-icons" aria-label="Social media links">
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <picture>
-            <source 
-              srcset="/immagini/webp/loghi%202/icons8-linkedin-48.webp" 
-              type="image/webp">
-            <img src="/immagini/webp/loghi%202/icons8-linkedin-48.webp" 
-                 alt="LinkedIn" 
-                 class="social-icon"
-                 width="48" height="48" 
-                 loading="lazy"
-                 decoding="async">
-          </picture>
-        </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <picture>
-            <source 
-              srcset="/immagini/webp/loghi%202/icons8-instagram-logo-48.webp" 
-              type="image/webp">
-            <img src="/immagini/webp/loghi%202/icons8-instagram-logo-48.webp" 
-                 alt="Instagram" 
-                 class="social-icon"
-                 width="48" height="48" 
-                 loading="lazy"
-                 decoding="async">
-          </picture>
-        </a>
-        <a href="https://behance.net" target="_blank" rel="noopener noreferrer" aria-label="Behance">
-          <picture>
-            <source 
-              srcset="/immagini/webp/loghi%202/icons8-behance-48.webp" 
-              type="image/webp">
-            <img src="/immagini/webp/loghi%202/icons8-behance-48.webp" 
-                 alt="Behance" 
-                 class="social-icon"
-                 width="48" height="48" 
-                 loading="lazy"
-                 decoding="async">
-          </picture>
-        </a>
+      <div class="footer-container">
+        <!-- Language Switcher a sinistra -->
+        <div class="footer-left">
+          <div class="lang-switcher" role="group" aria-label="Selettore lingua">
+            <button class="lang-btn" data-lang="it" aria-current="true" aria-pressed="true" aria-label="Italiano - lingua attiva">IT</button>
+            <span style="color:#888;" aria-hidden="true">|</span>
+            <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English - switch language">EN</button>
+          </div>
+        </div>
+        
+        <!-- Contenuto centrale -->
+        <div class="footer-center">
+          <p>&copy; 2025 Lorenzo Giudici. Tutti i diritti riservati.</p>
+          <div class="social-icons" aria-label="Social media links">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <picture>
+                <source 
+                  srcset="/immagini/webp/loghi%202/icons8-linkedin-48.webp" 
+                  type="image/webp">
+                <img src="/immagini/webp/loghi%202/icons8-linkedin-48.webp" 
+                     alt="LinkedIn" 
+                     class="social-icon"
+                     width="48" height="48" 
+                     loading="lazy"
+                     decoding="async">
+              </picture>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <picture>
+                <source 
+                  srcset="/immagini/webp/loghi%202/icons8-instagram-logo-48.webp" 
+                  type="image/webp">
+                <img src="/immagini/webp/loghi%202/icons8-instagram-logo-48.webp" 
+                     alt="Instagram" 
+                     class="social-icon"
+                     width="48" height="48" 
+                     loading="lazy"
+                     decoding="async">
+              </picture>
+            </a>
+            <a href="https://behance.net" target="_blank" rel="noopener noreferrer" aria-label="Behance">
+              <picture>
+                <source 
+                  srcset="/immagini/webp/loghi%202/icons8-behance-48.webp" 
+                  type="image/webp">
+                <img src="/immagini/webp/loghi%202/icons8-behance-48.webp" 
+                     alt="Behance" 
+                     class="social-icon"
+                     width="48" height="48" 
+                     loading="lazy"
+                     decoding="async">
+              </picture>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Theme toggle a destra -->
+        <div class="footer-right">
+          <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema" data-aria-label-en="Toggle theme">
+            <span class="theme-icon theme-icon-light" aria-hidden="true">☀️</span>
+            <span class="theme-icon theme-icon-dark" aria-hidden="true">🌙</span>
+            <span class="sr-only theme-label-it">Cambia tema</span>
+            <span class="sr-only theme-label-en">Toggle theme</span>
+          </button>
+        </div>
       </div>
     </footer>
     <button id="back-to-top" aria-label="Torna su" data-aria-label-en="Back to top">↑</button>
@@ -1051,8 +1059,7 @@ header {
     <script src="js/performance.js" async></script>
     <script src="js/si.js" defer></script>
     <script src="js/enhanced-ui.js" defer></script>
-    <script src="js/magnetic-effects.js" defer></script>
-    <script src="js/3d-effects.js" defer></script>
+    <!-- Rimossi gli effetti 3D e magnetici -->
     <script src="js/theme-switcher.js" defer></script>
     
     <!-- Nuovi script ottimizzati -->
