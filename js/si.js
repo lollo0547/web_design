@@ -1,3 +1,59 @@
+// FEATURE DETECTION E UTILITY PER INTERSECTION OBSERVER
+const IOSupport = {
+  // Verifica supporto IntersectionObserver
+  isSupported: 'IntersectionObserver' in window && 'IntersectionObserverEntry' in window,
+  
+  // Utility per creare observer con fallback automatico
+  create: function(callback, options = {}) {
+    if (this.isSupported) {
+      return new IntersectionObserver(callback, options);
+    }
+    return null;
+  },
+  
+  // Log di supporto per debug
+  logSupport: function() {
+    if (this.isSupported) {
+      console.log('✅ IntersectionObserver supportato');
+    } else {
+      console.warn('⚠️ IntersectionObserver non supportato, uso fallback');
+    }
+  }
+};
+
+// Performance utilities
+const PerformanceUtils = {
+  // Throttle function per scroll listeners
+  throttle: function(func, limit) {
+    let inThrottle;
+    return function() {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    }
+  },
+  
+  // Debounce function per resize listeners
+  debounce: function(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+};
+
+// Log supporto feature al caricamento
+IOSupport.logSupport();
+
 document.addEventListener("DOMContentLoaded", () => {
   // Modal e dati progetti
   const projects = document.querySelectorAll(".project");
@@ -335,12 +391,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Reveal on scroll per le sezioni principali
+  // REVEAL ON SCROLL MIGLIORATO CON INTERSECTION OBSERVER + FALLBACK
   const revealSections = document.querySelectorAll('main > section, #timeline-container, #faq');
-  revealSections.forEach(section => {
-    section.classList.add('reveal-on-scroll');
-  });
-  function revealOnScroll() {
+  
+  // Funzione fallback per browser senza IntersectionObserver
+  function revealOnScrollFallback() {
     revealSections.forEach(section => {
       const rect = section.getBoundingClientRect();
       if (rect.top < window.innerHeight - 60) {
@@ -348,9 +403,50 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-  window.addEventListener('scroll', revealOnScroll);
-  window.addEventListener('DOMContentLoaded', revealOnScroll);
-  revealOnScroll();
+
+  // Inizializza reveal animations
+  function initRevealAnimations() {
+    revealSections.forEach(section => {
+      section.classList.add('reveal-on-scroll');
+    });
+
+    // Verifica supporto IntersectionObserver
+    if (IOSupport.isSupported) {
+      // Usa IntersectionObserver per performance migliori
+      const revealObserver = IOSupport.create((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Smetti di osservare l'elemento una volta rivelato
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '0px 0px -100px 0px', // Trigger 100px prima che entri nel viewport
+        threshold: 0.1
+      });
+
+      // Registra observer per monitoring
+      IOMonitor.register(revealObserver, 'reveal-animations');
+
+      revealSections.forEach(section => {
+        revealObserver.observe(section);
+      });
+
+      // Trigger iniziale per elementi già visibili
+      revealOnScrollFallback();
+    } else {
+      // Fallback per browser più vecchi
+      console.warn('IntersectionObserver non supportato, uso fallback scroll listener');
+      const throttledReveal = PerformanceUtils.throttle(revealOnScrollFallback, 100);
+      window.addEventListener('scroll', throttledReveal, { passive: true });
+      window.addEventListener('DOMContentLoaded', revealOnScrollFallback);
+      revealOnScrollFallback();
+    }
+  }
+
+  initRevealAnimations();
 
   // Pulsante "Torna su": aggiungi classe show per animazione
   const backToTopBtn = document.getElementById('back-to-top');
@@ -504,6 +600,11 @@ document.addEventListener('DOMContentLoaded', function () {
         closeTimelineBtn.querySelectorAll('.lang-it').forEach(el => el.style.display = lang === 'it' ? '' : 'none');
         closeTimelineBtn.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
       }
+      
+      // Emit custom event per aggiornare altri componenti
+      document.dispatchEvent(new CustomEvent('languageChanged', {
+        detail: { language: lang }
+      }));
     });
   });
 });
@@ -547,3 +648,727 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+// BURGER MENU TOGGLE MIGLIORATO
+document.addEventListener('DOMContentLoaded', function() {
+  const burgerMenu = document.querySelector('.burger-menu');
+  const navbar = document.querySelector('.navbar');
+  
+  if (burgerMenu && navbar) {
+    // Inizializza stato corretto del menu
+    function initializeMenuState() {
+      const isOpen = navbar.classList.contains('open');
+      burgerMenu.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      updateMenuLabel(isOpen);
+    }
+
+    // Aggiorna l'aria-label del burger menu
+    function updateMenuLabel(isOpen) {
+      const lang = document.querySelector('.lang-btn[aria-current="true"]')?.getAttribute('data-lang') || 'it';
+      const openLabel = lang === 'en' ? 'Open navigation menu' : 'Apri il menu di navigazione';
+      const closeLabel = lang === 'en' ? 'Close navigation menu' : 'Chiudi il menu di navigazione';
+      
+      burgerMenu.setAttribute('aria-label', isOpen ? closeLabel : openLabel);
+    }
+
+    // Funzione unificata per chiudere il menu
+    function closeMenu() {
+      navbar.classList.remove('open');
+      burgerMenu.setAttribute('aria-expanded', 'false');
+      updateMenuLabel(false);
+      
+      // Rimuovi attributi di transizione temporanei
+      navbar.style.transition = '';
+    }
+
+    // Funzione per aprire il menu
+    function openMenu() {
+      navbar.classList.add('open');
+      burgerMenu.setAttribute('aria-expanded', 'true');
+      updateMenuLabel(true);
+      
+      // Focus sul primo link per accessibilità
+      const firstLink = navbar.querySelector('a');
+      if (firstLink) {
+        setTimeout(() => firstLink.focus(), 150); // Delay per animazione
+      }
+    }
+
+    // Toggle del menu principale
+    burgerMenu.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const isOpen = navbar.classList.contains('open');
+      
+      if (isOpen) {
+        closeMenu();
+        // Ritorna focus al burger button
+        burgerMenu.focus();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Supporto tastiera per burger menu
+    burgerMenu.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        burgerMenu.click();
+      }
+    });
+
+    // Chiusura automatica al click sui link
+    const navLinks = navbar.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Solo per link interni (anchor)
+        if (this.getAttribute('href')?.startsWith('#')) {
+          closeMenu();
+          // Piccolo delay per permettere lo scroll smooth
+          setTimeout(() => {
+            burgerMenu.focus();
+          }, 300);
+        }
+      });
+    });
+
+    // Navigazione da tastiera nel menu
+    navbar.addEventListener('keydown', function(e) {
+      if (!navbar.classList.contains('open')) return;
+      
+      const focusableElements = navbar.querySelectorAll('a, button');
+      const focusableArray = Array.from(focusableElements);
+      const currentIndex = focusableArray.indexOf(document.activeElement);
+      
+      switch(e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          const nextIndex = (currentIndex + 1) % focusableArray.length;
+          focusableArray[nextIndex].focus();
+          break;
+          
+        case 'ArrowUp':
+          e.preventDefault();
+          const prevIndex = (currentIndex - 1 + focusableArray.length) % focusableArray.length;
+          focusableArray[prevIndex].focus();
+          break;
+          
+        case 'Home':
+          e.preventDefault();
+          focusableArray[0].focus();
+          break;
+          
+        case 'End':
+          e.preventDefault();
+          focusableArray[focusableArray.length - 1].focus();
+          break;
+      }
+    });
+
+    // Chiusura con ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && navbar.classList.contains('open')) {
+        e.preventDefault();
+        closeMenu();
+        burgerMenu.focus();
+      }
+    });
+
+    // Chiusura al click fuori dal menu
+    document.addEventListener('click', function(e) {
+      if (navbar.classList.contains('open')) {
+        // Controlla se il click è fuori dal menu e burger button
+        if (!navbar.contains(e.target) && !burgerMenu.contains(e.target)) {
+          closeMenu();
+        }
+      }
+    });
+
+    // Gestione cambio orientamento schermo
+    window.addEventListener('orientationchange', function() {
+      // Piccolo delay per aspettare il resize
+      setTimeout(() => {
+        if (window.innerWidth >= 768 && navbar.classList.contains('open')) {
+          // Su desktop, chiudi il menu mobile
+          closeMenu();
+        }
+      }, 100);
+    });
+
+    // Gestione resize della finestra
+    const debouncedResize = PerformanceUtils.debounce(function() {
+      if (window.innerWidth >= 768 && navbar.classList.contains('open')) {
+        closeMenu();
+      }
+    }, 150);
+    
+    window.addEventListener('resize', debouncedResize);
+
+    // Aggiorna label quando cambia lingua
+    document.addEventListener('languageChanged', function() {
+      const isOpen = navbar.classList.contains('open');
+      updateMenuLabel(isOpen);
+    });
+
+    // Inizializza lo stato del menu
+    initializeMenuState();
+
+    // Debug info (solo in development)
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      console.log('🍔 Burger Menu: Enhanced implementation loaded');
+    }
+  }
+});
+
+// SMOOTH SCROLL E NAVIGAZIONE INTELLIGENTE
+document.addEventListener('DOMContentLoaded', function() {
+  // Gestione smooth scroll per link di navigazione
+  const navLinks = document.querySelectorAll('.navbar a[href^="#"]');
+  const sections = document.querySelectorAll('section, .hero, footer');
+  
+  // Offset per navbar fissa
+  const getScrollOffset = () => {
+    const navbar = document.querySelector('.navbar-container');
+    return navbar ? navbar.offsetHeight + 20 : 80;
+  };
+
+  // Smooth scroll personalizzato per migliore controllo
+  function smoothScrollTo(targetY, duration = 800) {
+    const startY = window.pageYOffset;
+    const difference = targetY - startY;
+    const startTime = performance.now();
+
+    function step(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function (easeInOutCubic)
+      const easeProgress = progress < 0.5 
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      
+      window.scrollTo(0, startY + difference * easeProgress);
+      
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    
+    requestAnimationFrame(step);
+  }
+
+  // Click handler per navigation links
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        const targetY = targetElement.offsetTop - getScrollOffset();
+        
+        // Usa smooth scroll nativo se supportato, altrimenti fallback
+        if (CSS.supports('scroll-behavior', 'smooth')) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+            inline: 'nearest'
+          });
+        } else {
+          smoothScrollTo(targetY);
+        }
+
+        // Chiudi mobile menu se aperto
+        const navbar = document.querySelector('.navbar');
+        const burgerMenu = document.querySelector('.burger-menu');
+        if (navbar && navbar.classList.contains('open')) {
+          navbar.classList.remove('open');
+          if (burgerMenu) {
+            burgerMenu.setAttribute('aria-expanded', 'false');
+          }
+        }
+
+        // Update URL senza scroll
+        history.replaceState(null, null, targetId);
+      }
+    });
+  });
+
+  // Indicatore di progresso scroll
+  function createScrollProgress() {
+    const progressBar = document.createElement('div');
+    progressBar.id = 'scroll-progress';
+    progressBar.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--accent-gradient);
+      z-index: 9999;
+      transition: width 0.1s ease-out;
+    `;
+    document.body.appendChild(progressBar);
+    return progressBar;
+  }
+
+  const scrollProgress = createScrollProgress();
+
+  // Update scroll progress
+  function updateScrollProgress() {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    scrollProgress.style.width = scrolled + '%';
+  }
+
+  // Throttled scroll handler per performance
+  let scrollTimeout;
+  function throttledScroll() {
+    if (!scrollTimeout) {
+      scrollTimeout = setTimeout(function() {
+        updateScrollProgress();
+        scrollTimeout = null;
+      }, 10);
+    }
+  }
+
+  window.addEventListener('scroll', throttledScroll, { passive: true });
+
+  // INTERSECTION OBSERVER MIGLIORATO PER NAVBAR ATTIVA + FALLBACK
+  function initSectionHighlighting() {
+    // Verifica supporto IntersectionObserver
+    if (IOSupport.isSupported) {
+      const observerOptions = {
+        root: null,
+        rootMargin: `-${getScrollOffset()}px 0px -50% 0px`,
+        threshold: [0.1, 0.3, 0.7] // Thresholds multipli per maggiore precisione
+      };
+
+      const sectionObserver = IOSupport.create((entries) => {
+        // Ordina le entries per ratio di intersezione
+        const visibleEntries = entries
+          .filter(entry => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleEntries.length > 0) {
+          const mostVisible = visibleEntries[0];
+          const id = mostVisible.target.id;
+          
+          if (id) {
+            // Rimuovi active da tutti i link
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // Aggiungi active al link corrispondente
+            const activeLink = document.querySelector(`.navbar a[href="#${id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('active');
+            }
+          }
+        }
+      }, observerOptions);
+
+      // Registra observer per monitoring
+      IOMonitor.register(sectionObserver, 'navbar-highlighting');
+
+      // Osserva tutte le sezioni con ID
+      sections.forEach(section => {
+        if (section.id) {
+          sectionObserver.observe(section);
+        }
+      });
+
+    } else {
+      // Fallback per browser senza IntersectionObserver
+      console.warn('IntersectionObserver non supportato per navbar highlighting, uso scroll listener');
+      
+      function updateActiveNavOnScroll() {
+        let currentSection = '';
+        const scrollPosition = window.scrollY + getScrollOffset() + 100;
+
+        sections.forEach(section => {
+          if (section.id && section.offsetTop <= scrollPosition) {
+            currentSection = section.id;
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+
+      // Throttled scroll listener per performance
+      const throttledNavScroll = PerformanceUtils.throttle(updateActiveNavOnScroll, 100);
+      window.addEventListener('scroll', throttledNavScroll, { passive: true });
+      updateActiveNavOnScroll(); // Inizializza
+    }
+  }
+
+  initSectionHighlighting();
+});
+
+// SCROLL TO TOP MIGLIORATO
+document.addEventListener('DOMContentLoaded', function() {
+  const backToTopBtn = document.getElementById('back-to-top');
+  
+  if (backToTopBtn) {
+    // Mostra/nascondi con animazione fluida
+    let isVisible = false;
+    
+    function toggleBackToTop() {
+      const shouldShow = window.scrollY > 400;
+      
+      if (shouldShow && !isVisible) {
+        backToTopBtn.style.display = 'flex';
+        backToTopBtn.classList.add('show');
+        isVisible = true;
+      } else if (!shouldShow && isVisible) {
+        backToTopBtn.classList.remove('show');
+        setTimeout(() => {
+          if (!isVisible) backToTopBtn.style.display = 'none';
+        }, 300);
+        isVisible = false;
+      }
+    }
+
+    // Throttled scroll per performance
+    let ticking = false;
+    function updateBackToTop() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          toggleBackToTop();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', updateBackToTop, { passive: true });
+    
+    // Click handler migliorato
+    backToTopBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Smooth scroll to top
+      if (CSS.supports('scroll-behavior', 'smooth')) {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      } else {
+        // Fallback con animazione custom
+        const startY = window.pageYOffset;
+        const startTime = performance.now();
+        const duration = 600;
+
+        function animateScroll(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeProgress = 1 - Math.pow(1 - progress, 3);
+          
+          window.scrollTo(0, startY * (1 - easeProgress));
+          
+          if (progress < 1) {
+            requestAnimationFrame(animateScroll);
+          }
+        }
+        
+        requestAnimationFrame(animateScroll);
+      }
+    });
+
+    // Keyboard support
+    backToTopBtn.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.click();
+      }
+    });
+  }
+});
+
+// KEYBOARD NAVIGATION E ACCESSIBILITY
+document.addEventListener('DOMContentLoaded', function() {
+  // Skip to content link per accessibilità
+  function createSkipLink() {
+    const skipLink = document.createElement('a');
+    skipLink.href = '#chi-sono';
+    skipLink.textContent = 'Salta al contenuto principale';
+    skipLink.className = 'skip-link';
+    skipLink.style.cssText = `
+      position: absolute;
+      top: -40px;
+      left: 6px;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 8px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 10000;
+      transition: top 0.3s;
+    `;
+    
+    skipLink.addEventListener('focus', function() {
+      this.style.top = '6px';
+    });
+    
+    skipLink.addEventListener('blur', function() {
+      this.style.top = '-40px';
+    });
+    
+    document.body.insertBefore(skipLink, document.body.firstChild);
+  }
+
+  createSkipLink();
+
+  // Arrow key navigation per sections
+  document.addEventListener('keydown', function(e) {
+    // Alt + Arrow keys per navigazione sezioni
+    if (e.altKey && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+      e.preventDefault();
+      
+      const sections = Array.from(document.querySelectorAll('section[id], .hero'));
+      const currentSection = sections.find(section => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= 100 && rect.bottom > 100;
+      });
+      
+      if (currentSection) {
+        const currentIndex = sections.indexOf(currentSection);
+        let targetIndex;
+        
+        if (e.key === 'ArrowDown') {
+          targetIndex = Math.min(currentIndex + 1, sections.length - 1);
+        } else {
+          targetIndex = Math.max(currentIndex - 1, 0);
+        }
+        
+        const targetSection = sections[targetIndex];
+        if (targetSection) {
+          targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          // Focus primo elemento focusable nella sezione
+          setTimeout(() => {
+            const focusable = targetSection.querySelector('h2, button, a, input, [tabindex="0"]');
+            if (focusable) {
+              focusable.focus();
+            }
+          }, 500);
+        }
+      }
+    }
+  });
+
+  // Gestione Focus trap migliorata per modal
+  function trapFocus(element) {
+    const focusableElements = element.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+
+    element.addEventListener('keydown', function(e) {
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            lastFocusable.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastFocusable) {
+            firstFocusable.focus();
+            e.preventDefault();
+          }
+        }
+      }
+    });
+
+    // Focus sul primo elemento quando apri la modal
+    if (firstFocusable) {
+      firstFocusable.focus();
+    }
+  }
+
+  // Apply focus trap quando modal è aperta
+  const modal = document.querySelector('.modal');
+  if (modal) {
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'style') {
+          if (modal.style.display === 'flex') {
+            trapFocus(modal);
+          }
+        }
+      });
+    });
+    
+    observer.observe(modal, { attributes: true });
+  }
+});
+
+// SMOOTH SCROLL ENHANCEMENTS
+document.addEventListener('DOMContentLoaded', function() {
+  // PRELOAD IMMAGINI MIGLIORATO CON INTERSECTION OBSERVER + FALLBACK
+  function preloadVisibleImages() {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    
+    if (images.length === 0) return;
+
+    // Verifica supporto IntersectionObserver
+    if (IOSupport.isSupported) {
+      const imageObserver = IOSupport.create((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            
+            // Rimuovi lazy loading e forza caricamento
+            img.removeAttribute('loading');
+            if (img.dataset.src) {
+              img.src = img.dataset.src;
+              img.removeAttribute('data-src');
+            }
+            
+            // Gestisci errori di caricamento
+            img.addEventListener('error', function() {
+              console.warn('Errore caricamento immagine:', img.src);
+              img.alt = 'Immagine non disponibile';
+              img.style.display = 'none';
+            });
+
+            // Aggiungi classe loaded per animazioni CSS
+            img.addEventListener('load', function() {
+              img.classList.add('loaded');
+            });
+
+            observer.unobserve(img);
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '100px', // Carica immagini 100px prima che entrino nel viewport
+        threshold: 0.1
+      });
+
+      // Registra observer per monitoring
+      IOMonitor.register(imageObserver, 'image-preloading');
+
+      images.forEach(img => {
+        imageObserver.observe(img);
+      });
+
+    } else {
+      // Fallback per browser senza IntersectionObserver
+      console.warn('IntersectionObserver non supportato per image loading, carico tutte le immagini');
+      
+      images.forEach(img => {
+        // Carica immediatamente tutte le immagini
+        img.removeAttribute('loading');
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        
+        img.addEventListener('error', function() {
+          console.warn('Errore caricamento immagine:', img.src);
+          img.alt = 'Immagine non disponibile';
+          img.style.display = 'none';
+        });
+
+        img.addEventListener('load', function() {
+          img.classList.add('loaded');
+        });
+      });
+    }
+  }
+
+  preloadVisibleImages();
+
+  // Gestione smooth scroll anche per hash URL iniziali
+  function handleInitialHash() {
+    const hash = window.location.hash;
+    if (hash) {
+      // Delay per permettere il rendering completo
+      setTimeout(() => {
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 100);
+    }
+  }
+
+  handleInitialHash();
+  
+  // Handle hashchange
+  window.addEventListener('hashchange', handleInitialHash);
+});
+
+// Feature detection per CSS fallbacks
+if (!('IntersectionObserver' in window)) {
+  document.documentElement.classList.add('no-intersection-observer');
+}
+
+// MONITOR PERFORMANCE INTERSECTION OBSERVER
+const IOMonitor = {
+  observers: new Set(),
+  
+  // Registra un observer per monitoring
+  register: function(observer, name = 'unnamed') {
+    if (observer) {
+      this.observers.add({ observer, name, created: Date.now() });
+      console.log(`📊 IntersectionObserver '${name}' registrato`);
+    }
+  },
+  
+  // Cleanup tutti gli observers
+  cleanup: function() {
+    this.observers.forEach(({ observer, name }) => {
+      try {
+        observer.disconnect();
+        console.log(`🧹 IntersectionObserver '${name}' disconnesso`);
+      } catch (e) {
+        console.warn(`Errore disconnessione observer '${name}':`, e);
+      }
+    });
+    this.observers.clear();
+  },
+  
+  // Stats sugli observers attivi
+  getStats: function() {
+    return {
+      count: this.observers.size,
+      observers: Array.from(this.observers).map(({ name, created }) => ({
+        name,
+        age: Date.now() - created
+      }))
+    };
+  }
+};
+
+// Cleanup automatico al unload della pagina
+window.addEventListener('beforeunload', () => {
+  IOMonitor.cleanup();
+});
+
+// Log stats ogni 30 secondi (solo in development)
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+  setInterval(() => {
+    const stats = IOMonitor.getStats();
+    if (stats.count > 0) {
+      console.log('📊 IntersectionObserver Stats:', stats);
+    }
+  }, 30000);
+}

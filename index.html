@@ -20,6 +20,22 @@
     <meta name="twitter:image" content="https://yourdomain.example.com/immagini/logo.png">
     <link rel="icon" type="image/x-icon" href="/immagini/favicon.ico">
     <link rel="stylesheet" href="/css/styles.css">
+    <!-- Preload critical images -->
+    <link rel="preload" href="/immagini/logo.png" as="image" type="image/png">
+    <link rel="preload" href="/immagini/Lorenzo_Giudici_portfolio_accademico_2022-20225_-removebg-preview.png" as="image" type="image/png">
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.rel='stylesheet'">
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
@@ -29,13 +45,14 @@
     <header>
       <nav class="navbar-container" aria-label="Menu principale">
         <a href="/" class="logo">
-          <img src="/immagini/logo.png" alt="Logo portfolio Lorenzo Giudici">
+          <img src="/immagini/logo.png" alt="Logo portfolio Lorenzo Giudici" 
+               width="60" height="60" loading="eager">
         </a>
         <!-- Language Switcher -->
-        <div class="lang-switcher" style="margin-right:1rem;">
-          <button class="lang-btn" data-lang="it" aria-current="true">IT</button>
-          <span style="color:#888;">|</span>
-          <button class="lang-btn" data-lang="en">EN</button>
+        <div class="lang-switcher" role="group" aria-label="Selettore lingua" style="margin-right:1rem;">
+          <button class="lang-btn" data-lang="it" aria-current="true" aria-pressed="true" aria-label="Italiano - lingua attiva">IT</button>
+          <span style="color:#888;" aria-hidden="true">|</span>
+          <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English - switch language">EN</button>
         </div>
         <button class="burger-menu" aria-label="Apri il menu di navigazione" aria-label-en="Open navigation menu" aria-controls="main-nav" aria-expanded="false">☰</button>
         <ul class="navbar" id="main-nav">
@@ -71,9 +88,9 @@
           </li>
         </ul>
       </nav>
-      <div class="hero" style="background-image: url('/immagini/Lorenzo_Giudici_portfolio_accademico_2022-20225_-removebg-preview.png'); background-size: cover; background-position: center;">
+      <div class="hero" style="background-image: url('/immagini/Lorenzo_Giudici_portfolio_accademico_2022-20225_-removebg-preview.png'); background-size: cover; background-position: center;" role="banner" aria-labelledby="hero-title">
         <div class="hero-content">
-          <h1>
+          <h1 id="hero-title">
             <span class="lang-it">Portfolio di Lorenzo Giudici</span>
             <span class="lang-en" style="display:none;">Lorenzo Giudici's Portfolio</span>
           </h1>
@@ -85,15 +102,19 @@
         </div>
       </div>
     </header>
-    <main>
-      <section id="chi-sono">
-        <h2>
+    <main role="main">
+      <section id="chi-sono" aria-labelledby="chi-sono-heading">
+        <h2 id="chi-sono-heading">
           <span class="lang-it">Chi Sono</span>
           <span class="lang-en" style="display:none;">About Me</span>
         </h2>
         <div class="profile-block">
           <div class="profile-image-container">
-            <img src="/immagini/Lorenzo Giudici portfolio accademico 2022-20225 .jpeg" class="profile-image" alt="Lorenzo Giudici">
+            <img src="/immagini/Lorenzo Giudici portfolio accademico 2022-20225 .jpeg" 
+                 class="profile-image" 
+                 alt="Foto di Lorenzo Giudici"
+                 width="300" height="300" 
+                 loading="lazy">
           </div>
           <div class="profile-text">
             <p>
@@ -150,15 +171,19 @@
           </div>
         </div>
       </section>
-      <div id="timeline-container">
-        <div class="timeline-horizontal" id="timeline" aria-label="Percorso di studi">
-          <div class="timeline-block" data-type="Certificazioni">
-            <div class="timeline-dot">
-              <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" >
+      <div id="timeline-container" style="display: none;" aria-live="polite">
+        <div class="timeline-horizontal" id="timeline" aria-labelledby="timeline-heading" role="region">
+          <h3 id="timeline-heading" class="sr-only">
+            <span class="lang-it">Percorso di studi di Lorenzo Giudici</span>
+            <span class="lang-en" style="display:none;">Lorenzo Giudici's educational path</span>
+          </h3>
+          <div class="timeline-block" data-type="Certificazioni" role="article" aria-labelledby="cert-1-title">
+            <div class="timeline-dot" aria-hidden="true">
+              <img src="/immagini/loghi 4/icons8-pergamena-di-laurea-50.png" alt="">
             </div>
             <div class="timeline-content">
               <span class="timeline-date">12/04/2019</span>
-              <h4>
+              <h4 id="cert-1-title">
                 <span class="lang-it">2D Computer Aided Design</span>
                 <span class="lang-en" style="display:none;">2D Computer Aided Design</span>
               </h4>
@@ -282,8 +307,8 @@
           </div>
         </div>
       </div>
-      <section id="progetti">
-        <h2>
+      <section id="progetti" aria-labelledby="progetti-heading">
+        <h2 id="progetti-heading">
           <span class="lang-it">Progetti</span>
           <span class="lang-en" style="display:none;">Projects</span>
         </h2>
@@ -295,47 +320,59 @@
             In this section you will find a selection of my academic and personal projects, reflecting my passion for design and creativity. Each project was carried out with attention to detail and the aim of creating innovative solutions.
           </span>
         </p>
-        <div class="project-slideshow">
-          <div class="slide active">
-            <div class="project" tabindex="0" aria-label="Set da caffè">
-              <img src="/immagini/progetto 1/all 22.png" alt="Set da caffè - vista ambientata">
-              <h3>
+        <div class="project-slideshow" role="region" aria-labelledby="progetti-heading" aria-live="polite">
+          <div class="slide active" role="group" aria-label="Slide 1 di 2">
+            <div class="project" tabindex="0" aria-labelledby="project-1-title" role="button">
+              <img src="/immagini/progetto 1/all 22.png" 
+                   alt="Set da caffè - vista ambientata"
+                   width="280" height="200" 
+                   loading="lazy">
+              <h3 id="project-1-title">
                 <span class="lang-it">Set da caffè</span>
                 <span class="lang-en" style="display:none;">Coffee set</span>
               </h3>
             </div>
-            <div class="project" tabindex="0" aria-label="La cardanica">
-              <img src="/immagini/progetto 2/cardanica.jpeg" alt="Anteprima cardanica">
-              <h3>
+            <div class="project" tabindex="0" aria-labelledby="project-2-title" role="button">
+              <img src="/immagini/progetto 2/cardanica.jpeg" 
+                   alt="Anteprima cardanica"
+                   width="280" height="200" 
+                   loading="lazy">
+              <h3 id="project-2-title">
                 <span class="lang-it">La cardanica</span>
                 <span class="lang-en" style="display:none;">The Cardanica</span>
               </h3>
             </div>
           </div>
-          <div class="slide">
-            <div class="project" tabindex="0" aria-label="Poltroncina lounge per Milani">
-              <img src="/immagini/progetto 3/untitled555.png" alt="Poltroncina lounge per Milani">
-              <h3>
+          <div class="slide" role="group" aria-label="Slide 2 di 2">
+            <div class="project" tabindex="0" aria-labelledby="project-3-title" role="button">
+              <img src="/immagini/progetto 3/untitled555.png" 
+                   alt="Poltroncina lounge per Milani"
+                   width="280" height="200" 
+                   loading="lazy">
+              <h3 id="project-3-title">
                 <span class="lang-it">Poltroncina lounge per Milani</span>
                 <span class="lang-en" style="display:none;">Lounge chair for Milani</span>
               </h3>
             </div>
-            <div class="project" tabindex="0" aria-label="Mouse">
-              <img src="/immagini/progetto 4/untitled44.png" alt="Mouse">
-              <h3>
+            <div class="project" tabindex="0" aria-labelledby="project-4-title" role="button">
+              <img src="/immagini/progetto 4/untitled44.png" 
+                   alt="Mouse"
+                   width="280" height="200" 
+                   loading="lazy">
+              <h3 id="project-4-title">
                 <span class="lang-it">mouse</span>
                 <span class="lang-en" style="display:none;">mouse</span>
               </h3>
             </div>
           </div>
         </div>
-        <div class="slideshow-controls">
+        <div class="slideshow-controls" role="group" aria-label="Controlli slideshow progetti">
           <button class="prev-slide" aria-label="Slide precedente" aria-label-en="Previous slide">❮</button>
           <button class="next-slide" aria-label="Slide successiva" aria-label-en="Next slide">❯</button>
         </div>
       </section>
-      <section id="software-skills">
-        <h2>
+      <section id="software-skills" aria-labelledby="skills-heading">
+        <h2 id="skills-heading">
           <span class="lang-it">Software skills</span>
           <span class="lang-en" style="display:none;">Software skills</span>
         </h2>
@@ -347,46 +384,67 @@
             Here you can find an overview of the software I use for design and planning. Each skill is accompanied by a rating that reflects my level of experience.
           </span>
         </p>
-        <ul class="skills">
-          <li>
-            <img src="/immagini/loghi/icons8-photoshop-48.png" alt="Photoshop" title="Photoshop">
+        <ul class="skills" role="list" aria-label="Lista competenze software">
+          <li role="listitem">
+            <img src="/immagini/loghi/icons8-photoshop-48.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>Photoshop</p>
-            <div class="stars">★★★★★</div>
+            <div class="stars" aria-label="5 stelle su 5">★★★★★</div>
           </li>
-          <li>
-            <img src="/immagini/loghi/icons8-adobe-indesign-48.png" alt="InDesign" title="InDesign">
+          <li role="listitem">
+            <img src="/immagini/loghi/icons8-adobe-indesign-48.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>InDesign</p>
-            <div class="stars">★★★★☆</div>
+            <div class="stars" aria-label="4 stelle su 5">★★★★☆</div>
           </li>
-          <li>
-            <img src="/immagini/loghi/icons8-illustrator-48.png" alt="Illustrator" title="Illustrator">
+          <li role="listitem">
+            <img src="/immagini/loghi/icons8-illustrator-48.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>Illustrator</p>
-            <div class="stars">★★★★★</div>
+            <div class="stars" aria-label="5 stelle su 5">★★★★★</div>
           </li>
-          <li>
-            <img src="/immagini/loghi/icons8-rhinoceros-6-48.png" alt="Rhinoceros" title="Rhinoceros">
+          <li role="listitem">
+            <img src="/immagini/loghi/icons8-rhinoceros-6-48.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>Rhinoceros</p>
-            <div class="stars">★★★★☆</div>
+            <div class="stars" aria-label="4 stelle su 5">★★★★☆</div>
           </li>
-          <li>
-            <img src="/immagini/loghi/icons8-solidworks-48.png" alt="Solidworks" title="Solidworks">
+          <li role="listitem">
+            <img src="/immagini/loghi/icons8-solidworks-48.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>Solidworks</p>
-            <div class="stars">★★★★☆</div>
+            <div class="stars" aria-label="4 stelle su 5">★★★★☆</div>
           </li>
-          <li>
-            <img src="/immagini/loghi/icons8-blender-48.png" alt="Blender" title="Blender">
+          <li role="listitem">
+            <img src="/immagini/loghi/icons8-blender-48.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>Blender</p>
-            <div class="stars">★★★★★</div>
+            <div class="stars" aria-label="5 stelle su 5">★★★★★</div>
           </li>
-          <li>
-            <img src="/immagini/loghi/autocad-seeklogo.png" alt="Autocad" title="Autocad">
+          <li role="listitem">
+            <img src="/immagini/loghi/autocad-seeklogo.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>Autocad</p>
-            <div class="stars">★★★★☆</div>
+            <div class="stars" aria-label="4 stelle su 5">★★★★☆</div>
           </li>
         </ul>
       </section>
-      <section id="interessi">
-        <h2>
+      <section id="interessi" aria-labelledby="interessi-heading">
+        <h2 id="interessi-heading">
           <span class="lang-it">Interessi</span>
           <span class="lang-en" style="display:none;">Interests</span>
         </h2>
@@ -398,37 +456,52 @@
             Besides design, I cultivate various passions that enrich my creativity and design approach. Discover more about my personal interests.
           </span>
         </p>
-        <ul class="interests">
-          <li>
-            <img src="/immagini/loghi 3/icons8-mountain-48.png" alt="Montagna" title="Montagna">
+        <ul class="interests" role="list" aria-label="Lista interessi personali">
+          <li role="listitem">
+            <img src="/immagini/loghi 3/icons8-mountain-48.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>
               <span class="lang-it">Montagna</span>
               <span class="lang-en" style="display:none;">Mountains</span>
             </p>
           </li>
-          <li>
-            <img src="/immagini/loghi 3/icons8-trekking-48.png" alt="Trekking" title="Trekking">
+          <li role="listitem">
+            <img src="/immagini/loghi 3/icons8-trekking-48.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>
               <span class="lang-it">Trekking</span>
               <span class="lang-en" style="display:none;">Trekking</span>
             </p>
           </li>
-          <li>
-            <img src="/immagini/loghi 3/icons8-modern-art-48.png" alt="Arte" title="Arte">
+          <li role="listitem">
+            <img src="/immagini/loghi 3/icons8-modern-art-48.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>
               <span class="lang-it">Arte</span>
               <span class="lang-en" style="display:none;">Art</span>
             </p>
           </li>
-          <li>
-            <img src="/immagini/loghi 3/icons8-architecture-48.png" alt="Architetura" title="Architetura">
+          <li role="listitem">
+            <img src="/immagini/loghi 3/icons8-architecture-48.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>
               <span class="lang-it">Architetura</span>
               <span class="lang-en" style="display:none;">Architecture</span>
             </p>
           </li>
-          <li>
-            <img src="/immagini/loghi 3/icons8-film-projector-48.png" alt="Cinema" title="Cinema">
+          <li role="listitem">
+            <img src="/immagini/loghi 3/icons8-film-projector-48.png" 
+                 alt="" aria-hidden="true" 
+                 width="48" height="48" 
+                 loading="lazy">
             <p>
               <span class="lang-it">Cinema</span>
               <span class="lang-en" style="display:none;">Cinema</span>
@@ -436,27 +509,27 @@
           </li>
         </ul>
       </section>
-      <section id="contatti">
-        <h2>
+      <section id="contatti" aria-labelledby="contatti-heading">
+        <h2 id="contatti-heading">
           <span class="lang-it">Contatti</span>
           <span class="lang-en" style="display:none;">Contacts</span>
         </h2>
-        <form id="contact-form" autocomplete="off">
+        <form id="contact-form" autocomplete="off" aria-labelledby="contatti-heading">
           <label for="nome">
             <span class="lang-it">Nome</span>
             <span class="lang-en" style="display:none;">Name</span>
           </label>
-          <input type="text" id="nome" name="nome" required>
+          <input type="text" id="nome" name="nome" required aria-describedby="nome-help">
           <label for="email">
             <span class="lang-it">Email</span>
             <span class="lang-en" style="display:none;">Email</span>
           </label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="email" required aria-describedby="email-help">
           <label for="messaggio">
             <span class="lang-it">Messaggio</span>
             <span class="lang-en" style="display:none;">Message</span>
           </label>
-          <textarea id="messaggio" name="messaggio" required></textarea>
+          <textarea id="messaggio" name="messaggio" required aria-describedby="messaggio-help"></textarea>
           <label for="consenso">
             <input type="checkbox" id="consenso" name="consenso" required>
             <span class="lang-it">Acconsento al trattamento dei miei dati personali.</span>
@@ -473,8 +546,8 @@
         </form>
       </section>
     <!-- FAQ Section -->
-    <section id="faq">
-      <h2>
+    <section id="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">
         <span class="lang-it">FAQ</span>
         <span class="lang-en" style="display:none;">FAQ</span>
       </h2>
@@ -482,13 +555,13 @@
         <span class="lang-it">Risposte alle domande più frequenti sul mio percorso, stile e disponibilità.</span>
         <span class="lang-en" style="display:none;">Answers to the most frequently asked questions about my background, style and availability.</span>
       </div>
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
             <span class="lang-it">Qual è il tuo stile di design?</span>
             <span class="lang-en" style="display:none;">What is your design style?</span>
           </button>
-          <div class="faq-answer" style="display:none;">
+          <div class="faq-answer" style="display:none;" id="faq-answer-1" aria-labelledby="faq-question-1">
             <span class="lang-it">
               Il mio stile si basa su linee pulite, attenzione ai dettagli e funzionalità, con ispirazioni dall’architettura contemporanea e dal design parametrico.
             </span>
@@ -497,12 +570,12 @@
             </span>
           </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
             <span class="lang-it">Sei disponibile per collaborazioni?</span>
             <span class="lang-en" style="display:none;">Are you available for collaborations?</span>
           </button>
-          <div class="faq-answer" style="display:none;">
+          <div class="faq-answer" style="display:none;" id="faq-answer-2" aria-labelledby="faq-question-2">
             <span class="lang-it">
               Sì, sono aperto a nuove collaborazioni e progetti. Puoi contattarmi tramite il modulo nella sezione Contatti.
             </span>
@@ -511,12 +584,12 @@
             </span>
           </div>
         </div>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+        <div class="faq-item" role="listitem">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
             <span class="lang-it">Che software utilizzi principalmente?</span>
             <span class="lang-en" style="display:none;">Which software do you mainly use?</span>
           </button>
-          <div class="faq-answer" style="display:none;">
+          <div class="faq-answer" style="display:none;" id="faq-answer-3" aria-labelledby="faq-question-3">
             <span class="lang-it">
               Utilizzo principalmente Blender, Solidworks, Photoshop, Illustrator e altri software di progettazione e modellazione 3D.
             </span>
@@ -530,14 +603,26 @@
     <footer>
       <p>&copy; 2025 Lorenzo Giudici. Tutti i diritti riservati.</p>
       <div class="social-icons">
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-          <img src="/immagini/loghi 2/icons8-linkedin-48.png" alt="LinkedIn" class="social-icon">
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <img src="/immagini/loghi 2/icons8-linkedin-48.png" 
+               alt="LinkedIn" 
+               class="social-icon"
+               width="48" height="48" 
+               loading="lazy">
         </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <img src="/immagini/loghi 2/icons8-instagram-logo-48.png" alt="Instagram" class="social-icon">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <img src="/immagini/loghi 2/icons8-instagram-logo-48.png" 
+               alt="Instagram" 
+               class="social-icon"
+               width="48" height="48" 
+               loading="lazy">
         </a>
-        <a href="https://behance.net" target="_blank" rel="noopener noreferrer">
-          <img src="/immagini/loghi 2/icons8-behance-48.png" alt="Behance" class="social-icon">
+        <a href="https://behance.net" target="_blank" rel="noopener noreferrer" aria-label="Behance">
+          <img src="/immagini/loghi 2/icons8-behance-48.png" 
+               alt="Behance" 
+               class="social-icon"
+               width="48" height="48" 
+               loading="lazy">
         </a>
       </div>
     </footer>

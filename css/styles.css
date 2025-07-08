@@ -1,25 +1,30 @@
-/* Palette aggiornata e ombre più leggere */
+/* MIGLIORAMENTI ACCESSIBILITÀ E CONTRASTI */
 :root {
   --background-color: #f7f8fa;
-  --text-color: #23272f;
-  --accent-color: #5a2d82;
-  --accent-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  --text-color: #1a1d23; /* Migliorato contrasto da #23272f */
+  --accent-color: #4c1d73; /* Migliorato contrasto da #5a2d82 */
+  --accent-gradient: linear-gradient(135deg, #5a0fa5 0%, #1e5dcc 100%); /* Colori più scuri */
   --card-bg: #fff;
-  --card-shadow: 0 2px 12px rgba(90,45,130,0.07);
+  --card-shadow: 0 2px 12px rgba(76,29,115,0.08); /* Aggiornato per nuovo accent */
   --border-radius: 14px;
   --transition: 0.25s cubic-bezier(.4,0,.2,1);
+  --secondary-text: #4a4a4a; /* Nuovo: per testo secondario con contrasto 7:1 */
+  --muted-text: #6b6b6b; /* Nuovo: per testo meno importante con contrasto 4.5:1 */
 }
+
 [data-theme="dark"] {
-  --background-color: #23272f;
+  --background-color: #1a1d23;
   --text-color: #f7f8fa;
-  --accent-color: #2575fc;
-  --card-bg: #23272f;
-  --card-shadow: 0 2px 12px rgba(37,117,252,0.10);
+  --accent-color: #4285f4; /* Più chiaro per dark mode */
+  --card-bg: #2a2d33;
+  --card-shadow: 0 2px 12px rgba(66,133,244,0.15);
+  --secondary-text: #d1d1d1;
+  --muted-text: #b0b0b0;
 }
 
 /* Body e layout */
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.6;
@@ -27,16 +32,91 @@ body {
   background: var(--background-color);
   transition: background 0.3s, color 0.3s;
   overflow-x: hidden;
+  font-display: swap; /* Migliora caricamento font */
 }
 
-/* Header e Navbar */
+/* IMMAGINI RESPONSIVE E PERFORMANCE */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Aspect ratio per evitare layout shift */
+.project img,
+.profile-image,
+.social-icon {
+  aspect-ratio: auto;
+}
+
+/* Placeholder per immagini in caricamento */
+img[loading="lazy"] {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Ottimizzazioni per ridurre reflow */
+.skills li img,
+.interests li img {
+  flex-shrink: 0;
+}
+
+/* LAYOUT GRID MIGLIORATO */
+/* Mobile: Stack verticale */
+.skills, .interests {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+/* Tablet: 3 colonne */
+@media (min-width: 768px) {
+  .skills, .interests {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+}
+
+/* Desktop: 4 colonne */
+@media (min-width: 1024px) {
+  .skills, .interests {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Large Desktop: fino a 5 colonne */
+@media (min-width: 1200px) {
+  .skills {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .interests {
+    grid-template-columns: repeat(5, 1fr);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+/* MOBILE FIRST APPROACH */
+
+/* Header e Navbar - Mobile First */
 header {
   background: var(--accent-gradient);
   color: #fff;
-  padding: 2.5rem 1rem 1rem 1rem;
+  padding: 1.5rem 1rem 1rem 1rem;
   text-align: center;
   box-shadow: 0 2px 12px rgba(90,45,130,0.08);
 }
+
 .navbar-container {
   position: fixed;
   top: 0;
@@ -50,48 +130,31 @@ header {
   z-index: 100;
   transition: background 0.3s;
   box-shadow: 0 2px 8px rgba(90,45,130,0.06);
+  padding: 0.5rem 1rem;
 }
-[data-theme="dark"] .navbar-container {
-  background: rgba(35,39,47,0.95);
-}
-.logo {
-  margin-left: 2rem;
-}
-.logo img {
-  width: 60px;
-  height: auto;
-  transition: transform var(--transition);
-}
-.logo img:focus,
-.logo img:hover {
-  transform: scale(1.08) rotate(-6deg);
-}
+
+/* Mobile: Burger menu visibile */
 .burger-menu {
-  margin-right: 2rem;
-  display: none;
-  font-size: 2rem;
+  display: block;
+  font-size: 1.8rem;
   cursor: pointer;
   background: none;
   border: none;
   color: var(--accent-color);
   transition: color var(--transition);
+  padding: 0.5rem;
 }
-.burger-menu:focus {
-  outline: 2px solid var(--accent-color);
+
+/* Mobile: Logo più piccolo */
+.logo img {
+  width: 45px;
+  height: auto;
+  transition: transform var(--transition);
 }
+
+/* Mobile: Navbar nascosta di default */
 .navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  gap: 1.2rem;
-  padding: 0 25px 0 0;
-  background: transparent;
-}
-.navbar.open {
-  max-height: 320px;
-  display: flex;
-  flex-direction: column;
+  display: none;
   position: absolute;
   top: 100%;
   left: 0;
@@ -99,7 +162,14 @@ header {
   background: var(--background-color);
   box-shadow: 0 4px 12px rgba(90,45,130,0.10);
   z-index: 99;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
+  flex-direction: column;
+  list-style: none;
+  gap: 0.5rem;
+}
+
+.navbar.open {
+  display: flex;
 }
 .navbar li {
   margin: 0;
@@ -711,6 +781,125 @@ footer {
   }
 }
 
+/* TABLET E DESKTOP MEDIA QUERIES */
+
+/* Tablet: 768px e oltre */
+@media (min-width: 768px) {
+  /* Header per tablet */
+  header {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+  
+  .navbar-container {
+    padding: 0.5rem 2rem;
+  }
+  
+  /* Burger menu nascosto su tablet+ */
+  .burger-menu {
+    display: none;
+  }
+  
+  /* Logo più grande */
+  .logo img {
+    width: 55px;
+  }
+  
+  /* Navbar orizzontale */
+  .navbar {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    width: auto;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    gap: 1rem;
+  }
+  
+  /* Profile block su due colonne */
+  .profile-block {
+    flex-wrap: nowrap;
+  }
+  
+  .profile-image {
+    width: 250px;
+    height: 250px;
+  }
+  
+  /* Skills e interests: più elementi per riga */
+  .skills, .interests {
+    gap: 1.2rem;
+  }
+  
+  .skills li, .interests li {
+    width: 130px;
+    height: 130px;
+  }
+  
+  /* Projects slideshow: due colonne */
+  .project-slideshow {
+    gap: 1.5rem;
+  }
+}
+
+/* Desktop: 1024px e oltre */
+@media (min-width: 1024px) {
+  header {
+    padding: 2.5rem 1rem 1rem 1rem;
+  }
+  
+  .navbar-container {
+    padding: 0.5rem 2rem;
+  }
+  
+  .logo img {
+    width: 60px;
+  }
+  
+  .navbar {
+    gap: 1.2rem;
+  }
+  
+  .profile-image {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .skills li, .interests li {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .project-slideshow {
+    gap: 2rem;
+  }
+  
+  /* Sezioni con più padding */
+  section {
+    padding: 4rem 2rem;
+  }
+}
+
+/* Large Desktop: 1200px e oltre */
+@media (min-width: 1200px) {
+  /* Container centralizzato per grandi schermi */
+  .navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  section {
+    max-width: 1200px;
+    margin: 2rem auto;
+  }
+  
+  .profile-block {
+    gap: 3rem;
+  }
+}
+
 /* Back to Top Button */
 #back-to-top {
   position: fixed;
@@ -796,7 +985,7 @@ footer {
 /* Section Descriptions */
 .section-description {
   font-size: 1.2rem;
-  color: #555;
+  color: var(--secondary-text); /* Migliorato contrasto */
   text-align: center;
   margin-bottom: 2rem;
   line-height: 1.6;
@@ -1106,4 +1295,262 @@ section.reveal-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
   animation: fadeInUp 0.7s cubic-bezier(.4,0,.2,1);
+}
+
+/* INTERSECTION OBSERVER ANIMATIONS E STATES */
+
+/* Reveal animations per sezioni */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animations per elementi multipli */
+.reveal-on-scroll:nth-child(1) { transition-delay: 0ms; }
+.reveal-on-scroll:nth-child(2) { transition-delay: 100ms; }
+.reveal-on-scroll:nth-child(3) { transition-delay: 200ms; }
+.reveal-on-scroll:nth-child(4) { transition-delay: 300ms; }
+.reveal-on-scroll:nth-child(5) { transition-delay: 400ms; }
+
+/* Image loading states */
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+img.loaded,
+img[loading="lazy"]:not([data-src]) {
+  opacity: 1;
+}
+
+/* Fallback per browser senza IntersectionObserver */
+.no-intersection-observer .reveal-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.no-intersection-observer img[loading="lazy"] {
+  opacity: 1;
+}
+
+/* Performance: reduce animations on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    transition: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  img[loading="lazy"] {
+    transition: none;
+    opacity: 1;
+  }
+}
+
+/* Smooth transitions per active navbar links */
+.navbar a {
+  position: relative;
+  transition: color var(--transition), background var(--transition);
+}
+
+.navbar a.active {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+.navbar a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: var(--accent-gradient);
+  border-radius: 1px;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 80%;
+    opacity: 1;
+  }
+}
+
+/* Loading shimmer animation per immagini */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+img[loading="lazy"]:not(.loaded) {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Ottimizzazioni contenment per performance */
+.reveal-on-scroll {
+  contain: layout style;
+}
+
+.navbar {
+  contain: layout style;
+}
+
+/* CSS CONTENMENT per performance */
+.modal,
+.project-slideshow,
+.timeline-horizontal {
+  contain: layout style paint;
+}
+
+/* Critical rendering path optimization */
+.hero {
+  contain: layout style;
+}
+
+/* MOBILE MENU MIGLIORAMENTI */
+
+/* Burger menu button improvements */
+.burger-menu {
+  position: relative;
+  z-index: 101;
+  transition: color var(--transition), transform var(--transition);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.burger-menu:hover,
+.burger-menu:focus {
+  transform: scale(1.1);
+  background: rgba(76, 29, 115, 0.1);
+}
+
+.burger-menu:active {
+  transform: scale(0.95);
+}
+
+/* Burger menu icon animation */
+.burger-menu[aria-expanded="true"] {
+  color: var(--accent-color);
+  transform: rotate(90deg);
+}
+
+/* Mobile navbar improvements */
+.navbar {
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.3s;
+}
+
+.navbar.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Focus management per menu mobile */
+.navbar.open a {
+  transition: background var(--transition), color var(--transition), transform 0.2s;
+}
+
+.navbar.open a:focus {
+  transform: translateX(5px);
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Staggered animation per menu items */
+.navbar.open li:nth-child(1) a { transition-delay: 0ms; }
+.navbar.open li:nth-child(2) a { transition-delay: 50ms; }
+.navbar.open li:nth-child(3) a { transition-delay: 100ms; }
+.navbar.open li:nth-child(4) a { transition-delay: 150ms; }
+.navbar.open li:nth-child(5) a { transition-delay: 200ms; }
+
+/* Backdrop per menu mobile */
+.navbar.open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+  opacity: 0;
+  animation: fadeInBackdrop 0.3s forwards;
+}
+
+@keyframes fadeInBackdrop {
+  to { opacity: 1; }
+}
+
+/* Menu mobile: migliore touch target */
+@media (max-width: 767px) {
+  .navbar a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px 0;
+  }
+  
+  .burger-menu {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .burger-menu {
+    border: 1px solid currentColor;
+  }
+  
+  .navbar.open {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .burger-menu,
+  .navbar,
+  .navbar a {
+    transition: none;
+  }
+  
+  .burger-menu[aria-expanded="true"] {
+    transform: none;
+  }
+  
+  .navbar.open::before {
+    animation: none;
+    opacity: 1;
+  }
 }
