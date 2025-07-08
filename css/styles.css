@@ -421,6 +421,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -512,6 +513,7 @@ header {
   /* Preparazione per parallax */
   will-change: background-position;
   background-size: cover;
+  background-position: center;
   background-attachment: fixed;
   transition: var(--transition-slow);
   
@@ -1697,8 +1699,9 @@ footer {
   .navbar-container {
     max-width: 1400px;
     margin: 0 auto;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    transform: none;
   }
   
   section {

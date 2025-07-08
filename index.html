@@ -82,6 +82,7 @@ header {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -112,7 +113,7 @@ header {
   background-size: cover;
   background-position: center;
   /* Fallback background image in case JavaScript fails */
-  background-image: url('immagini/webp/hero/Lorenzo_hero.webp');
+  background-image: url('./immagini/webp/hero/Lorenzo_hero.webp');
 }
 
 .hero-content {
@@ -154,8 +155,8 @@ header {
       <nav class="navbar-container" aria-label="Menu principale">
         <a href="/" class="logo">
           <picture>
-            <source srcset="/immagini/logo.webp" type="image/webp">
-            <img src="/immagini/logo.webp" alt="Logo portfolio Lorenzo Giudici" 
+            <source srcset="immagini/logo.webp" type="image/webp">
+            <img src="immagini/logo.webp" alt="Logo portfolio Lorenzo Giudici" 
                width="60" height="60" loading="eager">
           </picture>
         </a>
@@ -206,7 +207,7 @@ header {
           </li>
         </ul>
       </nav>
-      <div class="hero" role="banner" aria-labelledby="hero-title" data-bg-webp="immagini/webp/hero/Lorenzo_hero.webp" data-bg-fallback="immagini/webp/profile/lorenzo_profile.webp">
+      <div class="hero" role="banner" aria-labelledby="hero-title" data-bg-webp="./immagini/webp/hero/Lorenzo_hero.webp" data-bg-fallback="./immagini/webp/profile/lorenzo_profile.webp">
         <div class="hero-content">
           <h1 id="hero-title">
             <span class="lang-it">Portfolio di Lorenzo Giudici</span>
