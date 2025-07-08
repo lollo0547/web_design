@@ -14,21 +14,25 @@
 
   // Apply WebP or fallback background images
   function setBackgroundImages(webpSupported) {
+    console.log('Setting background images, WebP supported:', webpSupported);
     const elements = document.querySelectorAll('[data-bg-webp]');
+    console.log('Found elements:', elements.length);
     elements.forEach(element => {
       const bgImage = webpSupported ? element.getAttribute('data-bg-webp') : element.getAttribute('data-bg-fallback');
+      console.log('Using background image:', bgImage);
       if (bgImage) {
         element.style.backgroundImage = `url('${bgImage}')`;
         element.style.backgroundSize = 'cover';
         element.style.backgroundPosition = 'center';
+        console.log('Applied background to element:', element);
       }
     });
   }
 
   // Preload hero images for faster rendering
   function preloadHeroImages() {
-    const heroWebp = '/immagini/webp/hero/lorenzo_hero.webp';
-    const heroFallback = '/immagini/webp/profile/lorenzo_profile.webp';
+    const heroWebp = 'immagini/webp/hero/Lorenzo_hero.webp';
+    const heroFallback = 'immagini/webp/profile/lorenzo_profile.webp';
     
     // Create and append preload links
     const preloadWebp = document.createElement('link');
@@ -144,4 +148,112 @@
       }
     });
   });
+})();
+
+// Performance Utility Functions
+window.PerformanceUtils = window.PerformanceUtils || {};
+
+// Throttle function for performance-critical event handlers
+PerformanceUtils.throttle = function(callback, limit) {
+  let waiting = false;
+  return function() {
+    if (!waiting) {
+      callback.apply(this, arguments);
+      waiting = true;
+      setTimeout(function() {
+        waiting = false;
+      }, limit);
+    }
+  };
+};
+
+// Debounce function for UI updates that don't need to happen on every frame
+PerformanceUtils.debounce = function(callback, delay) {
+  let timer;
+  return function() {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      callback.apply(context, args);
+    }, delay);
+  };
+};
+
+// Advanced Responsive Image Loading
+(function() {
+  // Helper to determine connection speed
+  function getConnectionSpeed() {
+    if (!navigator.connection) {
+      return 'unknown';
+    }
+    
+    const { effectiveType, saveData } = navigator.connection;
+    
+    if (saveData) {
+      return 'slow'; // User has requested data saving mode
+    }
+    
+    // Connection types: slow 2G, 2G, 3G, 4G
+    if (['slow-2g', '2g'].includes(effectiveType)) {
+      return 'slow';
+    } else if (effectiveType === '3g') {
+      return 'medium';
+    }
+    
+    return 'fast'; // 4G and better
+  }
+  
+  // Adjust image quality based on connection
+  function getImageParams() {
+    const speed = getConnectionSpeed();
+    
+    switch (speed) {
+      case 'slow':
+        return { quality: 'low', priority: 'low' };
+      case 'medium':
+        return { quality: 'medium', priority: 'auto' };
+      default:
+        return { quality: 'high', priority: 'high' };
+    }
+  }
+
+  // Apply loading priority to images
+  function optimizeImages() {
+    const { quality, priority } = getImageParams();
+    console.log(`Optimizing images for ${quality} quality and ${priority} priority`);
+    
+    // Above-the-fold images get high priority
+    const aboveTheFoldImages = document.querySelectorAll('header img, .hero img, .hero-content img');
+    aboveTheFoldImages.forEach(img => {
+      img.loading = 'eager';
+      img.fetchpriority = 'high';
+    });
+    
+    // Handle srcset quality adjustments for performance
+    document.querySelectorAll('img[srcset]').forEach(img => {
+      if (quality === 'low' || quality === 'medium') {
+        // For slow connections, modify srcset to prefer smaller images
+        const srcset = img.getAttribute('srcset');
+        if (srcset) {
+          const srcsetParts = srcset.split(',');
+          
+          if (quality === 'low' && srcsetParts.length > 1) {
+            // Use only smaller versions for low quality
+            img.setAttribute('srcset', srcsetParts[0]);
+          } else if (quality === 'medium' && srcsetParts.length > 2) {
+            // Use only medium and smaller versions
+            img.setAttribute('srcset', srcsetParts.slice(0, 2).join(','));
+          }
+        }
+      }
+    });
+  }
+
+  // Wait for document to be ready before optimizing
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', optimizeImages);
+  } else {
+    optimizeImages();
+  }
 })();

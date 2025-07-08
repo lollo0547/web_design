@@ -284,9 +284,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "Set da caffè": {
       enKey: "Coffee set",
       sliderImages: [
-        "/immagini/webp/progetto 1/all 22.webp",
-        "/immagini/webp/progetto 1/tazzina_.webp",
-        "/immagini/webp/progetto 1/zuccheriera 2_.webp"
+        "/immagini/webp/progetto%201/all%2022.webp",
+        "/immagini/webp/progetto%201/tazzina_.webp",
+        "/immagini/webp/progetto%201/zuccheriera%202_.webp"
       ],
       sliderTitles: [
         "Set da caffè - ambientato",
@@ -305,9 +305,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "La cardanica": {
       enKey: "The Cardanica",
       sliderImages: [
-        "/immagini/webp/progetto 2/cardanica 600.webp",
-        "/immagini/webp/progetto 2/cardanica 900.webp",
-        "/immagini/webp/progetto 2/cardanica.webp"
+        "/immagini/webp/progetto%202/cardanica%20600.webp",
+        "/immagini/webp/progetto%202/cardanica%20900.webp",
+        "/immagini/webp/progetto%202/cardanica.webp"
       ],
       sliderTitles: [
         "Cardanica - 600",
@@ -326,9 +326,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "Poltroncina lounge per Milani": {
       enKey: "Lounge chair for Milani",
       sliderImages: [
-        "/immagini/webp/progetto 3/untitled555.webp",
-        "/immagini/webp/progetto 3/untitled202.webp",
-        "/immagini/webp/progetto 3/untitled702.webp"
+        "/immagini/webp/progetto%203/untitled555.webp",
+        "/immagini/webp/progetto%203/untitled202.webp",
+        "/immagini/webp/progetto%203/untitled702.webp"
       ],
       sliderTitles: [
         "Poltroncina lounge per Milani - ambientato",
@@ -346,9 +346,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "mouse": {
       enKey: "mouse",
       sliderImages: [
-        "/immagini/webp/progetto 4/untitled44.webp",
-        "/immagini/webp/progetto 4/untitled33.webp",
-        "/immagini/webp/progetto 4/untitled.webp"
+        "/immagini/webp/progetto%204/untitled44.webp",
+        "/immagini/webp/progetto%204/untitled33.webp",
+        "/immagini/webp/progetto%204/untitled.webp"
       ],
       sliderTitles: [
         "mouse - ambientato",
@@ -485,12 +485,27 @@ document.addEventListener("DOMContentLoaded", () => {
                         })();
         announcer.textContent = lang === 'en' ? `Project details dialog opened: ${projectTitle}` : `Finestra di dialogo dettagli progetto aperta: ${projectTitle}`;
         
-        // Show the modal and set focus
-        modal.style.display = "flex";
+        // Save last focused element
+        lastFocusedElement = document.activeElement;
+        
+        // Set aria-hidden on main content for better screen reader experience
+        document.querySelectorAll('main, header:not(.modal), footer').forEach(el => {
+          el.setAttribute('aria-hidden', 'true');
+          if ('inert' in HTMLElement.prototype) {
+            el.setAttribute('inert', '');
+          }
+        });
+        
+        // Show the modal with animation
+        modal.classList.add('open');
         document.body.style.overflow = "hidden";
         
         // Move focus into the modal for accessibility
-        closeModal.focus();
+        setTimeout(() => {
+          closeModal.focus();
+          // Setup focus trap
+          setupFocusTrap();
+        }, 50);
       }
     }
     
@@ -528,7 +543,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Improved focus trap inside modal
   modal.addEventListener("keydown", (e) => {
-    if (modal.style.display !== "flex") return;
+    if (!modal.classList.contains('open')) return;
     
     // Get all focusable elements in the modal
     const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
@@ -560,10 +575,54 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Create a function to handle modal closing
+  // Keep track of last focused element before modal opened
+  let lastFocusedElement = null;
+  
+  // Set up focus trap to keep focus inside modal
+  function setupFocusTrap() {
+    const focusableElements = modal.querySelectorAll(
+      'a[href], button, textarea, input, select, [tabindex]:not([tabindex="-1"])'
+    );
+    
+    if (focusableElements.length === 0) return;
+    
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+    
+    modal.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab') return;
+      
+      // If Shift+Tab and focus is on first element, move to last element
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      }
+      // If Tab and focus is on last element, move to first element
+      else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+    });
+  }
+  
   function closeModalHandler() {
-    modal.style.display = "none";
+    modal.classList.remove('open');
     document.body.style.overflow = "";
     stopAutoplay();
+    
+    // Remove aria-hidden from main content
+    document.querySelectorAll('main, header:not(.modal), footer').forEach(el => {
+      el.removeAttribute('aria-hidden');
+      el.removeAttribute('inert');
+    });
+    
+    // Return focus to the element that opened the modal
+    if (lastFocusedElement) {
+      setTimeout(() => {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }, 100);
+    }
     
     // Announce to screen readers that the modal is closed
     const announcer = document.getElementById('modal-close-announcer') || 
@@ -595,8 +654,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Close when clicking outside the modal content
   modal.addEventListener("click", (e) => {
     if (e.target === modal) {
+      closeModalHandler();
+    }
+  });
+  
+  // Close with ESC key
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains('open')) {
       closeModalHandler();
     }
   });
@@ -751,7 +818,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Timeline toggle + filtro (nuovo comportamento dropdown)
+// Timeline toggle + filtro (comportamento dropdown migliorato)
 document.addEventListener('DOMContentLoaded', function () {
   const btn = document.getElementById('toggle-timeline-btn');
   const timelineContainer = document.getElementById('timeline-container');
@@ -759,38 +826,90 @@ document.addEventListener('DOMContentLoaded', function () {
   const filterOptions = filterDropdown ? filterDropdown.querySelectorAll('.timeline-filter-option') : [];
   const selectedLabel = document.getElementById('timeline-selected-label');
   const timelineBlocks = document.querySelectorAll('.timeline-block');
+  const closeTimelineBtn = document.getElementById('close-timeline-btn');
   let isDropdownOpen = false;
 
+  // Funzione per ottenere il tipo di blocco timeline
   function getBlockType(block) {
-    const img = block.querySelector('.timeline-dot img');
-    if (!img) return '';
-    const src = img.getAttribute('src') || '';
-    if (src.includes('icons8-diploma-50.png')) return 'Diplomi';
-    if (src.includes('icons8-pergamena-di-laurea-50.png')) return 'Certificazioni';
-    return '';
+    // Usa l'attributo data-type invece dell'immagine per maggiore affidabilità
+    return block.dataset.type || '';
   }
 
+  // Funzione per mostrare/nascondere la timeline
   function showTimeline(show) {
     timelineContainer.style.display = show ? 'block' : 'none';
-    btn.setAttribute('aria-expanded', show && isDropdownOpen ? 'true' : 'false');
-    if (selectedLabel) selectedLabel.style.display = show ? 'inline' : 'none';
-    filterDropdown.style.display = (show && isDropdownOpen) ? 'block' : 'none';
+    btn.setAttribute('aria-expanded', isDropdownOpen ? 'true' : 'false');
+    
+    // Gestione del dropdown
+    if (show && isDropdownOpen) {
+      positionDropdown();
+      filterDropdown.style.display = 'block';
+    } else {
+      filterDropdown.style.display = 'none';
+    }
   }
 
+  // Funzione per posizionare il dropdown correttamente
+  function positionDropdown() {
+    // Reset delle proprietà di posizionamento
+    filterDropdown.style.left = '0';
+    filterDropdown.style.right = 'auto';
+    
+    // Su mobile occupa tutta la larghezza
+    if (window.innerWidth < 768) {
+      filterDropdown.style.width = '100%';
+      return;
+    }
+    
+    // Su desktop posiziona il dropdown in base allo spazio disponibile
+    setTimeout(() => {
+      const btnRect = btn.getBoundingClientRect();
+      const dropdownRect = filterDropdown.getBoundingClientRect();
+      
+      // Se il dropdown esce dallo schermo a destra
+      if (btnRect.left + dropdownRect.width > window.innerWidth) {
+        filterDropdown.style.left = 'auto';
+        filterDropdown.style.right = '0';
+      }
+      
+      // Assicura che il dropdown sia sopra altri elementi
+      filterDropdown.style.zIndex = '25';
+    }, 0);
+  }
+
+  // Funzione per applicare il filtro alla timeline
   function applyTimelineFilter(value) {
     timelineBlocks.forEach(block => {
       const type = getBlockType(block);
-      block.style.display = (type === value) ? '' : 'none';
+      block.style.display = (type === value || value === 'All') ? 'flex' : 'none';
     });
-    if (selectedLabel) selectedLabel.textContent = value;
+    
+    // Aggiorna l'etichetta del filtro selezionato
+    if (selectedLabel) {
+      const selectedOption = document.querySelector(`.timeline-filter-option[data-value="${value}"]`);
+      if (selectedOption) {
+        // Clona il contenuto dell'opzione per l'etichetta
+        selectedLabel.innerHTML = '';
+        
+        // Copia sia la versione italiana che inglese
+        const itText = selectedOption.querySelector('.lang-it');
+        const enText = selectedOption.querySelector('.lang-en');
+        
+        if (itText) selectedLabel.appendChild(itText.cloneNode(true));
+        if (enText) selectedLabel.appendChild(enText.cloneNode(true));
+      }
+    }
+    
+    // Aggiorna lo stato visivo e ARIA delle opzioni
     filterOptions.forEach(opt => {
-      opt.style.fontWeight = (opt.dataset.value === value) ? 'bold' : 'normal';
-      opt.style.background = (opt.dataset.value === value) ? '#f0f4ff' : 'none';
-      opt.setAttribute('aria-selected', opt.dataset.value === value ? 'true' : 'false');
+      const isSelected = opt.dataset.value === value;
+      opt.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      opt.classList.toggle('selected', isSelected);
     });
+    
+    // Mostra il container della timeline
+    timelineContainer.style.display = 'block';
   }
-
-  const closeTimelineBtn = document.getElementById('close-timeline-btn');
 
   if (btn && timelineContainer && filterDropdown) {
     // Stato iniziale
@@ -799,8 +918,11 @@ document.addEventListener('DOMContentLoaded', function () {
     applyTimelineFilter('Certificazioni');
     filterDropdown.style.display = 'none';
 
+    // Gestione click sul bottone principale
     btn.addEventListener('click', function (e) {
       e.preventDefault();
+      e.stopPropagation();
+      
       // Se la timeline è chiusa, apri timeline e dropdown
       if (timelineContainer.style.display === 'none' || timelineContainer.style.display === '') {
         isDropdownOpen = true;
@@ -812,11 +934,17 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
+    // Gestione click sulle opzioni di filtro
     filterOptions.forEach(opt => {
       opt.addEventListener('click', function (e) {
         e.stopPropagation();
         applyTimelineFilter(this.dataset.value);
-        // Il dropdown resta visibile dopo la selezione
+        
+        // Chiudi il dropdown dopo la selezione
+        setTimeout(() => {
+          isDropdownOpen = false;
+          showTimeline(true); // Mantiene la timeline visibile ma nasconde il dropdown
+        }, 150);
       });
     });
 
@@ -828,9 +956,23 @@ document.addEventListener('DOMContentLoaded', function () {
         timelineContainer.style.display = 'none';
         filterDropdown.style.display = 'none';
         btn.setAttribute('aria-expanded', 'false');
-        if (selectedLabel) selectedLabel.style.display = 'none';
       });
     }
+    
+    // Chiudi dropdown al click fuori
+    document.addEventListener('click', function(e) {
+      if (isDropdownOpen && !filterDropdown.contains(e.target) && e.target !== btn) {
+        isDropdownOpen = false;
+        showTimeline(true); // Mantiene la timeline visibile ma nasconde il dropdown
+      }
+    });
+    
+    // Gestione del resize per riposizionare correttamente il dropdown
+    window.addEventListener('resize', function() {
+      if (isDropdownOpen) {
+        positionDropdown();
+      }
+    });
   }
 });
 
@@ -1547,7 +1689,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const observer = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
         if (mutation.attributeName === 'style') {
-          if (modal.style.display === 'flex') {
+          if (modal.classList.contains('open')) {
             trapFocus(modal);
           }
         }
@@ -1808,5 +1950,66 @@ document.addEventListener('DOMContentLoaded', function() {
   // Aggiungi event listener a tutti i bottoni
   buttons.forEach(button => {
     button.addEventListener('click', createRipple);
+  });
+});
+
+// THEME TOGGLE FUNCTIONALITY
+document.addEventListener('DOMContentLoaded', function() {
+  const themeToggle = document.getElementById('theme-toggle');
+  if (!themeToggle) return;
+  
+  // Check for saved theme preference or OS preference
+  function getInitialTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme;
+    }
+    
+    // Check for OS preference
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  
+  // Apply theme to document
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    // Update aria-pressed state for the toggle button
+    if (themeToggle) {
+      themeToggle.setAttribute('aria-pressed', theme === 'dark');
+    }
+    
+    // Dispatch event for other components to react
+    document.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+  }
+  
+  // Initialize theme
+  const initialTheme = getInitialTheme();
+  applyTheme(initialTheme);
+  
+  // Toggle theme when button is clicked
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    // Add animation
+    document.documentElement.classList.add('theme-transition');
+    
+    // Apply new theme
+    applyTheme(newTheme);
+    
+    // Remove animation class after transition
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-transition');
+    }, 500);
+  });
+  
+  // Listen for OS theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    if (!localStorage.getItem('theme')) {
+      // Only auto-switch if user hasn't manually set a preference
+      const newTheme = event.matches ? 'dark' : 'light';
+      applyTheme(newTheme);
+    }
   });
 });

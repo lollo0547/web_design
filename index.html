@@ -18,17 +18,16 @@
     <meta name="twitter:title" content="Portfolio di Lorenzo Giudici">
     <meta name="twitter:description" content="Portfolio professionale di Lorenzo Giudici, product designer. Scopri i progetti, competenze e contatti.">
     <meta name="twitter:image" content="https://yourdomain.example.com/immagini/logo.webp">
-    <link rel="icon" type="image/x-icon" href="/immagini/favicon.ico">
-    <link rel="stylesheet" href="/css/styles.css" media="print" onload="this.media='all'">
+    <link rel="icon" type="image/x-icon" href="immagini/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
     
     <!-- Resource hints -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     
     <!-- Preload critical resources -->
-    <link rel="preload" href="/immagini/logo.webp" as="image" type="image/webp">
-    <link rel="preload" href="/js/performance.js" as="script" fetchpriority="high">
-    <link rel="preload" href="/js/performance.js" as="script">
+    <link rel="preload" href="immagini/logo.webp" as="image" type="image/webp">
+    <link rel="preload" href="js/performance.js" as="script" fetchpriority="high">
     <!-- Critical CSS -->
     <style>
 /* Critical CSS for Lorenzo Giudici's Portfolio */
@@ -112,6 +111,8 @@ header {
   overflow: hidden;
   background-size: cover;
   background-position: center;
+  /* Fallback background image in case JavaScript fails */
+  background-image: url('immagini/webp/hero/Lorenzo_hero.webp');
 }
 
 .hero-content {
@@ -145,21 +146,32 @@ header {
     </noscript>
   </head>
   <body>
+    <a href="#main-content" class="skip-to-content">
+      <span class="lang-it">Vai al contenuto</span>
+      <span class="lang-en" style="display:none;">Skip to content</span>
+    </a>
     <header>
       <nav class="navbar-container" aria-label="Menu principale">
         <a href="/" class="logo">
           <picture>
-            <source srcset="/immagini/logo.webp 1x" type="image/webp">
+            <source srcset="/immagini/logo.webp" type="image/webp">
             <img src="/immagini/logo.webp" alt="Logo portfolio Lorenzo Giudici" 
                width="60" height="60" loading="eager">
           </picture>
         </a>
         <!-- Language Switcher -->
-        <div class="lang-switcher" role="group" aria-label="Selettore lingua" style="margin-right:1rem;">
+        <div class="lang-switcher" role="group" aria-label="Selettore lingua">
           <button class="lang-btn" data-lang="it" aria-current="true" aria-pressed="true" aria-label="Italiano - lingua attiva">IT</button>
           <span style="color:#888;" aria-hidden="true">|</span>
           <button class="lang-btn" data-lang="en" aria-pressed="false" aria-label="English - switch language">EN</button>
         </div>
+        <!-- Theme toggle button -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema" data-aria-label-en="Toggle theme">
+          <span class="theme-icon theme-icon-light" aria-hidden="true">☀️</span>
+          <span class="theme-icon theme-icon-dark" aria-hidden="true">🌙</span>
+          <span class="sr-only theme-label-it">Cambia tema</span>
+          <span class="sr-only theme-label-en">Toggle theme</span>
+        </button>
         <button class="burger-menu" aria-label="Apri il menu di navigazione" data-aria-label-en="Open navigation menu" aria-controls="main-nav" aria-expanded="false" aria-haspopup="true">☰</button>
         <ul class="navbar" id="main-nav" role="menubar">
           <li role="none">
@@ -194,7 +206,7 @@ header {
           </li>
         </ul>
       </nav>
-      <div class="hero" role="banner" aria-labelledby="hero-title" data-bg-webp="/immagini/webp/hero/lorenzo_hero.webp" data-bg-fallback="/immagini/webp/profile/lorenzo_profile.webp">
+      <div class="hero" role="banner" aria-labelledby="hero-title" data-bg-webp="immagini/webp/hero/Lorenzo_hero.webp" data-bg-fallback="immagini/webp/profile/lorenzo_profile.webp">
         <div class="hero-content">
           <h1 id="hero-title">
             <span class="lang-it">Portfolio di Lorenzo Giudici</span>
@@ -208,7 +220,7 @@ header {
         </div>
       </div>
     </header>
-    <main role="main">
+    <main id="main-content" role="main">
       <section id="chi-sono" aria-labelledby="chi-sono-heading">
         <h2 id="chi-sono-heading">
           <span class="lang-it">Chi Sono</span>
@@ -218,7 +230,7 @@ header {
           <div class="profile-image-container">
             <picture>
               <source 
-                srcset="/immagini/webp/profile/lorenzo_profile.webp 1x" 
+                srcset="/immagini/webp/profile/lorenzo_profile.webp" 
                 type="image/webp">
               <img src="/immagini/webp/profile/lorenzo_profile.webp" 
                    class="profile-image" 
@@ -250,7 +262,7 @@ header {
                 My passion for the mountains was passed on to me by my grandparents during childhood, but it remained in the background until shortly before the Covid period.
               </span>
             </p>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap; position: relative;">
+            <div class="buttons-container">
               <a href="#contatti" class="btn-primary">
                 <span class="lang-it">Contattami</span>
                 <span class="lang-en" style="display:none;">Contact me</span>
@@ -266,18 +278,22 @@ header {
                   <svg style="width:1em;height:1em;vertical-align:middle;" viewBox="0 0 20 20"><path fill="currentColor" d="M5.5 8l4.5 4 4.5-4z"/></svg>
                 </button>
                 <div id="timeline-filter-dropdown">
-                  <button class="timeline-filter-option" data-value="Certificazioni" aria-selected="true">
-                    <span class="lang-it">Certificazioni</span>
-                    <span class="lang-en" style="display:none;">Certifications</span>
-                  </button>
-                  <button class="timeline-filter-option" data-value="Diplomi">
-                    <span class="lang-it">Diplomi</span>
-                    <span class="lang-en" style="display:none;">Degrees</span>
-                  </button>
-                  <button id="close-timeline-btn" class="btn-primary" style="margin: 0.5rem 1rem 0.5rem 1rem; padding: 0.5rem 1.2rem; font-size: 0.98em; background: #e3e6f0; color: #5a2d82; border-radius: 7px; font-weight: 600;">
-                    <span class="lang-it">Nascondi percorso studi</span>
-                    <span class="lang-en" style="display:none;">Hide education</span>
-                  </button>
+                  <div class="timeline-filter-options">
+                    <button class="timeline-filter-option" data-value="Certificazioni" aria-selected="true">
+                      <span class="lang-it">Certificazioni</span>
+                      <span class="lang-en" style="display:none;">Certifications</span>
+                    </button>
+                    <button class="timeline-filter-option" data-value="Diplomi">
+                      <span class="lang-it">Diplomi</span>
+                      <span class="lang-en" style="display:none;">Degrees</span>
+                    </button>
+                  </div>
+                  <div class="timeline-filter-actions">
+                    <button id="close-timeline-btn" class="btn-close-timeline">
+                      <span class="lang-it">Nascondi percorso studi</span>
+                      <span class="lang-en" style="display:none;">Hide education</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -438,9 +454,9 @@ header {
             <div class="project" tabindex="0" aria-labelledby="project-1-title" role="button">
               <picture>
                 <source 
-                  srcset="/immagini/webp/progetto 1/all 22.webp 1x" 
+                  srcset="/immagini/webp/progetto%201/all%2022.webp" 
                   type="image/webp">
-                <img src="/immagini/webp/progetto 1/all 22.webp" 
+                <img src="/immagini/webp/progetto%201/all%2022.webp" 
                      alt="Set da caffè - vista ambientata"
                      width="280" height="200"
                      loading="lazy"
@@ -455,9 +471,9 @@ header {
             <div class="project" tabindex="0" aria-labelledby="project-2-title" role="button">
               <picture>
                 <source 
-                  srcset="/immagini/webp/progetto 2/cardanica.webp 1x" 
+                  srcset="/immagini/webp/progetto%202/cardanica.webp" 
                   type="image/webp">
-                <img src="/immagini/webp/progetto 2/cardanica.webp" 
+                <img src="/immagini/webp/progetto%202/cardanica.webp" 
                      alt="Anteprima cardanica"
                      width="280" height="200"
                      loading="lazy"
@@ -473,9 +489,9 @@ header {
             <div class="project" tabindex="0" aria-labelledby="project-3-title" role="button">
               <picture>
                 <source 
-                  srcset="/immagini/webp/progetto 3/untitled555.webp 1x" 
+                  srcset="/immagini/webp/progetto%203/untitled555.webp" 
                   type="image/webp">
-                <img src="/immagini/webp/progetto 3/untitled555.webp" 
+                <img src="/immagini/webp/progetto%203/untitled555.webp" 
                      alt="Poltroncina lounge per Milani"
                      width="280" height="200"
                      loading="lazy"
@@ -489,9 +505,9 @@ header {
             <div class="project" tabindex="0" aria-labelledby="project-4-title" role="button">
               <picture>
                 <source 
-                  srcset="/immagini/webp/progetto 4/untitled44.webp 1x" 
+                  srcset="/immagini/webp/progetto%204/untitled44.webp" 
                   type="image/webp">
-                <img src="/immagini/webp/progetto 4/untitled44.webp" 
+                <img src="/immagini/webp/progetto%204/untitled44.webp" 
                      alt="Mouse"
                      width="280" height="200"
                      loading="lazy"
@@ -748,9 +764,9 @@ header {
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <picture>
             <source 
-              srcset="/immagini/webp/loghi 2/icons8-linkedin-48.webp 1x" 
+              srcset="/immagini/webp/loghi%202/icons8-linkedin-48.webp" 
               type="image/webp">
-            <img src="/immagini/webp/loghi 2/icons8-linkedin-48.webp" 
+            <img src="/immagini/webp/loghi%202/icons8-linkedin-48.webp" 
                  alt="LinkedIn" 
                  class="social-icon"
                  width="48" height="48" 
@@ -761,9 +777,9 @@ header {
         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <picture>
             <source 
-              srcset="/immagini/webp/loghi 2/icons8-instagram-logo-48.webp 1x" 
+              srcset="/immagini/webp/loghi%202/icons8-instagram-logo-48.webp" 
               type="image/webp">
-            <img src="/immagini/webp/loghi 2/icons8-instagram-logo-48.webp" 
+            <img src="/immagini/webp/loghi%202/icons8-instagram-logo-48.webp" 
                  alt="Instagram" 
                  class="social-icon"
                  width="48" height="48" 
@@ -774,9 +790,9 @@ header {
         <a href="https://behance.net" target="_blank" rel="noopener noreferrer" aria-label="Behance">
           <picture>
             <source 
-              srcset="/immagini/webp/loghi 2/icons8-behance-48.webp 1x" 
+              srcset="/immagini/webp/loghi%202/icons8-behance-48.webp" 
               type="image/webp">
-            <img src="/immagini/webp/loghi 2/icons8-behance-48.webp" 
+            <img src="/immagini/webp/loghi%202/icons8-behance-48.webp" 
                  alt="Behance" 
                  class="social-icon"
                  width="48" height="48" 
@@ -787,7 +803,7 @@ header {
       </div>
     </footer>
     <button id="back-to-top" aria-label="Torna su" data-aria-label-en="Back to top">↑</button>
-    <script src="/js/performance.js" defer></script>
-    <script src="/js/si.js" defer></script>
+    <script src="js/performance.js" defer></script>
+    <script src="js/si.js" defer></script>
   </body>
 </html>
