@@ -1,29 +1,72 @@
 <!DOCTYPE html>
 <html lang="it" data-theme="minimal">
   <head>
-    <title>Portfolio di Lorenzo Giudici</title>
+    <title>Lorenzo Giudici | Product Designer - Portfolio professionale</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio professionale di Lorenzo Giudici, product designer. Scopri i progetti, competenze e contatti.">
-    <meta name="keywords" content="Portfolio, Lorenzo Giudici, Product Designer, Progetti, Competenze, Contatti">
+    <meta name="description" content="Portfolio professionale di Lorenzo Giudici, product designer specializzato in design industriale, modellazione 3D e innovazione. Esplora progetti, competenze e contatti.">
+    <meta name="keywords" content="Lorenzo Giudici, Product Designer, Design Industriale, Portfolio, Progetti 3D, Modellazione, Blender, Solidworks, Design di prodotto">
     <meta name="author" content="Lorenzo Giudici">
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Portfolio di Lorenzo Giudici">
-    <meta property="og:description" content="Portfolio professionale di Lorenzo Giudici, product designer. Scopri i progetti, competenze e contatti.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://lorenzogiudici.com/">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourdomain.example.com/">
-    <meta property="og:image" content="https://yourdomain.example.com/immagini/logo.webp">
+    <meta property="og:url" content="https://lorenzogiudici.com/">
+    <meta property="og:title" content="Lorenzo Giudici | Product Designer - Portfolio professionale">
+    <meta property="og:description" content="Portfolio professionale di Lorenzo Giudici, product designer specializzato in design industriale, modellazione 3D e innovazione. Esplora progetti, competenze e contatti.">
+    <meta property="og:image" content="https://lorenzogiudici.com/immagini/webp/profile/lorenzo_profile.webp">
+    <meta property="og:image:alt" content="Lorenzo Giudici - Product Designer">
+    <meta property="og:locale" content="it_IT">
+    <meta property="og:locale:alternate" content="en_US">
+    
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Portfolio di Lorenzo Giudici">
-    <meta name="twitter:description" content="Portfolio professionale di Lorenzo Giudici, product designer. Scopri i progetti, competenze e contatti.">
-    <meta name="twitter:image" content="https://yourdomain.example.com/immagini/logo.webp">
+    <meta name="twitter:url" content="https://lorenzogiudici.com/">
+    <meta name="twitter:title" content="Lorenzo Giudici | Product Designer - Portfolio">
+    <meta name="twitter:description" content="Portfolio professionale di Lorenzo Giudici, product designer specializzato in design industriale, modellazione 3D e innovazione.">
+    <meta name="twitter:image" content="https://lorenzogiudici.com/immagini/webp/profile/lorenzo_profile.webp">
+    <meta name="twitter:image:alt" content="Lorenzo Giudici - Product Designer">
+    
+    <!-- Theme Color for browsers -->
+    <meta name="theme-color" content="#4c1d73">
+    
+    <!-- Structured Data - Person -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Lorenzo Giudici",
+      "url": "https://lorenzogiudici.com/",
+      "image": "https://lorenzogiudici.com/immagini/webp/profile/lorenzo_profile.webp",
+      "jobTitle": "Product Designer",
+      "sameAs": [
+        "https://linkedin.com/in/lorenzogiudici",
+        "https://instagram.com/lorenzogiudici",
+        "https://behance.net/lorenzogiudici"
+      ],
+      "knowsAbout": ["Product Design", "3D Modeling", "Industrial Design", "Blender", "Solidworks", "Photoshop", "Illustrator"]
+    }
+    </script>
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="immagini/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="immagini/apple-touch-icon.png">
+    
+    <!-- CSS stylesheets with media print for performance -->
     <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/advanced-effects.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/premium-effects.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/micro-animations.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="css/theme-moods.css" media="print" onload="this.media='all'">
+    
+    <!-- Nuovi stili ottimizzati -->
+    <link rel="stylesheet" href="css/lightbox.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/enhanced-form.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/enhanced-faq.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/cookie-banner.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/project-storytelling.css" media="print" onload="this.media='all'">
     
     <!-- Theme-specific stylesheets -->
     <link rel="stylesheet" href="css/minimal-theme.css" media="print" onload="this.media='all'">
@@ -231,15 +274,27 @@ header {
       </nav>
       <div class="hero" role="banner" aria-labelledby="hero-title" data-bg-webp="./immagini/webp/hero/Lorenzo_hero.webp" data-bg-fallback="./immagini/webp/profile/lorenzo_profile.webp">
         <div class="hero-content">
-          <h1 class="gradient-flow">Lorenzo Giudici</h1>
-          <p class="text-xl typing-animation" data-text="Product Designer">Product Designer</p>
+          <h1 id="hero-title" class="gradient-flow">
+            <span class="lang-it">Lorenzo Giudici</span>
+            <span class="lang-en" style="display:none;">Lorenzo Giudici</span>
+          </h1>
+          <p class="text-xl typing-animation" data-text="Product Designer" aria-label="Professione">
+            <span class="lang-it">Product Designer</span>
+            <span class="lang-en" style="display:none;">Product Designer</span>
+          </p>
           <div class="hero-buttons mt-md">
-            <button class="btn btn-neumorphic"><span class="btn-text">Scopri</span></button>
-            <button class="btn btn-gradient-border ripple-effect"><span class="btn-text">Contattami</span></button>
+            <a href="#progetti" class="btn btn-neumorphic" aria-label="Scopri i miei progetti" aria-label-en="Discover my projects">
+              <span class="btn-text lang-it">Scopri</span>
+              <span class="btn-text lang-en" style="display:none;">Discover</span>
+            </a>
+            <a href="#contatti" class="btn btn-gradient-border ripple-effect" aria-label="Contattami" aria-label-en="Contact me">
+              <span class="btn-text lang-it">Contattami</span>
+              <span class="btn-text lang-en" style="display:none;">Contact me</span>
+            </a>
           </div>
         </div>
         <div class="hero-background">
-          <canvas id="particles-canvas" class="particle-canvas"></canvas>
+          <canvas id="particles-canvas" class="particle-canvas" aria-hidden="true"></canvas>
         </div>
       </div>
     </header>
@@ -471,7 +526,7 @@ header {
         <div class="project-slideshow" role="region" aria-labelledby="progetti-heading" aria-live="polite">
           <div class="slide active stagger-animation animate-when-visible" role="group" aria-label="Slide 1 di 2">
             <div class="project parallax card-3d" tabindex="0" aria-labelledby="project-1-title" role="button">
-              <div class="card-3d-content">
+              <div class="project-image">
                 <picture class="parallax-layer" data-depth="1.5">
                   <source 
                     srcset="/immagini/webp/progetto%201/all%202.webp" 
@@ -484,61 +539,119 @@ header {
                        class="grayscale-hover"
                        fetchpriority="high">
                 </picture>
-                <h3 id="project-1-title" class="parallax-layer adaptive-contrast" data-depth="1.2">
-                  <span class="lang-it">Set da caffè</span>
-                  <span class="lang-en" style="display:none;">Coffee set</span>
-                </h3>
+                <div class="project-overlay">
+                  <div class="project-details">
+                    <h3 id="project-1-title" class="parallax-layer adaptive-contrast" data-depth="1.2">
+                      <span class="lang-it">Set da caffè</span>
+                      <span class="lang-en" style="display:none;">Coffee set</span>
+                    </h3>
+                    <p class="project-description">
+                      <span class="lang-it">Un set da caffè moderno ed elegante, progettato con un'attenzione particolare all'ergonomia e all'estetica funzionale.</span>
+                      <span class="lang-en" style="display:none;">A modern and elegant coffee set, designed with particular attention to ergonomics and functional aesthetics.</span>
+                    </p>
+                    <span class="project-view-more">
+                      <span class="lang-it">Vedi dettagli</span>
+                      <span class="lang-en" style="display:none;">View details</span>
+                      <svg aria-hidden="true" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="project" tabindex="0" aria-labelledby="project-2-title" role="button">
-              <picture>
-                <source 
-                  srcset="/immagini/webp/progetto%202/cardanica.webp" 
-                  type="image/webp">
-                <img src="/immagini/webp/progetto%202/cardanica.webp" 
-                     alt="Anteprima cardanica"
-                     width="280" height="200"
-                     loading="lazy"
-                     decoding="async">
-              </picture>
-              <h3 id="project-2-title">
-                <span class="lang-it">La cardanica</span>
-                <span class="lang-en" style="display:none;">The Cardanica</span>
-              </h3>
+              <div class="project-image">
+                <picture>
+                  <source 
+                    srcset="/immagini/webp/progetto%202/cardanica.webp" 
+                    type="image/webp">
+                  <img src="/immagini/webp/progetto%202/cardanica.webp" 
+                       alt="Anteprima cardanica"
+                       width="280" height="200"
+                       loading="lazy"
+                       decoding="async">
+                </picture>
+                <div class="project-overlay">
+                  <div class="project-details">
+                    <h3 id="project-2-title">
+                      <span class="lang-it">La cardanica</span>
+                      <span class="lang-en" style="display:none;">The Cardanica</span>
+                    </h3>
+                    <p class="project-description">
+                      <span class="lang-it">Modello 3D di una cardanica, meccanismo usato per mantenere l'orientamento in diverse condizioni.</span>
+                      <span class="lang-en" style="display:none;">3D model of a cardanic joint, a mechanism used to maintain orientation in various conditions.</span>
+                    </p>
+                    <span class="project-view-more">
+                      <span class="lang-it">Vedi dettagli</span>
+                      <span class="lang-en" style="display:none;">View details</span>
+                      <svg aria-hidden="true" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="slide" role="group" aria-label="Slide 2 di 2">
             <div class="project" tabindex="0" aria-labelledby="project-3-title" role="button">
-              <picture>
-                <source 
-                  srcset="/immagini/webp/progetto%203/untitled555.webp" 
-                  type="image/webp">
-                <img src="/immagini/webp/progetto%203/untitled555.webp" 
-                     alt="Poltroncina lounge per Milani"
-                     width="280" height="200"
-                     loading="lazy"
-                     decoding="async">
-              </picture>
-              <h3 id="project-3-title">
-                <span class="lang-it">Poltroncina lounge per Milani</span>
-                <span class="lang-en" style="display:none;">Lounge chair for Milani</span>
-              </h3>
+              <div class="project-image">
+                <picture>
+                  <source 
+                    srcset="/immagini/webp/progetto%203/untitled555.webp" 
+                    type="image/webp">
+                  <img src="/immagini/webp/progetto%203/untitled555.webp" 
+                       alt="Poltroncina lounge per Milani"
+                       width="280" height="200"
+                       loading="lazy"
+                       decoding="async">
+                </picture>
+                <div class="project-overlay">
+                  <div class="project-details">
+                    <h3 id="project-3-title">
+                      <span class="lang-it">Poltroncina lounge per Milani</span>
+                      <span class="lang-en" style="display:none;">Lounge chair for Milani</span>
+                    </h3>
+                    <p class="project-description">
+                      <span class="lang-it">Design di una poltroncina moderna ed ergonomica per l'azienda Milani, con focus su comfort e stile.</span>
+                      <span class="lang-en" style="display:none;">Design of a modern, ergonomic lounge chair for Milani company, focusing on comfort and style.</span>
+                    </p>
+                    <span class="project-view-more">
+                      <span class="lang-it">Vedi dettagli</span>
+                      <span class="lang-en" style="display:none;">View details</span>
+                      <svg aria-hidden="true" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="project" tabindex="0" aria-labelledby="project-4-title" role="button">
-              <picture>
-                <source 
-                  srcset="/immagini/webp/progetto%204/untitled44.webp" 
-                  type="image/webp">
-                <img src="/immagini/webp/progetto%204/untitled44.webp" 
-                     alt="Mouse"
-                     width="280" height="200"
-                     loading="lazy"
-                     decoding="async">
-              </picture>
-              <h3 id="project-4-title">
-                <span class="lang-it">mouse</span>
-                <span class="lang-en" style="display:none;">mouse</span>
-              </h3>
+              <div class="project-image">
+                <picture>
+                  <source 
+                    srcset="/immagini/webp/progetto%204/untitled44.webp" 
+                    type="image/webp">
+                  <img src="/immagini/webp/progetto%204/untitled44.webp" 
+                       alt="Design ergonomico per mouse"
+                       width="280" height="200"
+                       loading="lazy"
+                       decoding="async">
+                </picture>
+                <div class="project-overlay">
+                  <div class="project-details">
+                    <h3 id="project-4-title">
+                      <span class="lang-it">Mouse ergonomico</span>
+                      <span class="lang-en" style="display:none;">Ergonomic mouse</span>
+                    </h3>
+                    <p class="project-description">
+                      <span class="lang-it">Design di un mouse ergonomico che combina comfort d'uso e tecnologia avanzata per lunghe sessioni di lavoro.</span>
+                      <span class="lang-en" style="display:none;">Design of an ergonomic mouse that combines comfort of use and advanced technology for long work sessions.</span>
+                    </p>
+                    <span class="project-view-more">
+                      <span class="lang-it">Vedi dettagli</span>
+                      <span class="lang-en" style="display:none;">View details</span>
+                      <svg aria-hidden="true" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -550,20 +663,50 @@ header {
           <button class="prev-slide" aria-label="Slide precedente" aria-label-en="Previous slide"></button>
           <button class="next-slide" aria-label="Slide successiva" aria-label-en="Next slide"></button>
         </div>
-        <div class="project card-premium glass-reflection-card">
-          <div class="progressive-image-container">
+        <div class="project card-premium glass-reflection-card" tabindex="0" aria-labelledby="project-premium-title" role="button">
+          <div class="project-image progressive-image-container">
             <div class="img-zoom-container">
-              <img src="immagini/webp/progetto 1/tazzina_.webp" alt="Progetto Premium" class="img-zoom">
+              <picture>
+                <source 
+                  srcset="immagini/webp/progetto%201/tazzina_.webp" 
+                  type="image/webp">
+                <img src="immagini/webp/progetto%201/tazzina_.webp" 
+                     alt="Vista dettagliata della tazzina da caffè"
+                     width="400" height="300"
+                     loading="lazy"
+                     decoding="async"
+                     class="img-zoom">
+              </picture>
             </div>
             <div class="image-loading-indicator"></div>
-          </div>
-          <div class="project-info">
-            <h3 class="gradient-flow">Progetto Premium</h3>
-            <p class="highlight-text">Design avanzato con effetti premium ed esperienza utente cinematografica</p>
-            <div class="project-actions stagger-group">
-              <button class="btn-neumorphic ripple-effect">Dettagli</button>
-              <button class="btn-liquid"><span>Live Demo</span><div class="liquid"></div></button>
+            <div class="project-overlay premium-overlay">
+              <div class="project-details">
+                <h3 id="project-premium-title" class="gradient-flow">
+                  <span class="lang-it">Set da caffè - Design premium</span>
+                  <span class="lang-en" style="display:none;">Coffee set - Premium design</span>
+                </h3>
+                <p class="project-description highlight-text">
+                  <span class="lang-it">Un esempio di visualizzazione premium dei miei progetti, con effetti visivi avanzati ed esperienza utente cinematografica.</span>
+                  <span class="lang-en" style="display:none;">An example of premium visualization of my projects, with advanced visual effects and cinematic user experience.</span>
+                </p>
+                <span class="project-view-more">
+                  <span class="lang-it">Esplora caso studio</span>
+                  <span class="lang-en" style="display:none;">Explore case study</span>
+                  <svg aria-hidden="true" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </span>
+              </div>
             </div>
+          </div>
+          <div class="project-actions stagger-group">
+            <button class="btn-neumorphic ripple-effect" data-project="premium">
+              <span class="lang-it">Dettagli</span>
+              <span class="lang-en" style="display:none;">Details</span>
+            </button>
+            <button class="btn-liquid">
+              <span class="lang-it">Live Demo</span>
+              <span class="lang-en" style="display:none;">Live Demo</span>
+              <div class="liquid"></div>
+            </button>
           </div>
         </div>
       </section>
@@ -772,49 +915,91 @@ header {
         <span class="lang-it">Risposte alle domande più frequenti sul mio percorso, stile e disponibilità.</span>
         <span class="lang-en" style="display:none;">Answers to the most frequently asked questions about my background, style and availability.</span>
       </div>
-      <div class="faq-list" role="list" aria-label="Domande frequenti">
-        <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
+      <div class="faq-list">
+        <details class="faq-details">
+          <summary class="faq-summary" id="faq-question-1" aria-label="Domanda sul mio stile di design" aria-label-en="Question about my design style">
             <span class="lang-it">Qual è il tuo stile di design?</span>
             <span class="lang-en" style="display:none;">What is your design style?</span>
-          </button>
-          <div class="faq-answer" style="display:none;" id="faq-answer-1" aria-labelledby="faq-question-1">
-            <span class="lang-it">
-              Il mio stile si basa su linee pulite, attenzione ai dettagli e funzionalità, con ispirazioni dall’architettura contemporanea e dal design parametrico.
-            </span>
-            <span class="lang-en" style="display:none;">
-              My style is based on clean lines, attention to detail and functionality, with inspiration from contemporary architecture and parametric design.
-            </span>
+          </summary>
+          <div class="faq-content">
+            <div>
+              <span class="lang-it">
+                Il mio stile si basa su linee pulite, attenzione ai dettagli e funzionalità, con ispirazioni dall'architettura contemporanea e dal design parametrico. Prediligo un approccio minimalista ma espressivo, dove ogni elemento ha un preciso scopo sia estetico che funzionale.
+              </span>
+              <span class="lang-en" style="display:none;">
+                My style is based on clean lines, attention to detail, and functionality, with inspiration from contemporary architecture and parametric design. I prefer a minimalist yet expressive approach, where each element has a specific purpose both aesthetically and functionally.
+              </span>
+            </div>
           </div>
-        </div>
-        <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
+        </details>
+        
+        <details class="faq-details">
+          <summary class="faq-summary" id="faq-question-2" aria-label="Domanda sulla disponibilità per collaborazioni" aria-label-en="Question about availability for collaborations">
             <span class="lang-it">Sei disponibile per collaborazioni?</span>
             <span class="lang-en" style="display:none;">Are you available for collaborations?</span>
-          </button>
-          <div class="faq-answer" style="display:none;" id="faq-answer-2" aria-labelledby="faq-question-2">
-            <span class="lang-it">
-              Sì, sono aperto a nuove collaborazioni e progetti. Puoi contattarmi tramite il modulo nella sezione Contatti.
-            </span>
-            <span class="lang-en" style="display:none;">
-              Yes, I am open to new collaborations and projects. You can contact me via the form in the Contacts section.
-            </span>
+          </summary>
+          <div class="faq-content">
+            <div>
+              <span class="lang-it">
+                Sì, sono aperto a nuove collaborazioni e progetti. Puoi contattarmi tramite il modulo nella sezione Contatti o attraverso i miei profili social. Sono particolarmente interessato a progetti che presentano sfide creative e richiedono soluzioni innovative.
+              </span>
+              <span class="lang-en" style="display:none;">
+                Yes, I am open to new collaborations and projects. You can contact me through the form in the Contacts section or through my social profiles. I am particularly interested in projects that present creative challenges and require innovative solutions.
+              </span>
+            </div>
           </div>
-        </div>
-        <div class="faq-item" role="listitem">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
+        </details>
+        
+        <details class="faq-details">
+          <summary class="faq-summary" id="faq-question-3" aria-label="Domanda sui software utilizzati" aria-label-en="Question about software used">
             <span class="lang-it">Che software utilizzi principalmente?</span>
             <span class="lang-en" style="display:none;">Which software do you mainly use?</span>
-          </button>
-          <div class="faq-answer" style="display:none;" id="faq-answer-3" aria-labelledby="faq-question-3">
-            <span class="lang-it">
-              Utilizzo principalmente Blender, Solidworks, Photoshop, Illustrator e altri software di progettazione e modellazione 3D.
-            </span>
-            <span class="lang-en" style="display:none;">
-              I mainly use Blender, Solidworks, Photoshop, Illustrator and other design and 3D modeling software.
-            </span>
+          </summary>
+          <div class="faq-content">
+            <div>
+              <span class="lang-it">
+                Utilizzo principalmente Blender, Solidworks, Photoshop, Illustrator e altri software di progettazione e modellazione 3D. La scelta del software varia in base al progetto e alle sue specifiche esigenze. Mi tengo costantemente aggiornato su nuovi strumenti e tecnologie per ottimizzare il mio flusso di lavoro.
+              </span>
+              <span class="lang-en" style="display:none;">
+                I mainly use Blender, Solidworks, Photoshop, Illustrator and other design and 3D modeling software. The choice of software varies depending on the project and its specific needs. I constantly keep myself updated on new tools and technologies to optimize my workflow.
+              </span>
+            </div>
           </div>
-        </div>
+        </details>
+        
+        <details class="faq-details">
+          <summary class="faq-summary" id="faq-question-4" aria-label="Domanda sulla formazione" aria-label-en="Question about education">
+            <span class="lang-it">Qual è la tua formazione?</span>
+            <span class="lang-en" style="display:none;">What is your educational background?</span>
+          </summary>
+          <div class="faq-content">
+            <div>
+              <span class="lang-it">
+                Ho un diploma di istruzione tecnica nell'indirizzo di Meccanica e meccatronica, oltre a certificazioni specifiche in ambito design come 2D Computer Aided Design e Mechanical Design. Continuo ad arricchire le mie competenze attraverso corsi specialistici e formazione autonoma.
+              </span>
+              <span class="lang-en" style="display:none;">
+                I have a technical diploma in Mechanics and Mechatronics, as well as specific certifications in design such as 2D Computer Aided Design and Mechanical Design. I continue to enrich my skills through specialized courses and self-training.
+              </span>
+            </div>
+          </div>
+        </details>
+        
+        <details class="faq-details">
+          <summary class="faq-summary" id="faq-question-5" aria-label="Domanda sul processo creativo" aria-label-en="Question about creative process">
+            <span class="lang-it">Come si sviluppa il tuo processo creativo?</span>
+            <span class="lang-en" style="display:none;">How does your creative process develop?</span>
+          </summary>
+          <div class="faq-content">
+            <div>
+              <span class="lang-it">
+                Il mio processo creativo inizia con una fase di ricerca e analisi approfondita per comprendere le esigenze e il contesto del progetto. Segue una fase di ideazione con schizzi e concept, poi prototipazione digitale e raffinamento iterativo. Credo fortemente nella collaborazione con il cliente durante tutto il processo per garantire un risultato finale che soddisfi pienamente le aspettative.
+              </span>
+              <span class="lang-en" style="display:none;">
+                My creative process begins with a phase of in-depth research and analysis to understand the project's needs and context. This is followed by an ideation phase with sketches and concepts, then digital prototyping and iterative refinement. I strongly believe in collaborating with the client throughout the process to ensure a final result that fully meets expectations.
+              </span>
+            </div>
+          </div>
+        </details>
       </div>
     </section>
     <footer role="contentinfo">
@@ -869,5 +1054,75 @@ header {
     <script src="js/magnetic-effects.js" defer></script>
     <script src="js/3d-effects.js" defer></script>
     <script src="js/theme-switcher.js" defer></script>
+    
+    <!-- Nuovi script ottimizzati -->
+    <script src="js/lightbox.js" defer></script>
+    <script src="js/enhanced-form.js" defer></script>
+    <script src="js/language-switcher.js" defer></script>
+    <script src="js/enhanced-faq.js" defer></script>
+    <script src="js/image-optimizer.js" defer></script>
+    <script src="js/project-storytelling.js" defer></script>
+    
+    <!-- Script per notifiche GDPR -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Controlla se l'utente ha già accettato i cookie
+        const cookiesAccepted = localStorage.getItem('cookies-accepted');
+        
+        if (!cookiesAccepted) {
+          // Crea e mostra il banner dei cookie
+          const cookieBanner = document.createElement('div');
+          cookieBanner.className = 'cookie-banner';
+          cookieBanner.setAttribute('role', 'alert');
+          cookieBanner.setAttribute('aria-live', 'polite');
+          
+          cookieBanner.innerHTML = `
+            <div class="cookie-content">
+              <p>
+                <span class="lang-it">Questo sito utilizza cookie tecnici per migliorare la tua esperienza di navigazione.</span>
+                <span class="lang-en" style="display:none;">This site uses technical cookies to improve your browsing experience.</span>
+              </p>
+              <div class="cookie-buttons">
+                <button class="btn-accept">
+                  <span class="lang-it">Accetta</span>
+                  <span class="lang-en" style="display:none;">Accept</span>
+                </button>
+                <button class="btn-more-info">
+                  <span class="lang-it">Maggiori informazioni</span>
+                  <span class="lang-en" style="display:none;">More information</span>
+                </button>
+              </div>
+            </div>
+          `;
+          
+          document.body.appendChild(cookieBanner);
+          
+          // Animazione di entrata
+          setTimeout(() => {
+            cookieBanner.classList.add('visible');
+          }, 500);
+          
+          // Gestore per accettare i cookie
+          const acceptButton = cookieBanner.querySelector('.btn-accept');
+          acceptButton.addEventListener('click', () => {
+            localStorage.setItem('cookies-accepted', 'true');
+            cookieBanner.classList.remove('visible');
+            
+            // Rimuovi il banner dopo l'animazione
+            setTimeout(() => {
+              cookieBanner.remove();
+            }, 500);
+          });
+          
+          // Gestore per maggiori informazioni
+          const moreInfoButton = cookieBanner.querySelector('.btn-more-info');
+          moreInfoButton.addEventListener('click', () => {
+            // Qui puoi reindirizzare alla pagina della privacy policy
+            // o aprire un modal con maggiori informazioni
+            alert('Maggiori informazioni sui cookie utilizzati.');
+          });
+        }
+      });
+    </script>
   </body>
 </html>

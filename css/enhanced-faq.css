@@ -1,0 +1,209 @@
+/**
+ * PORTFOLIO DI LORENZO GIUDICI - ENHANCED FAQ STYLES
+ * Stili per FAQ con animazioni ed effetti avanzati
+ */
+
+/* Container FAQ */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Stile base per details */
+.faq-details {
+  margin-bottom: 1rem;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}
+
+/* Stile hover e focus */
+.faq-details:hover,
+.faq-details.focused {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Stile attivo/espanso */
+.faq-details.expanded {
+  border-left: 3px solid var(--accent-color);
+}
+
+/* Summary (header della FAQ) */
+.faq-summary {
+  position: relative;
+  padding: 1.2rem 3rem 1.2rem 1.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  list-style: none;
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+}
+
+/* Rimuovi il marker default del details */
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Contenitore icona espansione */
+.faq-expand-icon {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform var(--transition-normal);
+  color: var(--accent-color);
+}
+
+/* Ruota l'icona quando espanso */
+.faq-details[open] .faq-expand-icon {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* Animazione per la linea verticale dell'icona */
+.faq-details[open] .faq-expand-icon .vertical {
+  animation: vertical-collapse 0.3s forwards;
+}
+
+@keyframes vertical-collapse {
+  to {
+    transform: scaleY(0);
+  }
+}
+
+/* Contenuto della FAQ */
+.faq-content {
+  padding: 0 1.5rem;
+  color: var(--text-color-secondary);
+  line-height: 1.6;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Padding interno al contenuto per spaziatura */
+.faq-content > div {
+  padding-bottom: 1.5rem;
+}
+
+/* Stili specifici per i diversi temi */
+
+/* Tema minimal */
+.theme-minimal .faq-details {
+  border-radius: 0;
+  border-bottom: 1px solid #eee;
+  box-shadow: none;
+  background: transparent;
+}
+
+.theme-minimal .faq-summary {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.theme-minimal .faq-expand-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.theme-minimal .faq-details.expanded {
+  border-left: none;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+/* Tema dark */
+.theme-dark .faq-details {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.theme-dark .faq-details.expanded {
+  border-left: 3px solid var(--accent-color);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Tema colorblock */
+.theme-colorblock .faq-details {
+  border-radius: 0;
+  margin-bottom: 2rem;
+}
+
+.theme-colorblock .faq-summary {
+  background: var(--accent-color);
+  color: white;
+}
+
+.theme-colorblock .faq-expand-icon {
+  color: white;
+}
+
+.theme-colorblock .faq-content {
+  background: var(--card-bg);
+}
+
+/* Tema masonry */
+.theme-masonry .faq-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+}
+
+.theme-masonry .faq-details {
+  height: 100%;
+  margin-bottom: 0;
+}
+
+/* Animazione di entrata per le FAQ */
+@keyframes faq-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.faq-details {
+  animation: faq-slide-in 0.5s ease forwards;
+  opacity: 0;
+}
+
+.faq-details:nth-child(1) { animation-delay: 0.1s; }
+.faq-details:nth-child(2) { animation-delay: 0.2s; }
+.faq-details:nth-child(3) { animation-delay: 0.3s; }
+.faq-details:nth-child(4) { animation-delay: 0.4s; }
+.faq-details:nth-child(5) { animation-delay: 0.5s; }
+
+/* Media queries per responsive */
+@media (max-width: 768px) {
+  .theme-masonry .faq-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .faq-summary {
+    padding: 1rem 2.5rem 1rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .faq-expand-icon {
+    right: 1rem;
+  }
+}
+
+/* Accessibilità */
+.faq-summary:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}

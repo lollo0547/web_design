@@ -1,0 +1,207 @@
+/**
+ * PORTFOLIO DI LORENZO GIUDICI - PROJECT STORYTELLING STYLES
+ * Enhanced styling for project storytelling within lightbox
+ */
+
+.project-story {
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: var(--font-family, 'Poppins', sans-serif);
+  color: var(--text-color);
+}
+
+.story-section {
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.story-section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-section h4 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  border-bottom: 2px solid rgba(76, 29, 115, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+.story-section p {
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.story-section ol, 
+.story-section ul {
+  padding-left: 1.5rem;
+  line-height: 1.7;
+}
+
+.story-section li {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.tools-materials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .tools-materials {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.tools-list,
+.materials-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style-type: none;
+  padding: 0;
+}
+
+.tools-list li,
+.materials-list li {
+  background-color: var(--card-bg);
+  padding: 0.4rem 1rem;
+  border-radius: var(--border-radius, 8px);
+  box-shadow: var(--card-shadow);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.tools-list li {
+  border-left: 3px solid var(--accent-color);
+}
+
+.materials-list li {
+  border-left: 3px solid var(--secondary-color, #1e5dcc);
+}
+
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.image-gallery figure {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--border-radius, 8px);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease;
+}
+
+.image-gallery figure:hover {
+  transform: translateY(-5px);
+}
+
+.image-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+  transition: transform 0.5s ease;
+}
+
+.image-gallery figure:hover img {
+  transform: scale(1.05);
+}
+
+.image-gallery figcaption {
+  padding: 0.75rem;
+  background-color: var(--card-bg);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Timeline for process steps */
+.process ol {
+  counter-reset: process-counter;
+  list-style-type: none;
+  position: relative;
+  padding-left: 3rem;
+}
+
+.process ol::before {
+  content: '';
+  position: absolute;
+  left: 0.85rem;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-color) 0%, var(--secondary-color, #1e5dcc) 100%);
+  opacity: 0.3;
+}
+
+.process li {
+  counter-increment: process-counter;
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.process li::before {
+  content: counter(process-counter);
+  position: absolute;
+  left: -3rem;
+  top: -0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(76, 29, 115, 0.3);
+}
+
+/* Dark theme adjustments */
+html[data-theme="dark"] .story-section h4 {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme="dark"] .tools-list li,
+html[data-theme="dark"] .materials-list li,
+html[data-theme="dark"] .image-gallery figcaption {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .story-section h4 {
+    font-size: 1.25rem;
+  }
+  
+  .story-section p,
+  .story-section li {
+    font-size: 1rem;
+  }
+  
+  .image-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .process ol {
+    padding-left: 2.5rem;
+  }
+  
+  .process li::before {
+    left: -2.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
