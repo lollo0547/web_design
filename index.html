@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" data-theme="light">
+<html lang="it" data-theme="minimal">
   <head>
     <title>Portfolio di Lorenzo Giudici</title>
     <meta charset="UTF-8">
@@ -20,6 +20,16 @@
     <meta name="twitter:image" content="https://yourdomain.example.com/immagini/logo.webp">
     <link rel="icon" type="image/x-icon" href="immagini/favicon.ico">
     <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/advanced-effects.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/premium-effects.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/micro-animations.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/theme-moods.css" media="print" onload="this.media='all'">
+    
+    <!-- Theme-specific stylesheets -->
+    <link rel="stylesheet" href="css/minimal-theme.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/dark-theme.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/colorblock-theme.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="css/masonry-theme.css" media="print" onload="this.media='all'">
     
     <!-- Resource hints -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -32,6 +42,7 @@
     <style>
 /* Critical CSS for Lorenzo Giudici's Portfolio */
 :root {
+  /* Base variables - saranno sovrascritte dal tema selezionato */
   --background-color: #f7f8fa;
   --text-color: #1a1d23;
   --accent-color: #4c1d73;
@@ -42,6 +53,16 @@
   --transition: 0.25s cubic-bezier(.4,0,.2,1);
 }
 
+/* Previeni FOUC durante il caricamento del tema */
+html {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+html.theme-loaded {
+  opacity: 1;
+}
+
 body {
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
@@ -49,6 +70,7 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background: var(--background-color);
+  transition: background-color var(--theme-transition), color var(--theme-transition);
 }
 
 .sr-only {
@@ -209,15 +231,15 @@ header {
       </nav>
       <div class="hero" role="banner" aria-labelledby="hero-title" data-bg-webp="./immagini/webp/hero/Lorenzo_hero.webp" data-bg-fallback="./immagini/webp/profile/lorenzo_profile.webp">
         <div class="hero-content">
-          <h1 id="hero-title">
-            <span class="lang-it">Portfolio di Lorenzo Giudici</span>
-            <span class="lang-en" style="display:none;">Lorenzo Giudici's Portfolio</span>
-          </h1>
-          <h2>Lorenzo Giudici</h2>
-          <p>
-            <span class="lang-it">progetti universitari 2022/2025</span>
-            <span class="lang-en" style="display:none;">university projects 2022/2025</span>
-          </p>
+          <h1 class="gradient-flow">Lorenzo Giudici</h1>
+          <p class="text-xl typing-animation" data-text="Product Designer">Product Designer</p>
+          <div class="hero-buttons mt-md">
+            <button class="btn btn-neumorphic"><span class="btn-text">Scopri</span></button>
+            <button class="btn btn-gradient-border ripple-effect"><span class="btn-text">Contattami</span></button>
+          </div>
+        </div>
+        <div class="hero-background">
+          <canvas id="particles-canvas" class="particle-canvas"></canvas>
         </div>
       </div>
     </header>
@@ -447,23 +469,26 @@ header {
           </span>
         </p>
         <div class="project-slideshow" role="region" aria-labelledby="progetti-heading" aria-live="polite">
-          <div class="slide active" role="group" aria-label="Slide 1 di 2">
-            <div class="project" tabindex="0" aria-labelledby="project-1-title" role="button">
-              <picture>
-                <source 
-                  srcset="/immagini/webp/progetto%201/all%2022.webp" 
-                  type="image/webp">
-                <img src="/immagini/webp/progetto%201/all%2022.webp" 
-                     alt="Set da caffè - vista ambientata"
-                     width="280" height="200"
-                     loading="lazy"
-                     decoding="async"
-                     fetchpriority="high">
-              </picture>
-              <h3 id="project-1-title">
-                <span class="lang-it">Set da caffè</span>
-                <span class="lang-en" style="display:none;">Coffee set</span>
-              </h3>
+          <div class="slide active stagger-animation animate-when-visible" role="group" aria-label="Slide 1 di 2">
+            <div class="project parallax card-3d" tabindex="0" aria-labelledby="project-1-title" role="button">
+              <div class="card-3d-content">
+                <picture class="parallax-layer" data-depth="1.5">
+                  <source 
+                    srcset="/immagini/webp/progetto%201/all%202.webp" 
+                    type="image/webp">
+                  <img src="/immagini/webp/progetto%201/all%2022.webp" 
+                       alt="Set da caffè - vista ambientata"
+                       width="280" height="200"
+                       loading="lazy"
+                       decoding="async"
+                       class="grayscale-hover"
+                       fetchpriority="high">
+                </picture>
+                <h3 id="project-1-title" class="parallax-layer adaptive-contrast" data-depth="1.2">
+                  <span class="lang-it">Set da caffè</span>
+                  <span class="lang-en" style="display:none;">Coffee set</span>
+                </h3>
+              </div>
             </div>
             <div class="project" tabindex="0" aria-labelledby="project-2-title" role="button">
               <picture>
@@ -517,9 +542,29 @@ header {
             </div>
           </div>
         </div>
+        <div class="slideshow-indicators" role="group" aria-label="Indicatori pagina slideshow">
+          <button class="indicator active" aria-label="Vai alla pagina 1" data-slide="0"></button>
+          <button class="indicator" aria-label="Vai alla pagina 2" data-slide="1"></button>
+        </div>
         <div class="slideshow-controls" role="group" aria-label="Controlli slideshow progetti">
-          <button class="prev-slide" aria-label="Slide precedente" aria-label-en="Previous slide">❮</button>
-          <button class="next-slide" aria-label="Slide successiva" aria-label-en="Next slide">❯</button>
+          <button class="prev-slide" aria-label="Slide precedente" aria-label-en="Previous slide"></button>
+          <button class="next-slide" aria-label="Slide successiva" aria-label-en="Next slide"></button>
+        </div>
+        <div class="project card-premium glass-reflection-card">
+          <div class="progressive-image-container">
+            <div class="img-zoom-container">
+              <img src="immagini/webp/progetto 1/tazzina_.webp" alt="Progetto Premium" class="img-zoom">
+            </div>
+            <div class="image-loading-indicator"></div>
+          </div>
+          <div class="project-info">
+            <h3 class="gradient-flow">Progetto Premium</h3>
+            <p class="highlight-text">Design avanzato con effetti premium ed esperienza utente cinematografica</p>
+            <div class="project-actions stagger-group">
+              <button class="btn-neumorphic ripple-effect">Dettagli</button>
+              <button class="btn-liquid"><span>Live Demo</span><div class="liquid"></div></button>
+            </div>
+          </div>
         </div>
       </section>
       <section id="software-skills" aria-labelledby="skills-heading">
@@ -535,7 +580,7 @@ header {
             Here you can find an overview of the software I use for design and planning. Each skill is accompanied by a rating that reflects my level of experience.
           </span>
         </p>
-        <ul class="skills" role="list" aria-label="Lista competenze software">
+        <ul class="skills stagger-animation animate-when-visible" role="list" aria-label="Lista competenze software">
           <li role="listitem">
             <img src="/immagini/webp/loghi/icons8-photoshop-48.webp" 
                  alt="" aria-hidden="true" 
@@ -817,7 +862,12 @@ header {
       </div>
     </footer>
     <button id="back-to-top" aria-label="Torna su" data-aria-label-en="Back to top">↑</button>
-    <script src="js/performance.js" defer></script>
+    <!-- Scripts -->
+    <script src="js/performance.js" async></script>
     <script src="js/si.js" defer></script>
+    <script src="js/enhanced-ui.js" defer></script>
+    <script src="js/magnetic-effects.js" defer></script>
+    <script src="js/3d-effects.js" defer></script>
+    <script src="js/theme-switcher.js" defer></script>
   </body>
 </html>

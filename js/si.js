@@ -279,6 +279,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const sliderPages = modal.querySelectorAll(".slider-page");
   const sliderOverlay = modal.querySelector(".slider-overlay");
   const closeModal = modal.querySelector(".close");
+  
+  // Espone i dati dei progetti per il lightbox avanzato
+  window.projectData = projectData;
 
   const projectData = {
     "Set da caffè": {
@@ -668,45 +671,113 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Slider: accessibilità per click/tastiera
+  // Slideshow Potenziato: accessibilità, indicatori e animazione
   const slides = document.querySelectorAll(".project-slideshow .slide");
   const prevButton = document.querySelector(".prev-slide");
   const nextButton = document.querySelector(".next-slide");
+  const indicators = document.querySelectorAll(".slideshow-indicators .indicator");
   let slideshowCurrentSlide = 0;
 
   prevButton.setAttribute("tabindex", "0");
   nextButton.setAttribute("tabindex", "0");
 
+  // Funzione potenziata per mostrare slide con aggiornamento indicatori
   function showSlide(index) {
+    // Aggiorna classe active sulle slide
     slides.forEach((slide, i) => {
       slide.classList.toggle("active", i === index);
+      
+      // Aggiungi la classe "animate" a ciascun progetto nella slide attiva
+      if (i === index) {
+        const projects = slide.querySelectorAll('.project');
+        projects.forEach((project, idx) => {
+          // Reset animation
+          project.style.animation = 'none';
+          project.offsetHeight; // Trigger reflow
+          project.style.animation = '';
+        });
+      }
     });
+    
+    // Aggiorna indicatori
+    indicators.forEach((indicator, i) => {
+      indicator.classList.toggle("active", i === index);
+      indicator.setAttribute("aria-current", i === index ? "true" : "false");
+    });
+    
+    // Annuncia per screen reader
+    const liveRegion = document.querySelector('.project-slideshow');
+    if (liveRegion) {
+      const currentSlide = index + 1;
+      const totalSlides = slides.length;
+      liveRegion.setAttribute('aria-label', `Slide ${currentSlide} di ${totalSlides}`);
+    }
   }
 
+  // Click su prev/next
   prevButton.addEventListener("click", () => {
     slideshowCurrentSlide = (slideshowCurrentSlide - 1 + slides.length) % slides.length;
     showSlide(slideshowCurrentSlide);
   });
+  
   nextButton.addEventListener("click", () => {
     slideshowCurrentSlide = (slideshowCurrentSlide + 1) % slides.length;
     showSlide(slideshowCurrentSlide);
   });
 
+  // Supporto tastiera
   prevButton.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       prevButton.click();
     }
   });
+  
   nextButton.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       nextButton.click();
     }
   });
+  
+  // Supporto per indicatori
+  indicators.forEach((indicator, i) => {
+    indicator.addEventListener("click", () => {
+      slideshowCurrentSlide = i;
+      showSlide(slideshowCurrentSlide);
+    });
+    
+    indicator.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        indicator.click();
+      }
+    });
+  });
 
   // Mostra la slide iniziale all'avvio
   showSlide(slideshowCurrentSlide);
+  
+  // Animazione su apparizione
+  const projectsSection = document.querySelector('#progetti');
+  if (projectsSection && IOSupport.isSupported) {
+    const projectObserver = IOSupport.create((entries) => {
+      if (entries[0].isIntersecting) {
+        const projects = projectsSection.querySelectorAll('.project');
+        projects.forEach((project, idx) => {
+          setTimeout(() => {
+            project.classList.add('animate');
+          }, idx * 100);
+        });
+        projectObserver.unobserve(projectsSection);
+      }
+    }, { threshold: 0.2 });
+    
+    projectObserver.observe(projectsSection);
+    
+    // Registra per monitoring
+    IOMonitor.register(projectObserver, 'projects-animation');
+  }
 
   // FAQ: accessibilità tastiera
   document.querySelectorAll('.faq-question').forEach(btn => {

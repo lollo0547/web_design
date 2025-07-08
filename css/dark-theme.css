@@ -1,0 +1,329 @@
+/**
+ * PORTFOLIO DI LORENZO GIUDICI - DARK THEME COMPONENTS
+ * Componenti specifici per il tema dark contrastato
+ */
+
+/* ======================================
+   COMPONENTI SPECIFICI PER DARK THEME
+======================================= */
+
+/* Hero contrastata */
+.theme-dark .hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12vh 5vw;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-dark .hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(124, 77, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+  z-index: -1;
+}
+
+.theme-dark .hero h1 {
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 10px rgba(255, 51, 102, 0.3);
+}
+
+.theme-dark .hero h2 {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+
+.theme-dark .hero-cta {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+  justify-content: center;
+}
+
+/* Card progetti con bordi neon */
+.theme-dark .project {
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--card-shadow);
+  position: relative;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.theme-dark .project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  padding: 1px;
+  background: var(--accent-gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.theme-dark .project:hover::before {
+  opacity: 1;
+}
+
+.theme-dark .project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 20px rgba(255, 51, 102, 0.15);
+}
+
+.theme-dark .project-image {
+  overflow: hidden;
+  position: relative;
+}
+
+.theme-dark .project-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.theme-dark .project:hover .project-image::before {
+  opacity: 1;
+}
+
+.theme-dark .project-image img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s ease;
+  object-fit: cover;
+  filter: brightness(1.1) contrast(1.05);
+}
+
+.theme-dark .project:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.theme-dark .project-details {
+  padding: 1.8rem;
+}
+
+.theme-dark .project-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+  font-weight: 700;
+}
+
+.theme-dark .project-description {
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+  opacity: 0.8;
+}
+
+/* Pulsanti neon */
+.theme-dark .btn {
+  display: inline-block;
+  padding: 0.9em 1.8em;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.theme-dark .btn-primary {
+  background: var(--accent-color);
+  color: #fff;
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 0 15px rgba(255, 51, 102, 0.4);
+}
+
+.theme-dark .btn-primary:hover {
+  background: transparent;
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(255, 51, 102, 0.6);
+}
+
+.theme-dark .btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.theme-dark .btn-secondary:hover {
+  border-color: var(--accent-color-secondary);
+  color: var(--accent-color-secondary);
+  box-shadow: 0 0 15px rgba(124, 77, 255, 0.3);
+}
+
+/* Sezione Skills con stile neon */
+.theme-dark .skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin: 4rem auto;
+  max-width: 1200px;
+}
+
+.theme-dark .skill-category {
+  flex: 1;
+  min-width: 250px;
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.theme-dark .skill-category h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(255, 51, 102, 0.4);
+}
+
+/* Timeline design contrastato */
+.theme-dark .timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 3rem auto;
+}
+
+.theme-dark .timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: var(--accent-gradient);
+  box-shadow: 0 0 10px rgba(255, 51, 102, 0.4);
+}
+
+.theme-dark .timeline-item {
+  padding: 2rem 0;
+  position: relative;
+}
+
+.theme-dark .timeline-content {
+  width: 45%;
+  padding: 2rem;
+  background: rgba(26, 26, 26, 0.5);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.theme-dark .timeline-item:nth-child(odd) .timeline-content {
+  margin-left: auto;
+}
+
+/* Form di contatto contrastato */
+.theme-dark .contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(26, 26, 26, 0.5);
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.theme-dark .form-group {
+  margin-bottom: 1.8rem;
+}
+
+.theme-dark label {
+  display: block;
+  margin-bottom: 0.7rem;
+  font-weight: 500;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.theme-dark input,
+.theme-dark textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-dark input:focus,
+.theme-dark textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(255, 51, 102, 0.2);
+}
+
+/* Footer contrastato */
+.theme-dark footer {
+  padding: 4rem 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+.theme-dark .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.theme-dark .social-icon {
+  width: 36px;
+  height: 36px;
+  opacity: 0.7;
+  filter: brightness(1.2);
+  transition: all 0.3s ease;
+}
+
+.theme-dark .social-icon:hover {
+  opacity: 1;
+  transform: translateY(-5px);
+  filter: drop-shadow(0 0 8px rgba(255, 51, 102, 0.6));
+}

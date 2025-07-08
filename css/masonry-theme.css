@@ -1,0 +1,335 @@
+/**
+ * PORTFOLIO DI LORENZO GIUDICI - MASONRY GRID THEME COMPONENTS
+ * Componenti specifici per il tema masonry grid
+ */
+
+/* ======================================
+   COMPONENTI SPECIFICI PER MASONRY GRID
+======================================= */
+
+/* Hero minimalista con griglia */
+.theme-masonry .hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10vh 5vw;
+  text-align: center;
+  position: relative;
+}
+
+.theme-masonry .hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.theme-masonry .hero h2 {
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 400;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--text-color-secondary);
+}
+
+.theme-masonry .hero-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+/* Griglia masonry per i progetti */
+.theme-masonry .project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+@supports (grid-template-rows: masonry) {
+  .theme-masonry .project-grid {
+    grid-template-rows: masonry;
+    grid-auto-rows: auto;
+  }
+}
+
+.theme-masonry .project {
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  border: var(--card-border);
+  break-inside: avoid;
+}
+
+.theme-masonry .project:nth-child(3n+1) {
+  grid-row: span 1;
+}
+
+.theme-masonry .project:nth-child(3n+2) {
+  grid-row: span 1.5;
+}
+
+.theme-masonry .project:nth-child(3n+3) {
+  grid-row: span 1.2;
+}
+
+.theme-masonry .project:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.theme-masonry .project-image {
+  overflow: hidden;
+  position: relative;
+}
+
+.theme-masonry .project-image img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s ease;
+  object-fit: cover;
+}
+
+.theme-masonry .project:hover .project-image img {
+  transform: scale(1.05);
+}
+
+.theme-masonry .project-details {
+  padding: 1.5rem;
+}
+
+.theme-masonry .project-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.theme-masonry .project-description {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: var(--text-color-secondary);
+}
+
+/* Pulsanti moderni e sobri */
+.theme-masonry .btn {
+  display: inline-block;
+  padding: 0.8em 1.6em;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.theme-masonry .btn-primary {
+  background: var(--accent-color);
+  color: white;
+}
+
+.theme-masonry .btn-primary:hover {
+  background: var(--accent-color-secondary);
+  transform: translateY(-2px);
+}
+
+.theme-masonry .btn-secondary {
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--text-color-secondary);
+}
+
+.theme-masonry .btn-secondary:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* Sezione Skills con layout a griglia */
+.theme-masonry .skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem auto;
+  max-width: 1200px;
+}
+
+.theme-masonry .skill-category {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.8rem;
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+}
+
+.theme-masonry .skill-category:nth-child(3n+1) {
+  grid-row: span 1;
+}
+
+.theme-masonry .skill-category:nth-child(3n+2) {
+  grid-row: span 1.2;
+}
+
+.theme-masonry .skill-category h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.theme-masonry .skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+}
+
+.theme-masonry .skill-item {
+  background: var(--background-color);
+  padding: 0.6rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--text-color-secondary);
+}
+
+/* Timeline design con layout asimmetrico */
+.theme-masonry .timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 3rem auto;
+}
+
+.theme-masonry .timeline-item {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.8rem;
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+}
+
+.theme-masonry .timeline-item:nth-child(3n+1) {
+  grid-row: span 1;
+}
+
+.theme-masonry .timeline-item:nth-child(3n+2) {
+  grid-row: span 1.2;
+}
+
+.theme-masonry .timeline-date {
+  font-size: 0.9rem;
+  color: var(--accent-color);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.theme-masonry .timeline-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-color);
+}
+
+.theme-masonry .timeline-description {
+  font-size: 0.95rem;
+  color: var(--text-color-secondary);
+}
+
+/* Form di contatto minimal */
+.theme-masonry .contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
+}
+
+.theme-masonry .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.theme-masonry label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.theme-masonry input,
+.theme-masonry textarea {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: transparent;
+  color: var(--text-color);
+  transition: border-color 0.3s ease;
+}
+
+.theme-masonry input:focus,
+.theme-masonry textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/* Footer minimal */
+.theme-masonry footer {
+  padding: 3rem 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.theme-masonry .social-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+  gap: 1rem;
+  max-width: 200px;
+  margin: 1.5rem auto 0;
+}
+
+.theme-masonry .social-icon {
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.theme-masonry .social-icon:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
+/* Layout masonry fallback per browser senza supporto nativo */
+@supports not (grid-template-rows: masonry) {
+  .theme-masonry .js-masonry-fix .project {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+  
+  .theme-masonry .js-masonry-fix {
+    columns: 3;
+    column-gap: 1.5rem;
+  }
+  
+  @media (max-width: 900px) {
+    .theme-masonry .js-masonry-fix {
+      columns: 2;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .theme-masonry .js-masonry-fix {
+      columns: 1;
+    }
+  }
+}

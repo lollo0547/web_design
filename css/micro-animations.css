@@ -1,0 +1,501 @@
+/* PORTFOLIO DI LORENZO GIUDICI - MICROANIMAZIONI
+   Microinterazioni e animazioni sottili per migliorare l'esperienza utente
+   con feedback visivo ed effetti delicati
+*/
+
+/* ======================================
+   MICRO INTERACTIONS & FEEDBACK
+======================================= */
+
+/* Pulsiazioni sull'elemento al focus */
+@keyframes focus-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(var(--accent-color-rgb), 0); }
+  100% { box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0); }
+}
+
+.focus-pulse:focus-visible {
+  animation: focus-pulse 1.5s ease-out infinite;
+  outline: none;
+}
+
+/* Segnalazione visiva dei link */
+.link-indicator {
+  position: relative;
+  color: var(--accent-color);
+}
+
+.link-indicator::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-out;
+}
+
+.link-indicator:hover::after,
+.link-indicator:focus::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Effetto subtile sugli elementi che cambiano stato */
+.state-change {
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.state-change::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  border-radius: inherit;
+  transition: opacity 0.2s;
+  z-index: -1;
+}
+
+.state-change:hover::before {
+  opacity: 0.05;
+}
+
+.state-change:active::before {
+  opacity: 0.1;
+}
+
+/* ======================================
+   TEXT MICRO ANIMATIONS
+======================================= */
+
+/* Text selection highlighting */
+::selection {
+  background: var(--accent-color);
+  color: #fff;
+  text-shadow: none;
+}
+
+/* Gradual text reveal */
+.reveal-text {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.reveal-text > span {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.3s;
+}
+
+.reveal-text.visible > span {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Staggered delay for characters */
+.reveal-text.visible > span:nth-child(1) { transition-delay: 0.05s; }
+.reveal-text.visible > span:nth-child(2) { transition-delay: 0.1s; }
+.reveal-text.visible > span:nth-child(3) { transition-delay: 0.15s; }
+.reveal-text.visible > span:nth-child(4) { transition-delay: 0.2s; }
+.reveal-text.visible > span:nth-child(5) { transition-delay: 0.25s; }
+.reveal-text.visible > span:nth-child(6) { transition-delay: 0.3s; }
+.reveal-text.visible > span:nth-child(7) { transition-delay: 0.35s; }
+.reveal-text.visible > span:nth-child(8) { transition-delay: 0.4s; }
+.reveal-text.visible > span:nth-child(9) { transition-delay: 0.45s; }
+.reveal-text.visible > span:nth-child(10) { transition-delay: 0.5s; }
+
+/* Letter spacing animation */
+.letter-spacing-animate {
+  transition: letter-spacing 0.3s ease-out;
+}
+
+.letter-spacing-animate:hover {
+  letter-spacing: 1px;
+}
+
+/* ======================================
+   INPUT & FORM MICRO INTERACTIONS
+======================================= */
+
+/* Input focus effect */
+.input-focus-effect {
+  position: relative;
+  z-index: 1;
+}
+
+.input-focus-effect::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  z-index: -1;
+}
+
+.input-focus-effect:focus-within::after {
+  transform: scaleX(1);
+}
+
+/* Checkbox toggle micro animation */
+.toggle-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.toggle-checkbox input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-color-tertiary);
+  transition: 0.3s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 2px;
+  background-color: var(--text-color);
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+  background-color: var(--accent-color);
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(18px);
+}
+
+/* Button press feedback */
+.btn-press-feedback {
+  transform: translateY(0);
+  transition: transform 0.1s ease;
+}
+
+.btn-press-feedback:active {
+  transform: translateY(2px);
+}
+
+/* ======================================
+   SCROLL & NAVIGATION MICRO INTERACTIONS
+======================================= */
+
+/* Smooth page transitions */
+.page-transition {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: page-fade-in 0.5s forwards;
+}
+
+@keyframes page-fade-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Progress bar animation */
+.progress-bar {
+  position: relative;
+  height: 4px;
+  background: var(--bg-color-tertiary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: var(--progress, 0%);
+  background: var(--accent-color);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 50px;
+  border: 2px solid var(--text-color);
+  border-radius: 15px;
+}
+
+.scroll-indicator::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  animation: scroll-indicator 2s infinite;
+}
+
+@keyframes scroll-indicator {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+/* ======================================
+   CURSOR EFFECTS & HOVER STATES
+======================================= */
+
+/* Custom hover pointer (subtle) */
+.hover-pointer {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.hover-pointer::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s;
+}
+
+.hover-pointer:hover::after {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Subtle image zoom */
+.subtle-zoom {
+  overflow: hidden;
+}
+
+.subtle-zoom img {
+  transition: transform 0.5s ease;
+}
+
+.subtle-zoom:hover img {
+  transform: scale(1.03);
+}
+
+/* Hover fade overlay */
+.hover-fade {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-fade-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hover-fade:hover .hover-fade-overlay {
+  opacity: 1;
+}
+
+/* ======================================
+   LOADING & STATE MICRO ANIMATIONS
+======================================= */
+
+/* Micro loading indicator */
+.micro-loading {
+  display: inline-block;
+  position: relative;
+  width: 15px;
+  height: 15px;
+}
+
+.micro-loading div {
+  position: absolute;
+  top: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.micro-loading div:nth-child(1) {
+  left: 0;
+  animation: micro-loading1 0.6s infinite;
+}
+
+.micro-loading div:nth-child(2) {
+  left: 0;
+  animation: micro-loading2 0.6s infinite;
+}
+
+.micro-loading div:nth-child(3) {
+  left: 10px;
+  animation: micro-loading2 0.6s infinite;
+}
+
+.micro-loading div:nth-child(4) {
+  left: 10px;
+  animation: micro-loading3 0.6s infinite;
+}
+
+@keyframes micro-loading1 {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes micro-loading2 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(10px, 0); }
+}
+
+@keyframes micro-loading3 {
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
+}
+
+/* Success animation checkmark */
+.success-checkmark {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  display: inline-block;
+}
+
+.success-checkmark::before,
+.success-checkmark::after {
+  content: '';
+  position: absolute;
+  background: var(--accent-color);
+}
+
+.success-checkmark::before {
+  width: 6px;
+  height: 2px;
+  left: 3px;
+  top: 10px;
+  transform: rotate(45deg);
+  transform-origin: center;
+  animation: checkmark-before 0.3s forwards;
+  opacity: 0;
+}
+
+.success-checkmark::after {
+  width: 10px;
+  height: 2px;
+  right: 3px;
+  top: 9px;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  animation: checkmark-after 0.3s forwards;
+  animation-delay: 0.15s;
+  opacity: 0;
+}
+
+@keyframes checkmark-before {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes checkmark-after {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ======================================
+   ACCESSIBILITY & FOCUS ENHANCEMENTS
+======================================= */
+
+/* Keyboard focus styles (improved) */
+:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 3px var(--bg-color), 0 0 0 6px rgba(var(--accent-color-rgb), 0.4);
+}
+
+/* Skip to content with animation */
+.skip-to-content-enhanced {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  padding: 10px 20px;
+  background: var(--accent-color);
+  color: #fff;
+  z-index: 9999;
+  transition: transform 0.2s;
+  border-bottom-left-radius: var(--border-radius-md);
+  border-bottom-right-radius: var(--border-radius-md);
+}
+
+.skip-to-content-enhanced:focus {
+  transform: translateX(-50%) translateY(0);
+  outline: none;
+}
+
+/* High contrast focus indicator */
+[data-high-contrast="true"] :focus-visible {
+  outline: 3px solid yellow;
+  outline-offset: 3px;
+}
+
+/* ======================================
+   REDUCED MOTION CONSIDERATIONS
+======================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .micro-animation-friendly {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
+  
+  .reduced-motion-allowed {
+    animation-duration: 0.5s !important;
+    transition-duration: 0.5s !important;
+  }
+}
