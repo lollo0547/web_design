@@ -188,3 +188,151 @@ function initPageLayout() {
 
 // Initialize the page layout
 document.addEventListener('DOMContentLoaded', initPageLayout);
+
+/**
+ * FAQ Accordion functionality
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  
+  if (accordionHeaders.length) {
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        // Toggle aria-expanded state
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isExpanded);
+        
+        // Close all other accordion items
+        accordionHeaders.forEach(otherHeader => {
+          if (otherHeader !== this) {
+            otherHeader.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    });
+  }
+});
+
+/**
+ * Contact form validation
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contact-form');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      // Basic validation
+      let isValid = true;
+      
+      if (!name) {
+        showError('name', 'Nome richiesto');
+        isValid = false;
+      } else {
+        clearError('name');
+      }
+      
+      if (!email) {
+        showError('email', 'Email richiesta');
+        isValid = false;
+      } else if (!isValidEmail(email)) {
+        showError('email', 'Email non valida');
+        isValid = false;
+      } else {
+        clearError('email');
+      }
+      
+      if (!subject) {
+        showError('subject', 'Oggetto richiesto');
+        isValid = false;
+      } else {
+        clearError('subject');
+      }
+      
+      if (!message) {
+        showError('message', 'Messaggio richiesto');
+        isValid = false;
+      } else {
+        clearError('message');
+      }
+      
+      if (isValid) {
+        // Here you would normally send the form data to a server
+        // For demonstration, we'll just show a success message
+        contactForm.innerHTML = '<div class="form-success"><h3>Messaggio inviato!</h3><p>Grazie per avermi contattato. Ti risponderò il prima possibile.</p></div>';
+      }
+    });
+  }
+  
+  // Helper functions for form validation
+  function showError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    
+    // Check if error message already exists
+    let errorMessage = field.nextElementSibling;
+    if (!errorMessage || !errorMessage.classList.contains('error-message')) {
+      errorMessage = document.createElement('div');
+      errorMessage.className = 'error-message';
+      field.parentNode.insertBefore(errorMessage, field.nextSibling);
+    }
+    
+    errorMessage.textContent = message;
+    field.classList.add('error');
+  }
+  
+  function clearError(fieldId) {
+    const field = document.getElementById(fieldId);
+    const errorMessage = field.nextElementSibling;
+    
+    if (errorMessage && errorMessage.classList.contains('error-message')) {
+      errorMessage.remove();
+    }
+    
+    field.classList.remove('error');
+  }
+  
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+});
+
+/**
+ * Skills progress bar animation
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  const skillBars = document.querySelectorAll('.skill-progress');
+  
+  if (skillBars.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Start animation when skill bars are visible
+          const progressBar = entry.target;
+          const width = progressBar.style.width;
+          
+          // First set to 0 to trigger animation
+          progressBar.style.width = '0';
+          
+          // Then animate to the target width after a small delay
+          setTimeout(() => {
+            progressBar.style.width = width;
+          }, 100);
+          
+          // Unobserve after animation is triggered
+          observer.unobserve(progressBar);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    // Observe each skill bar
+    skillBars.forEach(bar => {
+      observer.observe(bar);
+    });
+  }
+});
