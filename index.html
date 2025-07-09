@@ -45,7 +45,14 @@
     <header>
       <!-- Navbar nascosta inizialmente, visibile solo dopo scroll -->
       <nav class="navbar-container" aria-label="Menu principale">
+        <div class="logo-container">
+          <a href="#" class="logo-link">
+            <img src="immagini/logo.webp" alt="Lorenzo Giudici Logo" class="logo-image">
+          </a>
+        </div>
+        
         <button class="burger-menu" aria-label="Apri il menu di navigazione" aria-controls="main-nav" aria-expanded="false" aria-haspopup="true">☰</button>
+        
         <ul class="navbar" id="main-nav" role="menubar">
           <li role="none">
             <a href="#chi-sono" role="menuitem">
@@ -75,6 +82,12 @@
             <a href="#contatti" role="menuitem">
               <span class="lang-it">Contatti</span>
               <span class="lang-en">Contacts</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="#faq" role="menuitem">
+              <span class="lang-it">FAQ</span>
+              <span class="lang-en">FAQ</span>
             </a>
           </li>
         </ul>
@@ -110,38 +123,23 @@
     <main id="main-content" role="main">
       <!-- Sezione Chi Sono -->
       <section id="chi-sono" class="section">
-        <div class="container">
-          <h2 class="section-title">
-            <span class="lang-it">Chi Sono</span>
-            <span class="lang-en">About Me</span>
-          </h2>
-          <div class="section-content">
-            <div class="about-grid" data-aos="fade-up" data-aos-delay="200">
-              <div class="about-image">
-                <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici, Product Designer" loading="lazy">
-              </div>
-              <div class="about-text">
-                <p><strong>Ciao, sono Lorenzo Giudici!</strong> Product designer con oltre 5 anni di esperienza nel campo del design industriale. La mia passione è trasformare idee in prodotti funzionali che uniscono estetica e usabilità.</p>
-                
-                <p>Specializzato nella progettazione di prodotti che rispondono a esigenze concrete, credo fermamente che il buon design debba essere al servizio dell'esperienza utente, senza mai trascurare l'impatto ambientale e la sostenibilità.</p>
-                
-                <div class="about-details">
-                  <div class="about-detail-item reveal-left">
-                    <h4>Formazione</h4>
-                    <p>Laurea in Design Industriale presso il Politecnico di Milano</p>
+        <div class="container chi-sono-container">
+          <div class="section-overlay">
+            <h2 class="section-title">
+              <span class="lang-it">Chi Sono</span>
+              <span class="lang-en">About Me</span>
+            </h2>
+            <div class="section-content">
+              <div class="about-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="profile-image-container">
+                  <div class="profile-image-circle">
+                    <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici, Product Designer" loading="lazy">
                   </div>
-                  <div class="about-detail-item reveal-right">
-                    <h4>Esperienza</h4>
-                    <p>5+ anni nel settore del design di prodotto</p>
-                  </div>
-                  <div class="about-detail-item reveal-left">
-                    <h4>Specializzazione</h4>
-                    <p>Modellazione 3D, Prototipazione, Design Sostenibile</p>
-                  </div>
-                  <div class="about-detail-item reveal-right">
-                    <h4>Residenza</h4>
-                    <p>Milano, Italia</p>
-                  </div>
+                </div>
+                <div class="about-text">
+                  <p><strong>Ciao, sono Lorenzo Giudici!</strong> Product designer con oltre 5 anni di esperienza nel campo del design industriale. La mia passione è trasformare idee in prodotti funzionali che uniscono estetica e usabilità.</p>
+                  
+                  <p>Specializzato nella progettazione di prodotti che rispondono a esigenze concrete, credo fermamente che il buon design debba essere al servizio dell'esperienza utente, senza mai trascurare l'impatto ambientale e la sostenibilità.</p>
                 </div>
               </div>
             </div>
