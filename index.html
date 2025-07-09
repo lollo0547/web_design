@@ -186,99 +186,351 @@
         </div>
       </section>
       <!-- Sezione Progetti -->
-      <section id="progetti" class="section">
+      <section id="progetti" class="section progetti-section">
         <div class="container">
           <div class="section-overlay">
-            <h2 class="section-title">
+            <h2 class="section-title with-gradient">
               <span class="lang-it">Progetti</span>
               <span class="lang-en">Projects</span>
             </h2>
+
             <div class="section-content">
-              <div class="projects-grid">
-                <!-- Progetto 1 -->
-                <div class="project-card" data-aos="fade-up">
-                  <div class="project-image">
-                    <img src="immagini/webp/progetto 1/all 22.webp" alt="Set di tazzina e zuccheriera design" loading="lazy">
-                  </div>
-                  <div class="project-info">
-                    <h3 class="project-title">Coffee Set Design</h3>
-                    <p class="project-description">Set di tazzina e zuccheriera con design minimalista ed ergonomico, perfetto per gli amanti del caffè moderno.</p>
-                    <div class="project-tags">
-                      <span class="tag">Design Industriale</span>
-                      <span class="tag">Ceramica</span>
-                      <span class="tag">Minimalismo</span>
+              <!-- Introduzione progetti -->
+              <div class="progetti-intro reveal">
+                <p>
+                  <span class="lang-it">Una selezione dei miei lavori più significativi che mostrano la mia visione del design e le mie competenze.</span>
+                  <span class="lang-en">A selection of my most significant works that showcase my design vision and skills.</span>
+                </p>
+              </div>
+              
+              <!-- Grid progetti con navigazione -->
+              <div class="progetti-carousel-container">
+                <button class="progetti-nav progetti-prev" aria-label="Progetti precedenti">
+                  <span aria-hidden="true">&#10094;</span>
+                </button>
+                
+                <div class="progetti-viewport">
+                  <div class="progetti-grid" id="progettiGrid">
+                    <!-- Progetto 1 -->
+                    <div class="progetto-card reveal-left" data-slide-index="0">
+                      <div class="progetto-image-container" data-project="project1">
+                        <div class="decorative-element element-top-right"></div>
+                        <div class="progetto-frame">
+                          <div class="progetto-image-mask">
+                            <img src="immagini/webp/progetto 1/tazzina_.webp" alt="Set da Caffè Design" class="progetto-image">
+                            <div class="progetto-image-overlay"></div>
+                          </div>
+                        </div>
+                        <div class="progetto-accent-shape"></div>
+                        <div class="dynamic-shadow"></div>
+                      </div>
+                      <div class="progetto-name-box">
+                        <h3>
+                          <span class="lang-it">Set da Caffè Design</span>
+                          <span class="lang-en">Coffee Set Design</span>
+                        </h3>
+                      </div>
                     </div>
-                  </div>
-                  <div class="project-gallery">
-                    <img src="immagini/webp/progetto 1/tazzina_.webp" alt="Dettaglio tazzina" loading="lazy">
-                    <img src="immagini/webp/progetto 1/zuccheriera 2_.webp" alt="Dettaglio zuccheriera" loading="lazy">
+                    
+                    <!-- Progetto 2 -->
+                    <div class="progetto-card reveal-right" data-slide-index="0">
+                      <div class="progetto-image-container" data-project="project2">
+                        <div class="decorative-element element-bottom-left"></div>
+                        <div class="progetto-frame">
+                          <div class="progetto-image-mask">
+                            <img src="immagini/webp/progetto 2/cardanica.webp" alt="Meccanismo Cardanico" class="progetto-image">
+                            <div class="progetto-image-overlay"></div>
+                          </div>
+                        </div>
+                        <div class="progetto-accent-shape"></div>
+                        <div class="dynamic-shadow"></div>
+                      </div>
+                      <div class="progetto-name-box">
+                        <h3>
+                          <span class="lang-it">Meccanismo Cardanico</span>
+                          <span class="lang-en">Cardanic Mechanism</span>
+                        </h3>
+                      </div>
+                    </div>
+                    
+                    <!-- Progetto 3 -->
+                    <div class="progetto-card reveal-left" data-slide-index="1">
+                      <div class="progetto-image-container" data-project="project3">
+                        <div class="decorative-element element-top-left"></div>
+                        <div class="progetto-frame">
+                          <div class="progetto-image-mask">
+                            <img src="immagini/webp/progetto 3/untitled555.webp" alt="Concept Design Industriale" class="progetto-image">
+                            <div class="progetto-image-overlay"></div>
+                          </div>
+                        </div>
+                        <div class="progetto-accent-shape"></div>
+                        <div class="dynamic-shadow"></div>
+                      </div>
+                      <div class="progetto-name-box">
+                        <h3>
+                          <span class="lang-it">Concept Design Industriale</span>
+                          <span class="lang-en">Industrial Concept Design</span>
+                        </h3>
+                      </div>
+                    </div>
+                    
+                    <!-- Progetto 4 -->
+                    <div class="progetto-card reveal-right" data-slide-index="1">
+                      <div class="progetto-image-container" data-project="project4">
+                        <div class="decorative-element element-bottom-right"></div>
+                        <div class="progetto-frame">
+                          <div class="progetto-image-mask">
+                            <img src="immagini/webp/progetto 4/untitled.webp" alt="Design Architettonico" class="progetto-image">
+                            <div class="progetto-image-overlay"></div>
+                          </div>
+                        </div>
+                        <div class="progetto-accent-shape"></div>
+                        <div class="dynamic-shadow"></div>
+                      </div>
+                      <div class="progetto-name-box">
+                        <h3>
+                          <span class="lang-it">Design Architettonico</span>
+                          <span class="lang-en">Architectural Design</span>
+                        </h3>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
-                <!-- Progetto 2 -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-                  <div class="project-image">
-                    <img src="immagini/webp/progetto 2/cardanica.webp" alt="Sistema di illuminazione Cardanica" loading="lazy">
-                  </div>
-                  <div class="project-info">
-                    <h3 class="project-title">Sistema Cardanica</h3>
-                    <p class="project-description">Lampada ispirata ai giroscopi cardanici, con design modulare che permette infinite configurazioni e orientamenti della luce.</p>
-                    <div class="project-tags">
-                      <span class="tag">Illuminazione</span>
-                      <span class="tag">Modularità</span>
-                      <span class="tag">Innovazione</span>
-                    </div>
-                  </div>
-                  <div class="project-gallery">
-                    <img src="immagini/webp/progetto 2/cardanica 600.webp" alt="Dettaglio giunto cardanico" loading="lazy">
-                    <img src="immagini/webp/progetto 2/cardanica 900.webp" alt="Installazione completa" loading="lazy">
-                  </div>
-                </div>
+                <button class="progetti-nav progetti-next" aria-label="Progetti successivi">
+                  <span aria-hidden="true">&#10095;</span>
+                </button>
                 
-                <!-- Progetto 3 -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-                  <div class="project-image">
-                    <img src="immagini/webp/progetto 3/untitled202.webp" alt="Concept sedie moderne" loading="lazy">
-                  </div>
-                  <div class="project-info">
-                    <h3 class="project-title">Collezione Sedie Fluide</h3>
-                    <p class="project-description">Serie di sedute dalle forme organiche e fluide, ispirate all'eleganza delle forme naturali e alla massima ergonomia.</p>
-                    <div class="project-tags">
-                      <span class="tag">Arredamento</span>
-                      <span class="tag">Design Organico</span>
-                      <span class="tag">Ergonomia</span>
-                    </div>
-                  </div>
-                  <div class="project-gallery">
-                    <img src="immagini/webp/progetto 3/untitled555.webp" alt="Dettaglio seduta" loading="lazy">
-                    <img src="immagini/webp/progetto 3/untitled702.webp" alt="Vista laterale" loading="lazy">
-                  </div>
+                <!-- Indicatori di pagina -->
+                <div class="progetti-indicators">
+                  <span class="indicator active" data-slide="0"></span>
+                  <span class="indicator" data-slide="1"></span>
                 </div>
-                
-                <!-- Progetto 4 -->
-                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-                  <div class="project-image">
-                    <img src="immagini/webp/progetto 4/untitled.webp" alt="Concept prodotto" loading="lazy">
-                  </div>
-                  <div class="project-info">
-                    <h3 class="project-title">Accessori Urban Design</h3>
-                    <p class="project-description">Collezione di accessori urbani che combinano funzionalità ed estetica contemporanea per la vita cittadina moderna.</p>
-                    <div class="project-tags">
-                      <span class="tag">Urban Design</span>
-                      <span class="tag">Accessori</span>
-                      <span class="tag">Contemporaneo</span>
-                    </div>
-                  </div>
-                  <div class="project-gallery">
-                    <img src="immagini/webp/progetto 4/untitled33.webp" alt="Dettaglio accessorio" loading="lazy">
-                    <img src="immagini/webp/progetto 4/untitled44.webp" alt="Vista d'insieme" loading="lazy">
-                  </div>
-                </div>
+              </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      
+      <!-- Project Overlays (Hidden by default) -->
+      <div class="project-overlays">
+        <!-- Project 1 Overlay -->
+        <div id="project1" class="project-overlay">
+          <div class="overlay-content">
+            <div class="overlay-header">
+              <h2 class="overlay-title">
+                <span class="lang-it">Set da Caffè Design</span>
+                <span class="lang-en">Coffee Set Design</span>
+              </h2>
+              <button class="overlay-close" aria-label="Chiudi">×</button>
+            </div>
+            <div class="overlay-body">
+              <div class="overlay-image-gallery">
+                <div class="overlay-carousel-container">
+                  <div class="overlay-carousel-track" data-project="project1-carousel">
+                    <div class="overlay-carousel-slide active">
+                      <img src="immagini/webp/progetto 1/tazzina_.webp" alt="Set da Caffè - Vista Principale" class="overlay-main-image shadow-effect">
+                    </div>
+                    <div class="overlay-carousel-slide">
+                      <img src="immagini/webp/progetto 1/zuccheriera 2_.webp" alt="Zuccheriera Design" class="overlay-main-image shadow-effect">
+                    </div>
+                    <div class="overlay-carousel-slide">
+                      <img src="immagini/webp/progetto 1/all 22.webp" alt="Set Completo" class="overlay-main-image shadow-effect">
+                    </div>
+                  </div>
+                </div>
+                <div class="overlay-thumbnails">
+                  <img src="immagini/webp/progetto 1/tazzina_.webp" alt="Set da Caffè - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project1-carousel">
+                  <img src="immagini/webp/progetto 1/zuccheriera 2_.webp" alt="Zuccheriera Design" class="overlay-thumb" data-slide="1" data-carousel="project1-carousel">
+                  <img src="immagini/webp/progetto 1/all 22.webp" alt="Set Completo" class="overlay-thumb" data-slide="2" data-carousel="project1-carousel">
+                </div>
+              </div>
+              <div class="overlay-description">
+                <div class="overlay-meta">
+                  <span class="overlay-tag">Product Design</span>
+                  <span class="overlay-date">2023</span>
+                </div>
+                <p class="overlay-text">
+                  <span class="lang-it">Un elegante set da caffè che unisce funzionalità e design minimalista. Il progetto esplora nuove forme e materiali per creare un'esperienza estetica e funzionale. Il design ergonomico della tazzina e la linea pulita della zuccheriera si fondono in un insieme armonioso, pensato per valorizzare il rito del caffè italiano.</span>
+                  <span class="lang-en">An elegant coffee set that combines functionality and minimalist design. The project explores new shapes and materials to create an aesthetic and functional experience. The ergonomic design of the cup and the clean line of the sugar bowl blend into a harmonious whole, designed to enhance the ritual of Italian coffee.</span>
+                </p>
+                <h3 class="overlay-subtitle">
+                  <span class="lang-it">Strumenti Utilizzati</span>
+                  <span class="lang-en">Tools Used</span>
+                </h3>
+                <div class="overlay-tools-icons">
+                  <img src="immagini/webp/loghi/icons8-solidworks-48.webp" alt="SolidWorks" title="SolidWorks">
+                  <img src="immagini/webp/loghi/icons8-blender-48.webp" alt="Blender" title="Blender">
+                  <img src="immagini/webp/loghi/icons8-photoshop-48.webp" alt="Adobe Photoshop" title="Adobe Photoshop">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 2 Overlay -->
+        <div id="project2" class="project-overlay">
+          <div class="overlay-content">
+            <div class="overlay-header">
+              <h2 class="overlay-title">
+                <span class="lang-it">Meccanismo Cardanico</span>
+                <span class="lang-en">Cardanic Mechanism</span>
+              </h2>
+              <button class="overlay-close" aria-label="Chiudi">×</button>
+            </div>
+            <div class="overlay-body">
+              <div class="overlay-image-gallery">
+                <div class="overlay-carousel-container">
+                  <div class="overlay-carousel-track" data-project="project2-carousel">
+                    <div class="overlay-carousel-slide active">
+                      <img src="immagini/webp/progetto 2/cardanica.webp" alt="Meccanismo Cardanico - Vista Principale" class="overlay-main-image shadow-effect">
+                    </div>
+                    <div class="overlay-carousel-slide">
+                      <img src="immagini/webp/progetto 2/cardanica 600.webp" alt="Meccanismo Cardanico - Dettaglio" class="overlay-main-image shadow-effect">
+                    </div>
+                    <div class="overlay-carousel-slide">
+                      <img src="immagini/webp/progetto 2/cardanica 900.webp" alt="Meccanismo Cardanico - Vista Alternativa" class="overlay-main-image shadow-effect">
+                    </div>
+                  </div>
+                </div>
+                <div class="overlay-thumbnails">
+                  <img src="immagini/webp/progetto 2/cardanica.webp" alt="Meccanismo Cardanico - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project2-carousel">
+                  <img src="immagini/webp/progetto 2/cardanica 600.webp" alt="Meccanismo Cardanico - Dettaglio" class="overlay-thumb" data-slide="1" data-carousel="project2-carousel">
+                  <img src="immagini/webp/progetto 2/cardanica 900.webp" alt="Meccanismo Cardanico - Vista Alternativa" class="overlay-thumb" data-slide="2" data-carousel="project2-carousel">
+                </div>
+              </div>
+              <div class="overlay-description">
+                <div class="overlay-meta">
+                  <span class="overlay-tag">3D Modeling & Engineering</span>
+                  <span class="overlay-date">2022</span>
+                </div>
+                <p class="overlay-text">
+                  <span class="lang-it">Studio e modellazione di un meccanismo cardanico avanzato. Questo progetto esplora i principi di ingegneria meccanica applicati a un giunto cardanico, ottimizzando la trasmissione del movimento e riducendo l'attrito. Particolare attenzione è stata dedicata alla precisione dei componenti e alla simulazione del movimento.</span>
+                  <span class="lang-en">Study and modeling of an advanced cardanic mechanism. This project explores the principles of mechanical engineering applied to a universal joint, optimizing movement transmission and reducing friction. Particular attention was paid to component precision and movement simulation.</span>
+                </p>
+                <h3 class="overlay-subtitle">
+                  <span class="lang-it">Strumenti Utilizzati</span>
+                  <span class="lang-en">Tools Used</span>
+                </h3>
+                <div class="overlay-tools-icons">
+                  <img src="immagini/webp/loghi/icons8-solidworks-48.webp" alt="SolidWorks" title="SolidWorks">
+                  <img src="immagini/webp/loghi/autocad-seeklogo.webp" alt="AutoCAD" title="AutoCAD">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 3 Overlay -->
+        <div id="project3" class="project-overlay">
+          <div class="overlay-content">
+            <div class="overlay-header">
+              <h2 class="overlay-title">
+                <span class="lang-it">Concept Design Industriale</span>
+                <span class="lang-en">Industrial Concept Design</span>
+              </h2>
+              <button class="overlay-close" aria-label="Chiudi">×</button>
+            </div>
+            <div class="overlay-body">
+              <div class="overlay-image-gallery">
+                <div class="overlay-carousel-container">
+                  <div class="overlay-carousel-track" data-project="project3-carousel">
+                    <div class="overlay-carousel-slide active">
+                      <img src="immagini/webp/progetto 3/untitled555.webp" alt="Concept Design - Vista Principale" class="overlay-main-image shadow-effect">
+                    </div>
+                    <div class="overlay-carousel-slide">
+                      <img src="immagini/webp/progetto 3/untitled202.webp" alt="Concept Design - Dettaglio" class="overlay-main-image shadow-effect">
+                    </div>
+                    <div class="overlay-carousel-slide">
+                      <img src="immagini/webp/progetto 3/untitled702.webp" alt="Concept Design - Vista Alternativa" class="overlay-main-image shadow-effect">
+                    </div>
+                  </div>
+                </div>
+                <div class="overlay-thumbnails">
+                  <img src="immagini/webp/progetto 3/untitled555.webp" alt="Concept Design - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project3-carousel">
+                  <img src="immagini/webp/progetto 3/untitled202.webp" alt="Concept Design - Dettaglio" class="overlay-thumb" data-slide="1" data-carousel="project3-carousel">
+                  <img src="immagini/webp/progetto 3/untitled702.webp" alt="Concept Design - Vista Alternativa" class="overlay-thumb" data-slide="2" data-carousel="project3-carousel">
+                </div>
+              </div>
+              <div class="overlay-description">
+                <div class="overlay-meta">
+                  <span class="overlay-tag">Concept Design</span>
+                  <span class="overlay-date">2022</span>
+                </div>
+                <p class="overlay-text">
+                  <span class="lang-it">Un progetto di design industriale che fonde estetica contemporanea e funzionalità. Questa serie di concept esplora nuove forme e soluzioni per oggetti di uso quotidiano, reinterpretando la relazione tra utente e prodotto attraverso linee innovative e materiali sostenibili.</span>
+                  <span class="lang-en">An industrial design project that blends contemporary aesthetics and functionality. This series of concepts explores new forms and solutions for everyday objects, reinterpreting the relationship between user and product through innovative lines and sustainable materials.</span>
+                </p>
+                <h3 class="overlay-subtitle">
+                  <span class="lang-it">Strumenti Utilizzati</span>
+                  <span class="lang-en">Tools Used</span>
+                </h3>
+                <div class="overlay-tools-icons">
+                  <img src="immagini/webp/loghi/icons8-rhinoceros-6-48.webp" alt="Rhinoceros" title="Rhinoceros">
+                  <img src="immagini/webp/loghi/icons8-illustrator-48.webp" alt="Adobe Illustrator" title="Adobe Illustrator">
+                  <img src="immagini/webp/loghi/icons8-photoshop-48.webp" alt="Adobe Photoshop" title="Adobe Photoshop">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 4 Overlay -->
+        <div id="project4" class="project-overlay">
+          <div class="overlay-content">
+            <div class="overlay-header">
+              <h2 class="overlay-title">
+                <span class="lang-it">Design Architettonico</span>
+                <span class="lang-en">Architectural Design</span>
+              </h2>
+              <button class="overlay-close" aria-label="Chiudi">×</button>
+            </div>
+            <div class="overlay-body">
+              <div class="overlay-image-gallery">
+                <div class="overlay-carousel-container">
+                  <div class="overlay-carousel-track" data-project="project4-carousel">
+                    <div class="overlay-carousel-slide active">
+                      <img src="immagini/webp/progetto 4/untitled.webp" alt="Design Architettonico - Vista Principale" class="overlay-main-image shadow-effect">
+                    </div>
+                    <div class="overlay-carousel-slide">
+                      <img src="immagini/webp/progetto 4/untitled33.webp" alt="Design Architettonico - Dettaglio" class="overlay-main-image shadow-effect">
+                    </div>
+                    <div class="overlay-carousel-slide">
+                      <img src="immagini/webp/progetto 4/untitled44.webp" alt="Design Architettonico - Vista Alternativa" class="overlay-main-image shadow-effect">
+                    </div>
+                  </div>
+                </div>
+                <div class="overlay-thumbnails">
+                  <img src="immagini/webp/progetto 4/untitled.webp" alt="Design Architettonico - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project4-carousel">
+                  <img src="immagini/webp/progetto 4/untitled33.webp" alt="Design Architettonico - Dettaglio" class="overlay-thumb" data-slide="1" data-carousel="project4-carousel">
+                  <img src="immagini/webp/progetto 4/untitled44.webp" alt="Design Architettonico - Vista Alternativa" class="overlay-thumb" data-slide="2" data-carousel="project4-carousel">
+                </div>
+              </div>
+              <div class="overlay-description">
+                <div class="overlay-meta">
+                  <span class="overlay-tag">Architectural Design</span>
+                  <span class="overlay-date">2023</span>
+                </div>
+                <p class="overlay-text">
+                  <span class="lang-it">Progetto di design architettonico che esplora nuove forme e spazi. Questo concept combina principi di sostenibilità e funzionalità in una proposta innovativa. Particolare attenzione è stata posta alla luce naturale, ai flussi di circolazione e all'integrazione con l'ambiente circostante.</span>
+                  <span class="lang-en">Architectural design project exploring new shapes and spaces. This concept combines principles of sustainability and functionality in an innovative proposal. Special attention was paid to natural light, circulation flows, and integration with the surrounding environment.</span>
+                </p>
+                <h3 class="overlay-subtitle">
+                  <span class="lang-it">Strumenti Utilizzati</span>
+                  <span class="lang-en">Tools Used</span>
+                </h3>
+                <div class="overlay-tools-icons">
+                  <img src="immagini/webp/loghi/icons8-blender-48.webp" alt="Blender" title="Blender">
+                  <img src="immagini/webp/loghi/autocad-seeklogo.webp" alt="AutoCAD" title="AutoCAD">
+                  <img src="immagini/webp/loghi/icons8-adobe-indesign-48.webp" alt="Adobe InDesign" title="Adobe InDesign">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fine Sezione Progetti -->
       
       <!-- Sezione Software Skills -->
       <section id="software-skills" class="section">
@@ -739,5 +991,51 @@
     <script src="js/si.js" defer></script>
     <script src="js/animations.js" defer></script>
     <script src="js/chi-sono.js"></script>
+    <script src="js/projects.js"></script>
+  </body>
+</html>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <img src="immagini/logo.webp" alt="Lorenzo Giudici Logo" width="50" height="50">
+            <p>Lorenzo Giudici</p>
+          </div>
+          
+          <div class="footer-links">
+            <a href="#progetti">Progetti</a>
+            <a href="#software-skills">Skills</a>
+            <a href="#interessi">Interessi</a>
+            <a href="#contatti">Contatti</a>
+            <a href="#faq">FAQ</a>
+          </div>
+          
+          <div class="footer-social">
+            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <img src="immagini/webp/loghi 2/icons8-linkedin-48.webp" alt="LinkedIn" width="32" height="32">
+            </a>
+            <a href="https://behance.net/" target="_blank" rel="noopener noreferrer" aria-label="Behance">
+              <img src="immagini/webp/loghi 2/icons8-behance-48.webp" alt="Behance" width="32" height="32">
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <img src="immagini/webp/loghi 2/icons8-instagram-logo-48.webp" alt="Instagram" width="32" height="32">
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2025 Lorenzo Giudici. Tutti i diritti riservati.</p>
+          <p>Design e sviluppo con ❤️</p>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="js/si.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/chi-sono.js"></script>
+    <script src="js/projects.js"></script>
   </body>
 </html>

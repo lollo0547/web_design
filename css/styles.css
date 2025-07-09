@@ -1169,3 +1169,520 @@ html {
     width: 100%;
   }
 }
+
+/* Projects Section Styles */
+.progetti-section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+.progetti-intro {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+}
+
+.progetti-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.progetto-card {
+  position: relative;
+}
+
+.progetto-image-container {
+  position: relative;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.progetto-image-container:hover {
+  transform: translateY(-8px);
+}
+
+/* Modify the image overlay to be more visible */
+.progetto-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.progetto-image-container:hover .progetto-image-overlay {
+  opacity: 1;
+}
+
+.progetto-image-overlay::after {
+  content: "+";
+  font-size: 3rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Remove the media queries that refer to now-deleted elements */
+@media (min-width: 768px) {
+  .progetto-card {
+    flex-direction: column;
+  }
+  
+  .progetto-image-container {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .progetti-grid {
+    gap: 3rem;
+  }
+
+  /* Remove the alternating layout */
+  .progetto-card:nth-child(even) {
+    flex-direction: column;
+  }
+}
+
+/* Project Overlays */
+.project-overlays {
+  position: relative;
+  z-index: 1000;
+}
+
+.project-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 15, 20, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.overlay-content {
+  background-color: #ffffff;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  animation: overlayPop 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+.overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-color);
+  z-index: 2;
+}
+
+.overlay-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.overlay-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  padding: 0.5rem;
+  line-height: 1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
+
+.overlay-close:hover {
+  color: var(--accent-color);
+  background-color: var(--accent-light);
+}
+
+.overlay-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.overlay-image-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+
+.overlay-main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.overlay-main-image.shadow-effect {
+  animation: shadowPulse 5s infinite alternate;
+}
+
+.overlay-main-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlay-main-image:hover::after {
+  opacity: 1;
+}
+
+.overlay-carousel-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-carousel-track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.overlay-carousel-slide {
+  min-width: 100%;
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+.overlay-carousel-slide.active {
+  opacity: 1;
+}
+
+.overlay-thumbnails {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.overlay-thumb {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.overlay-thumb:hover {
+  transform: scale(1.05);
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 20px rgba(76, 29, 115, 0.2);
+}
+
+.overlay-thumb.active {
+  border-color: var(--accent-color);
+  transform: scale(1.05);
+}
+
+.overlay-description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.overlay-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.overlay-tag {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  background: var(--accent-light);
+  color: var(--accent-color);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.overlay-date {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.overlay-text {
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.overlay-subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.overlay-tools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.overlay-tools-list li {
+  padding: 0.3rem 0.8rem;
+  background-color: var(--bg-secondary);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* Styling for tools icons */
+.overlay-tools-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.overlay-tools-icons img {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
+}
+
+.overlay-tools-icons img:hover {
+  transform: translateY(-5px);
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.15));
+}
+
+/* Responsive layout for project overlay */
+@media (min-width: 768px) {
+  .overlay-body {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .overlay-image-gallery {
+    flex: 1;
+  }
+  
+  .overlay-description {
+    flex: 1;
+    padding-left: 2rem;
+  }
+}
+
+/* Projects Carousel Styling */
+.progetti-carousel-container {
+  position: relative;
+  width: 100%;
+  margin: 2rem auto;
+}
+
+.progetti-viewport {
+  overflow: hidden;
+  position: relative;
+}
+
+.progetti-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progetti-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.progetti-nav:hover {
+  background: var(--accent-color);
+  color: white;
+  box-shadow: 0 6px 16px rgba(76, 29, 115, 0.25);
+}
+
+.progetti-prev {
+  left: -25px;
+}
+
+.progetti-next {
+  right: -25px;
+}
+
+.progetti-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.indicator {
+  width: 10px;
+  height: 10px;
+  background: #d1d1d1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  width: 24px;
+  border-radius: 10px;
+  background: var(--accent-color);
+}
+
+/* Project Name Box Styling */
+.progetto-name-box {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.progetto-name-box h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.progetto-card:hover .progetto-name-box {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(76, 29, 115, 0.15);
+}
+
+/* Dynamic Shadow */
+.dynamic-shadow {
+  position: absolute;
+  bottom: -15px;
+  left: 10%;
+  right: 10%;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  opacity: 0.8;
+  filter: blur(5px);
+  transition: all 0.5s ease;
+  transform: scaleX(0.85);
+  z-index: -1;
+}
+
+.progetto-card:hover .dynamic-shadow {
+  opacity: 0.9;
+  transform: scaleX(1);
+  filter: blur(7px);
+}
+
+/* Overlay Animation */
+@keyframes overlayPop {
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shadowPulse {
+  0% {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 15px 35px rgba(76, 29, 115, 0.2);
+  }
+  100% {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .progetti-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .progetti-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
