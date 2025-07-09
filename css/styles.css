@@ -354,8 +354,7 @@ header {
 .scroll-indicator {
   position: absolute;
   bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  /* Position is maintained but with different approach for width */
   text-align: center;
   color: white;
   font-size: 0.9rem;
@@ -366,20 +365,55 @@ header {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 50px;
-  padding: 12px 24px;
+  padding: 8px 16px; /* Reduced padding to make it smaller */
   box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(255, 255, 255, 0.1);
   animation: float 3s ease-in-out infinite;
 }
 
 .scroll-arrow {
-  width: 12px;
-  height: 12px;
+  width: 8px; /* Smaller arrows */
+  height: 8px; /* Smaller arrows */
   border-right: 2px solid white;
   border-bottom: 2px solid white;
   transform: rotate(45deg);
-  margin: 8px auto 0;
-  display: inline-block;
+  margin: 0 auto 5px; /* Reduced margin */
+  animation: bounce 2s infinite;
+}
+
+.scroll-arrow:nth-child(2) {
+  margin-top: -2px; /* Closer to the first arrow */
+  animation-delay: 0.2s;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: rotate(45deg) translateY(0);
+  }
+  40% {
+    transform: rotate(45deg) translateY(8px);
+  }
+  60% {
+    transform: rotate(45deg) translateY(4px);
+  }
+}
+
+/* Additional styles to ensure the scroll-indicator is properly positioned */
+@media (max-width: 779px) {
+  .scroll-indicator {
+    /* For smaller screens, make sure it's centered and short */
+    width: 80px; /* Even shorter on mobile for better proportion */
+    transform: translateX(-50%);
+  }
+}
+
+/* This ensures the scroll-indicator has a fixed width on larger screens */
+@media (min-width: 780px) {
+  .scroll-indicator {
+    width: 100px; /* Much shorter fixed width */
+    transform: translateX(-50%); /* Center it horizontally */
+    margin: 0 auto;
+  }
 }
 
 /* ------------------------------
@@ -392,7 +426,8 @@ header {
   justify-content: center;
   padding: 4rem 2rem;
   scroll-margin-top: 60px; /* Aggiunto per tenere conto della navbar */
-  transition: background-color 0.5s ease; /* Transizione fluida tra sezioni */
+  transition: background-color 0.5s ease, opacity 0.8s ease, transform 0.8s ease; /* Combined transitions */
+  will-change: transform, opacity; /* Optimize for animations */
 }
 
 #chi-sono {
@@ -962,14 +997,30 @@ html {
 /* Styles for Chi Sono section with overlay */
 .chi-sono-container {
   position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
-.section-overlay {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(8px);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  box-shadow: var(--card-shadow);
+.section-title {
+  font-size: 2.5rem;
+  color: var(--text-color-dark);
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 2px;
 }
 
 .profile-image-container {
@@ -983,8 +1034,14 @@ html {
   height: 220px;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  border: 3px solid white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border: 4px solid white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image-circle:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(76, 29, 115, 0.2);
 }
 
 .profile-image-circle img {
@@ -993,21 +1050,40 @@ html {
   object-fit: cover;
 }
 
+.about-text {
+  line-height: 1.7;
+}
+
+.about-text p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.about-text .intro-text {
+  font-size: 1.2rem;
+  color: var(--text-color-dark);
+}
+
+.about-text strong {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
 /* Responsive layout for profile image */
-@media (min-width: 768px) and (orientation: landscape) {
+@media (min-width: 768px) {
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: 2rem;
+    gap: 3rem;
     align-items: center;
   }
   
   .profile-image-container {
-    justify-content: flex-end;
+    justify-content: center;
   }
 }
 
-@media (max-width: 767px), (orientation: portrait) {
+@media (max-width: 767px) {
   .about-grid {
     display: flex;
     flex-direction: column;
@@ -1048,6 +1124,45 @@ html {
   position: sticky;
   top: 60px;
   z-index: 50;
+}
+
+/* Section Scroll Animations */
+.section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Different animation directions based on scroll direction */
+.section.scroll-down-enter {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.section.scroll-up-enter {
+  transform: translateY(-30px);
+  opacity: 0;
+}
+
+.section.scroll-down-leave {
+  transform: translateY(-30px);
+  opacity: 0;
+}
+
+.section.scroll-up-leave {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+/* Ensure first section is visible on load */
+#chi-sono.section {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Projects Section Styles */
@@ -1490,4 +1605,427 @@ textarea.error {
   .section-title {
     font-size: 1.8rem;
   }
+}
+
+/* Section Scroll Animations */
+.section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Different animation directions based on scroll direction */
+.section.scroll-down-enter {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.section.scroll-up-enter {
+  transform: translateY(-30px);
+  opacity: 0;
+}
+
+.section.scroll-down-leave {
+  transform: translateY(-30px);
+  opacity: 0;
+}
+
+.section.scroll-up-leave {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+/* Ensure first section is visible on load */
+#chi-sono.section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Percorso Scolastico Button */
+.button-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.percorso-button {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 0.75rem 1.8rem;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(76, 29, 115, 0.2);
+  position: relative;
+}
+
+.percorso-button:hover {
+  background: var(--accent-color-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(76, 29, 115, 0.3);
+}
+
+.percorso-button.active {
+  background: var(--accent-color-dark);
+  box-shadow: 0 2px 4px rgba(76, 29, 115, 0.2);
+  transform: translateY(0);
+  position: relative;
+}
+
+.percorso-button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid var(--accent-color-dark);
+}
+
+@media (max-width: 767px) {
+  .button-container {
+    justify-content: center;
+  }
+}
+
+/* Modal Styles */
+.modal {
+  position: relative;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  margin-top: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: max-height 0.5s ease, opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 100;
+}
+
+.modal.open {
+  max-height: 80vh;
+  opacity: 1;
+  visibility: visible;
+  margin-bottom: 3rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  overflow-y: auto;
+  transform: translateY(-10px);
+  transition: transform 0.3s ease;
+}
+
+.modal.open .modal-content {
+  transform: translateY(0);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: #999;
+  cursor: pointer;
+  padding: 0.25rem;
+  margin-left: 1rem;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.close-button:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+/* Burger Menu in Modal */
+.burger-container {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.burger-container {
+  position: relative;
+}
+
+.modal-burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.burger-line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.modal-burger[aria-expanded="true"] .burger-line:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.modal-burger[aria-expanded="true"] .burger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.modal-burger[aria-expanded="true"] .burger-line:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+.modal-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 180px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 20;
+  margin-top: 0.5rem;
+  border: 1px solid #f0f0f0;
+}
+
+.modal-menu.open {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal-menu li {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-menu li:last-child {
+  border-bottom: none;
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  font-family: var(--font-main);
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.menu-item:hover {
+  background-color: #f9f5ff;
+  color: var(--accent-color);
+}
+
+.menu-item.active {
+  font-weight: 600;
+  color: var(--accent-color);
+  background-color: #f9f5ff;
+}
+
+/* Table Styles */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.education-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.education-table th,
+.education-table td {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.education-table th {
+  background-color: #f9f5ff;
+  font-weight: 600;
+  color: var(--accent-color);
+  white-space: nowrap;
+}
+
+.education-table tr:last-child td {
+  border-bottom: none;
+}
+
+.education-table tr:hover {
+  background-color: rgba(76, 29, 115, 0.03);
+}
+
+/* Responsive Table Styles */
+@media (max-width: 768px) {
+  .education-table {
+    border: 0;
+  }
+
+  .education-table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .education-table tr {
+    border-bottom: 3px solid rgba(76, 29, 115, 0.1);
+    display: block;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .education-table td {
+    border-bottom: 1px solid rgba(76, 29, 115, 0.1);
+    display: block;
+    font-size: 0.9rem;
+    text-align: right;
+    padding-left: 45%;
+    position: relative;
+  }
+  
+  .education-table td:last-child {
+    border-bottom: 0;
+  }
+  
+  .education-table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    position: absolute;
+    left: 1rem;
+    color: var(--accent-color);
+  }
+}
+
+/* Additional responsive styles for the expandable section */
+@media screen and (max-width: 768px) {
+  .modal.open {
+    max-height: 90vh;
+  }
+  
+  .modal-content {
+    width: 100%;
+    border-radius: var(--border-radius);
+  }
+  
+  .modal-header {
+    flex-wrap: wrap;
+  }
+  
+  .modal-header h3 {
+    order: 1;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .burger-container {
+    order: 0;
+  }
+  
+  .close-button {
+    order: 2;
+  }
+}
+
+/* Animation for the expanded section */
+.modal.open .modal-content {
+  animation: slideDown 0.4s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Make button look better when active */
+.percorso-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 29, 115, 0.3);
 }

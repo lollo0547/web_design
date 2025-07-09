@@ -115,6 +115,7 @@
         
         <div class="scroll-indicator" id="scrollIndicator">
           <div class="scroll-arrow"></div>
+          <div class="scroll-arrow"></div>
         </div>
       </div>
     </header>
@@ -123,22 +124,157 @@
       <!-- Sezione Chi Sono -->
       <section id="chi-sono" class="section">
         <div class="container chi-sono-container">
-          <div class="section-overlay">
-            <h2 class="section-title">
-              <span class="lang-it">Chi Sono</span>
-              <span class="lang-en">About Me</span>
-            </h2>
-            <div class="section-content">
-              <div class="about-grid" data-aos="fade-up" data-aos-delay="200">
-                <div class="profile-image-container">
-                  <div class="profile-image-circle">
-                    <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici, Product Designer" loading="lazy">
-                  </div>
+          <h2 class="section-title">Chi Sono</h2>
+          
+          <div class="section-content">
+            <div class="about-grid" data-aos="fade-up" data-aos-delay="200">
+              <div class="profile-image-container">
+                <div class="profile-image-circle">
+                  <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici, Product Designer" loading="lazy">
                 </div>
-                <div class="about-text">
-                  <p><strong>Ciao, sono Lorenzo Giudici!</strong> Product designer con oltre 5 anni di esperienza nel campo del design industriale. La mia passione è trasformare idee in prodotti funzionali che uniscono estetica e usabilità.</p>
+              </div>
+              <div class="about-text">
+                <p class="intro-text"><strong>Ciao, sono Lorenzo Giudici!</strong> Product designer con oltre 5 anni di esperienza nel campo del design industriale. La mia passione è trasformare idee in prodotti funzionali che uniscono estetica e usabilità.</p>
                   
-                  <p>Specializzato nella progettazione di prodotti che rispondono a esigenze concrete, credo fermamente che il buon design debba essere al servizio dell'esperienza utente, senza mai trascurare l'impatto ambientale e la sostenibilità.</p>
+                <p>Specializzato nella progettazione di prodotti che rispondono a esigenze concrete, credo fermamente che il buon design debba essere al servizio dell'esperienza utente, senza mai trascurare l'impatto ambientale e la sostenibilità.</p>
+                  
+                  <div class="button-container">
+                    <button id="percorsoButton" class="percorso-button" aria-controls="percorsoModal" aria-expanded="false">Percorso scolastico</button>
+                    
+                    <!-- Percorso Scolastico Content (moved from bottom of page) -->
+                    <div id="percorsoModal" class="modal">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <div class="burger-container">
+                            <button id="modalBurger" class="modal-burger" aria-label="Menu" aria-expanded="false">
+                              <span class="burger-line"></span>
+                              <span class="burger-line"></span>
+                              <span class="burger-line"></span>
+                            </button>
+                            <div id="modalMenu" class="modal-menu">
+                              <ul>
+                                <li><button data-target="certificazioni" class="menu-item active">Certificazioni</button></li>
+                                <li><button data-target="diplomi" class="menu-item">Diplomi</button></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <h3 id="modalTitle">Certificazioni</h3>
+                          <button id="closeModal" class="close-button" aria-label="Chiudi">&times;</button>
+                        </div>
+                        
+                        <div class="modal-body">
+                          <!-- Sezione Certificazioni -->
+                          <div id="certificazioni" class="tab-content active">
+                            <div class="table-responsive">
+                              <table class="education-table">
+                                <thead>
+                                  <tr>
+                                    <th>Nome Certificazione</th>
+                                    <th>Ente Certificatore</th>
+                                    <th>Data</th>
+                                    <th>Dettagli</th>
+                                    <th>Lingua</th>
+                                    <th>Software/Note</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td data-label="Nome Certificazione">ICDL - Computer Essentials</td>
+                                    <td data-label="Ente Certificatore">AICA</td>
+                                    <td data-label="Data">13/04/2024</td>
+                                    <td data-label="Dettagli">Conoscenze base del computer</td>
+                                    <td data-label="Lingua">Italiano</td>
+                                    <td data-label="Software/Note">Windows 10</td>
+                                  </tr>
+                                  <tr>
+                                    <td data-label="Nome Certificazione">ICDL - Online Essentials</td>
+                                    <td data-label="Ente Certificatore">AICA</td>
+                                    <td data-label="Data">13/04/2024</td>
+                                    <td data-label="Dettagli">Navigazione internet e uso email</td>
+                                    <td data-label="Lingua">Italiano</td>
+                                    <td data-label="Software/Note">Google Chrome, Gmail</td>
+                                  </tr>
+                                  <tr>
+                                    <td data-label="Nome Certificazione">ICDL - Word Processing</td>
+                                    <td data-label="Ente Certificatore">AICA</td>
+                                    <td data-label="Data">08/06/2024</td>
+                                    <td data-label="Dettagli">Elaborazione testi</td>
+                                    <td data-label="Lingua">Italiano</td>
+                                    <td data-label="Software/Note">MS Office 2013</td>
+                                  </tr>
+                                  <tr>
+                                    <td data-label="Nome Certificazione">ICDL - Spreadsheets</td>
+                                    <td data-label="Ente Certificatore">AICA</td>
+                                    <td data-label="Data">06/07/2024</td>
+                                    <td data-label="Dettagli">Fogli di calcolo</td>
+                                    <td data-label="Lingua">Italiano</td>
+                                    <td data-label="Software/Note">MS Office 2013</td>
+                                  </tr>
+                                  <tr>
+                                    <td data-label="Nome Certificazione">ICDL - 2D Computer Aided Design</td>
+                                    <td data-label="Ente Certificatore">AICA</td>
+                                    <td data-label="Data">12/04/2019</td>
+                                    <td data-label="Dettagli">Disegno tecnico 2D</td>
+                                    <td data-label="Lingua">Italiano</td>
+                                    <td data-label="Software/Note">AutoCAD</td>
+                                  </tr>
+                                  <tr>
+                                    <td data-label="Nome Certificazione">SolidWorks Mechanical Design</td>
+                                    <td data-label="Ente Certificatore">Dassault Systèmes</td>
+                                    <td data-label="Data">31/03/2022</td>
+                                    <td data-label="Dettagli">Certificazione ufficiale per il design meccanico 3D</td>
+                                    <td data-label="Lingua">Inglese</td>
+                                    <td data-label="Software/Note">SolidWorks</td>
+                                  </tr>
+                                  <tr>
+                                    <td data-label="Nome Certificazione">Certificazione Inglese B2</td>
+                                    <td data-label="Ente Certificatore">Cambridge</td>
+                                    <td data-label="Data">2024</td>
+                                    <td data-label="Dettagli">Livello intermedio superiore di inglese (CEFR B2)</td>
+                                    <td data-label="Lingua">Inglese</td>
+                                    <td data-label="Software/Note">Reading, Writing, Listening, Speaking</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          
+                          <!-- Sezione Diplomi -->
+                          <div id="diplomi" class="tab-content">
+                            <div class="table-responsive">
+                              <table class="education-table">
+                                <thead>
+                                  <tr>
+                                    <th>Titolo di Studio</th>
+                                    <th>Istituto</th>
+                                    <th>Conseguimento</th>
+                                    <th>Durata</th>
+                                    <th>Descrizione</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td data-label="Titolo di Studio">Diploma di Maturità Tecnica – Meccanica, Meccatronica ed Energia</td>
+                                    <td data-label="Istituto">ITIS "Omar", Novara</td>
+                                    <td data-label="Conseguimento">2022</td>
+                                    <td data-label="Durata">5 anni</td>
+                                    <td data-label="Descrizione">Preparazione tecnica su meccanica, meccatronica, automazione e disegno tecnico</td>
+                                  </tr>
+                                  <tr>
+                                    <td data-label="Titolo di Studio">Diploma Triennale Accademico di Primo Livello – Design</td>
+                                    <td data-label="Istituto">ACME – Accademia di Belle Arti Novara</td>
+                                    <td data-label="Conseguimento">2025</td>
+                                    <td data-label="Durata">3 anni</td>
+                                    <td data-label="Descrizione">Formazione in design del prodotto, progettazione visiva, comunicazione, estetica e 3D design</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

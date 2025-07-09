@@ -336,3 +336,246 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+/**
+ * Section Scroll Animations
+ * Handles smooth transitions between sections when scrolling
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all sections
+  const sections = document.querySelectorAll('.section');
+  let lastScrollTop = 0;
+  let scrollDirection = 'down';
+  let currentSectionIndex = 0;
+  let isAnimating = false;
+  let sectionPositions = [];
+  
+  // Calculate section positions on load and resize
+  function calculateSectionPositions() {
+    sectionPositions = [];
+    sections.forEach(section => {
+      sectionPositions.push(section.offsetTop);
+    });
+  }
+  
+  // Initial calculation
+  calculateSectionPositions();
+  
+  // Recalculate on window resize
+  window.addEventListener('resize', calculateSectionPositions);
+  
+  // Determine which section is currently in view
+  function getCurrentSectionIndex() {
+    const scrollPosition = window.scrollY + (window.innerHeight / 3);
+    let currentIndex = 0;
+    
+    sectionPositions.forEach((position, index) => {
+      if (scrollPosition >= position) {
+        currentIndex = index;
+      }
+    });
+    
+    return currentIndex;
+  }
+  
+  // Handle scroll events with throttling to improve performance
+  window.addEventListener('scroll', throttle(function() {
+    // Don't trigger animations if already animating
+    if (isAnimating) return;
+    
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    // Determine scroll direction
+    if (scrollTop > lastScrollTop) {
+      scrollDirection = 'down';
+    } else {
+      scrollDirection = 'up';
+    }
+    
+    // Save current scroll position
+    lastScrollTop = scrollTop;
+    
+    // Get current section index
+    const newSectionIndex = getCurrentSectionIndex();
+    
+    // Only animate when changing sections
+    if (newSectionIndex !== currentSectionIndex) {
+      animateSectionTransition(currentSectionIndex, newSectionIndex);
+      currentSectionIndex = newSectionIndex;
+    }
+  }, 100)); // 100ms throttle
+  
+  // Animate transition between sections
+  function animateSectionTransition(fromIndex, toIndex) {
+    // Prevent multiple animations
+    isAnimating = true;
+    
+    // Exit animation for the section we're leaving
+    if (fromIndex >= 0 && fromIndex < sections.length) {
+      sections[fromIndex].classList.remove('active');
+      sections[fromIndex].classList.add(scrollDirection === 'down' ? 'scroll-down-leave' : 'scroll-up-leave');
+    }
+    
+    // Entrance animation for the section we're entering
+    if (toIndex >= 0 && toIndex < sections.length) {
+      // First remove any existing animation classes
+      sections[toIndex].classList.remove('scroll-down-enter', 'scroll-up-enter', 'scroll-down-leave', 'scroll-up-leave');
+      
+      // Add appropriate entrance class based on scroll direction
+      sections[toIndex].classList.add(scrollDirection === 'down' ? 'scroll-down-enter' : 'scroll-up-enter');
+      
+      // Force reflow to ensure the browser applies the class
+      void sections[toIndex].offsetWidth;
+      
+      // Add active class to start animation
+      sections[toIndex].classList.add('active');
+      sections[toIndex].classList.remove('scroll-down-enter', 'scroll-up-enter');
+    }
+    
+    // Reset animation state after transition
+    setTimeout(() => {
+      if (fromIndex >= 0 && fromIndex < sections.length) {
+        sections[fromIndex].classList.remove('scroll-down-leave', 'scroll-up-leave');
+      }
+      isAnimating = false;
+    }, 800); // Match this to the CSS transition time
+  }
+  
+  // Initialize the first section as active
+  if (sections.length > 0) {
+    sections[0].classList.add('active');
+  }
+});
+
+/**
+ * Scroll Utilities
+ * Provides throttled scroll event handling
+ */
+function throttle(func, delay) {
+  let lastCall = 0;
+  return function(...args) {
+    const now = new Date().getTime();
+    if (now - lastCall < delay) {
+      return;
+    }
+    lastCall = now;
+    return func(...args);
+  };
+}
+
+/**
+ * Percorso Scolastico Modal Functionality
+ * Controls the modal, burger menu, and tab switching
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  // Modal elements
+  const percorsoButton = document.getElementById('percorsoButton');
+  const percorsoModal = document.getElementById('percorsoModal');
+  const closeModalBtn = document.getElementById('closeModal');
+  const modalBurger = document.getElementById('modalBurger');
+  const modalMenu = document.getElementById('modalMenu');
+  const modalTitle = document.getElementById('modalTitle');
+  const menuItems = document.querySelectorAll('.menu-item');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  // Toggle percorso section on button click
+  if (percorsoButton) {
+    percorsoButton.setAttribute('aria-expanded', 'false'); // Initialize ARIA state
+    percorsoButton.addEventListener('click', function() {
+      if (percorsoModal.classList.contains('open')) {
+        closeModal();
+      } else {
+        openModal();
+      }
+    });
+  }
+  
+  // Close modal on close button click
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', function() {
+      closeModal();
+    });
+  }
+  
+  // Close modal on ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && percorsoModal && percorsoModal.classList.contains('open')) {
+      closeModal();
+    }
+  });
+  
+  // Toggle burger menu
+  if (modalBurger) {
+    modalBurger.addEventListener('click', function() {
+      const isExpanded = modalBurger.getAttribute('aria-expanded') === 'true';
+      modalBurger.setAttribute('aria-expanded', !isExpanded);
+      modalMenu.classList.toggle('open');
+    });
+  }
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (modalMenu && modalMenu.classList.contains('open')) {
+      if (!modalMenu.contains(e.target) && e.target !== modalBurger) {
+        modalMenu.classList.remove('open');
+        modalBurger.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
+  
+  // Tab switching functionality
+  if (menuItems) {
+    menuItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const target = this.getAttribute('data-target');
+        
+        // Update active menu item
+        menuItems.forEach(menuItem => menuItem.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Update modal title
+        modalTitle.textContent = this.textContent;
+        
+        // Show target tab content
+        tabContents.forEach(content => content.classList.remove('active'));
+        document.getElementById(target).classList.add('active');
+        
+        // Close the menu after selection
+        modalMenu.classList.remove('open');
+        modalBurger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+  
+  // Modal functions
+  function openModal() {
+    if (percorsoModal) {
+      percorsoModal.classList.add('open');
+      percorsoButton.classList.add('active');
+      percorsoButton.setAttribute('aria-expanded', 'true');
+      console.log('Section expanded'); // Debug log
+      
+      // Scroll to make the expanded section visible if needed
+      setTimeout(() => {
+        percorsoModal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    }
+  }
+  
+  function closeModal() {
+    if (percorsoModal) {
+      percorsoModal.classList.remove('open');
+      percorsoButton.classList.remove('active');
+      percorsoButton.setAttribute('aria-expanded', 'false');
+      
+      // Reset menu state
+      if (modalMenu && modalMenu.classList.contains('open')) {
+        modalMenu.classList.remove('open');
+        if (modalBurger) {
+          modalBurger.setAttribute('aria-expanded', 'false');
+        }
+      }
+      console.log('Section collapsed'); // Debug log
+    }
+  }
+});
