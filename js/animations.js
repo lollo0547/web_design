@@ -53,28 +53,27 @@ document.addEventListener('DOMContentLoaded', function() {
   const sections = document.querySelectorAll('section[id]');
   let lastScrollTop = 0;
   
-  // Get the "Chi sono" section position to determine when to show navbar
-  const chiSonoSection = document.getElementById('chi-sono');
-  const chiSonoPosition = chiSonoSection ? chiSonoSection.offsetTop - 100 : 500; // Default fallback if section not found
+  // Define a position to determine when to show navbar (previously was Chi sono section)
+  const navShowPosition = 500; // Default position to show navbar
   
-  // Show/hide navbar based on scroll position relative to "Chi sono" section
+  // Show/hide navbar based on scroll position
   window.addEventListener('scroll', function() {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    // Only show navbar when we've scrolled past the hero section to the "Chi sono" section
-    if (scrollTop >= chiSonoPosition) {
+    // Only show navbar when we've scrolled past the hero section
+    if (scrollTop >= navShowPosition) {
       navbar.classList.add('visible');
       
       // Determine scroll direction for additional behavior
       if (scrollTop > lastScrollTop) {
         // Scrolling down - can optionally hide navbar
-        navbar.style.transform = 'translateY(0)'; // Keep visible while scrolling down past chi-sono
+        navbar.style.transform = 'translateY(0)'; // Keep visible while scrolling down
       } else {
         // Scrolling up
         navbar.style.transform = 'translateY(0)';
       }
     } else {
-      // Before reaching Chi sono section, keep navbar hidden
+      // Before reaching the threshold, keep navbar hidden
       navbar.classList.remove('visible');
     }
     
@@ -464,43 +463,13 @@ function throttle(func, delay) {
 }
 
 /**
- * Percorso Scolastico Modal Functionality
- * Controls the modal, burger menu, and tab switching
+ * Modal Functionality for other sections (removed Percorso Scolastico modal)
  */
 document.addEventListener('DOMContentLoaded', function() {
-  // Modal elements
-  const percorsoButton = document.getElementById('percorsoButton');
-  const percorsoModal = document.getElementById('percorsoModal');
-  const closeModalBtn = document.getElementById('closeModal');
-  const modalBurger = document.getElementById('modalBurger');
-  const modalMenu = document.getElementById('modalMenu');
-  const modalTitle = document.getElementById('modalTitle');
-  const menuItems = document.querySelectorAll('.menu-item');
-  const tabContents = document.querySelectorAll('.tab-content');
-  
-  // Toggle percorso section on button click
-  if (percorsoButton) {
-    percorsoButton.setAttribute('aria-expanded', 'false'); // Initialize ARIA state
-    percorsoButton.addEventListener('click', function() {
-      if (percorsoModal.classList.contains('open')) {
-        closeModal();
-      } else {
-        openModal();
-      }
-    });
-  }
-  
-  // Close modal on close button click
-  if (closeModalBtn) {
-    closeModalBtn.addEventListener('click', function() {
-      closeModal();
-    });
-  }
-  
-  // Close modal on ESC key
+  // Close modal on ESC key for any future modals
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && percorsoModal && percorsoModal.classList.contains('open')) {
-      closeModal();
+    if (e.key === 'Escape') {
+      // Modal closing will be handled by specific modals if added in the future
     }
   });
   
@@ -523,59 +492,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Tab switching functionality
-  if (menuItems) {
-    menuItems.forEach(item => {
-      item.addEventListener('click', function() {
-        const target = this.getAttribute('data-target');
-        
-        // Update active menu item
-        menuItems.forEach(menuItem => menuItem.classList.remove('active'));
-        this.classList.add('active');
-        
-        // Update modal title
-        modalTitle.textContent = this.textContent;
-        
-        // Show target tab content
-        tabContents.forEach(content => content.classList.remove('active'));
-        document.getElementById(target).classList.add('active');
-        
-        // Close the menu after selection
-        modalMenu.classList.remove('open');
-        modalBurger.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-  
-  // Modal functions
-  function openModal() {
-    if (percorsoModal) {
-      percorsoModal.classList.add('open');
-      percorsoButton.classList.add('active');
-      percorsoButton.setAttribute('aria-expanded', 'true');
-      console.log('Section expanded'); // Debug log
-      
-      // Scroll to make the expanded section visible if needed
-      setTimeout(() => {
-        percorsoModal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 100);
-    }
-  }
-  
-  function closeModal() {
-    if (percorsoModal) {
-      percorsoModal.classList.remove('open');
-      percorsoButton.classList.remove('active');
-      percorsoButton.setAttribute('aria-expanded', 'false');
-      
-      // Reset menu state
-      if (modalMenu && modalMenu.classList.contains('open')) {
-        modalMenu.classList.remove('open');
-        if (modalBurger) {
-          modalBurger.setAttribute('aria-expanded', 'false');
-        }
-      }
-      console.log('Section collapsed'); // Debug log
-    }
-  }
+  // Modal functionality removed - can be re-added if needed for other sections
 });

@@ -169,3 +169,78 @@
   opacity: 1;
   transform: translateX(0);
 }
+
+/* Animazioni per la sezione Chi Sono */
+.chi-sono-section .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.chi-sono-section .reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.chi-sono-section .reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.chi-sono-section .reveal.active,
+.chi-sono-section .reveal-left.active,
+.chi-sono-section .reveal-right.active {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Animazione scroll-triggered per gli elementi */
+.skill-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transition-delay: calc(var(--item-index, 0) * 0.15s);
+}
+
+.skill-card.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Effetto parallasse per elementi decorativi */
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(5px, 10px);
+  }
+  50% {
+    transform: translate(10px, 5px);
+  }
+  75% {
+    transform: translate(5px, -5px);
+  }
+}
+
+.profile-accent-shape.active {
+  animation: morph 15s linear infinite, subtle-float 8s ease-in-out infinite;
+}
+
+/* Nuova animazione per transizione fra sezioni */
+@keyframes sectionTransition {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.section-active {
+  animation: sectionTransition 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
