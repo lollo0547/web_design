@@ -160,24 +160,21 @@ header {
   background: none; /* Rimuove qualsiasi sfondo residuo */
 }
 
-/* Griglia di immagini di sfondo - Layout immersivo a tutto schermo */
+/* Griglia di immagini di sfondo - Layout per scorrimento orizzontale */
 .hero-grid {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: repeat(50, 5fr); /* Molte colonne per immagini piccole */
-  grid-template-rows: repeat(20, 1fr); /* Più righe con meno spazio verticale */
-  gap: 0.25rem; /* Ridotto per diminuire lo spazio verticale */
-  row-gap: 0.15rem; /* Ancora più ridotto per le righe */
+  display: flex;
+  flex-direction: column;
   padding: 0; /* Rimuove il padding per estendersi al bordo */
   margin: 0; /* Rimuove eventuali margini */
   z-index: 0;
   opacity: 1;
-  transition: opacity 1s ease;
-  will-change: opacity; /* Ottimizza le prestazioni durante il caricamento */
+  overflow: hidden; /* Importante per nascondere lo scorrimento fuori dallo schermo */
+  will-change: transform; /* Ottimizza le prestazioni durante il caricamento */
 }
 
 .hero-grid.images-loaded {
@@ -187,32 +184,40 @@ header {
 .hero-grid-item {
   overflow: hidden;
   position: relative;
-  width: 100%;
+  width: 130px; /* Dimensione fissa per tutte le immagini nella riga */
   height: 100%;
-  border-radius: 0; /* Rimuove il bordo arrotondato per un aspetto più immersivo */
-  min-height: 60px; /* Aumentato per immagini più grandi */
+  border-radius: 0;
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 .hero-grid-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Cambiato da contain a cover per riempire lo spazio */
-  filter: brightness(0.7) saturate(0.9); /* Leggermente più luminoso */
-  transition: transform 0.4s ease, filter 0.4s ease;
+  object-fit: cover;
+  filter: brightness(0.7) saturate(0.9);
   display: block;
-  transform-origin: center; /* Assicura che la trasformazione avvenga dal centro */
   object-position: center; /* Mantiene il centro dell'immagine visibile */
 }
 
-/* Animazione per le immagini della griglia */
-.hero-grid-item img.animate-image {
-  animation: pixel-breathe 20s infinite alternate ease-in-out;
-  will-change: transform, filter;
+/* Animazione per le immagini della griglia - effetto scorrimento orizzontale */
+.hero-grid-row {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+  will-change: transform;
+}
+
+.hero-grid-row.odd {
+  animation: slideRightToLeft 30s linear infinite;
+}
+
+.hero-grid-row.even {
+  animation: slideLeftToRight 30s linear infinite;
 }
 
 .hero-grid-item:hover img {
   filter: brightness(1) saturate(1.2) !important;
-  transform: scale(1.2) !important;
   z-index: 3;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
@@ -230,17 +235,45 @@ header {
   pointer-events: none; /* Assicura che non blocchi interazioni */
 }
 
-@keyframes pixel-breathe {
+/* Keyframes per lo scorrimento alternato delle righe */
+@keyframes slideRightToLeft {
   0% {
-    transform: scale(1);
-    filter: brightness(0.65) saturate(0.85);
-  }
-  50% {
-    filter: brightness(0.75) saturate(0.95);
+    transform: translateX(0);
   }
   100% {
-    transform: scale(1.08);
-    filter: brightness(0.85) saturate(1.05);
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slideLeftToRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Keyframes per l'animazione di entrata iniziale */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -426,37 +459,58 @@ header {
 /* Media queries per la griglia hero */
 @media screen and (min-width: 1200px) {
   .hero-grid {
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(8, 1fr);
     gap: 0.4rem;
+  }
+  .hero-grid-row {
+    height: calc(100% / 8); /* 8 righe su desktop */
+    margin-bottom: 0.4rem;
+  }
+  .hero-grid-item {
+    width: 180px; /* Immagini più grandi per desktop */
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .hero-grid {
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(6, 1fr);
     gap: 0.35rem;
+  }
+  .hero-grid-row {
+    height: calc(100% / 6); /* 6 righe su tablet */
+    margin-bottom: 0.35rem;
+  }
+  .hero-grid-item {
+    width: 150px;
   }
 }
 
 @media screen and (min-width: 481px) and (max-width: 767px) {
   .hero-grid {
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(5, 1fr);
     gap: 0.3rem;
+  }
+  .hero-grid-row {
+    height: calc(100% / 5); /* 5 righe su mobile orizzontale */
+    margin-bottom: 0.3rem;
+  }
+  .hero-grid-item {
+    width: 120px;
   }
 }
 
 @media screen and (max-width: 480px) {
   .hero-grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(8, 1fr);
     gap: 0.25rem;
   }
+  .hero-grid-row {
+    height: calc(100% / 8); /* 8 righe su smartphone */
+    margin-bottom: 0.25rem;
+  }
+  .hero-grid-item {
+    width: 100px;
+  }
   
-  .hero-grid-item img.animate-image {
-    animation-duration: 10s;
+  .hero-grid-row.odd,
+  .hero-grid-row.even {
+    animation-duration: 20s; /* Leggermente più veloce sui dispositivi mobili */
   }
 }
 

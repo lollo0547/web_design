@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /**
  * Carica e visualizza immagini casuali dai progetti nella griglia hero
+ * con effetto di scorrimento orizzontale alternato per righe
  */
 function loadRandomProjectImages() {
   const heroGrid = document.getElementById('heroGrid');
@@ -120,7 +121,7 @@ function loadRandomProjectImages() {
     return;
   }
   
-  console.log('Inizializzazione caricamento immagini casuali...');
+  console.log('Inizializzazione caricamento immagini con scorrimento orizzontale...');
   
   // Elenco di tutti i percorsi delle immagini dei progetti
   const projectImages = [
@@ -145,24 +146,15 @@ function loadRandomProjectImages() {
     'immagini/webp/progetto%204/untitled44.webp'
   ];
   
-  // Calcola il numero di celle nella griglia in base alla larghezza dello schermo
-  let gridCellCount = calculateGridCellCount();
+  // Calcola il numero di righe e colonne per la griglia
+  const numberOfRows = calculateNumberOfRows();
   
   // Svuota la griglia
   heroGrid.innerHTML = '';
   
-  // Crea un array di immagini sufficientemente grande duplicando l'elenco originale
-  let allImages = [];
-  while (allImages.length < gridCellCount) {
-    allImages = allImages.concat(shuffleArray([...projectImages]));
-  }
-  
-  // Seleziona il numero necessario di immagini
-  const selectedImages = allImages.slice(0, gridCellCount);
-  
   // Contatore per il monitoraggio del caricamento delle immagini
   let loadedImagesCount = 0;
-  const totalImagesToLoad = selectedImages.length;
+  let totalImagesToLoad = 0;
   
   // Funzione per segnalare che un'immagine è stata caricata
   function imageLoaded() {
@@ -174,93 +166,162 @@ function loadRandomProjectImages() {
     }
   }
   
-  // Funzione per generare un valore casuale per la posizione iniziale dell'animazione
-  function getRandomScale() {
-    return (Math.random() * 0.2 + 0.9).toFixed(2); // Valore casuale tra 0.9 e 1.1
-  }
+  // Mescola le immagini
+  const shuffledImages = shuffleArray([...projectImages]);
   
-  selectedImages.forEach((imagePath, index) => {
-    // Crea elemento contenitore per l'immagine
-    const gridItem = document.createElement('div');
-    gridItem.className = 'hero-grid-item';
+  // Creiamo una matrice per tracciare tutte le immagini utilizzate
+  // Ciò ci permetterà di controllare la posizione anche tra righe diverse
+  let globalImageMatrix = [];
+  
+  // Crea le righe della griglia con effetto di scorrimento alternato
+  for (let i = 0; i < numberOfRows; i++) {
+    // Crea contenitore riga
+    const rowDiv = document.createElement('div');
+    rowDiv.className = `hero-grid-row ${i % 2 === 0 ? 'even' : 'odd'}`;
     
-    // Crea elemento immagine
-    const img = document.createElement('img');
-    img.src = imagePath;
-    img.loading = index < 10 ? 'eager' : 'lazy'; // Carica immediatamente solo le prime 10 immagini
-    img.alt = ''; // Immagini decorative
+    // Applica animazione di entrata iniziale
+    rowDiv.style.animation = `${i % 2 === 0 ? 'slideInFromLeft' : 'slideInFromRight'} 0.8s ease-out forwards, ${i % 2 === 0 ? 'slideLeftToRight' : 'slideRightToLeft'} ${25 + i % 3 * 5}s linear ${0.8 + i * 0.1}s infinite`;
     
-    // Precarica l'immagine per mantenere le proporzioni originali
-    const tmpImg = new Image();
-    tmpImg.src = imagePath;
+    // Applica un ritardo crescente a ogni riga successiva
+    rowDiv.style.animationDelay = `${i * 0.15}s`;
     
-    // Aggiungi casualità all'animazione per un effetto visivo migliore
-    const randomDelay = (Math.random() * 15).toFixed(1); // Ritardo casuale tra 0 e 15 secondi
-    const randomDuration = (Math.random() * 10 + 10).toFixed(1); // Durata casuale tra 10 e 20 secondi
-    img.style.animationDelay = `${randomDelay}s`;
-    img.style.animationDuration = `${randomDuration}s`;
+    // Determina quante immagini servono per riempire la riga (2 volte la larghezza per consentire lo scorrimento infinito)
+    const screenWidth = window.innerWidth;
+    const itemWidth = screenWidth <= 480 ? 100 : screenWidth <= 767 ? 120 : screenWidth <= 1199 ? 150 : 180;
+    const itemsPerRow = Math.ceil((screenWidth * 2) / itemWidth) + 4; // Aggiungi alcuni elementi extra
     
-    // Applica uno stile iniziale casuale
-    img.style.transform = `scale(${getRandomScale()})`;
+    // Prepara array per tenere traccia delle ultime immagini usate in questa riga
+    // Se la riga non esiste ancora nella matrice globale, creala
+    if (!globalImageMatrix[i]) {
+      globalImageMatrix[i] = [];
+    }
     
-    // Assicuriamo che l'aspect ratio venga mantenuto
-    img.style.objectFit = 'contain';
-    
-    // Gestione eventi di caricamento e errore
-    img.onload = function() {
-      imageLoaded();
-    };
-    img.onerror = function() {
-      console.error('Errore nel caricamento dell\'immagine:', imagePath);
-      
-      // Prova con un percorso alternativo senza encoding degli URI
-      const altPath = imagePath.replace(/%20/g, ' ');
-      if (altPath !== imagePath) {
-        console.log('Tentativo con percorso alternativo:', altPath);
-        img.src = altPath;
-      } else {
-        // In caso di errore nel caricamento dell'immagine, sostituisci con uno sfondo colorato
-        gridItem.classList.add('image-error');
-        imageLoaded(); // Considera comunque l'immagine "caricata" per completare il processo
+    // Crea abbastanza immagini per ogni riga
+    for (let j = 0; j < itemsPerRow; j++) {
+      // Funzione per selezionare un'immagine che non sia stata usata recentemente
+      function selectUniqueImage() {
+        // Crea una copia dell'array delle immagini per poter rimuovere elementi
+        let availableImages = [...shuffledImages];
+        let imagesToExclude = new Set();
+        
+        // Esclude le immagini usate recentemente nella riga corrente (a sinistra)
+        const currentRowImages = globalImageMatrix[i] || [];
+        
+        // Controlla le ultime 11 posizioni a sinistra
+        for (let left = 1; left <= 11 && j - left >= 0; left++) {
+          if (currentRowImages[j - left]) {
+            imagesToExclude.add(currentRowImages[j - left]);
+          }
+        }
+        
+        // Controlla se le stesse colonne nelle righe vicine (sopra e sotto) hanno immagini da escludere
+        // Solo se abbiamo già delle righe popolate
+        for (let rowOffset = -2; rowOffset <= 2; rowOffset++) {
+          const checkRow = i + rowOffset;
+          if (checkRow >= 0 && checkRow < numberOfRows && checkRow !== i && globalImageMatrix[checkRow]) {
+            // Per ogni riga vicina, controlla una finestra di 5 colonne intorno alla posizione corrente
+            for (let colOffset = -2; colOffset <= 2; colOffset++) {
+              const checkCol = j + colOffset;
+              if (checkCol >= 0 && globalImageMatrix[checkRow][checkCol]) {
+                imagesToExclude.add(globalImageMatrix[checkRow][checkCol]);
+              }
+            }
+          }
+        }
+        
+        // Rimuovi dalle opzioni disponibili tutte le immagini escluse
+        if (imagesToExclude.size > 0) {
+          availableImages = availableImages.filter(img => !imagesToExclude.has(img));
+        }
+        
+        // Se non ci sono più immagini disponibili (caso estremo), usa comunque l'array originale
+        if (availableImages.length === 0) {
+          availableImages = [...shuffledImages];
+        }
+        
+        // Seleziona un'immagine casuale tra quelle disponibili
+        const randomIndex = Math.floor(Math.random() * availableImages.length);
+        return availableImages[randomIndex];
       }
-    };
+      
+      // Ottieni un'immagine che non sia stata usata recentemente
+      const imagePath = selectUniqueImage();
+      
+      // Salva l'immagine nella matrice globale per riferimento futuro
+      globalImageMatrix[i][j] = imagePath;
+      
+      // Non abbiamo più bisogno di gestire manualmente l'array lastUsedImages
+      // poiché ora usiamo la matrice globale per tenere traccia di tutte le posizioni
+      
+      // Crea elemento contenitore per l'immagine
+      const gridItem = document.createElement('div');
+      gridItem.className = 'hero-grid-item';
+      
+      // Crea elemento immagine
+      const img = document.createElement('img');
+      img.src = imagePath;
+      img.loading = totalImagesToLoad < 20 ? 'eager' : 'lazy'; // Carica immediatamente solo le prime 20 immagini
+      img.alt = ''; // Immagini decorative
+      img.dataset.imageId = imagePath.split('/').pop(); // Salva un ID dell'immagine come attributo data
+      totalImagesToLoad++;
+      
+      // Gestione eventi di caricamento e errore
+      img.onload = function() {
+        imageLoaded();
+      };
+      
+      img.onerror = function() {
+        console.error('Errore nel caricamento dell\'immagine:', imagePath);
+        
+        // Prova con un percorso alternativo senza encoding degli URI
+        const altPath = imagePath.replace(/%20/g, ' ');
+        if (altPath !== imagePath) {
+          img.src = altPath;
+        } else {
+          // In caso di errore nel caricamento dell'immagine, sostituisci con uno sfondo colorato
+          gridItem.classList.add('image-error');
+          imageLoaded(); // Considera comunque l'immagine "caricata" per completare il processo
+        }
+      };
+      
+      // Aggiungi l'immagine al suo contenitore
+      gridItem.appendChild(img);
+      
+      // Aggiungi il contenitore alla riga
+      rowDiv.appendChild(gridItem);
+    }
     
-    img.classList.add('animate-image');
-    
-    // Aggiungi l'immagine al suo contenitore
-    gridItem.appendChild(img);
-    
-    // Aggiungi il contenitore alla griglia
-    heroGrid.appendChild(gridItem);
-  });
+    // Aggiungi la riga alla griglia
+    heroGrid.appendChild(rowDiv);
+  }
 }
 
 /**
- * Calcola il numero di celle nella griglia in base alla larghezza dello schermo
- * @returns {number} Numero di celle nella griglia
+ * Calcola il numero di righe nella griglia in base alla larghezza dello schermo
+ * @returns {number} Numero di righe nella griglia
  */
-function calculateGridCellCount() {
+function calculateNumberOfRows() {
   const width = window.innerWidth;
   
   if (width >= 1200) {
-    // Griglia densa per schermi grandi
-    return 300; // 50 colonne × 20 righe = 1000 celle (ne usiamo solo 300)
+    // 8 righe per schermi grandi
+    return 8;
   } else if (width >= 768) {
-    // Griglia media per tablet
-    return 200;
+    // 6 righe per tablet
+    return 6;
   } else if (width >= 481) {
-    // Griglia meno densa per dispositivi mobili orizzontali
-    return 120;
+    // 5 righe per dispositivi mobili orizzontali
+    return 5;
   } else {
-    // Griglia minimale per smartphone
-    return 80;
+    // 8 righe per smartphone (più sottili)
+    return 8;
   }
 }
 
 // Aggiorniamo la griglia quando la finestra viene ridimensionata
 window.addEventListener('resize', debounce(function() {
   loadRandomProjectImages();
-}, 250));
+}, 350)); // Aumentato il tempo di debounce per evitare ricaricamenti troppo frequenti
 
 /**
  * Funzione debounce per limitare l'esecuzione di funzioni chiamate frequentemente
