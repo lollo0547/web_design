@@ -43,6 +43,11 @@ html.theme-loaded {
   opacity: 1;
 }
 
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-main);
   margin: 0;
@@ -50,6 +55,7 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background: var(--background-color);
+  overflow-x: hidden; /* Previene lo scroll orizzontale */
 }
 
 .sr-only {
@@ -76,11 +82,11 @@ img {
 
 /* Critical header and navigation styles */
 header {
-  background: var(--accent-gradient);
+  background: none;
   color: #fff;
   padding: 1.5rem 1rem 1rem 1rem;
   text-align: center;
-  box-shadow: 0 2px 12px rgba(90,45,130,0.08);
+  box-shadow: none;
 }
 
 .navbar-container {
@@ -151,9 +157,10 @@ header {
   color: #fff;
   text-align: center;
   overflow: hidden;
+  background: none; /* Rimuove qualsiasi sfondo residuo */
 }
 
-/* Griglia di immagini per lo sfondo */
+/* Griglia di immagini di sfondo - Layout immersivo a tutto schermo */
 .hero-grid {
   position: absolute;
   top: 0;
@@ -161,13 +168,16 @@ header {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 0.5rem;
-  padding: 0.5rem;
-  z-index: -2;
-  opacity: 0;
+  grid-template-columns: repeat(50, 5fr); /* Molte colonne per immagini piccole */
+  grid-template-rows: repeat(20, 1fr); /* Più righe con meno spazio verticale */
+  gap: 0.25rem; /* Ridotto per diminuire lo spazio verticale */
+  row-gap: 0.15rem; /* Ancora più ridotto per le righe */
+  padding: 0; /* Rimuove il padding per estendersi al bordo */
+  margin: 0; /* Rimuove eventuali margini */
+  z-index: 0;
+  opacity: 1;
   transition: opacity 1s ease;
+  will-change: opacity; /* Ottimizza le prestazioni durante il caricamento */
 }
 
 .hero-grid.images-loaded {
@@ -179,28 +189,35 @@ header {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 4px;
+  border-radius: 0; /* Rimuove il bordo arrotondato per un aspetto più immersivo */
+  min-height: 60px; /* Aumentato per immagini più grandi */
 }
 
 .hero-grid-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: brightness(0.5) saturate(0.8);
-  transition: transform 0.8s ease, filter 0.8s ease;
+  object-fit: cover; /* Cambiato da contain a cover per riempire lo spazio */
+  filter: brightness(0.7) saturate(0.9); /* Leggermente più luminoso */
+  transition: transform 0.4s ease, filter 0.4s ease;
+  display: block;
+  transform-origin: center; /* Assicura che la trasformazione avvenga dal centro */
+  object-position: center; /* Mantiene il centro dell'immagine visibile */
 }
 
-/* Animazione per lo zoom leggero delle immagini */
+/* Animazione per le immagini della griglia */
 .hero-grid-item img.animate-image {
-  animation: slight-zoom 15s infinite alternate ease-in-out;
+  animation: pixel-breathe 20s infinite alternate ease-in-out;
+  will-change: transform, filter;
 }
 
 .hero-grid-item:hover img {
-  filter: brightness(0.7) saturate(1);
-  transform: scale(1.05);
+  filter: brightness(1) saturate(1.2) !important;
+  transform: scale(1.2) !important;
+  z-index: 3;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
-/* Overlay sfumato per migliorare la leggibilità */
+/* Overlay leggero per migliorare la profondità visiva */
 .hero::after {
   content: "";
   position: absolute;
@@ -208,31 +225,38 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(90,15,165,0.8) 0%, rgba(30,93,204,0.7) 100%);
-  z-index: -1;
-  backdrop-filter: blur(2px);
+  background: linear-gradient(135deg, rgba(76,29,115,0.2) 0%, rgba(30,93,204,0.15) 100%);
+  z-index: 2; /* Sopra l'immagine hero ma sotto il contenuto */
+  pointer-events: none; /* Assicura che non blocchi interazioni */
 }
 
-@keyframes slight-zoom {
+@keyframes pixel-breathe {
   0% {
     transform: scale(1);
+    filter: brightness(0.65) saturate(0.85);
+  }
+  50% {
+    filter: brightness(0.75) saturate(0.95);
   }
   100% {
-    transform: scale(1.1);
+    transform: scale(1.08);
+    filter: brightness(0.85) saturate(1.05);
   }
 }
 
 .hero-content {
-  background: rgba(0,0,0,0.25);
-  padding: 2.5rem 2.5rem;
+  background: transparent; /* Rimuove completamente lo sfondo */
+  padding: 1rem;
+  max-width: 580px;
+  margin: auto;
+  transition: all 0.3s ease;
+  z-index: 2; /* Aumentato per essere sopra l'immagine hero */
+  position: relative;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   border-radius: var(--border-radius);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  max-width: 480px;
-  margin: auto;
-  transition: all 0.3s ease;
-  z-index: 1;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 /* Effetto hover per le immagini */
@@ -297,6 +321,40 @@ header {
   transform: rotate(45deg);
   margin: 8px auto 0;
   display: inline-block;
+}
+
+/* ------------------------------
+   7. SEZIONI PRINCIPALI
+--------------------------------*/
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 2rem;
+  scroll-margin-top: 0;
+}
+
+#chi-sono {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  color: var(--accent-color);
+}
+
+.section-content {
+  line-height: 1.8;
 }
 
 /* ------------------------------
@@ -366,30 +424,35 @@ header {
 }
 
 /* Media queries per la griglia hero */
-@media screen and (max-width: 992px) {
+@media screen and (min-width: 1200px) {
   .hero-grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 0.35rem;
-    padding: 0.35rem;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 0.4rem;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1199px) {
   .hero-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 0.35rem;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .hero-grid {
+    grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    gap: 0.25rem;
-    padding: 0.25rem;
+    gap: 0.3rem;
   }
 }
 
 @media screen and (max-width: 480px) {
   .hero-grid {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(9, 1fr);
-    gap: 0.15rem;
-    padding: 0.15rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 0.25rem;
   }
   
   .hero-grid-item img.animate-image {
@@ -402,28 +465,32 @@ header {
   display: none;
 }
 
-/* Stili per gestire il caricamento delle immagini nella griglia hero */
-.hero-grid {
+/* Stile per gestire errori di caricamento immagini */
+.hero-grid-item.image-error {
+  background: linear-gradient(45deg, var(--accent-color) 0%, #1e5dcc 100%);
+}
+
+/* Implementazione scroll-snap per transizioni tra sezioni */
+.hero, #chi-sono {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Stile per l'immagine hero principale */
+.hero-image-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 0.5rem;
-  padding: 0.5rem;
-  z-index: -2;
-  opacity: 0;
-  transition: opacity 1s ease;
+  z-index: 1;
+  overflow: hidden;
 }
 
-.hero-grid.images-loaded {
-  opacity: 1;
-}
-
-/* Stile per gestire errori di caricamento immagini */
-.hero-grid-item.image-error {
-  background: linear-gradient(45deg, var(--accent-color) 0%, #1e5dcc 100%);
+.hero-image {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.8) contrast(1.1);
 }
