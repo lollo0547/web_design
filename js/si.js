@@ -88,14 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
     
-    // Opzionale: impedisce scroll parziali con la rotella del mouse
+    // Modifica: permette lo scroll naturale su tutto il sito, mantenendo solo lo scroll assistito nella hero section
     document.addEventListener('wheel', function(e) {
       const heroSection = document.querySelector('.hero');
       const viewportHeight = window.innerHeight;
       
-      // Se siamo nella hero section e non stiamo già scrollando
-      if (window.scrollY < viewportHeight && !isScrolling) {
-        // Se scrolliamo verso il basso, vai alla prossima sezione
+      // Applica solo nella prima schermata (hero section) e solo per lo scroll verso il basso
+      if (window.scrollY < viewportHeight * 0.3 && !isScrolling) { // Ridotto a 0.3 per limitare l'area di influenza
         if (e.deltaY > 0 && chiSonoSection) {
           e.preventDefault();
           isScrolling = true;
@@ -103,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
           setTimeout(() => { isScrolling = false; }, 1000);
         }
       }
+      // In tutti gli altri casi, permette lo scroll naturale
     }, { passive: false });
   }
 
@@ -184,6 +184,10 @@ function loadRandomProjectImages() {
     
     // Applica un ritardo crescente a ogni riga successiva
     rowDiv.style.animationDelay = `${i * 0.15}s`;
+    
+    // Assicurati che non ci siano margini o padding
+    rowDiv.style.margin = '0';
+    rowDiv.style.padding = '0';
     
     // Determina quante immagini servono per riempire la riga (2 volte la larghezza per consentire lo scorrimento infinito)
     const screenWidth = window.innerWidth;

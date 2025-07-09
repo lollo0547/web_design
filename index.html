@@ -32,8 +32,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="immagini/favicon.ico">
     
-    <!-- CSS stylesheet -->
+    <!-- CSS stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,7 +116,35 @@
             <span class="lang-en">About Me</span>
           </h2>
           <div class="section-content">
-            <!-- Contenuto della sezione Chi Sono -->
+            <div class="about-grid" data-aos="fade-up" data-aos-delay="200">
+              <div class="about-image">
+                <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici, Product Designer" loading="lazy">
+              </div>
+              <div class="about-text">
+                <p><strong>Ciao, sono Lorenzo Giudici!</strong> Product designer con oltre 5 anni di esperienza nel campo del design industriale. La mia passione è trasformare idee in prodotti funzionali che uniscono estetica e usabilità.</p>
+                
+                <p>Specializzato nella progettazione di prodotti che rispondono a esigenze concrete, credo fermamente che il buon design debba essere al servizio dell'esperienza utente, senza mai trascurare l'impatto ambientale e la sostenibilità.</p>
+                
+                <div class="about-details">
+                  <div class="about-detail-item reveal-left">
+                    <h4>Formazione</h4>
+                    <p>Laurea in Design Industriale presso il Politecnico di Milano</p>
+                  </div>
+                  <div class="about-detail-item reveal-right">
+                    <h4>Esperienza</h4>
+                    <p>5+ anni nel settore del design di prodotto</p>
+                  </div>
+                  <div class="about-detail-item reveal-left">
+                    <h4>Specializzazione</h4>
+                    <p>Modellazione 3D, Prototipazione, Design Sostenibile</p>
+                  </div>
+                  <div class="about-detail-item reveal-right">
+                    <h4>Residenza</h4>
+                    <p>Milano, Italia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -127,5 +156,6 @@
     
     <!-- JavaScript -->
     <script src="js/si.js" defer></script>
+    <script src="js/animations.js" defer></script>
   </body>
 </html>
