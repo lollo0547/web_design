@@ -55,6 +55,12 @@
         
         <ul class="navbar" id="main-nav" role="menubar">
           <li role="none">
+            <a href="#chi-sono" role="menuitem">
+              <span class="lang-it">Chi sono</span>
+              <span class="lang-en">About me</span>
+            </a>
+          </li>
+          <li role="none">
             <a href="#progetti" role="menuitem">
               <span class="lang-it">Progetti</span>
               <span class="lang-en">Projects</span>
@@ -123,86 +129,34 @@
               <span class="lang-it">Chi sono</span>
               <span class="lang-en">About me</span>
             </h2>
-            
+
             <div class="section-content">
+              <!-- Layout orizzontale forzato -->
               <div class="chi-sono-grid">
-                <!-- Colonna Immagine con elementi decorativi -->
-                <div class="profile-container reveal-left">
-                  <div class="decorative-element element-top-left"></div>
-                  <div class="decorative-element element-bottom-right"></div>
-                  
-                  <div class="profile-frame">
-                    <div class="profile-image-mask">
-                      <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici - Product Designer" class="profile-image">
-                      <div class="profile-image-overlay"></div>
-                    </div>
-                    <div class="profile-backdrop"></div>
+                <!-- Colonna testo a sinistra -->
+                <div class="bio-content reveal-left">
+                  <div class="bio-tag">
+                    <span class="lang-it">Designer & Innovatore</span>
+                    <span class="lang-en">Designer & Innovator</span>
                   </div>
+                  <p class="bio-intro">
+                    <span class="lang-it">Ciao, sono <strong>Lorenzo Giudici</strong>. A differenza di molti miei colleghi, non posso dire di aver
+                    coltivato fin da bambino una passione per il disegno e la progettazione. Il mio interesse per il disegno tecnico è nato durante gli anni delle superiori, mentre la scelta di
+                    intraprendere un percorso universitario nel design è stata ispirata da mia sorella, anch'essa designer. La passione per la montagna, invece, mi è stata trasmessa dai miei nonni
+                    durante l'infanzia, ma è rimasta in secondo piano fino a poco prima del periodo del Covid.</span>
+                    <span class="lang-en">Hi, I'm <strong>Lorenzo Giudici</strong>. Unlike many of my colleagues, I cannot say that I have
+                    cultivated a passion for drawing and design since childhood. My interest in technical drawing was born during my high school years, while the choice of
+                    to pursue a university career in design was inspired by my sister, who is also a designer. My passion for the mountains, on the other hand, was passed on to me by my grandparents
+                    during my childhood, but remained in the background until just before the Covid period.</span>
+                  </p>
                   
-                  <div class="profile-accent-shape"></div>
-                  <div class="profile-dots-pattern"></div>
-                </div>
-                
-                <!-- Colonna Contenuto -->
-                <div class="profile-content reveal-right">
-                  <div class="bio-content">
-                    <div class="bio-tag">
-                      <span class="lang-it">Designer & Innovatore</span>
-                      <span class="lang-en">Designer & Innovator</span>
-                    </div>
-                    <p class="bio-intro">
-                      <span class="lang-it">Ciao, sono <strong>Lorenzo Giudici</strong>, un product designer con passione per l'innovazione e la creatività.</span>
-                      <span class="lang-en">Hi, I'm <strong>Lorenzo Giudici</strong>, a product designer passionate about innovation and creativity.</span>
-                    </p>
-                    <p class="bio-description">
-                      <span class="lang-it">Il mio approccio al design unisce estetica, funzionalità e user experience per creare prodotti che risolvono problemi reali e migliorano la vita delle persone. Trasformo concetti in oggetti tangibili attraverso prototipazione rapida e tecniche di modellazione 3D avanzate.</span>
-                      <span class="lang-en">My approach to design combines aesthetics, functionality and user experience to create products that solve real problems and improve people's lives. I transform concepts into tangible objects through rapid prototyping and advanced 3D modeling techniques.</span>
-                    </p>
-                  </div>
                   
-                  <div class="skills-showcase reveal">
-                    <h3>
-                      <span class="lang-it">Competenze</span>
-                      <span class="lang-en">Skills</span>
-                    </h3>
-                    <div class="skills-grid">
-                      <div class="skill-card">
-                        <div class="skill-icon">
-                          <i class="icon-3d"></i>
-                        </div>
-                        <h4>3D Modeling</h4>
-                        <p>Blender, SolidWorks</p>
-                        <div class="skill-progress">
-                          <div class="skill-progress-bar" style="width: 95%"></div>
-                        </div>
-                      </div>
-                      <div class="skill-card">
-                        <div class="skill-icon">
-                          <i class="icon-design"></i>
-                        </div>
-                        <h4>UI/UX Design</h4>
-                        <p>Figma, Adobe XD</p>
-                        <div class="skill-progress">
-                          <div class="skill-progress-bar" style="width: 90%"></div>
-                        </div>
-                      </div>
-                      <div class="skill-card">
-                        <div class="skill-icon">
-                          <i class="icon-prototype"></i>
-                        </div>
-                        <h4>Prototyping</h4>
-                        <p>Rapid Prototyping, Testing</p>
-                        <div class="skill-progress">
-                          <div class="skill-progress-bar" style="width: 85%"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   
+                  <!-- CTA buttons -->
                   <div class="cta-container reveal">
-                    <a href="#progetti" class="btn btn-primary">
-                      <span class="lang-it">Esplora i miei progetti</span>
-                      <span class="lang-en">Explore my projects</span>
+                    <a href="#percorso-scolastico" class="btn btn-primary">
+                      <span class="lang-it">Percorso scolastico</span>
+                      <span class="lang-en">Academic Background</span>
                       <span class="btn-icon">→</span>
                     </a>
                     <a href="#contatti" class="btn btn-outline">
@@ -211,12 +165,26 @@
                     </a>
                   </div>
                 </div>
+                
+                <!-- Immagine a destra -->
+                <div class="profile-container reveal-right">
+                  <div class="decorative-element element-top-left"></div>
+                  <div class="decorative-element element-bottom-right"></div>
+                  <div class="profile-frame">
+                    <div class="profile-image-mask">
+                      <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici - Product Designer" class="profile-image">
+                      <div class="profile-image-overlay"></div>
+                    </div>
+                    <div class="profile-backdrop"></div>
+                  </div>
+                  <div class="profile-accent-shape"></div>
+                  <div class="profile-dots-pattern"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-
       <!-- Sezione Progetti -->
       <section id="progetti" class="section">
         <div class="container">
@@ -475,7 +443,6 @@
           </div>
         </div>
       </section>
-      
       <!-- Sezione Contatti -->
       <section id="contatti" class="section">
         <div class="container">
@@ -640,40 +607,22 @@
             </h2>
             
             <div class="section-content">
+              <!-- Layout orizzontale forzato -->
               <div class="chi-sono-grid">
-                <!-- Colonna Immagine con elementi decorativi -->
-                <div class="profile-container reveal-left">
-                  <div class="decorative-element element-top-left"></div>
-                  <div class="decorative-element element-bottom-right"></div>
-                  
-                  <div class="profile-frame">
-                    <div class="profile-image-mask">
-                      <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici - Product Designer" class="profile-image">
-                      <div class="profile-image-overlay"></div>
-                    </div>
-                    <div class="profile-backdrop"></div>
+                <!-- Colonna testo a sinistra -->
+                <div class="bio-content reveal-left">
+                  <div class="bio-tag">
+                    <span class="lang-it">Designer & Innovatore</span>
+                    <span class="lang-en">Designer & Innovator</span>
                   </div>
-                  
-                  <div class="profile-accent-shape"></div>
-                  <div class="profile-dots-pattern"></div>
-                </div>
-                
-                <!-- Colonna Contenuto -->
-                <div class="profile-content reveal-right">
-                  <div class="bio-content">
-                    <div class="bio-tag">
-                      <span class="lang-it">Designer & Innovatore</span>
-                      <span class="lang-en">Designer & Innovator</span>
-                    </div>
-                    <p class="bio-intro">
-                      <span class="lang-it">Ciao, sono <strong>Lorenzo Giudici</strong>, un product designer con passione per l'innovazione e la creatività.</span>
-                      <span class="lang-en">Hi, I'm <strong>Lorenzo Giudici</strong>, a product designer passionate about innovation and creativity.</span>
-                    </p>
-                    <p class="bio-description">
-                      <span class="lang-it">Il mio approccio al design unisce estetica, funzionalità e user experience per creare prodotti che risolvono problemi reali e migliorano la vita delle persone. Trasformo concetti in oggetti tangibili attraverso prototipazione rapida e tecniche di modellazione 3D avanzate.</span>
-                      <span class="lang-en">My approach to design combines aesthetics, functionality and user experience to create products that solve real problems and improve people's lives. I transform concepts into tangible objects through rapid prototyping and advanced 3D modeling techniques.</span>
-                    </p>
-                  </div>
+                  <p class="bio-intro">
+                    <span class="lang-it">Ciao, sono <strong>Lorenzo Giudici</strong>, un product designer con passione per l'innovazione e la creatività.</span>
+                    <span class="lang-en">Hi, I'm <strong>Lorenzo Giudici</strong>, a product designer passionate about innovation and creativity.</span>
+                  </p>
+                  <p class="bio-description">
+                    <span class="lang-it">Il mio approccio al design unisce estetica, funzionalità e user experience per creare prodotti che risolvono problemi reali e migliorano la vita delle persone. Trasformo concetti in oggetti tangibili attraverso prototipazione rapida e tecniche di modellazione 3D avanzate.</span>
+                    <span class="lang-en">My approach to design combines aesthetics, functionality and user experience to create products that solve real problems and improve people's lives. I transform concepts into tangible objects through rapid prototyping and advanced 3D modeling techniques.</span>
+                  </p>
                   
                   <div class="skills-showcase reveal">
                     <h3>
@@ -725,6 +674,23 @@
                       <span class="lang-en">Contact me</span>
                     </a>
                   </div>
+                </div>
+                
+                <!-- Colonna Immagine (a destra) -->
+                <div class="profile-container reveal-right">
+                  <div class="decorative-element element-top-left"></div>
+                  <div class="decorative-element element-bottom-right"></div>
+                  
+                  <div class="profile-frame">
+                    <div class="profile-image-mask">
+                      <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici - Product Designer" class="profile-image">
+                      <div class="profile-image-overlay"></div>
+                    </div>
+                    <div class="profile-backdrop"></div>
+                  </div>
+                  
+                  <div class="profile-accent-shape"></div>
+                  <div class="profile-dots-pattern"></div>
                 </div>
               </div>
             </div>

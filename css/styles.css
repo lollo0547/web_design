@@ -734,7 +734,11 @@ html {
 
 @media (min-width: 1024px) {
   .chi-sono-section {
-    padding: 10rem 2rem;
+    padding: 0 2rem 10rem; /* Mantiene padding laterale e inferiore ma rimuove quello superiore */
+  }
+  
+  .chi-sono-section .section-overlay {
+    padding-top: 6rem; /* Più spazio su schermi grandi */
   }
   
   .profile-container {
@@ -765,7 +769,11 @@ html {
   }
   
   .chi-sono-section {
-    padding: 6rem 1.5rem;
+    padding: 0 1.5rem 6rem;
+  }
+  
+  .chi-sono-section .section-overlay {
+    padding-top: 4rem;
   }
   
   .profile-dots-pattern {
@@ -778,6 +786,71 @@ html {
   .bio-tag {
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
+  }
+}
+
+/* Correzione del layout orizzontale Chi Sono */
+.chi-sono-section {
+  padding: 0 1.5rem 8rem; 
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--background-color);
+}
+
+/* Titolo centrato */
+.chi-sono-section .section-title {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+/* Contenitore principale */
+.chi-sono-section .section-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Nuovo layout orizzontale forzato */
+.chi-sono-grid {
+  display: flex !important; /* Override di eventuali altri display */
+  flex-direction: row !important; /* Forza direzione orizzontale */
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 4rem !important;
+  width: 100%;
+}
+
+/* Contenuto bio */
+.bio-content {
+  flex: 1.5;
+  max-width: 60%;
+  margin: 0 !important;
+}
+
+/* Container profilo */
+.profile-container {
+  flex: 1;
+  max-width: 35%;
+  margin: 0 !important;
+  align-self: center !important;
+}
+
+/* Responsive per mobile */
+@media (max-width: 768px) {
+  .chi-sono-grid {
+    flex-direction: column-reverse !important;
+    gap: 3rem !important;
+  }
+  
+  .bio-content,
+  .profile-container {
+    flex: 1;
+    max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -1001,7 +1074,7 @@ html {
 
 /* Chi Sono Section Styles */
 .chi-sono-section {
-  padding: 8rem 1.5rem;
+  padding: 0 1.5rem 8rem; /* Rimosso padding-top per connettere con la hero */
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -1021,287 +1094,78 @@ html {
   z-index: 0;
 }
 
+/* Centralizzare il titolo */
+.chi-sono-section .section-title {
+  text-align: center;
+  margin: 0 auto 3rem;
+  display: block;
+}
+
+/* Layout griglia invertito */
 .chi-sono-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 4rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 4rem;
   position: relative;
   z-index: 2;
 }
 
-/* Profile Container Styling */
+/* Stile contenuto bio */
+.bio-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Stile container profilo */
 .profile-container {
-  position: relative;
   max-width: 320px;
   margin: 0 auto;
-  z-index: 2;
-}
-
-.profile-frame {
   position: relative;
   z-index: 2;
 }
 
-.profile-image-mask {
-  position: relative;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  border: 4px solid rgba(255, 255, 255, 0.8);
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: perspective(1000px) rotateY(0deg);
-}
-
-.profile-image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(76, 29, 115, 0.2) 0%, rgba(30, 93, 204, 0.1) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.profile-image-mask:hover .profile-image-overlay {
-  opacity: 1;
-}
-
-.profile-image-mask:hover {
-  transform: perspective(1000px) rotateY(5deg) scale(1.03) translateY(-5px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 0 0 8px rgba(255, 255, 255, 0.1);
-}
-
-.profile-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: all 0.5s ease;
-  filter: contrast(1.05) brightness(1.02);
-}
-
-.profile-image:hover {
-  filter: contrast(1.1) brightness(1.05);
-}
-
-/* Miglioramento bio */
-.bio-tag {
-  display: inline-block;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--accent-color);
-  background-color: rgba(76, 29, 115, 0.08);
-  padding: 0.5rem 1rem;
-  border-radius: 30px;
-  margin-bottom: 1.5rem;
-}
-
-.bio-intro {
-  font-size: 1.3rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  color: var(--text-color);
-  font-weight: 500;
-}
-
-.bio-intro strong {
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 700;
-}
-
-/* Miglioramento skill cards */
-.skill-card {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 1.8rem;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.skill-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, rgba(76, 29, 115, 0.03), rgba(76, 29, 115, 0.08));
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.skill-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  border-color: rgba(76, 29, 115, 0.2);
-}
-
-.skill-progress {
-  height: 4px;
-  background-color: rgba(76, 29, 115, 0.1);
-  border-radius: 4px;
-  margin-top: 1rem;
-  overflow: hidden;
-}
-
-.skill-progress-bar {
-  height: 100%;
-  background: var(--accent-gradient);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
-}
-
-.skill-card.active .skill-progress-bar {
-  transform: scaleX(1);
-}
-
-/* CTA Buttons */
-.cta-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2.5rem;
-}
-
-.btn {
-  padding: 0.85rem 1.8rem;
-  border-radius: 50px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.7s ease;
-}
-
-.btn:hover::before {
-  left: 100%;
-}
-
-.btn-primary {
-  background-color: var(--accent-color);
-  color: white;
-  border: 2px solid var(--accent-color);
-  box-shadow: 0 4px 15px rgba(76, 29, 115, 0.3);
-}
-
-.btn-primary:hover {
-  background-color: transparent;
-  color: var(--accent-color);
-  box-shadow: 0 4px 20px rgba(76, 29, 115, 0.4);
-  transform: translateY(-3px);
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: var(--text-color);
-  border: 2px solid rgba(26, 29, 35, 0.3);
-}
-
-.btn-outline:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-  transform: translateY(-3px);
-}
-
-/* Responsive Adjustments */
+/* Responsive layout - orizzontale su tablet e desktop */
 @media (min-width: 768px) {
   .chi-sono-grid {
-    grid-template-columns: 1fr 1.5fr;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     gap: 3rem;
   }
-
-  .profile-container {
-    justify-self: center;
+  
+  .bio-content {
+    flex: 1.5;
+    margin: 0;
   }
-
-  .skills-grid {
-    grid-template-columns: repeat(3, 1fr);
+  
+  .profile-container {
+    flex: 1;
+    margin: 0;
   }
 }
 
+/* Ulteriori miglioramenti per schermi più grandi */
 @media (min-width: 1024px) {
-  .chi-sono-section {
-    padding: 10rem 2rem;
+  .chi-sono-grid {
+    gap: 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   .profile-container {
     max-width: 380px;
   }
-  
-  .chi-sono-grid {
-    gap: 5rem;
-  }
-  
-  .bio-intro {
-    font-size: 1.5rem;
-  }
-  
-  .bio-description {
-    font-size: 1.2rem;
-  }
 }
 
+/* Mantenimento layout verticale su mobile */
 @media (max-width: 767px) {
-  .cta-container {
-    flex-direction: column;
+  .chi-sono-grid {
+    flex-direction: column-reverse; /* Immagine sopra, testo sotto su mobile */
+    gap: 3rem;
+  }
+  
+  .bio-content, .profile-container {
     width: 100%;
-  }
-  
-  .btn {
-    width: 100%;
-  }
-  
-  .chi-sono-section {
-    padding: 6rem 1.5rem;
-  }
-  
-  .profile-dots-pattern {
-    width: 120px;
-    height: 120px;
-    bottom: -15px;
-    left: -30px;
-  }
-  
-  .bio-tag {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
-  }
-}
-
-/* Nuove animazioni */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
   }
 }
