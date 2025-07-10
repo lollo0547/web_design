@@ -342,12 +342,21 @@ header {
   font-size: 1.5rem;
   margin-top: 0.5rem;
   color: rgba(255,255,255,0.9);
+  min-height: 1.5em;
+  min-width: 200px;
+  text-align: center;
+}
+
+.typing-animation .typing-text {
+  position: relative;
+  white-space: nowrap;
 }
 
 .typing-animation::after {
   content: '|';
   position: absolute;
-  right: -8px;
+  display: inline-block;
+  margin-left: 2px;
   animation: blink 1s infinite;
 }
 
@@ -1841,3 +1850,6 @@ html {
   padding-left: 2rem;
   padding-right: 2rem;
 }
+
+/* Hide navbar when modal is open */
+/* Modal è gestito direttamente tramite JavaScript */

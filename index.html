@@ -35,6 +35,11 @@
     <!-- CSS stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/skills.css">
+    <link rel="stylesheet" href="css/interests.css">
+    <link rel="stylesheet" href="css/contacts.css">
+    <link rel="stylesheet" href="css/faq.css">
+    <link rel="stylesheet" href="css/footer.css">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,10 +112,7 @@
             <span class="lang-it">Lorenzo Giudici</span>
             <span class="lang-en">Lorenzo Giudici</span>
           </h1>
-          <p class="typing-animation" data-text="Product Designer" aria-label="Professione">
-            <span class="lang-it">Product Designer</span>
-            <span class="lang-en">Product Designer</span>
-          </p>
+          <p class="typing-animation" data-text="Product Designer" aria-label="Professione"></p>
         </div>
         
         <div class="scroll-indicator" id="scrollIndicator">
@@ -538,104 +540,392 @@
       <!-- Fine Sezione Progetti -->
       
       <!-- Sezione Software Skills -->
-      <section id="software-skills" class="section">
+      <section id="software-skills" class="section software-skills-section">
         <div class="container">
           <div class="section-overlay">
-            <h2 class="section-title">
+            <h2 class="section-title reveal">
               <span class="lang-it">Software Skills</span>
               <span class="lang-en">Software Skills</span>
+              <div class="title-decoration"></div>
             </h2>
+            
+            <div class="section-introduction reveal">
+              <p class="lang-it">Competenze ed esperienza in diversi strumenti di design, modellazione e prototipazione.</p>
+              <p class="lang-en">Skills and experience across various design, modeling and prototyping tools.</p>
+            </div>
+            
             <div class="section-content">
-              <div class="skills-grid" data-aos="fade-up">
-                <div class="skill-category">
-                  <h3>Modellazione 3D</h3>
-                  <div class="skills-list">
-                    <div class="skill-item">
+              <div class="skills-tabs reveal">
+                <div class="skills-tab active" data-category="3d">Modellazione 3D</div>
+                <div class="skills-tab" data-category="grafica">Grafica e Design</div>
+                <div class="skills-tab" data-category="prototyping">Prototipazione</div>
+              </div>
+              
+              <div class="skills-container">
+                <!-- Modellazione 3D Skills -->
+                <div class="skills-grid active" data-category="3d">
+                  <div class="skill-card reveal-left" data-skill-level="95">
+                    <div class="skill-icon-wrapper">
                       <div class="skill-icon">
                         <img src="immagini/webp/loghi/icons8-blender-48.webp" alt="Blender" loading="lazy">
                       </div>
-                      <div class="skill-info">
-                        <h4>Blender</h4>
-                        <div class="skill-bar">
-                          <div class="skill-progress" style="width: 95%"></div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>Blender</h3>
+                      <p>Modellazione organica, rendering, animazione</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
                         </div>
+                        <span class="skill-percentage">95%</span>
                       </div>
                     </div>
-                    
-                    <div class="skill-item">
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con Blender</h4>
+                        <ul>
+                          <li>Modellazione organica avanzata</li>
+                          <li>Texturing e materiali procedurali</li>
+                          <li>Rendering con Cycles e EEVEE</li>
+                          <li>Rigging e animazione di base</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="skill-card reveal-right" data-skill-level="90">
+                    <div class="skill-icon-wrapper">
                       <div class="skill-icon">
                         <img src="immagini/webp/loghi/icons8-rhinoceros-6-48.webp" alt="Rhinoceros" loading="lazy">
                       </div>
-                      <div class="skill-info">
-                        <h4>Rhinoceros</h4>
-                        <div class="skill-bar">
-                          <div class="skill-progress" style="width: 90%"></div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>Rhinoceros</h3>
+                      <p>Modellazione NURBS, superfici complesse</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
                         </div>
+                        <span class="skill-percentage">90%</span>
                       </div>
                     </div>
-                    
-                    <div class="skill-item">
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con Rhinoceros</h4>
+                        <ul>
+                          <li>Modellazione NURBS avanzata</li>
+                          <li>Gestione superfici complesse</li>
+                          <li>Integrazione con Grasshopper</li>
+                          <li>Preparazione per stampa 3D</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="skill-card reveal-left" data-skill-level="85">
+                    <div class="skill-icon-wrapper">
                       <div class="skill-icon">
                         <img src="immagini/webp/loghi/icons8-solidworks-48.webp" alt="SolidWorks" loading="lazy">
                       </div>
-                      <div class="skill-info">
-                        <h4>SolidWorks</h4>
-                        <div class="skill-bar">
-                          <div class="skill-progress" style="width: 85%"></div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>SolidWorks</h3>
+                      <p>Modellazione parametrica, progetti meccanici</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
                         </div>
+                        <span class="skill-percentage">85%</span>
                       </div>
                     </div>
-                    
-                    <div class="skill-item">
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con SolidWorks</h4>
+                        <ul>
+                          <li>Modellazione parametrica</li>
+                          <li>Assemblaggio complessi</li>
+                          <li>Simulazioni di base</li>
+                          <li>Disegni tecnici e documentazione</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="skill-card reveal-right" data-skill-level="80">
+                    <div class="skill-icon-wrapper">
                       <div class="skill-icon">
                         <img src="immagini/webp/loghi/autocad-seeklogo.webp" alt="AutoCAD" loading="lazy">
                       </div>
-                      <div class="skill-info">
-                        <h4>AutoCAD</h4>
-                        <div class="skill-bar">
-                          <div class="skill-progress" style="width: 80%"></div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>AutoCAD</h3>
+                      <p>Disegno tecnico 2D e 3D</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
                         </div>
+                        <span class="skill-percentage">80%</span>
+                      </div>
+                    </div>
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con AutoCAD</h4>
+                        <ul>
+                          <li>Disegno tecnico 2D avanzato</li>
+                          <li>Modellazione 3D di base</li>
+                          <li>Creazione di layout e presentazioni</li>
+                          <li>Annotazioni e quotature</li>
+                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
                 
-                <div class="skill-category">
-                  <h3>Grafica e Design</h3>
-                  <div class="skills-list">
-                    <div class="skill-item">
+                <!-- Grafica e Design Skills -->
+                <div class="skills-grid" data-category="grafica">
+                  <div class="skill-card reveal-left" data-skill-level="92">
+                    <div class="skill-icon-wrapper">
                       <div class="skill-icon">
                         <img src="immagini/webp/loghi/icons8-photoshop-48.webp" alt="Adobe Photoshop" loading="lazy">
                       </div>
-                      <div class="skill-info">
-                        <h4>Photoshop</h4>
-                        <div class="skill-bar">
-                          <div class="skill-progress" style="width: 92%"></div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>Photoshop</h3>
+                      <p>Fotoritocco, compositing, digital painting</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
                         </div>
+                        <span class="skill-percentage">92%</span>
                       </div>
                     </div>
-                    
-                    <div class="skill-item">
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con Photoshop</h4>
+                        <ul>
+                          <li>Fotoritocco avanzato</li>
+                          <li>Compositing e manipolazione</li>
+                          <li>Digital painting</li>
+                          <li>Color grading e correzione colore</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="skill-card reveal-right" data-skill-level="88">
+                    <div class="skill-icon-wrapper">
                       <div class="skill-icon">
                         <img src="immagini/webp/loghi/icons8-illustrator-48.webp" alt="Adobe Illustrator" loading="lazy">
                       </div>
-                      <div class="skill-info">
-                        <h4>Illustrator</h4>
-                        <div class="skill-bar">
-                          <div class="skill-progress" style="width: 88%"></div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>Illustrator</h3>
+                      <p>Illustrazione vettoriale, logo design</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
                         </div>
+                        <span class="skill-percentage">88%</span>
                       </div>
                     </div>
-                    
-                    <div class="skill-item">
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con Illustrator</h4>
+                        <ul>
+                          <li>Illustrazione vettoriale</li>
+                          <li>Logo design e identità visiva</li>
+                          <li>Tipografia e layout</li>
+                          <li>Creazione pattern e mockup</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="skill-card reveal-left" data-skill-level="75">
+                    <div class="skill-icon-wrapper">
                       <div class="skill-icon">
                         <img src="immagini/webp/loghi/icons8-adobe-indesign-48.webp" alt="Adobe InDesign" loading="lazy">
                       </div>
-                      <div class="skill-info">
-                        <h4>InDesign</h4>
-                        <div class="skill-bar">
-                          <div class="skill-progress" style="width: 75%"></div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>InDesign</h3>
+                      <p>Layout editoriale, pubblicazioni digitali</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
                         </div>
+                        <span class="skill-percentage">75%</span>
+                      </div>
+                    </div>
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con InDesign</h4>
+                        <ul>
+                          <li>Layout di pubblicazioni</li>
+                          <li>Creazione di brochure e cataloghi</li>
+                          <li>Gestione di stili e master page</li>
+                          <li>Esportazione per stampa e digitale</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="skill-card reveal-right" data-skill-level="85">
+                    <div class="skill-icon-wrapper">
+                      <div class="skill-icon">
+                        <img src="immagini/webp/loghi/icons8-figma-48.webp" alt="Figma" loading="lazy">
+                      </div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>Figma</h3>
+                      <p>UI/UX Design, prototyping, design system</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
+                        </div>
+                        <span class="skill-percentage">85%</span>
+                      </div>
+                    </div>
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con Figma</h4>
+                        <ul>
+                          <li>UI/UX design</li>
+                          <li>Prototipazione interattiva</li>
+                          <li>Creazione design system</li>
+                          <li>Collaborazione in team</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Prototipazione Skills -->
+                <div class="skills-grid" data-category="prototyping">
+                  <div class="skill-card reveal-left" data-skill-level="82">
+                    <div class="skill-icon-wrapper">
+                      <div class="skill-icon">
+                        <img src="immagini/webp/loghi/icons8-arduino-48.webp" alt="Arduino" loading="lazy">
+                      </div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>Arduino</h3>
+                      <p>Prototipazione elettronica, interazione fisica</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
+                        </div>
+                        <span class="skill-percentage">82%</span>
+                      </div>
+                    </div>
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con Arduino</h4>
+                        <ul>
+                          <li>Programmazione C/C++</li>
+                          <li>Integrazione sensori</li>
+                          <li>Creazione di prototipi interattivi</li>
+                          <li>IoT e comunicazione wireless</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="skill-card reveal-right" data-skill-level="78">
+                    <div class="skill-icon-wrapper">
+                      <div class="skill-icon">
+                        <img src="immagini/webp/loghi/icons8-raspberry-pi-48.webp" alt="Raspberry Pi" loading="lazy">
+                      </div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>Raspberry Pi</h3>
+                      <p>Computing embedded, installazioni interattive</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
+                        </div>
+                        <span class="skill-percentage">78%</span>
+                      </div>
+                    </div>
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con Raspberry Pi</h4>
+                        <ul>
+                          <li>Linux e configurazione sistema</li>
+                          <li>Programmazione Python</li>
+                          <li>Progetti di computer vision</li>
+                          <li>Installazioni multimediali</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="skill-card reveal-left" data-skill-level="70">
+                    <div class="skill-icon-wrapper">
+                      <div class="skill-icon">
+                        <img src="immagini/webp/loghi/icons8-3d-printing-48.webp" alt="Stampa 3D" loading="lazy">
+                      </div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>Stampa 3D</h3>
+                      <p>Prototipazione rapida, ottimizzazione modelli</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
+                        </div>
+                        <span class="skill-percentage">70%</span>
+                      </div>
+                    </div>
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con Stampa 3D</h4>
+                        <ul>
+                          <li>Slicing e ottimizzazione G-code</li>
+                          <li>Post-processing di oggetti stampati</li>
+                          <li>Calibrazione stampanti FDM</li>
+                          <li>Design per manufatturabilità</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="skill-card reveal-right" data-skill-level="65">
+                    <div class="skill-icon-wrapper">
+                      <div class="skill-icon">
+                        <img src="immagini/webp/loghi/icons8-laser-cutting-48.webp" alt="Laser Cutting" loading="lazy">
+                      </div>
+                      <div class="skill-highlight"></div>
+                    </div>
+                    <div class="skill-info">
+                      <h3>Taglio Laser</h3>
+                      <p>Taglio e incisione materiali, modelli architettonici</p>
+                      <div class="skill-level">
+                        <div class="skill-progress-bg">
+                          <div class="skill-progress-bar"></div>
+                        </div>
+                        <span class="skill-percentage">65%</span>
+                      </div>
+                    </div>
+                    <div class="skill-tooltip">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con Taglio Laser</h4>
+                        <ul>
+                          <li>Preparazione file vettoriali</li>
+                          <li>Calibrazione potenza/velocità</li>
+                          <li>Lavorazione di diversi materiali</li>
+                          <li>Design di giunzioni e incastri</li>
+                        </ul>
                       </div>
                     </div>
                   </div>
@@ -644,75 +934,242 @@
             </div>
           </div>
         </div>
+        <div class="section-background-pattern"></div>
       </section>
       
       <!-- Sezione Interessi -->
-      <section id="interessi" class="section">
+      <section id="interessi" class="section interests-section">
         <div class="container">
           <div class="section-overlay">
-            <h2 class="section-title">
+            <h2 class="section-title reveal">
               <span class="lang-it">Interessi</span>
               <span class="lang-en">Interests</span>
+              <div class="title-decoration"></div>
             </h2>
+            
+            <div class="section-introduction reveal">
+              <p class="lang-it">Passioni e interessi che influenzano il mio approccio creativo e arricchiscono la mia visione del design.</p>
+              <p class="lang-en">Passions and interests that influence my creative approach and enrich my design vision.</p>
+            </div>
+            
             <div class="section-content">
-              <div class="interests-grid" data-aos="fade-up">
+              <div class="interests-grid">
                 <div class="interest-card">
-                  <div class="interest-icon">
-                    <img src="immagini/webp/loghi 3/icons8-architecture-48.webp" alt="Architettura" loading="lazy">
+                  <div class="interest-icon-wrapper">
+                    <div class="interest-icon">
+                      <img src="immagini/webp/loghi 3/icons8-architecture-48.webp" alt="Architettura" loading="lazy">
+                    </div>
+                    <div class="interest-highlight"></div>
                   </div>
                   <h3>Architettura</h3>
                   <p>Esplorazione di forme architettoniche moderne e sostenibili che influenzano il mio approccio al design di prodotti.</p>
+                  <button class="interest-detail-btn" data-modal="modal-architettura">
+                    Scopri di più
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
                 </div>
                 
                 <div class="interest-card">
-                  <div class="interest-icon">
-                    <img src="immagini/webp/loghi 3/icons8-film-projector-48.webp" alt="Cinema" loading="lazy">
+                  <div class="interest-icon-wrapper">
+                    <div class="interest-icon">
+                      <img src="immagini/webp/loghi 3/icons8-film-projector-48.webp" alt="Cinema" loading="lazy">
+                    </div>
+                    <div class="interest-highlight"></div>
                   </div>
                   <h3>Cinema</h3>
                   <p>Appassionato di film di design e documentari che esplorano la creatività e l'innovazione nei diversi campi.</p>
+                  <button class="interest-detail-btn" data-modal="modal-cinema">
+                    Scopri di più
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
                 </div>
                 
                 <div class="interest-card">
-                  <div class="interest-icon">
-                    <img src="immagini/webp/loghi 3/icons8-modern-art-48.webp" alt="Arte Moderna" loading="lazy">
+                  <div class="interest-icon-wrapper">
+                    <div class="interest-icon">
+                      <img src="immagini/webp/loghi 3/icons8-modern-art-48.webp" alt="Arte Moderna" loading="lazy">
+                    </div>
+                    <div class="interest-highlight"></div>
                   </div>
                   <h3>Arte Moderna</h3>
                   <p>Fonte continua di ispirazione per le mie creazioni, con particolare interesse per le installazioni interattive.</p>
+                  <button class="interest-detail-btn" data-modal="modal-arte">
+                    Scopri di più
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
                 </div>
                 
                 <div class="interest-card">
-                  <div class="interest-icon">
-                    <img src="immagini/webp/loghi 3/icons8-mountain-48.webp" alt="Montagna" loading="lazy">
+                  <div class="interest-icon-wrapper">
+                    <div class="interest-icon">
+                      <img src="immagini/webp/loghi 3/icons8-mountain-48.webp" alt="Montagna" loading="lazy">
+                    </div>
+                    <div class="interest-highlight"></div>
                   </div>
                   <h3>Montagna</h3>
                   <p>La natura alpina è un rifugio e una fonte di ricarica creativa, oltre che ispirazione per forme e materiali.</p>
+                  <button class="interest-detail-btn" data-modal="modal-montagna">
+                    Scopri di più
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
                 </div>
                 
                 <div class="interest-card">
-                  <div class="interest-icon">
-                    <img src="immagini/webp/loghi 3/icons8-trekking-48.webp" alt="Trekking" loading="lazy">
+                  <div class="interest-icon-wrapper">
+                    <div class="interest-icon">
+                      <img src="immagini/webp/loghi 3/icons8-trekking-48.webp" alt="Trekking" loading="lazy">
+                    </div>
+                    <div class="interest-highlight"></div>
                   </div>
                   <h3>Trekking</h3>
                   <p>L'esplorazione di sentieri montani mi permette di scoprire l'armonia tra funzionalità e bellezza in natura.</p>
+                  <button class="interest-detail-btn" data-modal="modal-trekking">
+                    Scopri di più
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="interests-background-pattern"></div>
+        
+        <!-- Modals for detailed interest information -->
+        <div id="modal-architettura" class="interest-modal">
+          <div class="interest-modal-content">
+            <div class="interest-modal-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <h2>Architettura</h2>
+            <p>La mia passione per l'architettura moderna e sostenibile è una continua fonte di ispirazione per il mio lavoro nel design di prodotto. Studio attentamente l'integrazione tra forma e funzione, le soluzioni innovative e l'uso di materiali sostenibili.</p>
+            <p>Alcuni architetti che influenzano il mio approccio:</p>
+            <ul>
+              <li>Renzo Piano - per l'eleganza tecnica e la sostenibilità</li>
+              <li>Zaha Hadid - per le forme fluide e futuristiche</li>
+              <li>Bjarke Ingels - per le soluzioni innovative e lo storytelling attraverso l'architettura</li>
+            </ul>
+            <p>Cerco di applicare principi architettonici come la proporzione, il ritmo e l'equilibrio nei miei progetti di design, creando oggetti che non solo sono funzionali ma anche espressivi e capaci di raccontare una storia.</p>
+          </div>
+        </div>
+        
+        <div id="modal-cinema" class="interest-modal">
+          <div class="interest-modal-content">
+            <div class="interest-modal-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <h2>Cinema</h2>
+            <p>Il cinema è una fonte inesauribile di ispirazione visiva. Sono particolarmente attratto da registi con un forte senso estetico e capacità di creare mondi visivamente coerenti.</p>
+            <p>Documentari di design che amo:</p>
+            <ul>
+              <li>Objectified (Gary Hustwit) - un'esplorazione del design industriale</li>
+              <li>Abstract: The Art of Design (Netflix) - approfondimenti sui migliori designer al mondo</li>
+              <li>Design is One: Lella & Massimo Vignelli - sul lavoro iconico dei Vignelli</li>
+            </ul>
+            <p>Apprezzo anche il cinema di fantascienza per la sua capacità di immaginare futuri possibili e nuove forme di interazione uomo-tecnologia, elementi che influenzano il mio approccio al design di prodotto.</p>
+          </div>
+        </div>
+        
+        <div id="modal-arte" class="interest-modal">
+          <div class="interest-modal-content">
+            <div class="interest-modal-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <h2>Arte Moderna</h2>
+            <p>L'arte moderna, con la sua capacità di sfidare le convenzioni e esplorare nuovi linguaggi espressivi, è fondamentale per il mio processo creativo.</p>
+            <p>Movimenti artistici che influenzano il mio lavoro:</p>
+            <ul>
+              <li>Bauhaus - per l'integrazione tra arte, artigianato e tecnologia</li>
+              <li>Arte cinetica - per l'esplorazione del movimento e dell'interattività</li>
+              <li>Arte digitale contemporanea - per le nuove possibilità espressive offerte dalla tecnologia</li>
+            </ul>
+            <p>Visito regolarmente mostre e biennali per rimanere aggiornato sulle tendenze contemporanee e trovare nuovi stimoli per i miei progetti. Sono particolarmente interessato alle installazioni interattive che creano un dialogo con lo spettatore.</p>
+          </div>
+        </div>
+        
+        <div id="modal-montagna" class="interest-modal">
+          <div class="interest-modal-content">
+            <div class="interest-modal-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <h2>Montagna</h2>
+            <p>La montagna è per me non solo un luogo di svago ma una vera scuola di design. Nella natura alpina trovo un perfetto equilibrio tra forma e funzione, leggerezza e resistenza.</p>
+            <p>Cosa mi ispira della montagna:</p>
+            <ul>
+              <li>L'efficienza delle forme naturali, evolutesi per resistere a condizioni estreme</li>
+              <li>La palette di colori e texture che cambia con le stagioni</li>
+              <li>La semplicità e funzionalità dell'architettura tradizionale alpina</li>
+            </ul>
+            <p>Molti dei miei progetti riflettono principi osservati in montagna: resistenza, adattabilità, uso efficiente delle risorse e armonia con l'ambiente circostante.</p>
+          </div>
+        </div>
+        
+        <div id="modal-trekking" class="interest-modal">
+          <div class="interest-modal-content">
+            <div class="interest-modal-close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+            <h2>Trekking</h2>
+            <p>Il trekking è un'attività che combina sfida fisica e ispirazione creativa. Durante le escursioni ho l'opportunità di osservare come l'attrezzatura tecnica risolva problemi specifici con soluzioni ingegnose.</p>
+            <p>Aspetti del trekking che influenzano il mio design:</p>
+            <ul>
+              <li>Ergonomia e comfort durante l'uso prolungato</li>
+              <li>Design modulare e adattabile a diverse situazioni</li>
+              <li>Ottimizzazione del peso e dello spazio</li>
+            </ul>
+            <p>L'esperienza del trekking mi ha insegnato l'importanza di testare i prodotti in condizioni reali e come la funzionalità debba sempre guidare le scelte estetiche, senza però sacrificare completamente la bellezza.</p>
           </div>
         </div>
       </section>
       <!-- Sezione Contatti -->
-      <section id="contatti" class="section">
+      <section id="contatti" class="section contacts-section">
         <div class="container">
           <div class="section-overlay">
-            <h2 class="section-title">
+            <h2 class="section-title reveal">
               <span class="lang-it">Contatti</span>
               <span class="lang-en">Contacts</span>
+              <div class="title-decoration"></div>
             </h2>
+            
+            <div class="section-introduction reveal">
+              <p class="lang-it">Hai un'idea o un progetto in mente? Contattami e scopriamo insieme come realizzarlo.</p>
+              <p class="lang-en">Do you have an idea or a project in mind? Contact me and let's discover together how to make it happen.</p>
+            </div>
+            
             <div class="section-content">
-              <div class="contact-grid" data-aos="fade-up">
-                <div class="contact-info">
+              <div class="contact-grid">
+                <div class="contact-info reveal-left">
                   <h3>Parliamo del tuo progetto</h3>
-                  <p>Hai un'idea o un progetto in mente? Sono sempre alla ricerca di nuove collaborazioni creative. Contattami e scopriamo come possiamo lavorare insieme.</p>
+                  <p>Sono sempre alla ricerca di nuove collaborazioni creative. Utilizza il modulo di contatto o contattami direttamente attraverso i canali qui sotto.</p>
                   
                   <div class="contact-methods">
                     <div class="contact-item">
@@ -727,6 +1184,13 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M9.366 10.682a10.556 10.556 0 0 0 3.952 3.952l.884-1.238a1 1 0 0 1 1.294-.296 11.422 11.422 0 0 0 4.583 1.364 1 1 0 0 1 .921.997v4.462a1 1 0 0 1-.898.995c-.53.055-1.064.082-1.602.082C9.94 21 3 14.06 3 5.5c0-.538.027-1.072.082-1.602A1 1 0 0 1 4.077 3h4.462a1 1 0 0 1 .997.921A11.422 11.422 0 0 0 10.9 8.504a1 1 0 0 1-.296 1.294l-1.238.884zm-2.522-.657l1.9-1.357A13.41 13.41 0 0 1 7.647 5H5.01c-.006.166-.009.333-.009.5C5 12.956 11.044 19 18.5 19c.167 0 .334-.003.5-.01v-2.637a13.41 13.41 0 0 1-3.668-1.097l-1.357 1.9a12.442 12.442 0 0 1-1.588-.75l-.058-.033a12.556 12.556 0 0 1-4.702-4.702l-.033-.058a12.442 12.442 0 0 1-.75-1.588z" fill="currentColor"/></svg>
                       </div>
                       <a href="tel:+393456789012" class="contact-link">+39 345 678 9012</a>
+                    </div>
+                    
+                    <div class="contact-item">
+                      <div class="contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 20.9l4.95-4.95a7 7 0 1 0-9.9 0L12 20.9zm0 2.828l-6.364-6.364a9 9 0 1 1 12.728 0L12 23.728zM12 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 2a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="currentColor"/></svg>
+                      </div>
+                      <a href="https://goo.gl/maps/your-address" target="_blank" rel="noopener noreferrer" class="contact-link">Milano, Italia</a>
                     </div>
                   </div>
                   
@@ -743,31 +1207,50 @@
                   </div>
                 </div>
                 
-                <div class="contact-form-container">
+                <div class="contact-form-container reveal-right">
                   <form id="contact-form" class="contact-form">
                     <div class="form-group">
-                      <label for="name">Nome</label>
-                      <input type="text" id="name" name="name" required>
+                      <label for="name">Nome e Cognome</label>
+                      <input type="text" id="name" name="name" placeholder="Es. Mario Rossi" required>
                     </div>
                     
                     <div class="form-group">
                       <label for="email">Email</label>
-                      <input type="email" id="email" name="email" required>
+                      <input type="email" id="email" name="email" placeholder="Es. mario.rossi@esempio.it" required>
                     </div>
                     
                     <div class="form-group">
                       <label for="subject">Oggetto</label>
-                      <input type="text" id="subject" name="subject" required>
+                      <input type="text" id="subject" name="subject" placeholder="Es. Richiesta collaborazione" required>
                     </div>
                     
                     <div class="form-group">
                       <label for="message">Messaggio</label>
-                      <textarea id="message" name="message" rows="5" required></textarea>
+                      <textarea id="message" name="message" rows="5" placeholder="Scrivi qui il tuo messaggio..." required></textarea>
+                    </div>
+                    
+                    <div class="form-checkbox">
+                      <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+                      <span class="checkbox-custom"></span>
+                      <label for="privacy-consent">
+                        Acconsento al trattamento dei miei dati personali in conformità con la <a href="#privacy-policy" data-modal="privacy-modal">Privacy Policy</a>
+                      </label>
+                    </div>
+                    
+                    <div class="form-checkbox">
+                      <input type="checkbox" id="marketing-consent" name="marketing-consent">
+                      <span class="checkbox-custom"></span>
+                      <label for="marketing-consent">
+                        Accetto di ricevere aggiornamenti su progetti e servizi (opzionale)
+                      </label>
                     </div>
                     
                     <button type="submit" class="submit-button">
-                      <span class="lang-it">Invia messaggio</span>
-                      <span class="lang-en">Send message</span>
+                      Invia messaggio
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
                     </button>
                   </form>
                 </div>
@@ -775,20 +1258,45 @@
             </div>
           </div>
         </div>
+        
+        <div class="contacts-background-pattern"></div>
       </section>
       
       <!-- Sezione FAQ -->
-      <section id="faq" class="section">
+      <section id="faq" class="section faq-section">
         <div class="container">
           <div class="section-overlay">
-            <h2 class="section-title">
+            <h2 class="section-title reveal">
               <span class="lang-it">FAQ</span>
               <span class="lang-en">FAQ</span>
+              <div class="title-decoration"></div>
             </h2>
+            
+            <div class="section-introduction reveal">
+              <p class="lang-it">Risposte alle domande più frequenti sui miei servizi di product design.</p>
+              <p class="lang-en">Answers to the most frequently asked questions about my product design services.</p>
+            </div>
+            
+            <div class="faq-search-container reveal">
+              <input type="text" class="faq-search" placeholder="Cerca nelle FAQ..." aria-label="Cerca nelle FAQ">
+              <svg class="faq-search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
+            
+            <div class="faq-categories reveal">
+              <div class="faq-category active" data-category="all">Tutte</div>
+              <div class="faq-category" data-category="services">Servizi</div>
+              <div class="faq-category" data-category="process">Processo</div>
+              <div class="faq-category" data-category="pricing">Prezzi</div>
+              <div class="faq-category" data-category="legal">Legale</div>
+            </div>
+            
             <div class="section-content">
-              <div class="faq-container" data-aos="fade-up">
+              <div class="faq-container reveal">
                 <div class="accordion">
-                  <div class="accordion-item">
+                  <div class="accordion-item" data-category="services">
                     <button class="accordion-header" aria-expanded="false">
                       <span>Quali servizi offri come product designer?</span>
                       <svg class="accordion-icon" viewBox="0 0 24 24" width="24" height="24">
@@ -800,7 +1308,7 @@
                     </div>
                   </div>
                   
-                  <div class="accordion-item">
+                  <div class="accordion-item" data-category="process">
                     <button class="accordion-header" aria-expanded="false">
                       <span>Come si sviluppa il processo di progettazione con i clienti?</span>
                       <svg class="accordion-icon" viewBox="0 0 24 24" width="24" height="24">
@@ -812,7 +1320,7 @@
                     </div>
                   </div>
                   
-                  <div class="accordion-item">
+                  <div class="accordion-item" data-category="process">
                     <button class="accordion-header" aria-expanded="false">
                       <span>Quali sono i tempi di realizzazione di un progetto?</span>
                       <svg class="accordion-icon" viewBox="0 0 24 24" width="24" height="24">
@@ -824,7 +1332,7 @@
                     </div>
                   </div>
                   
-                  <div class="accordion-item">
+                  <div class="accordion-item" data-category="services">
                     <button class="accordion-header" aria-expanded="false">
                       <span>Lavori anche con startup o piccole imprese?</span>
                       <svg class="accordion-icon" viewBox="0 0 24 24" width="24" height="24">
@@ -836,7 +1344,7 @@
                     </div>
                   </div>
                   
-                  <div class="accordion-item">
+                  <div class="accordion-item" data-category="legal">
                     <button class="accordion-header" aria-expanded="false">
                       <span>Come gestisci la proprietà intellettuale dei progetti?</span>
                       <svg class="accordion-icon" viewBox="0 0 24 24" width="24" height="24">
@@ -847,110 +1355,141 @@
                       <p>La proprietà intellettuale viene trasferita al cliente al completamento del progetto e dopo il saldo del pagamento. Tutti i progetti sono trattati con la massima riservatezza e, se richiesto, sono disponibile a firmare accordi di non divulgazione (NDA) prima di iniziare qualsiasi collaborazione.</p>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <!-- Questo commento sostituisce la sezione Chi Sono duplicata che è stata rimossa -->
-                        <div class="skill-progress">
-                          <div class="skill-progress-bar" style="width: 95%"></div>
-                        </div>
-                      </div>
-                      <div class="skill-card">
-                        <div class="skill-icon">
-                          <i class="icon-design"></i>
-                        </div>
-                        <h4>UI/UX Design</h4>
-                        <p>Figma, Adobe XD</p>
-                        <div class="skill-progress">
-                          <div class="skill-progress-bar" style="width: 90%"></div>
-                        </div>
-                      </div>
-                      <div class="skill-card">
-                        <div class="skill-icon">
-                          <i class="icon-prototype"></i>
-                        </div>
-                        <h4>Prototyping</h4>
-                        <p>Rapid Prototyping, Testing</p>
-                        <div class="skill-progress">
-                          <div class="skill-progress-bar" style="width: 85%"></div>
-                        </div>
-                      </div>
+                  
+                  <div class="accordion-item" data-category="pricing">
+                    <button class="accordion-header" aria-expanded="false">
+                      <span>Come vengono calcolati i costi di un progetto?</span>
+                      <svg class="accordion-icon" viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 15.5l-6-6 1.5-1.5L12 12.5l4.5-4.5L18 9.5l-6 6z"></path>
+                      </svg>
+                    </button>
+                    <div class="accordion-content">
+                      <p>I costi variano in base alla complessità, alla durata e alla portata del progetto. Posso lavorare sia a tariffa oraria che con preventivi a progetto. Dopo un incontro iniziale per comprendere le tue esigenze, ti fornirò un preventivo dettagliato e trasparente che include tutte le fasi del processo di design.</p>
                     </div>
                   </div>
                   
-                  <div class="cta-container reveal">
-                    <a href="#progetti" class="btn btn-primary">
-                      <span class="lang-it">Esplora i miei progetti</span>
-                      <span class="lang-en">Explore my projects</span>
-                      <span class="btn-icon">→</span>
-                    </a>
-                    <a href="#contatti" class="btn btn-outline">
-                      <span class="lang-it">Contattami</span>
-                      <span class="lang-en">Contact me</span>
-                    </a>
+                  <div class="accordion-item" data-category="process">
+                    <button class="accordion-header" aria-expanded="false">
+                      <span>Posso richiedere modifiche durante il processo di design?</span>
+                      <svg class="accordion-icon" viewBox="0 0 24 24" width="24" height="24">
+                        <path d="M12 15.5l-6-6 1.5-1.5L12 12.5l4.5-4.5L18 9.5l-6 6z"></path>
+                      </svg>
+                    </button>
+                    <div class="accordion-content">
+                      <p>Certamente! Il processo di design è collaborativo e iterativo. Ogni progetto include cicli di revisione previsti, durante i quali è possibile richiedere modifiche e aggiustamenti. Il numero esatto di cicli di revisione viene concordato in fase di definizione del progetto e incluso nel preventivo.</p>
+                    </div>
                   </div>
                 </div>
                 
-                <!-- Colonna Immagine (a destra) -->
-                <div class="profile-container reveal-right">
-                  <div class="decorative-element element-top-left"></div>
-                  <div class="decorative-element element-bottom-right"></div>
-                  
-                  <div class="profile-frame">
-                    <div class="profile-image-mask">
-                      <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici - Product Designer" class="profile-image">
-                      <div class="profile-image-overlay"></div>
-                    </div>
-                    <div class="profile-backdrop"></div>
-                  </div>
-                  
-                  <div class="profile-accent-shape"></div>
-                  <div class="profile-dots-pattern"></div>
+                <div class="no-results-message">
+                  <p>Nessun risultato trovato. Prova con un'altra ricerca o contattami direttamente.</p>
+                </div>
+                
+                <div class="add-faq-container reveal">
+                  <p class="add-faq-text">Non hai trovato risposta alla tua domanda?</p>
+                  <a href="#contatti" class="btn btn-outline">
+                    <span class="lang-it">Contattami</span>
+                    <span class="lang-en">Contact me</span>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        
+        <div class="faq-background-pattern"></div>
       </section>
     </main>
 
     <footer>
       <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo">
-            <img src="immagini/logo.webp" alt="Lorenzo Giudici Logo" width="50" height="50">
-            <p>Lorenzo Giudici</p>
+        <div class="footer-wrapper">
+          <!-- About Section -->
+          <div class="footer-section footer-about">
+            <div class="footer-logo">
+              <img src="immagini/logo.webp" alt="Lorenzo Giudici Logo" width="48" height="48">
+              <p>Lorenzo Giudici</p>
+            </div>
+            <p>Product designer specializzato in design industriale e modellazione 3D. Creo soluzioni innovative che uniscono funzionalità ed estetica.</p>
+            <div class="footer-social-links">
+              <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
+                <img src="immagini/webp/loghi 2/icons8-linkedin-48.webp" alt="LinkedIn">
+              </a>
+              <a href="https://behance.net/" target="_blank" rel="noopener noreferrer" aria-label="Behance" class="social-icon">
+                <img src="immagini/webp/loghi 2/icons8-behance-48.webp" alt="Behance">
+              </a>
+              <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
+                <img src="immagini/webp/loghi 2/icons8-instagram-logo-48.webp" alt="Instagram">
+              </a>
+            </div>
           </div>
           
-          <div class="footer-links">
-            <a href="#progetti">Progetti</a>
-            <a href="#software-skills">Skills</a>
-            <a href="#interessi">Interessi</a>
-            <a href="#contatti">Contatti</a>
-            <a href="#faq">FAQ</a>
+          <!-- Navigation Section -->
+          <div class="footer-section footer-nav">
+            <h3>Esplora</h3>
+            <ul>
+              <li><a href="#progetti">Progetti</a></li>
+              <li><a href="#software-skills">Software Skills</a></li>
+              <li><a href="#interessi">Interessi</a></li>
+              <li><a href="#contatti">Contatti</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
           </div>
           
-          <div class="footer-social">
-            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <img src="immagini/webp/loghi 2/icons8-linkedin-48.webp" alt="LinkedIn" width="32" height="32">
+          <!-- Contact Section -->
+          <div class="footer-section footer-contact">
+            <h3>Contatti</h3>
+            <a href="mailto:info@lorenzogiudici.com">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              info@lorenzogiudici.com
             </a>
-            <a href="https://behance.net/" target="_blank" rel="noopener noreferrer" aria-label="Behance">
-              <img src="immagini/webp/loghi 2/icons8-behance-48.webp" alt="Behance" width="32" height="32">
+            <a href="tel:+390123456789">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              +39 0123 456789
             </a>
-            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <img src="immagini/webp/loghi 2/icons8-instagram-logo-48.webp" alt="Instagram" width="32" height="32">
+            <a href="#" class="location">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              Milano, Italia
             </a>
+          </div>
+          
+          <!-- Newsletter Section -->
+          <div class="footer-section footer-subscribe">
+            <h3>Newsletter</h3>
+            <p>Iscriviti per ricevere aggiornamenti sui miei progetti e novità dal mondo del design.</p>
+            <form class="subscribe-form">
+              <input type="email" class="subscribe-input" placeholder="La tua email" required>
+              <button type="submit" class="subscribe-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
           </div>
         </div>
         
+        <div class="footer-divider"></div>
+        
         <div class="footer-bottom">
           <p>&copy; 2025 Lorenzo Giudici. Tutti i diritti riservati.</p>
-          <p>Design e sviluppo con ❤️</p>
+          <p>Design e sviluppo con <span class="footer-heart">❤️</span></p>
         </div>
+        
+        <!-- Back to top button -->
+        <a href="#" class="back-to-top" aria-label="Torna in cima">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+          </svg>
+        </a>
       </div>
     </footer>
     
@@ -959,50 +1498,64 @@
     <script src="js/animations.js" defer></script>
     <script src="js/chi-sono.js"></script>
     <script src="js/projects.js"></script>
-  </body>
-</html>
-    </main>
-
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-logo">
-            <img src="immagini/logo.webp" alt="Lorenzo Giudici Logo" width="50" height="50">
-            <p>Lorenzo Giudici</p>
+    <script src="js/skills.js"></script>
+    <script src="js/interests.js"></script>
+    <script src="js/contacts.js"></script>
+    <script src="js/faq.js"></script>
+    <script src="js/footer.js"></script>
+    
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="fullscreen-modal">
+      <div class="fullscreen-modal-overlay"></div>
+      <div class="fullscreen-modal-container">
+        <div class="fullscreen-modal-content">
+          <div class="fullscreen-modal-close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
           </div>
-          
-          <div class="footer-links">
-            <a href="#progetti">Progetti</a>
-            <a href="#software-skills">Skills</a>
-            <a href="#interessi">Interessi</a>
-            <a href="#contatti">Contatti</a>
-            <a href="#faq">FAQ</a>
+          <div class="fullscreen-modal-header">
+            <h2>Privacy Policy</h2>
+            <p>Ultima modifica: 10 luglio 2025</p>
           </div>
-          
-          <div class="footer-social">
-            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <img src="immagini/webp/loghi 2/icons8-linkedin-48.webp" alt="LinkedIn" width="32" height="32">
-            </a>
-            <a href="https://behance.net/" target="_blank" rel="noopener noreferrer" aria-label="Behance">
-              <img src="immagini/webp/loghi 2/icons8-behance-48.webp" alt="Behance" width="32" height="32">
-            </a>
-            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <img src="immagini/webp/loghi 2/icons8-instagram-logo-48.webp" alt="Instagram" width="32" height="32">
-            </a>
+          <div class="fullscreen-modal-body">
+            <h3>1. Informazioni raccolte</h3>
+            <p>Quando utilizzi il modulo di contatto di questo sito web, raccogliamo le seguenti informazioni:</p>
+            <ul>
+              <li>Nome e cognome</li>
+              <li>Indirizzo email</li>
+              <li>Contenuto del messaggio</li>
+              <li>Data e ora dell'invio</li>
+            </ul>
+            
+            <h3>2. Utilizzo delle informazioni</h3>
+            <p>Le informazioni raccolte vengono utilizzate esclusivamente per:</p>
+            <ul>
+              <li>Rispondere alle tue richieste</li>
+              <li>Gestire la relazione professionale</li>
+              <li>Se hai dato il consenso, inviarti aggiornamenti sui miei servizi e progetti</li>
+            </ul>
+            
+            <h3>3. Conservazione dei dati</h3>
+            <p>I tuoi dati personali vengono conservati per il tempo necessario a soddisfare le finalità per cui sono stati raccolti e non oltre 24 mesi dall'ultimo contatto, salvo diversi obblighi di legge.</p>
+            
+            <h3>4. Diritti dell'interessato</h3>
+            <p>Hai diritto di:</p>
+            <ul>
+              <li>Accedere ai tuoi dati personali</li>
+              <li>Richiedere la rettifica o la cancellazione</li>
+              <li>Limitare il trattamento</li>
+              <li>Opporti al trattamento</li>
+              <li>Richiedere la portabilità dei dati</li>
+              <li>Revocare il consenso in qualsiasi momento</li>
+            </ul>
+            
+            <h3>5. Contatti</h3>
+            <p>Per qualsiasi domanda relativa alla presente Privacy Policy, puoi contattarmi all'indirizzo: privacy@lorenzogiudici.com</p>
           </div>
-        </div>
-        
-        <div class="footer-bottom">
-          <p>&copy; 2025 Lorenzo Giudici. Tutti i diritti riservati.</p>
-          <p>Design e sviluppo con ❤️</p>
         </div>
       </div>
-    </footer>
-    
-    <!-- JavaScript -->
-    <script src="js/si.js" defer></script>
-    <script src="js/animations.js" defer></script>
-    <script src="js/chi-sono.js"></script>
-    <script src="js/projects.js"></script>
+    </div>
   </body>
 </html>

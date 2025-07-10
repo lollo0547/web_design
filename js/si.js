@@ -31,28 +31,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // EFFETTO TYPING PER TESTO "PRODUCT DESIGNER"
+  // EFFETTO TYPING PER TESTO "PRODUCT DESIGNER" - COMPLETAMENTE RINNOVATO
   const typingElement = document.querySelector('.typing-animation');
   if (typingElement) {
-    const text = typingElement.getAttribute('data-text');
-    if (text) {
-      typingAnimation(typingElement.querySelector('.lang-it'), text);
-    }
-  }
-  
-  function typingAnimation(element, text) {
-    let index = 0;
-    element.textContent = '';
+    // Ottiene il testo da data-text
+    const text = typingElement.getAttribute('data-text') || 'Product Designer';
     
-    function type() {
-      if (index < text.length) {
-        element.textContent += text.charAt(index);
-        index++;
-        setTimeout(type, 100);
+    // Pulisci qualsiasi contenuto esistente
+    typingElement.innerHTML = '';
+    
+    // Crea un nuovo span contenitore
+    const typingTextSpan = document.createElement('span');
+    typingTextSpan.className = 'typing-text';
+    typingElement.appendChild(typingTextSpan);
+    
+    // Configura l'animazione
+    setTimeout(() => {
+      let index = 0;
+      
+      function typeText() {
+        if (index < text.length) {
+          typingTextSpan.textContent += text.charAt(index);
+          index++;
+          setTimeout(typeText, 100);
+        }
       }
-    }
-    
-    setTimeout(type, 1000);
+      
+      typeText();
+    }, 1000);
   }
   
   // GESTIONE MENU MOBILE

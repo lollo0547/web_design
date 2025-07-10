@@ -47,29 +47,113 @@
   }
 }
 
-/* Subtle pulse animation */
-@keyframes pulse {
+/* Animation for software skills section */
+@keyframes skillHighlightPulse {
   0% {
-    opacity: 1;
-    transform: scale(1);
+    opacity: 0.15;
+    transform: translate(0, 0);
   }
   50% {
-    opacity: 0.8;
-    transform: scale(1.05);
+    opacity: 0.25;
+    transform: translate(5px, 5px);
   }
   100% {
-    opacity: 1;
-    transform: scale(1);
+    opacity: 0.15;
+    transform: translate(0, 0);
   }
 }
 
-/* Border animation */
-@keyframes borderPulse {
-  0%, 100% {
-    border-color: rgba(76, 29, 115, 0.3);
+/* Enhanced skill highlight pulse animation */
+@keyframes enhancedSkillHighlightPulse {
+  0% {
+    opacity: 0.15;
+    transform: translate(0, 0) scale(0.8);
+    filter: blur(10px);
   }
   50% {
-    border-color: rgba(76, 29, 115, 0.7);
+    opacity: 0.3;
+    transform: translate(5px, 5px) scale(1.2);
+    filter: blur(15px);
+  }
+  100% {
+    opacity: 0.15;
+    transform: translate(0, 0) scale(0.8);
+    filter: blur(10px);
+  }
+}
+
+/* Icon hover animation */
+@keyframes iconFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Progress bar loading animation */
+@keyframes progressGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Progress bar shimmer effect */
+@keyframes progressShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Tooltip reveal animation */
+@keyframes tooltipReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced tooltip reveal */
+@keyframes enhancedTooltipReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+    box-shadow: 0 10px 25px rgba(76, 29, 115, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 10px 25px rgba(76, 29, 115, 0.15);
+  }
+}
+
+/* Skill category tab animation */
+@keyframes tabActivate {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 
@@ -392,4 +476,75 @@
 
 .indicator.active::after {
   width: 100%;
+}
+
+/* Animations for skills cards */
+.skill-card .skill-highlight {
+  animation: skillHighlightPulse 3s infinite ease-in-out;
+}
+
+.skill-card:hover .skill-icon {
+  animation: iconFloat 1.5s infinite ease-in-out;
+}
+
+.skill-progress-bar.animated {
+  background-size: 200% 200%;
+  background-image: linear-gradient(135deg, #5a0fa5 0%, #1e5dcc 50%, #5a0fa5 100%);
+  animation: progressGradient 3s ease infinite;
+}
+
+.skill-card:hover .skill-tooltip {
+  animation: tooltipReveal 0.3s forwards ease-out;
+}
+
+.skills-tab.active {
+  animation: tabActivate 0.5s ease-out;
+}
+
+/* Interests Section Animations */
+@keyframes interestHighlightPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(8px);
+  }
+  50% {
+    opacity: 0.15;
+    transform: scale(1.2);
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(8px);
+  }
+}
+
+@keyframes interestButtonBounce {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes interestIconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes interestModalFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
