@@ -1206,12 +1206,14 @@ html {
   position: relative;
   padding: 1rem;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 /* Add style for the project frame for better centering */
@@ -1221,6 +1223,9 @@ html {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
 }
 
 /* Style for image mask to ensure proper alignment */
@@ -1228,12 +1233,13 @@ html {
   position: relative;
   border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: var(--card-shadow);
-  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(76, 29, 115, 0.15);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   margin: 0 auto;
   display: flex;
   justify-content: center;
   max-width: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
 }
 
 /* Style for project image */
@@ -1246,7 +1252,7 @@ html {
 }
 
 .progetto-image-container:hover {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1.02);
 }
 
 /* Modify the image overlay to be more visible */
@@ -1732,22 +1738,26 @@ html {
 /* Dynamic Shadow */
 .dynamic-shadow {
   position: absolute;
-  bottom: -15px;
-  left: 10%;
-  right: 10%;
-  height: 20px;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 70%);
+  bottom: -20px;
+  left: 5%;
+  right: 5%;
+  height: 25px;
+  background: radial-gradient(ellipse at center, rgba(76, 29, 115, 0.2) 0%, rgba(0,0,0,0) 70%);
   border-radius: 50%;
-  opacity: 0.8;
-  filter: blur(5px);
-  transition: all 0.5s ease;
-  transform: scaleX(0.85);
+  opacity: 0.7;
+  filter: blur(8px);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scaleX(0.85) translateX(0);
   z-index: -1;
+  pointer-events: none;
 }
 
 .progetto-card:hover .dynamic-shadow {
   opacity: 0.9;
-  transform: scaleX(1);
+  transform: scaleX(1.05);
+  filter: blur(10px);
+  background: radial-gradient(ellipse at center, rgba(76, 29, 115, 0.25) 0%, rgba(30, 93, 204, 0.1) 70%, rgba(0,0,0,0) 100%);
+  animation: shadowPulse 4s infinite;
   filter: blur(7px);
 }
 

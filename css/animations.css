@@ -28,6 +28,25 @@
   }
 }
 
+/* Pulsating shadow animation */
+@keyframes shadowPulse {
+  0% {
+    filter: blur(8px);
+    opacity: 0.6;
+    transform: scaleX(0.85);
+  }
+  50% {
+    filter: blur(12px);
+    opacity: 0.8;
+    transform: scaleX(1.05);
+  }
+  100% {
+    filter: blur(8px);
+    opacity: 0.6;
+    transform: scaleX(0.85);
+  }
+}
+
 /* Subtle pulse animation */
 @keyframes pulse {
   0% {
