@@ -1,0 +1,111 @@
+/* Theme Switcher Styles */
+.theme-switch-wrapper {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: var(--z-fixed);
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg);
+  padding: 8px;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease;
+}
+
+.theme-switch-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ccc;
+  border-radius: 34px;
+  transition: 0.4s;
+}
+
+.theme-slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .theme-slider {
+  background: var(--accent-color);
+}
+
+input:checked + .theme-slider:before {
+  transform: translateX(30px);
+}
+
+.theme-switch-icon {
+  margin: 0 8px;
+  font-size: 16px;
+}
+
+/* Dark Theme Variables */
+:root[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #f0f0f0;
+  --card-bg: #1e1e1e;
+  --card-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Transition for theme changes */
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Dark mode specific adjustments */
+:root[data-theme="dark"] .navbar {
+  background-color: rgba(30, 30, 30, 0.9);
+}
+
+:root[data-theme="dark"] .navbar a {
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .section-title {
+  color: #f0f0f0;
+}
+
+:root[data-theme="dark"] .progetto-card {
+  background-color: #1e1e1e;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+:root[data-theme="dark"] .form-group input,
+:root[data-theme="dark"] .form-group textarea {
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+  border-color: #444;
+}
+
+:root[data-theme="dark"] .footer {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}

@@ -1,0 +1,51 @@
+/* Language Switcher Styles */
+.language-switch-wrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  padding: 4px 10px;
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+}
+
+.language-button {
+  background: none;
+  border: none;
+  padding: 5px 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-color);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.language-button:hover, 
+.language-button.active {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
+.language-button.active {
+  font-weight: 700;
+}
+
+.language-divider {
+  color: var(--text-color);
+  opacity: 0.3;
+  margin: 0 2px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .language-switch-wrapper {
+    margin-left: auto;
+    margin-right: 50px; /* Spazio per il menu burger */
+  }
+  
+  .language-button {
+    font-size: 0.75rem;
+    padding: 3px 6px;
+  }
+}

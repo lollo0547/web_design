@@ -1,0 +1,123 @@
+/* Styles for the CV print functionality */
+@media print {
+  /* Nascondi elementi non necessari per la stampa */
+  header, 
+  .navbar-container, 
+  .hero,
+  .theme-switch-wrapper,
+  .language-switch-wrapper,
+  .project-filters,
+  .scroll-indicator,
+  .cta-container,
+  .footer,
+  .dots-navigation,
+  section:not(#chi-sono):not(#software-skills) {
+    display: none !important;
+  }
+  
+  /* Sfondo bianco e colore testo nero per migliore stampa */
+  body {
+    background-color: #fff;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+  
+  /* Ottimizza le sezioni visibili */
+  #chi-sono, #software-skills {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: block !important;
+  }
+  
+  /* Header stampato */
+  .print-header {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 1pt solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .print-header h1 {
+    margin: 0;
+    font-size: 18pt;
+  }
+  
+  .print-header p {
+    margin: 0;
+    font-size: 14pt;
+    opacity: 0.75;
+  }
+  
+  /* Layout di stampa */
+  .print-layout {
+    display: flex !important;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Rimuovi effetti e animazioni */
+  .reveal, .reveal-left, .reveal-right,
+  .progetto-card, .skill-card,
+  .profile-frame, .profile-container,
+  .section-title, .section-content {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+  }
+  
+  /* Stampa a colori le icone di software skills */
+  .software-logo {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  /* Aggiungi info di contatto nella stampa */
+  .print-contact-info {
+    display: block !important;
+    margin-top: 10px;
+    font-size: 10pt;
+  }
+  
+  .print-contact-info a {
+    color: #000;
+    text-decoration: none;
+    margin-right: 15px;
+  }
+  
+  /* Ridimensiona e ottimizza il layout delle skills */
+  .skill-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+  
+  .skill-card {
+    padding: 10px;
+    border: 1pt solid #eee;
+  }
+  
+  .skill-title {
+    font-size: 12pt;
+  }
+  
+  /* Footer per la stampa */
+  .print-footer {
+    display: block !important;
+    margin-top: 20px;
+    border-top: 1pt solid #ddd;
+    padding-top: 10px;
+    font-size: 9pt;
+    text-align: center;
+    color: #666;
+  }
+}

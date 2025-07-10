@@ -1,0 +1,49 @@
+/* Project Filters Styles */
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.filter-button {
+  background-color: var(--card-bg);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.filter-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(76, 29, 115, 0.1);
+}
+
+.filter-button.active {
+  background: var(--accent-gradient);
+  color: white;
+  border-color: transparent;
+}
+
+/* Transizione per i progetti */
+.progetto-card {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .project-filters {
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  
+  .filter-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
