@@ -3,17 +3,17 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-sm);
-  margin-bottom: var(--space-lg);
+  gap: 12px;
+  margin-bottom: 32px;
 }
 
 .filter-button {
   background-color: var(--card-bg);
   border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: var(--space-xs) var(--space-sm);
+  padding: 8px 16px;
   border-radius: 20px;
-  font-size: var(--fs-small);
-  font-weight: var(--font-weight-medium);
+  font-size: 0.9rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -38,12 +38,12 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .project-filters {
-    gap: var(--space-xs);
-    margin-bottom: var(--space-md);
+    gap: 8px;
+    margin-bottom: 24px;
   }
   
   .filter-button {
-    padding: calc(var(--space-xs) * 0.75) var(--space-xs);
-    font-size: calc(var(--fs-small) * 0.9);
+    padding: 6px 12px;
+    font-size: 0.8rem;
   }
 }

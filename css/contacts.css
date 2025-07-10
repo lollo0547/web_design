@@ -55,15 +55,15 @@
 }
 
 .contact-info h3 {
-  font-size: var(--fs-h3);
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
   color: var(--text-color);
 }
 
 .contact-info p {
-  font-size: var(--fs-body);
-  line-height: var(--paragraph-line-height);
+  font-size: 1rem;
+  line-height: 1.6;
   margin-bottom: 2rem;
   color: var(--text-color);
   opacity: 0.85;
@@ -170,8 +170,8 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  font-size: var(--fs-small);
-  font-weight: var(--font-weight-medium);
+  font-size: 0.95rem;
+  font-weight: 500;
   color: var(--text-color);
 }
 
@@ -180,7 +180,7 @@
   width: 100%;
   padding: 1rem;
   font-family: var(--font-main);
-  font-size: var(--fs-body);
+  font-size: 1rem;
   background-color: #f8f9fa;
   border: 1px solid rgba(76, 29, 115, 0.1);
   border-radius: 8px;
@@ -260,8 +260,8 @@
 .submit-button {
   padding: 1.2rem 2rem;
   margin-top: 1rem;
-  font-size: var(--fs-body);
-  font-weight: var(--font-weight-semibold);
+  font-size: 1rem;
+  font-weight: 600;
   text-align: center;
   color: #fff;
   background: var(--accent-gradient);

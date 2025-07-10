@@ -20,36 +20,6 @@
   
   /* Font */
   --font-main: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  
-  /* Font sizes - responsive con clamp() (min, preferito, max) */
-  --fs-h1: clamp(2.5rem, 5vw + 1rem, 4.5rem);      /* Titolo principale hero */
-  --fs-h2: clamp(2rem, 3vw + 1rem, 3.5rem);        /* Titoli sezione */
-  --fs-h3: clamp(1.25rem, 2vw + 0.5rem, 2rem);     /* Sottotitoli principali */
-  --fs-h4: clamp(1.1rem, 1vw + 0.5rem, 1.5rem);    /* Titoli minori */
-  --fs-intro: clamp(1.1rem, 1vw + 0.5rem, 1.3rem); /* Testo introduttivo */
-  --fs-body: clamp(0.9rem, 0.5vw + 0.8rem, 1.1rem); /* Corpo testo normale */
-  --fs-small: clamp(0.8rem, 0.5vw + 0.5rem, 0.9rem); /* Testo piccolo */
-  
-  /* Sistema di spacing modulare (multipli di 8px) */
-  --space-unit: 8px;
-  --space-xs: calc(var(--space-unit) * 1);   /* 8px */
-  --space-sm: calc(var(--space-unit) * 2);   /* 16px */
-  --space-md: calc(var(--space-unit) * 3);   /* 24px */
-  --space-lg: calc(var(--space-unit) * 4);   /* 32px */
-  --space-xl: calc(var(--space-unit) * 6);   /* 48px */
-  --space-2xl: calc(var(--space-unit) * 8);  /* 64px */
-  --space-3xl: calc(var(--space-unit) * 12); /* 96px */
-  
-  /* Layout */
-  --section-spacing: var(--space-3xl);
-  --container-padding: var(--space-md);
-  --card-padding: var(--space-lg);
-  --element-gap: var(--space-md);
   
   /* Z-index layers */
   --z-back: -1;
@@ -131,15 +101,12 @@ header {
   align-items: center;
   background: rgba(255,255,255,0.85);
   backdrop-filter: blur(10px);
-  z-index: var(--z-fixed);
+  z-index: 100;
   box-shadow: 0 2px 8px rgba(90,45,130,0.06);
-  padding: 0.8rem 1.5rem;
+  padding: 0.5rem 1rem;
   transform: translateY(-100%);
   opacity: 0;
-  transition: transform 0.4s var(--animation-easing-smooth), 
-              opacity 0.4s var(--animation-easing-smooth),
-              padding 0.3s var(--animation-easing-smooth),
-              background-color 0.3s var(--animation-easing-smooth);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   pointer-events: none; /* Prevent interaction when hidden */
 }
 
@@ -147,14 +114,6 @@ header {
   transform: translateY(0);
   opacity: 1;
   pointer-events: all; /* Re-enable interaction */
-  animation: fadeInDown var(--animation-timing-medium) forwards;
-}
-
-/* Classe per la navbar quando si scorre verso il basso (versione compatta) */
-.navbar-container.scrolled {
-  padding: 0.5rem 1.2rem;
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 3px 10px rgba(76,29,115,0.1);
 }
 
 .logo-container {
@@ -198,34 +157,14 @@ header {
   text-decoration: none;
   padding: 0.5rem 1rem;
   display: block;
-  font-weight: var(--font-weight-medium);
-  position: relative;
-  transition: all var(--animation-timing-medium) var(--animation-easing-smooth);
-}
-
-.navbar a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: 0;
-  left: 50%;
-  background: var(--accent-gradient);
-  transition: all var(--animation-timing-medium) var(--animation-easing-smooth);
-  transform: translateX(-50%);
-  opacity: 0;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .navbar a:hover,
 .navbar a:focus {
-  color: var(--accent-color);
+  color: var(--accent-color-hover);
   transform: translateY(-2px);
-}
-
-.navbar a:hover::after,
-.navbar a:focus::after {
-  width: 80%;
-  opacity: 1;
 }
 
 /* ------------------------------
@@ -512,12 +451,12 @@ html {
 }
 
 .section-title {
-  font-size: var(--fs-h2);
+  font-size: 2.8rem;
   margin-bottom: 3rem;
   position: relative;
   text-align: center;
   padding-bottom: 1.2rem;
-  font-weight: var(--font-weight-bold);
+  font-weight: 700;
   background: var(--accent-gradient);
   background-clip: text;
   -webkit-background-clip: text;
@@ -644,7 +583,7 @@ html {
 .bio-tag {
   display: inline-block;
   font-size: 0.9rem;
-  font-weight: var(--font-weight-semibold);
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--accent-color);
@@ -659,7 +598,7 @@ html {
   line-height: 1.5;
   margin-bottom: 1.5rem;
   color: var(--text-color);
-  font-weight: var(--font-weight-medium);
+  font-weight: 500;
 }
 
 .bio-intro strong {
@@ -667,7 +606,7 @@ html {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-weight: var(--font-weight-bold);
+  font-weight: 700;
 }
 
 /* Miglioramento skill cards */
@@ -734,10 +673,10 @@ html {
 .btn {
   padding: 0.85rem 1.8rem;
   border-radius: 50px;
-  font-weight: var(--font-weight-semibold);
+  font-weight: 600;
   text-decoration: none;
-  transition: all var(--animation-timing-medium) var(--animation-easing-smooth);
-  font-size: var(--fs-body);
+  transition: all 0.3s ease;
+  font-size: 1rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -758,17 +697,6 @@ html {
 
 .btn:hover::before {
   left: 100%;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 7px 14px rgba(76, 29, 115, 0.15), 0 5px 8px rgba(0, 0, 0, 0.08);
-}
-
-.btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(76, 29, 115, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06);
-  transition: all 0.1s ease;
 }
 
 .btn-primary {
@@ -977,13 +905,17 @@ html {
 --------------------------------*/
 
 @media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+  
   .hero-content {
     padding: 2rem 1.5rem;
     max-width: 85%;
   }
   
   .typing-animation {
-    font-size: var(--fs-intro);
+    font-size: 1.2rem;
   }
   
   .navbar-container {
@@ -1041,7 +973,9 @@ html {
 }
 
 @media (max-width: 480px) {
-  /* Rimosse le dimensioni fisse dei font poiché ora usiamo clamp() */
+  .hero h1 {
+    font-size: 2.2rem;
+  }
 }
 
 /* Media queries per la griglia hero */
@@ -1755,7 +1689,7 @@ html {
   background: #d1d1d1;
   border-radius: 50%;
   cursor: pointer;
-  transition: all var(--animation-timing-medium) var(--animation-easing-smooth);
+  transition: all 0.3s ease;
 }
 
 .indicator.active {
@@ -1775,7 +1709,7 @@ html {
   max-width: calc(100% - 2rem);
   width: calc(100% - 30px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: all var(--animation-timing-medium) var(--animation-easing-bounce);
+  transition: all 0.3s ease;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -1785,22 +1719,9 @@ html {
 
 .progetto-name-box h3 {
   margin: 0;
-  font-size: var(--fs-h4);
+  font-size: 1.1rem;
   color: var(--text-color);
-  font-weight: var(--font-weight-semibold);
-}
-
-.progetto-card {
-  transition: transform var(--animation-timing-medium) var(--animation-easing-smooth);
-  overflow: hidden;
-}
-
-.progetto-card .progetto-frame img {
-  transition: transform var(--animation-timing-medium) var(--animation-easing-smooth);
-}
-
-.progetto-card:hover .progetto-frame img {
-  transform: scale(1.05);
+  font-weight: 600;
 }
 
 .progetto-card:hover .progetto-name-box {
@@ -1809,7 +1730,6 @@ html {
   /* Keep horizontal centering when hovering */
   margin-left: auto;
   margin-right: auto;
-  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
 }
 
 /* Responsive adjustments for proper centering */

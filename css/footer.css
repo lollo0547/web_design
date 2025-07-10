@@ -55,8 +55,8 @@ footer::after {
 }
 
 .footer-section h3 {
-  font-size: var(--fs-h4);
-  font-weight: var(--font-weight-semibold);
+  font-size: 1.2rem;
+  font-weight: 600;
   margin-bottom: 1.25rem;
   color: var(--color-primary);
   position: relative;
@@ -107,14 +107,14 @@ footer::after {
 }
 
 .footer-logo p {
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--fs-h4);
+  font-weight: 600;
+  font-size: 1.2rem;
   color: var(--color-text-light);
 }
 
 .footer-about p {
-  font-size: var(--fs-small);
-  line-height: var(--paragraph-line-height);
+  font-size: 0.9rem;
+  line-height: 1.6;
   margin-bottom: 1rem;
   opacity: 0.85;
 }
@@ -246,7 +246,7 @@ footer::after {
   padding: 0.75rem 1.25rem;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
-  font-weight: var(--font-weight-medium);
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 

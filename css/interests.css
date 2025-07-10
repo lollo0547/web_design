@@ -6,13 +6,17 @@
 .interests-section {
   position: relative;
   overflow: hidden;
+  padding: 6rem 0;
   background-color: var(--background-color);
 }
 
 .interests-section .section-introduction {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  font-size: 1.1rem;
   color: var(--text-color);
   opacity: 0.85;
-  font-size: var(--fs-intro);
 }
 
 /* Background pattern */
@@ -30,11 +34,20 @@
   pointer-events: none;
 }
 
+/* Interests Grid */
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
 /* Interest Card */
 .interest-card {
   position: relative;
   background: var(--card-bg);
   border-radius: var(--border-radius);
+  padding: 2rem;
   box-shadow: var(--card-shadow);
   transition: all 0.4s ease;
   overflow: hidden;
@@ -126,16 +139,16 @@
 
 /* Interest Content */
 .interest-card h3 {
-  font-size: var(--fs-h3);
-  font-weight: var(--font-weight-semibold);
+  font-size: 1.4rem;
+  font-weight: 600;
   margin: 0.5rem 0;
   color: var(--text-color);
   transition: all 0.3s ease;
 }
 
 .interest-card p {
-  font-size: var(--fs-body);
-  line-height: var(--paragraph-line-height);
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--text-color);
   opacity: 0.8;
   margin-top: 0.5rem;

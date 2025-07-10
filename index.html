@@ -44,14 +44,12 @@
     <link rel="stylesheet" href="css/language-switcher.css">
     <link rel="stylesheet" href="css/project-filters.css">
     <link rel="stylesheet" href="css/text-alignment.css">
-    <link rel="stylesheet" href="css/typography.css">
-    <link rel="stylesheet" href="css/layout-grid.css">
     <link rel="stylesheet" href="css/print.css" media="print">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -66,37 +64,37 @@
         <button class="burger-menu" aria-label="Apri il menu di navigazione" aria-controls="main-nav" aria-expanded="false" aria-haspopup="true">☰</button>
         
         <ul class="navbar" id="main-nav" role="menubar">
-          <li role="none" class="nav-item active">
+          <li role="none">
             <a href="#chi-sono" role="menuitem">
               <span class="lang-it">Chi sono</span>
               <span class="lang-en">About me</span>
             </a>
           </li>
-          <li role="none" class="nav-item">
+          <li role="none">
             <a href="#progetti" role="menuitem">
               <span class="lang-it">Progetti</span>
               <span class="lang-en">Projects</span>
             </a>
           </li>
-          <li role="none" class="nav-item">
+          <li role="none">
             <a href="#software-skills" role="menuitem">
               <span class="lang-it">Software skills</span>
               <span class="lang-en">Software skills</span>
             </a>
           </li>
-          <li role="none" class="nav-item">
+          <li role="none">
             <a href="#interessi" role="menuitem">
               <span class="lang-it">Interessi</span>
               <span class="lang-en">Interests</span>
             </a>
           </li>
-          <li role="none" class="nav-item">
+          <li role="none">
             <a href="#contatti" role="menuitem">
               <span class="lang-it">Contatti</span>
               <span class="lang-en">Contacts</span>
             </a>
           </li>
-          <li role="none" class="nav-item">
+          <li role="none">
             <a href="#faq" role="menuitem">
               <span class="lang-it">FAQ</span>
               <span class="lang-en">FAQ</span>
@@ -105,10 +103,7 @@
         </ul>
       </nav>
       
-      <div class="hero parallax-container" role="banner" aria-labelledby="hero-title">
-        <!-- Parallax background -->
-        <div class="parallax-bg hero-bg" data-speed="0.15"></div>
-        
+      <div class="hero" role="banner" aria-labelledby="hero-title">
         <!-- Griglia di immagini di sfondo - verrà popolata dinamicamente -->
         <div class="hero-grid" id="heroGrid"></div>
         
@@ -117,7 +112,7 @@
           <img src="immagini/webp/hero/Lorenzo_hero.webp" alt="" class="hero-image">
         </div>
         
-        <div class="hero-content parallax-content">
+        <div class="hero-content">
           <h1 id="hero-title" class="gradient-flow">
             <span class="lang-it">Lorenzo Giudici</span>
             <span class="lang-en">Lorenzo Giudici</span>
@@ -134,25 +129,24 @@
     
     <main id="main-content" role="main">
       <!-- Sezione Chi Sono -->
-      <section id="chi-sono" class="section chi-sono-section py-xl parallax-container">
-        <div class="parallax-bg" data-speed="0.1"></div>
-        <div class="container parallax-content">
+      <section id="chi-sono" class="section chi-sono-section">
+        <div class="container">
           <div class="section-overlay">
-            <h2 class="section-title with-gradient mb-lg">
+            <h2 class="section-title with-gradient">
               <span class="lang-it">Chi sono</span>
               <span class="lang-en">About me</span>
             </h2>
 
             <div class="section-content">
-              <!-- Layout orizzontale con grid -->
-              <div class="grid grid-main-sidebar gap-xl items-center">
+              <!-- Layout orizzontale forzato -->
+              <div class="chi-sono-grid">
                 <!-- Colonna testo a sinistra -->
-                <div class="bio-content reveal-left p-md">
-                  <div class="bio-tag mb-md">
+                <div class="bio-content reveal-left">
+                  <div class="bio-tag">
                     <span class="lang-it">Designer & Innovatore</span>
                     <span class="lang-en">Designer & Innovator</span>
                   </div>
-                  <p class="bio-intro mb-lg">
+                  <p class="bio-intro">
                     <span class="lang-it">Ciao, sono <strong>Lorenzo Giudici</strong>. A differenza di molti miei colleghi, non posso dire di aver
                     coltivato fin da bambino una passione per il disegno e la progettazione. Il mio interesse per il disegno tecnico è nato durante gli anni delle superiori, mentre la scelta di
                     intraprendere un percorso universitario nel design è stata ispirata da mia sorella, anch'essa designer. La passione per la montagna, invece, mi è stata trasmessa dai miei nonni
@@ -163,8 +157,10 @@
                     during my childhood, but remained in the background until just before the Covid period.</span>
                   </p>
                   
+                  
+                  
                   <!-- CTA buttons -->
-                  <div class="cta-container reveal flex gap-md mt-lg">
+                  <div class="cta-container reveal">
                     <a href="#percorso-scolastico" class="btn btn-primary">
                       <span class="lang-it">Percorso scolastico</span>
                       <span class="lang-en">Academic Background</span>
@@ -178,7 +174,7 @@
                 </div>
                 
                 <!-- Immagine a destra -->
-                <div class="profile-container reveal-right p-md">
+                <div class="profile-container reveal-right">
                   <div class="decorative-element element-top-left"></div>
                   <div class="decorative-element element-bottom-right"></div>
                   <div class="profile-frame">
@@ -197,18 +193,18 @@
         </div>
       </section>
       <!-- Sezione Progetti -->
-      <section id="progetti" class="section progetti-section py-lg">
+      <section id="progetti" class="section progetti-section">
         <div class="container">
           <div class="section-overlay">
-            <h2 class="section-title with-gradient mb-lg">
+            <h2 class="section-title with-gradient">
               <span class="lang-it">Progetti</span>
               <span class="lang-en">Projects</span>
             </h2>
 
             <div class="section-content">
               <!-- Introduzione progetti -->
-              <div class="progetti-intro reveal mb-xl">
-                <p class="mx-auto text-center" style="max-width: 800px;">
+              <div class="progetti-intro reveal">
+                <p>
                   <span class="lang-it">Una selezione dei miei lavori più significativi che mostrano la mia visione del design e le mie competenze.</span>
                   <span class="lang-en">A selection of my most significant works that showcase my design vision and skills.</span>
                 </p>
@@ -223,28 +219,22 @@
                 <div class="progetti-viewport">
                   <div class="progetti-grid" id="progettiGrid">
                     <!-- Page 1: Progetti 1-2 -->
-                    <div class="progetti-page grid grid-2col gap-xl" data-page="0">
+                    <div class="progetti-page" data-page="0">
                       <!-- Progetto 1 -->
-                      <div class="progetto-card reveal-left p-md">
-                        <div class="progetto-image-container mb-md" data-project="project1">
+                      <div class="progetto-card reveal-left">
+                        <div class="progetto-image-container" data-project="project1">
                           <div class="decorative-element element-top-right"></div>
                           <div class="progetto-frame">
                             <div class="progetto-image-mask">
                               <img src="immagini/webp/progetto 1/tazzina_.webp" loading="lazy" alt="Set da Caffè Design" class="progetto-image">
-                              <div class="progetto-image-overlay">
-                                <div class="progetto-hover-info">
-                                  <p class="lang-it">Esplora il design innovativo di questo set da caffè</p>
-                                  <p class="lang-en">Explore the innovative design of this coffee set</p>
-                                  <span class="click-to-view">Click to view</span>
-                                </div>
-                              </div>
+                              <div class="progetto-image-overlay"></div>
                             </div>
                           </div>
                           <div class="progetto-accent-shape"></div>
                           <div class="dynamic-shadow"></div>
                         </div>
-                        <div class="progetto-name-box p-sm">
-                          <h3 class="mb-0">
+                        <div class="progetto-name-box">
+                          <h3>
                             <span class="lang-it">Set da Caffè Design</span>
                             <span class="lang-en">Coffee Set Design</span>
                           </h3>
@@ -252,26 +242,20 @@
                       </div>
                       
                       <!-- Progetto 2 -->
-                      <div class="progetto-card reveal-right p-md">
-                        <div class="progetto-image-container mb-md" data-project="project2">
+                      <div class="progetto-card reveal-right">
+                        <div class="progetto-image-container" data-project="project2">
                           <div class="decorative-element element-bottom-left"></div>
                           <div class="progetto-frame">
                             <div class="progetto-image-mask">
                               <img src="immagini/webp/progetto 2/cardanica.webp" loading="lazy" alt="Meccanismo Cardanico" class="progetto-image">
-                              <div class="progetto-image-overlay">
-                                <div class="progetto-hover-info">
-                                  <p class="lang-it">Scopri i dettagli di questo meccanismo di precisione</p>
-                                  <p class="lang-en">Discover the details of this precision mechanism</p>
-                                  <span class="click-to-view">Click to view</span>
-                                </div>
-                              </div>
+                              <div class="progetto-image-overlay"></div>
                             </div>
                           </div>
                           <div class="progetto-accent-shape"></div>
                           <div class="dynamic-shadow"></div>
                         </div>
-                        <div class="progetto-name-box p-sm">
-                          <h3 class="mb-0">
+                        <div class="progetto-name-box">
+                          <h3>
                             <span class="lang-it">Meccanismo Cardanico</span>
                             <span class="lang-en">Cardanic Mechanism</span>
                           </h3>
@@ -280,28 +264,22 @@
                     </div>
                     
                     <!-- Page 2: Progetti 3-4 -->
-                    <div class="progetti-page grid grid-2col gap-xl" data-page="1">
+                    <div class="progetti-page" data-page="1">
                       <!-- Progetto 3 -->
-                      <div class="progetto-card reveal-left p-md">
-                        <div class="progetto-image-container mb-md" data-project="project3">
+                      <div class="progetto-card reveal-left">
+                        <div class="progetto-image-container" data-project="project3">
                           <div class="decorative-element element-top-left"></div>
                           <div class="progetto-frame">
                             <div class="progetto-image-mask">
                               <img src="immagini/webp/progetto 3/untitled555.webp" loading="lazy" alt="Concept Design Industriale" class="progetto-image">
-                              <div class="progetto-image-overlay">
-                                <div class="progetto-hover-info">
-                                  <p class="lang-it">Concept creativo di design industriale innovativo</p>
-                                  <p class="lang-en">Creative concept of innovative industrial design</p>
-                                  <span class="click-to-view">Click to view</span>
-                                </div>
-                              </div>
+                              <div class="progetto-image-overlay"></div>
                             </div>
                           </div>
                           <div class="progetto-accent-shape"></div>
                           <div class="dynamic-shadow"></div>
                         </div>
-                        <div class="progetto-name-box p-sm">
-                          <h3 class="mb-0">
+                        <div class="progetto-name-box">
+                          <h3>
                             <span class="lang-it">Concept Design Industriale</span>
                             <span class="lang-en">Industrial Concept Design</span>
                           </h3>
@@ -309,30 +287,23 @@
                       </div>
                       
                       <!-- Progetto 4 -->
-                      <div class="progetto-card reveal-right p-md">
-                        <div class="progetto-image-container mb-md" data-project="project4">
+                      <div class="progetto-card reveal-right">
+                        <div class="progetto-image-container" data-project="project4">
                           <div class="decorative-element element-bottom-right"></div>
                           <div class="progetto-frame">
                             <div class="progetto-image-mask">
                               <img src="immagini/webp/progetto 4/untitled.webp" loading="lazy" alt="Design Architettonico" class="progetto-image">
-                              <div class="progetto-image-overlay">
-                                <div class="progetto-hover-info">
-                                  <p class="lang-it">Esplora questo concept architettonico moderno</p>
-                                  <p class="lang-en">Explore this modern architectural concept</p>
-                                  <span class="click-to-view">Click to view</span>
-                                </div>
-                              </div>
+                              <div class="progetto-image-overlay"></div>
                             </div>
                           </div>
                           <div class="progetto-accent-shape"></div>
                           <div class="dynamic-shadow"></div>
                         </div>
-                        <div class="progetto-name-box p-sm">
-                          <h3 class="mb-0">
-                            <span class="lang-it">Design Architettonico</span>
-                            <span class="lang-en">Architectural Design</span>
-                          </h3>
-                        </div>
+                        <div class="progetto-name-box">
+                        <h3>
+                          <span class="lang-it">Design Architettonico</span>
+                          <span class="lang-en">Architectural Design</span>
+                        </h3>
                       </div>
                     </div>
                   </div>
@@ -343,7 +314,7 @@
                 </button>
                 
                 <!-- Indicatori di pagina -->
-                <div class="progetti-indicators mt-md">
+                <div class="progetti-indicators">
                   <span class="indicator active" data-slide="0"></span>
                   <span class="indicator" data-slide="1"></span>
                 </div>
@@ -358,22 +329,22 @@
       <div class="project-overlays">
         <!-- Project 1 Overlay -->
         <div id="project1" class="project-overlay">
-          <div class="overlay-content p-lg">
-            <div class="overlay-header flex justify-between items-center mb-md">
-              <h2 class="overlay-title mb-0">
+          <div class="overlay-content">
+            <div class="overlay-header">
+              <h2 class="overlay-title">
                 <span class="lang-it">Set da Caffè Design</span>
                 <span class="lang-en">Coffee Set Design</span>
               </h2>
-              <button class="overlay-close p-xs" aria-label="Chiudi">×</button>
+              <button class="overlay-close" aria-label="Chiudi">×</button>
             </div>
             <div class="overlay-body">
-              <div class="overlay-image-gallery mb-lg">
+              <div class="overlay-image-gallery">
                 <div class="overlay-carousel-container">
                   <div class="overlay-carousel-track" data-project="project1-carousel">
-                    <div class="overlay-carousel-slide active p-md">
+                    <div class="overlay-carousel-slide active">
                       <img src="immagini/webp/progetto 1/tazzina_.webp" alt="Set da Caffè - Vista Principale" class="overlay-main-image shadow-effect">
                     </div>
-                    <div class="overlay-carousel-slide p-md">
+                    <div class="overlay-carousel-slide">
                       <img src="immagini/webp/progetto 1/zuccheriera 2_.webp" alt="Zuccheriera Design" class="overlay-main-image shadow-effect">
                     </div>
                     <div class="overlay-carousel-slide">
@@ -574,42 +545,40 @@
       <!-- Fine Sezione Progetti -->
       
       <!-- Sezione Software Skills -->
-      <section id="software-skills" class="section software-skills-section py-xl">
+      <section id="software-skills" class="section software-skills-section">
         <div class="container">
           <div class="section-overlay">
-            <h2 class="section-title reveal mb-md">
+            <h2 class="section-title reveal">
               <span class="lang-it">Software Skills</span>
               <span class="lang-en">Software Skills</span>
               <div class="title-decoration"></div>
             </h2>
             
-            <div class="section-introduction reveal mb-lg">
-              <p class="mx-auto text-center" style="max-width: 700px;">
-                <span class="lang-it">Competenze ed esperienza in diversi strumenti di design, modellazione e prototipazione.</span>
-                <span class="lang-en">Skills and experience across various design, modeling and prototyping tools.</span>
-              </p>
+            <div class="section-introduction reveal">
+              <p class="lang-it">Competenze ed esperienza in diversi strumenti di design, modellazione e prototipazione.</p>
+              <p class="lang-en">Skills and experience across various design, modeling and prototyping tools.</p>
             </div>
             
             <div class="section-content">
-              <div class="skills-tabs reveal flex justify-center gap-md mb-lg">
-                <div class="skills-tab active p-sm" data-category="3d">Modellazione 3D</div>
-                <div class="skills-tab p-sm" data-category="grafica">Grafica e Design</div>
-                <div class="skills-tab p-sm" data-category="prototyping">Prototipazione</div>
+              <div class="skills-tabs reveal">
+                <div class="skills-tab active" data-category="3d">Modellazione 3D</div>
+                <div class="skills-tab" data-category="grafica">Grafica e Design</div>
+                <div class="skills-tab" data-category="prototyping">Prototipazione</div>
               </div>
               
               <div class="skills-container">
                 <!-- Modellazione 3D Skills -->
-                <div class="skills-grid grid grid-responsive gap-lg active" data-category="3d">
-                  <div class="skill-card reveal-left p-md" data-skill-level="95">
-                    <div class="skill-icon-wrapper mb-sm">
+                <div class="skills-grid active" data-category="3d">
+                  <div class="skill-card reveal-left" data-skill-level="95">
+                    <div class="skill-icon-wrapper">
                       <div class="skill-icon">
                         <img src="immagini/webp/loghi/icons8-blender-48.webp" alt="Blender" loading="lazy">
                       </div>
                       <div class="skill-highlight"></div>
                     </div>
                     <div class="skill-info">
-                      <h3 class="mb-xs">Blender</h3>
-                      <p class="mb-sm">Modellazione organica, rendering, animazione</p>
+                      <h3>Blender</h3>
+                      <p>Modellazione organica, rendering, animazione</p>
                       <div class="skill-level">
                         <div class="skill-progress-bg">
                           <div class="skill-progress-bar"></div>
@@ -618,9 +587,9 @@
                       </div>
                     </div>
                     <div class="skill-tooltip">
-                      <div class="tooltip-content p-sm">
-                        <h4 class="mb-sm">Esperienza con Blender</h4>
-                        <ul class="gap-xs">
+                      <div class="tooltip-content">
+                        <h4>Esperienza con Blender</h4>
+                        <ul>
                           <li>Modellazione organica avanzata</li>
                           <li>Texturing e materiali procedurali</li>
                           <li>Rendering con Cycles e EEVEE</li>
@@ -974,34 +943,32 @@
       </section>
       
       <!-- Sezione Interessi -->
-      <section id="interessi" class="section interests-section py-xl">
+      <section id="interessi" class="section interests-section">
         <div class="container">
           <div class="section-overlay">
-            <h2 class="section-title reveal mb-md">
+            <h2 class="section-title reveal">
               <span class="lang-it">Interessi</span>
               <span class="lang-en">Interests</span>
               <div class="title-decoration"></div>
             </h2>
             
-            <div class="section-introduction reveal mb-lg">
-              <p class="mx-auto text-center" style="max-width: 700px;">
-                <span class="lang-it">Passioni e interessi che influenzano il mio approccio creativo e arricchiscono la mia visione del design.</span>
-                <span class="lang-en">Passions and interests that influence my creative approach and enrich my design vision.</span>
-              </p>
+            <div class="section-introduction reveal">
+              <p class="lang-it">Passioni e interessi che influenzano il mio approccio creativo e arricchiscono la mia visione del design.</p>
+              <p class="lang-en">Passions and interests that influence my creative approach and enrich my design vision.</p>
             </div>
             
             <div class="section-content">
-              <div class="interests-grid grid grid-responsive gap-lg">
-                <div class="interest-card p-lg flex flex-column gap-md">
-                  <div class="interest-icon-wrapper mb-sm">
+              <div class="interests-grid">
+                <div class="interest-card">
+                  <div class="interest-icon-wrapper">
                     <div class="interest-icon">
                       <img src="immagini/webp/loghi 3/icons8-architecture-48.webp" alt="Architettura" loading="lazy">
                     </div>
                     <div class="interest-highlight"></div>
                   </div>
-                  <h3 class="mb-xs">Architettura</h3>
-                  <p class="mb-md">Esplorazione di forme architettoniche moderne e sostenibili che influenzano il mio approccio al design di prodotti.</p>
-                  <button class="interest-detail-btn mt-auto flex items-center gap-xs" data-modal="modal-architettura">
+                  <h3>Architettura</h3>
+                  <p>Esplorazione di forme architettoniche moderne e sostenibili che influenzano il mio approccio al design di prodotti.</p>
+                  <button class="interest-detail-btn" data-modal="modal-architettura">
                     Scopri di più
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M5 12h14"></path>
@@ -1010,16 +977,16 @@
                   </button>
                 </div>
                 
-                <div class="interest-card p-lg flex flex-column gap-md">
-                  <div class="interest-icon-wrapper mb-sm">
+                <div class="interest-card">
+                  <div class="interest-icon-wrapper">
                     <div class="interest-icon">
                       <img src="immagini/webp/loghi 3/icons8-film-projector-48.webp" alt="Cinema" loading="lazy">
                     </div>
                     <div class="interest-highlight"></div>
                   </div>
-                  <h3 class="mb-xs">Cinema</h3>
-                  <p class="mb-md">Appassionato di film di design e documentari che esplorano la creatività e l'innovazione nei diversi campi.</p>
-                  <button class="interest-detail-btn mt-auto flex items-center gap-xs" data-modal="modal-cinema">
+                  <h3>Cinema</h3>
+                  <p>Appassionato di film di design e documentari che esplorano la creatività e l'innovazione nei diversi campi.</p>
+                  <button class="interest-detail-btn" data-modal="modal-cinema">
                     Scopri di più
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                       <path d="M5 12h14"></path>
@@ -1545,9 +1512,6 @@
     <script src="js/language-switcher.js" defer></script>
     <script src="js/project-filters.js" defer></script>
     <script src="js/print-cv.js" defer></script>
-    <script src="js/scroll-transitions.js" defer></script>
-    <script src="js/micro-interactions.js" defer></script>
-    <script src="js/parallax-scrollspy.js" defer></script>
     
     <!-- Privacy Policy Modal -->
     <div id="privacy-modal" class="fullscreen-modal">
