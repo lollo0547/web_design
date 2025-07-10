@@ -1193,6 +1193,13 @@ html {
 
 .progetto-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  transition: all 0.3s ease;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .progetto-image-container {
@@ -1200,6 +1207,42 @@ html {
   padding: 1rem;
   cursor: pointer;
   transition: transform 0.3s ease;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Add style for the project frame for better centering */
+.progetto-frame {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* Style for image mask to ensure proper alignment */
+.progetto-image-mask {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+/* Style for project image */
+.progetto-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
 .progetto-image-container:hover {
@@ -1536,18 +1579,23 @@ html {
   position: relative;
   width: 100%;
   margin: 2rem auto;
+  max-width: 100%;
 }
 
 .progetti-viewport {
   overflow: hidden;
   position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 
 .progetti-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 200%; /* Two pages total width */
+  max-width: 200%;
 }
 
 .progetti-nav {
@@ -1576,11 +1624,39 @@ html {
 }
 
 .progetti-prev {
-  left: -25px;
+  left: 15px;
+  z-index: 10;
 }
 
 .progetti-next {
-  right: -25px;
+  right: 15px;
+  z-index: 10;
+}
+
+/* Responsive adjustments for navigation controls */
+@media (min-width: 1400px) {
+  .progetti-prev {
+    left: 30px;
+  }
+  
+  .progetti-next {
+    right: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .progetti-prev {
+    left: 5px;
+  }
+  
+  .progetti-next {
+    right: 5px;
+  }
+  
+  .progetti-nav {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 .progetti-indicators {
@@ -1588,6 +1664,8 @@ html {
   justify-content: center;
   gap: 0.5rem;
   margin-top: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .indicator {
@@ -1611,9 +1689,17 @@ html {
   border-radius: 8px;
   padding: 1rem;
   margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: calc(100% - 2rem);
+  width: calc(100% - 30px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   text-align: center;
+  position: relative;
+  z-index: 2;
+  align-self: center;
+  transform-origin: center bottom;
 }
 
 .progetto-name-box h3 {
@@ -1626,6 +1712,21 @@ html {
 .progetto-card:hover .progetto-name-box {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(76, 29, 115, 0.15);
+  /* Keep horizontal centering when hovering */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive adjustments for proper centering */
+@media (max-width: 768px) {
+  .progetto-name-box {
+    width: 85%; /* Slightly narrower on mobile for better alignment */
+    max-width: 85%;
+  }
+  
+  .progetto-frame {
+    width: 100%;
+  }
 }
 
 /* Dynamic Shadow */
@@ -1685,4 +1786,48 @@ html {
     height: 40px;
     font-size: 1.2rem;
   }
+}
+
+/* Progetti page structure */
+.progetti-page {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 50%;
+  min-width: 50%;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .progetti-page {
+    grid-template-columns: 1fr;
+    width: 50%;
+    min-width: 50%;
+  }
+}
+
+/* Container structure adjustments */
+.section-content {
+  width: 100%;
+  max-width: 100%;
+}
+
+.progetti-section .container {
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.progetti-section .section-overlay {
+  width: 100%;
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.progetti-section .section-title,
+.progetti-section .progetti-intro {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }

@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to update the project grid slide
   function updateProjectGrid(slideIndex) {
     // Update grid transform
-    progettiGrid.style.transform = `translateX(-${slideIndex * 100}%)`;
+    progettiGrid.style.transform = `translateX(-${slideIndex * 50}%)`;
     
     // Update active indicator
     indicators.forEach((indicator, index) => {
@@ -27,6 +27,30 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Update current slide index
     currentSlide = slideIndex;
+    
+    // Update animation classes based on current page
+    document.querySelectorAll('.progetti-page').forEach((page, index) => {
+      if (index === slideIndex) {
+        // Add reveal animations with delay for current page
+        const leftCards = page.querySelectorAll('.reveal-left');
+        const rightCards = page.querySelectorAll('.reveal-right');
+        
+        leftCards.forEach((card, i) => {
+          card.style.animationDelay = `${i * 0.2}s`;
+          card.classList.add('animate');
+        });
+        
+        rightCards.forEach((card, i) => {
+          card.style.animationDelay = `${i * 0.2 + 0.1}s`;
+          card.classList.add('animate');
+        });
+      } else {
+        // Remove animations from hidden pages
+        page.querySelectorAll('.reveal-left, .reveal-right').forEach(card => {
+          card.classList.remove('animate');
+        });
+      }
+    });
   }
   
   // Initialize project navigation buttons
@@ -223,4 +247,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+  
+  // Initialize the first page animations
+  setTimeout(() => {
+    updateProjectGrid(0);
+  }, 500);
 });
