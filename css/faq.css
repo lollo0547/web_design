@@ -53,8 +53,8 @@
   border: none;
   text-align: left;
   cursor: pointer;
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: var(--fs-h4);
+  font-weight: var(--font-weight-semibold);
   color: var(--text-color);
   transition: all 0.3s ease;
 }
@@ -96,7 +96,8 @@
 .accordion-content p {
   color: var(--text-color);
   opacity: 0.9;
-  line-height: 1.6;
+  font-size: var(--fs-body);
+  line-height: var(--paragraph-line-height);
   margin: 0;
 }
 
