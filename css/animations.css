@@ -548,3 +548,31 @@
     transform: translateY(0) scale(1);
   }
 }
+
+/* --- MEDIA QUERIES STANDARDIZZATE --- */
+
+@media all and (max-width: 1690px) {
+  .fade-in, .slide-in, .reveal {
+    animation-duration: 0.7s;
+  }
+}
+
+@media all and (min-width: 1280px) and (max-width: 1689px) {
+  .fade-in, .slide-in, .reveal {
+    animation-duration: 0.8s;
+  }
+}
+
+@media all and (min-width: 737px) and (max-width: 1279px) {
+  .fade-in, .slide-in, .reveal {
+    animation-duration: 0.9s;
+  }
+}
+
+@media all and (min-width: 481px) and (max-width: 736px) {
+  .fade-in, .slide-in, .reveal {
+    animation-duration: 1s;
+  }
+}
+
+/* Removed incomplete media query to fix syntax error */

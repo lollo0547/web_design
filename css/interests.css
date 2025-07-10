@@ -258,43 +258,63 @@
   transform: rotate(90deg);
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .interests-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-  
-  .interest-card {
-    padding: 1.5rem;
-  }
-  
-  .interest-icon-wrapper {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 1rem;
-  }
-  
-  .interest-card h3 {
-    font-size: 1.2rem;
-  }
-  
-  .interest-card p {
-    font-size: 0.9rem;
-  }
-  
-  .interest-modal-content {
-    padding: 2rem;
+/* --- MEDIA QUERIES STANDARDIZZATE --- */
+
+@media all and (max-width: 1690px) {
+  .interests-section {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.08em;
+    line-height: 1.7;
   }
 }
 
-@media (max-width: 480px) {
-  .interests-grid {
-    grid-template-columns: 1fr;
+@media all and (min-width: 1280px) and (max-width: 1689px) {
+  .interests-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2.5rem;
   }
-  
-  .interest-icon-wrapper {
-    width: 60px;
-    height: 60px;
+  .sidebar {
+    display: block;
+  }
+}
+
+@media all and (min-width: 737px) and (max-width: 1279px) {
+  .interests-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .sidebar {
+    display: none;
+  }
+}
+
+@media all and (min-width: 481px) and (max-width: 736px) {
+  .interests-section {
+    display: block;
+    padding: 0 10px;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .interests-section {
+    display: block;
+    padding: 0 4px;
+  }
+  .sidebar, .decorative-bg, .extra-decor {
+    display: none !important;
+  }
+  button, .btn, .touch-area {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1.1em;
+    padding: 12px 0;
   }
 }

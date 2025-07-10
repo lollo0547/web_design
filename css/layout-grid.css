@@ -1,0 +1,39 @@
+/* --- MEDIA QUERIES STANDARDIZZATE --- */
+
+@media all and (max-width: 1690px) {
+  .grid, .row {
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media all and (min-width: 1280px) and (max-width: 1689px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media all and (min-width: 737px) and (max-width: 1279px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media all and (min-width: 481px) and (max-width: 736px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 10px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 0 4px;
+  }
+}
