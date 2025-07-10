@@ -472,27 +472,62 @@
   }
 }
 
-/* --- MEDIA QUERIES STANDARDIZZATE --- */
-
-@media all and (max-width: 1690px) {
-  .contacts-section, .faq-section, .interests-section, .footer-wrapper {
-    max-width: 1600px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.08em;
-    line-height: 1.7;
+@media (max-width: 768px) {
+  .fullscreen-modal-content {
+    max-height: 95vh;
+  }
+  
+  .fullscreen-modal-header {
+    padding: 20px;
+  }
+  
+  .fullscreen-modal-body {
+    padding: 20px;
+    max-height: calc(95vh - 80px);
   }
 }
 
-@media all and (min-width: 1280px) and (max-width: 1689px) {
-  .contacts-section, .faq-section, .interests-section {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 2.5rem;
+/* Responsive */
+@media (max-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
   }
-  .sidebar {
-    display: block;
+  
+  .contact-info {
+    margin-bottom: 2rem;
   }
 }
 
-/* Removed incomplete media query to fix syntax error */
+@media (max-width: 768px) {
+  .contacts-section {
+    padding: 4rem 0;
+  }
+  
+  .contact-grid {
+    gap: 2rem;
+  }
+  
+  .contact-info,
+  .contact-form-container {
+    padding: 1.5rem;
+  }
+  
+  .contact-info h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-links {
+    gap: 0.8rem;
+  }
+  
+  .social-link {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .submit-button {
+    padding: 1rem 1.5rem;
+  }
+}
