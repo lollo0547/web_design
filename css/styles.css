@@ -433,7 +433,6 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4rem 2rem;
   scroll-margin-top: 60px; /* Aggiunto per tenere conto della navbar */
   transition: background-color 0.5s ease, opacity 0.8s ease, transform 0.8s ease; /* Combined transitions */
   will-change: transform, opacity; /* Optimize for animations */
@@ -1018,7 +1017,6 @@ html {
 
 /* Projects Section Styles */
 .progetti-section {
-  padding: 5rem 0;
   position: relative;
 }
 
@@ -1260,10 +1258,6 @@ html {
   transition: all 0.5s ease;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   position: relative;
-}
-
-.overlay-main-image.shadow-effect {
-  animation: shadowPulse 5s infinite alternate;
 }
 
 .overlay-main-image::after {

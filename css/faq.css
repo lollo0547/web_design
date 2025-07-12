@@ -7,7 +7,6 @@
 .faq-section {
   position: relative;
   overflow: hidden;
-  padding: 6rem 0;
   background-color: var(--background-color);
 }
 
@@ -198,10 +197,6 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .faq-section {
-    padding: 4rem 0;
-  }
-
   .accordion {
     gap: 1rem;
   }
