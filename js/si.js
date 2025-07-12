@@ -114,6 +114,68 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Chiamiamo la funzione di setup dello scroll
   setupSectionScroll();
+
+  // Gestione apertura/chiusura tendina percorso scolastico
+  const schoolBtn = document.getElementById('btn-percorso-scolastico');
+  const schoolDropdown = document.getElementById('school-path-dropdown');
+  
+  if (schoolBtn && schoolDropdown) {
+    // Assicurarsi che il dropdown sia correttamente inizializzato
+    schoolDropdown.style.display = 'none';
+    schoolDropdown.classList.remove('visible');
+    
+    schoolBtn.addEventListener('click', function(e) {
+      e.preventDefault(); // Previene il comportamento predefinito del link
+      
+      if (schoolDropdown.style.display === 'none' || schoolDropdown.style.display === '') {
+        // Mostra il dropdown
+        schoolDropdown.style.display = 'block';
+        // Forza un reflow per permettere l'animazione CSS
+        void schoolDropdown.offsetWidth;
+        schoolDropdown.classList.add('visible');
+        
+        // Scorri fino al dropdown se non è visibile nella viewport
+        setTimeout(() => {
+          const dropdownRect = schoolDropdown.getBoundingClientRect();
+          if (dropdownRect.top < 0 || dropdownRect.bottom > window.innerHeight) {
+            schoolDropdown.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 100);
+      } else {
+        // Nascondi il dropdown
+        schoolDropdown.classList.remove('visible');
+        setTimeout(() => {
+          schoolDropdown.style.display = 'none';
+        }, 300); // Ritardo per permettere l'animazione CSS
+      }
+    });
+  }
+  
+  // Gestione tab per percorso scolastico (certificazioni/diplomi)
+  const schoolFilterBtns = document.querySelectorAll('.school-filters-tabs .skill-filter-btn');
+  const schoolContentWrappers = document.querySelectorAll('.school-content-wrapper');
+  
+  if (schoolFilterBtns.length > 0) {
+    schoolFilterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Rimuovi active da tutti i pulsanti
+        schoolFilterBtns.forEach(b => b.classList.remove('active'));
+        
+        // Aggiungi active al pulsante cliccato
+        this.classList.add('active');
+        
+        // Prendi il filtro selezionato
+        const selectedFilter = this.getAttribute('data-filter');
+        
+        // Nascondi tutti i contenuti e mostra solo quello selezionato
+        schoolContentWrappers.forEach(content => {
+          content.style.display = 'none';
+        });
+        
+        document.getElementById(`${selectedFilter}-content`).style.display = 'block';
+      });
+    });
+  }
 });
 
 /**
@@ -132,7 +194,7 @@ function loadRandomProjectImages() {
   // Elenco di tutti i percorsi delle immagini dei progetti
   const projectImages = [
     // Progetto 1
-    'immagini/webp/progetto%201/all%2022.webp',
+    'immagini/webp/progetto%201/all%202.webp',
     'immagini/webp/progetto%201/tazzina_.webp',
     'immagini/webp/progetto%201/zuccheriera%202_.webp',
     
@@ -363,3 +425,16 @@ function shuffleArray(array) {
   }
   return array;
 }
+
+// Animazione fade-in-up sugli elementi della sezione chi sono
+function handleFadeInUpOnScroll() {
+  const fadeEls = document.querySelectorAll('.fade-in-up');
+  fadeEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', handleFadeInUpOnScroll);
+window.addEventListener('DOMContentLoaded', handleFadeInUpOnScroll);

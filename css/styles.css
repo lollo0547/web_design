@@ -611,266 +611,103 @@ html {
 
 /* Miglioramento skill cards */
 .skill-card {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  padding: 1.8rem;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.skill-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, rgba(76, 29, 115, 0.03), rgba(76, 29, 115, 0.08));
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.skill-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  border-color: rgba(76, 29, 115, 0.2);
-}
-
-.skill-progress {
-  height: 4px;
-  background-color: rgba(76, 29, 115, 0.1);
-  border-radius: 4px;
-  margin-top: 1rem;
-  overflow: hidden;
-}
-
-.skill-progress-bar {
-  height: 100%;
-  background: var(--accent-gradient);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
-}
-
-.skill-card.active .skill-progress-bar {
-  transform: scaleX(1);
-}
-
-/* CTA Buttons */
-.cta-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2.5rem;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.btn {
-  padding: 0.85rem 1.8rem;
-  border-radius: 50px;
+.skill-logo-wrapper {
+  margin-bottom: 1.2rem;
+}
+
+.skill-info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.skill-name {
   font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+  color: var(--text-color-emphasis, #333);
 }
 
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.7s ease;
+.skill-description {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0 0 1rem;
+  color: var(--text-color-secondary, #666);
 }
 
-.btn:hover::before {
-  left: 100%;
-}
-
-.btn-primary {
-  background-color: var(--accent-color);
-  color: white;
-  border: 2px solid var(--accent-color);
-  box-shadow: 0 4px 15px rgba(76, 29, 115, 0.3);
-}
-
-.btn-primary:hover {
-  background-color: transparent;
-  color: var(--accent-color);
-  box-shadow: 0 4px 20px rgba(76, 29, 115, 0.4);
-  transform: translateY(-3px);
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: var(--text-color);
-  border: 2px solid rgba(26, 29, 35, 0.3);
-}
-
-.btn-outline:hover {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-  transform: translateY(-3px);
-}
-
-/* Responsive Adjustments */
-@media (min-width: 768px) {
-  .chi-sono-grid {
-    grid-template-columns: 1fr 1.5fr;
-    gap: 3rem;
-  }
-
-  .profile-container {
-    justify-self: center;
-  }
-
-  .skills-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .chi-sono-section {
-    padding: 0 2rem 10rem; /* Mantiene padding laterale e inferiore ma rimuove quello superiore */
-  }
-  
-  .chi-sono-section .section-overlay {
-    padding-top: 6rem; /* Più spazio su schermi grandi */
-  }
-  
-  .profile-container {
-    max-width: 380px;
-  }
-  
-  .chi-sono-grid {
-    gap: 5rem;
-  }
-  
-  .bio-intro {
-    font-size: 1.5rem;
-  }
-  
-  .bio-description {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .cta-container {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .btn {
-    width: 100%;
-  }
-  
-  .chi-sono-section {
-    padding: 0 1.5rem 6rem;
-  }
-  
-  .chi-sono-section .section-overlay {
-    padding-top: 4rem;
-  }
-  
-  .profile-dots-pattern {
-    width: 120px;
-    height: 120px;
-    bottom: -15px;
-    left: -30px;
-  }
-  
-  .bio-tag {
-    font-size: 0.8rem;
-    padding: 0.4rem 0.8rem;
-  }
-}
-
-/* Correzione del layout orizzontale Chi Sono */
-.chi-sono-section {
-  padding: 0 1.5rem 8rem; 
-  min-height: 100vh;
+/* Contenitore per metadati con allineamento migliorato */
+.skill-meta-container {
   display: flex;
-  align-items: center;
-  position: relative;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+  margin-top: auto;
+}
+
+.skill-entity {
+  font-weight: 500;
+  color: var(--text-color-secondary, #666);
+  font-size: 0.9rem;
+}
+
+.skill-date {
+  color: var(--text-color-tertiary, #888);
+  font-size: 0.9rem;
+}
+
+.skill-meta {
+  color: var(--accent-color, #2d7be5);
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+/* Barra del progresso sempre in fondo */
+.skill-bar {
+  margin-top: auto;
+  height: 6px;
+  background: rgba(45, 123, 229, 0.15);
+  border-radius: 3px;
   overflow: hidden;
-  background-color: var(--background-color);
+  margin-top: auto;
 }
 
-/* Titolo centrato */
-.chi-sono-section .section-title {
-  text-align: center;
-  width: 100%;
-  margin-bottom: 3rem;
+/* Uniformazione dei bottoni di filtro */
+.school-filters-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 2.5rem;
 }
 
-/* Contenitore principale */
-.chi-sono-section .section-content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+.school-filters-tabs .skill-filter-btn {
+  background: var(--background-secondary, #f5f7fa);
+  border: none;
+  border-radius: 2rem;
+  padding: 8px 20px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-/* Nuovo layout orizzontale forzato */
-.chi-sono-grid {
-  display: flex !important; /* Override di eventuali altri display */
-  flex-direction: row !important; /* Forza direzione orizzontale */
-  justify-content: space-between !important;
-  align-items: center !important;
-  gap: 4rem !important;
-  width: 100%;
+.school-filters-tabs .skill-filter-btn.active {
+  background: var(--primary-color, #531f76);
+  color: white;
 }
 
-/* Contenuto bio */
-.bio-content {
-  flex: 1.5;
-  max-width: 60%;
-  margin: 0 !important;
-}
-
-/* Container profilo */
-.profile-container {
-  flex: 1;
-  max-width: 35%;
-  margin: 0 !important;
-  align-self: center !important;
-}
-
-/* Responsive per mobile */
-@media (max-width: 768px) {
-  .chi-sono-grid {
-    flex-direction: column-reverse !important;
-    gap: 3rem !important;
-  }
-  
-  .bio-content,
-  .profile-container {
-    flex: 1;
-    max-width: 100%;
-    width: 100%;
-  }
-}
-
-/* Nuove animazioni */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
+/* Reset margini per le varianti diploma */
+#diploma-content .skill-meta {
+  margin-top: 0;
 }
 
 /* ------------------------------
@@ -1853,3 +1690,243 @@ html {
 
 /* Hide navbar when modal is open */
 /* Modal è gestito direttamente tramite JavaScript */
+
+.section-divider {
+  width: 100%;
+  line-height: 0;
+  margin-bottom: -2px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Animazione fade-in-up */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Aggiunti stili CSS per bottone, tendina e blocchi percorso scolastico in stile Software Skills */
+.school-path-btn {
+  margin: 2rem 0 1rem 0;
+  padding: 0.7rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  border: none;
+  background: var(--accent-color, #2d7be5);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.school-path-btn:hover {
+  background: var(--accent-color-dark, #1a4e8a);
+}
+
+.school-path-dropdown {
+  max-width: 95%;
+  margin: 1.5rem auto;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.school-path-dropdown.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInDropdown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.school-block.software-skills-block {
+  background: var(--background-secondary, #f5f7fa);
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.school-block h4 {
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+  color: var(--accent-color, #2d7be5);
+}
+.school-block ul {
+  list-style: disc inside;
+  margin: 0;
+  padding-left: 1rem;
+}
+.school-block li {
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+/* Stili per la tabella delle certificazioni */
+.school-cert-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+.school-cert-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.98rem;
+  background: transparent;
+}
+.school-cert-table th, .school-cert-table td {
+  border: 1px solid #e0e4ea;
+  padding: 0.4rem 0.7rem;
+  text-align: left;
+}
+.school-cert-table th {
+  background: var(--background-secondary, #f5f7fa);
+  color: var(--accent-color, #2d7be5);
+  font-weight: 600;
+}
+.school-cert-table td {
+  vertical-align: middle;
+  line-height: 1.4;
+}
+
+.school-cert-table td:first-child {
+  font-weight: 600;
+  color: var(--text-color-emphasis, #333);
+}
+
+/* Stili responsive per tabelle su dispositivi mobili */
+@media (max-width: 768px) {
+  .school-cert-table {
+    font-size: 0.85rem;
+  }
+  
+  .school-cert-table th, 
+  .school-cert-table td {
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+/* Stile per percorso scolastico in formato card come software skills */
+.school-skills-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.school-filters-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 2rem;
+}
+
+.school-filters-tabs .skill-filter-btn {
+  background: var(--background-secondary, #f5f7fa);
+  color: var(--text-color, #333);
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.school-filters-tabs .skill-filter-btn.active {
+  background: var(--accent-color, #2d7be5);
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.skill-cards-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Modifica per centrare automaticamente le card quando una riga non è completa */
+@media all and (min-width: 1691px) {
+  .skill-cards-grid {
+    grid-template-columns: repeat(6, 1fr);
+    /* Override per centrare automaticamente quando ci sono meno di 6 elementi */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .skill-cards-grid .skill-card {
+    width: calc(16.666% - 1.5rem);
+    margin: 0.75rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
+
+/* Schermi Desktop o Portatili */
+@media all and (min-width: 1280px) and (max-width: 1690px) {
+  .skill-cards-grid {
+    /* Override per centrare automaticamente quando ci sono meno di 4 elementi */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .skill-cards-grid .skill-card {
+    width: calc(25% - 1.5rem);
+    margin: 0.75rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
+
+/* Tablet in modalità orizzontale */
+@media all and (min-width: 737px) and (max-width: 1279px) {
+  .skill-cards-grid {
+    /* Override per centrare automaticamente quando ci sono meno di 3 elementi */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .skill-cards-grid .skill-card {
+    width: calc(33.333% - 1.5rem);
+    margin: 0.75rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
+
+/* Tablet in modalità verticale */
+@media all and (min-width: 481px) and (max-width: 736px) {
+  .skill-cards-grid {
+    /* Override per centrare automaticamente quando ci sono meno di 2 elementi */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .skill-cards-grid .skill-card {
+    width: calc(50% - 1.5rem);
+    margin: 0.75rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
+
+/* Smartphone o piccoli Tablet */
+@media all and (max-width: 480px) {
+  .skill-cards-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .skill-cards-grid .skill-card {
+    width: 100%;
+    margin: 0.75rem 0;
+  }
+}
