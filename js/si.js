@@ -193,25 +193,55 @@ function loadRandomProjectImages() {
   
   // Elenco di tutti i percorsi delle immagini dei progetti
   const projectImages = [
-    // Progetto 1
-    'immagini/webp/progetto%201/all%202.webp',
-    'immagini/webp/progetto%201/tazzina_.webp',
-    'immagini/webp/progetto%201/zuccheriera%202_.webp',
+    // Product Design - Set da caffè
+    'immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/all%2022.webp',
+    'immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/tazzina_.webp',
+    'immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/zuccheriera%202_.webp',
     
-    // Progetto 2
-    'immagini/webp/progetto%202/cardanica%20600.webp',
-    'immagini/webp/progetto%202/cardanica%20900.webp',
-    'immagini/webp/progetto%202/cardanica.webp',
+    // Product Design - La cardanica
+    'immagini/webp/progetti/product%20design/la%20cardanica/cardanica%20600.webp',
+    'immagini/webp/progetti/product%20design/la%20cardanica/cardanica%20900.webp',
+    'immagini/webp/progetti/product%20design/la%20cardanica/cardanica.webp',
     
-    // Progetto 3
-    'immagini/webp/progetto%203/untitled202.webp',
-    'immagini/webp/progetto%203/untitled555.webp',
-    'immagini/webp/progetto%203/untitled702.webp',
+    // Product Design - Lounge milani
+    'immagini/webp/progetti/product%20design/lounge%20milani/untitled202.webp',
+    'immagini/webp/progetti/product%20design/lounge%20milani/untitled555.webp',
+    'immagini/webp/progetti/product%20design/lounge%20milani/untitled702.webp',
     
-    // Progetto 4
-    'immagini/webp/progetto%204/untitled.webp',
-    'immagini/webp/progetto%204/untitled33.webp',
-    'immagini/webp/progetto%204/untitled44.webp'
+    // Prototipazione - Mouse
+    'immagini/webp/progetti/prototipazione/mouse/untitled.webp',
+    'immagini/webp/progetti/prototipazione/mouse/untitled33.webp',
+    'immagini/webp/progetti/prototipazione/mouse/untitled44.webp',
+    
+    // Modellazione 3D
+    'immagini/webp/progetti/modellazione%203D/1/1.1.webp',
+    'immagini/webp/progetti/modellazione%203D/1/2.2.webp',
+    'immagini/webp/progetti/modellazione%203D/1/3.webp',
+    'immagini/webp/progetti/modellazione%203D/1/4.webp',
+    'immagini/webp/progetti/modellazione%203D/1/6.webp',
+    'immagini/webp/progetti/modellazione%203D/1/7.webp',
+    'immagini/webp/progetti/modellazione%203D/1/render%208.webp',
+    
+    // Rendering - Interno
+    'immagini/webp/progetti/rendering/rendering%20interno/Render%20Interno%20Esame%202.webp',
+    'immagini/webp/progetti/rendering/rendering%20interno/Untitled.webp',
+    'immagini/webp/progetti/rendering/rendering%20interno/Untitled2.webp',
+    'immagini/webp/progetti/rendering/rendering%20interno/Untitled3.webp',
+    'immagini/webp/progetti/rendering/rendering%20interno/Untitled4.webp',
+    
+    // Rendering - Personale
+    'immagini/webp/progetti/rendering/rendering%20personale/Render_progetto_esame_3.webp',
+    'immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171951.webp',
+    'immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171953.webp',
+    'immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171955.webp',
+    'immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171957.webp',
+    
+    // Rendering - Prodotto
+    'immagini/webp/progetti/rendering/rendering%20prodotto/Render%20Vespa%20esame.webp',
+    'immagini/webp/progetti/rendering/rendering%20prodotto/Untitled.webp',
+    'immagini/webp/progetti/rendering/rendering%20prodotto/Untitled2.webp',
+    'immagini/webp/progetti/rendering/rendering%20prodotto/Untitled3.webp',
+    'immagini/webp/progetti/rendering/rendering%20prodotto/Untitled4.webp'
   ];
   
   // Calcola il numero di righe e colonne per la griglia
