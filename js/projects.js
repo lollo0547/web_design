@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       title_it: 'Modellazione 3D Vespa',
       title_en: '3D Vespa Modeling',
-      img: 'immagini/webp/progetti/modellazione 3D/vespa/1.1.webp',
+      img: 'immagini/webp/progetti/modellazione 3D/biblioteca/1.1.webp',
       alt: 'Modellazione 3D Vespa',
       category: '3d',
     },
