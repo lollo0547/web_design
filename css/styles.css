@@ -1,3 +1,70 @@
+/* --- PROGETTI FILTERS BAR --- */
+.progetti-filters {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 36px;
+  background: #fff;
+  padding: 0 0 18px 0;
+  box-shadow: 0 2px 12px 0 rgba(30,32,37,0.04);
+  position: relative;
+  z-index: 2;
+}
+
+.progetti-filters .filter-btn {
+  background: none;
+  border: none;
+  outline: none;
+  color: #181c24;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 0 18px;
+  height: 40px;
+  border-radius: 22px;
+  transition: color 0.18s, background 0.18s, box-shadow 0.18s;
+  position: relative;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.progetti-filters .filter-btn.active {
+  background: linear-gradient(90deg, #7b2ff2 0%, #1e90ff 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px 0 rgba(123,47,242,0.10);
+  position: relative;
+  z-index: 1;
+}
+
+.progetti-filters .filter-btn.active::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 70%;
+  height: 5px;
+  border-radius: 3px;
+  background: #7b2ff2;
+  box-shadow: 0 2px 8px 0 rgba(123,47,242,0.10);
+}
+
+.progetti-filters .filter-btn:not(.active):hover {
+  color: #7b2ff2;
+  background: rgba(123,47,242,0.07);
+}
+
+@media (max-width: 900px) {
+  .progetti-filters {
+    gap: 18px;
+    padding-bottom: 10px;
+  }
+  .progetti-filters .filter-btn {
+    font-size: 1rem;
+    padding: 0 10px;
+    height: 36px;
+  }
+}
 /* PORTFOLIO DI LORENZO GIUDICI - STYLESHEET ESSENZIALE
    Autore: Lorenzo Giudici
    Anno: 2025
