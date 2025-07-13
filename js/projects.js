@@ -1,203 +1,143 @@
-/**
- * Projects overlay functionality - Enhanced with carousel
- */
+// Nuova logica Progetti: responsive, usabile, scalabile, indicatori slider
 document.addEventListener('DOMContentLoaded', function() {
-  // Get all project images and overlays
-  const projectImages = document.querySelectorAll('.progetto-image-container');
-  const overlays = document.querySelectorAll('.project-overlay');
-  const closeButtons = document.querySelectorAll('.overlay-close');
-  
-  // Implementazione delle ombre dinamiche per le immagini dei progetti
-  // Rileva dispositivi touch per disabilitare alcuni effetti
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  
-  if (!isTouchDevice) {
-    // Aggiungi effetti per ogni container di progetto
-    projectImages.forEach((container) => {
-      const frame = container.querySelector('.progetto-frame');
-      const shadow = container.querySelector('.dynamic-shadow');
-      const accentShape = container.querySelector('.progetto-accent-shape');
-      const decorativeElement = container.querySelector('.decorative-element');
-      
-      // Gestione movimento del mouse sui container dei progetti
-      container.addEventListener('mousemove', function(e) {
-        // Calcola la posizione relativa del mouse all'interno del container
-        const rect = container.getBoundingClientRect();
-        const mouseX = (e.clientX - rect.left) / rect.width - 0.5;
-        const mouseY = (e.clientY - rect.top) / rect.height - 0.5;
-        
-        // Applica la trasformazione 3D al frame
-        if (frame) {
-          frame.style.transform = `perspective(1000px) rotateY(${mouseX * 8}deg) rotateX(${-mouseY * 8}deg) scale(1.02)`;
-        }
-        
-        // Sposta l'ombra dinamica in direzione opposta al mouse
-        if (shadow) {
-          shadow.style.transform = `scaleX(1.05) translateX(${mouseX * -15}px)`;
-          
-          // Cambia l'opacità dell'ombra in base alla posizione verticale del mouse
-          const shadowOpacity = 0.7 + (mouseY * 0.2);
-          shadow.style.opacity = shadowOpacity.toFixed(2);
-          
-          // Cambia leggermente il filtro di blur
-          const blurAmount = 8 + (Math.abs(mouseY) * 3);
-          shadow.style.filter = `blur(${blurAmount}px)`;
-        }
-        
-        // Movimento leggero per elementi decorativi
-        if (decorativeElement) {
-          decorativeElement.style.transform = `translate(${mouseX * 15}px, ${mouseY * 15}px)`;
-        }
-        
-        // Movimento per accento shape
-        if (accentShape) {
-          accentShape.style.transform = `translate(${mouseX * -10}px, ${mouseY * -10}px)`;
-        }
-      });
-      
-      // Reset al mouse leave
-      container.addEventListener('mouseleave', function() {
-        if (frame) {
-          frame.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
-        }
-        
-        if (shadow) {
-          shadow.style.transform = 'scaleX(0.85) translateX(0)';
-          shadow.style.opacity = '0.7';
-          shadow.style.filter = 'blur(8px)';
-        }
-        
-        if (decorativeElement) {
-          decorativeElement.style.transform = 'translate(0px, 0px)';
-        }
-        
-        if (accentShape) {
-          accentShape.style.transform = 'translate(0px, 0px)';
-        }
-      });
-    });
-  }
-  
-  // Project Grid Carousel functionality
+  // Simulazione: elenco progetti (in produzione, generare questa lista da backend o build)
+  const projects = [
+    {
+      title_it: 'Set da Caffè Design',
+      title_en: 'Coffee Set Design',
+      img: 'immagini/webp/progetti/product design/set da caffè/tazzina_.webp',
+      alt: 'Set da Caffè Design',
+      category: 'product',
+    },
+    {
+      title_it: 'Meccanismo Cardanico',
+      title_en: 'Cardanic Mechanism',
+      img: 'immagini/webp/progetti/product design/la cardanica/cardanica.webp',
+      alt: 'Meccanismo Cardanico',
+      category: 'product',
+    },
+    {
+      title_it: 'Concept Design Industriale',
+      title_en: 'Industrial Concept Design',
+      img: 'immagini/webp/progetti/product design/lounge milani/untitled555.webp',
+      alt: 'Concept Design Industriale',
+      category: 'product',
+    },
+    {
+      title_it: 'Prototipo Mouse',
+      title_en: 'Mouse Prototype',
+      img: 'immagini/webp/progetti/prototipazione/mouse/untitled.webp',
+      alt: 'Prototipo Mouse',
+      category: 'prototype',
+    },
+    {
+      title_it: 'Rendering Interno',
+      title_en: 'Interior Rendering',
+      img: 'immagini/webp/progetti/rendering/rendering interno/Render Interno Esame 2.webp',
+      alt: 'Rendering Interno',
+      category: 'rendering',
+    },
+    {
+      title_it: 'Progetto Personale',
+      title_en: 'Personal Project',
+      img: 'immagini/webp/progetti/rendering/rendering personale/Render_progetto_esame_3.webp',
+      alt: 'Progetto Personale',
+      category: 'rendering',
+    },
+    {
+      title_it: 'Rendering Prodotto',
+      title_en: 'Product Rendering',
+      img: 'immagini/webp/progetti/rendering/rendering prodotto/Render Vespa esame.webp',
+      alt: 'Rendering Prodotto',
+      category: 'rendering',
+    },
+    {
+      title_it: 'Modellazione 3D Vespa',
+      title_en: '3D Vespa Modeling',
+      img: 'immagini/webp/progetti/modellazione 3D/vespa/1.1.webp',
+      alt: 'Modellazione 3D Vespa',
+      category: '3d',
+    },
+    // Aggiungi altri progetti qui seguendo la struttura
+  ];
+
   const progettiGrid = document.getElementById('progettiGrid');
-  const prevButton = document.querySelector('.progetti-prev');
-  const nextButton = document.querySelector('.progetti-next');
-  const indicators = document.querySelectorAll('.progetti-indicators .indicator');
-  let currentSlide = 0;
-  const totalSlides = 2; // We have 2 slides (0 and 1)
+  const progettiIndicators = document.getElementById('progettiIndicators');
+  const progettiFilters = document.getElementById('progettiFilters');
+  const projectsPerPage = 2;
+  let currentPage = 0;
+  let currentCategory = 'all';
 
-  // Function to update the project grid slide
-  function updateProjectGrid(slideIndex) {
-    // Update grid transform
-    progettiGrid.style.transform = `translateX(-${slideIndex * 50}%)`;
-    
-    // Update active indicator
-    indicators.forEach((indicator, index) => {
-      indicator.classList.toggle('active', index === slideIndex);
-    });
-    
-    // Update current slide index
-    currentSlide = slideIndex;
-    
-    // Update animation classes based on current page
-    document.querySelectorAll('.progetti-page').forEach((page, index) => {
-      if (index === slideIndex) {
-        // Add reveal animations with delay for current page
-        const leftCards = page.querySelectorAll('.reveal-left');
-        const rightCards = page.querySelectorAll('.reveal-right');
-        
-        leftCards.forEach((card, i) => {
-          card.style.animationDelay = `${i * 0.2}s`;
-          card.classList.add('animate');
-        });
-        
-        rightCards.forEach((card, i) => {
-          card.style.animationDelay = `${i * 0.2 + 0.1}s`;
-          card.classList.add('animate');
-        });
-      } else {
-        // Remove animations from hidden pages
-        page.querySelectorAll('.reveal-left, .reveal-right').forEach(card => {
-          card.classList.remove('animate');
-        });
-      }
-    });
+  function getFilteredProjects() {
+    if (currentCategory === 'all') return projects;
+    return projects.filter(p => p.category === currentCategory);
   }
-  
-  // Initialize project navigation buttons
-  if (prevButton && nextButton) {
-    prevButton.addEventListener('click', function() {
-      const newSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-      updateProjectGrid(newSlide);
-    });
-    
-    nextButton.addEventListener('click', function() {
-      const newSlide = (currentSlide + 1) % totalSlides;
-      updateProjectGrid(newSlide);
-    });
-    
-    // Add click events to indicators
-    indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click', function() {
-        updateProjectGrid(index);
+
+  function renderProjects(page) {
+    progettiGrid.innerHTML = '';
+    const filtered = getFilteredProjects();
+    const start = page * projectsPerPage;
+    const end = Math.min(start + projectsPerPage, filtered.length);
+    for (let i = start; i < end; i++) {
+      const p = filtered[i];
+      const card = document.createElement('div');
+      card.className = 'progetto-card';
+      card.innerHTML = `
+        <div class="progetto-image-container">
+          <div class="progetto-frame">
+            <div class="progetto-image-mask">
+              <img src="${p.img}" loading="lazy" alt="${p.alt}" class="progetto-image">
+              <div class="progetto-image-overlay"></div>
+            </div>
+          </div>
+          <div class="dynamic-shadow"></div>
+        </div>
+        <div class="progetto-name-box">
+          <h3>
+            <span class="lang-it">${p.title_it}</span>
+            <span class="lang-en">${p.title_en}</span>
+          </h3>
+        </div>
+      `;
+      progettiGrid.appendChild(card);
+    }
+  }
+
+  function renderIndicators(page) {
+    progettiIndicators.innerHTML = '';
+    const filtered = getFilteredProjects();
+    const totalPages = Math.ceil(filtered.length / projectsPerPage);
+    for (let i = 0; i < totalPages; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'indicator' + (i === page ? ' active' : '');
+      dot.setAttribute('aria-label', `Vai alla pagina ${i + 1}`);
+      dot.addEventListener('click', () => {
+        currentPage = i;
+        renderProjects(currentPage);
+        renderIndicators(currentPage);
       });
+      progettiIndicators.appendChild(dot);
+    }
+  }
+
+  // Gestione filtri
+  if (progettiFilters) {
+    progettiFilters.addEventListener('click', function(e) {
+      if (e.target.classList.contains('filter-btn')) {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+        currentCategory = e.target.getAttribute('data-category');
+        currentPage = 0;
+        renderProjects(currentPage);
+        renderIndicators(currentPage);
+      }
     });
   }
 
-  // Function to open project overlay
-  function openOverlay(projectId) {
-    const overlay = document.getElementById(projectId);
-    if (overlay) {
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
-      overlay.classList.add('active');
-      
-      // Start auto carousel
-      startCarousel(overlay.querySelector('.overlay-carousel-track'));
-      
-      // Set focus to the close button for accessibility
-      const closeButton = overlay.querySelector('.overlay-close');
-      if (closeButton) {
-        setTimeout(() => {
-          closeButton.focus();
-        }, 100);
-      }
-    }
-  }
-  
-  // Function to close project overlay
-  function closeOverlay(overlay) {
-    document.body.style.overflow = ''; // Restore scrolling
-    overlay.classList.remove('active');
-    
-    // Stop auto carousel
-    const carouselTrack = overlay.querySelector('.overlay-carousel-track');
-    if (carouselTrack && carouselTrack.autoInterval) {
-      clearInterval(carouselTrack.autoInterval);
-    }
-  }
-  
-  // Close all overlays
-  function closeAllOverlays() {
-    overlays.forEach(overlay => {
-      closeOverlay(overlay);
-    });
-  }
-  
-  // Add click event to project images
-  projectImages.forEach(image => {
-    image.addEventListener('click', function() {
-      const projectId = this.getAttribute('data-project');
-      openOverlay(projectId);
-    });
-  });
-  
-  // Add click event to close buttons
-  closeButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const overlay = this.closest('.project-overlay');
-      closeOverlay(overlay);
-    });
-  });
+  // Inizializza
+  renderProjects(currentPage);
+  renderIndicators(currentPage);
+// end
   
   // Close overlay when clicking outside content
   overlays.forEach(overlay => {

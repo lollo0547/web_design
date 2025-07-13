@@ -395,220 +395,39 @@
               <span class="lang-it">Progetti</span>
               <span class="lang-en">Projects</span>
             </h2>
-
             <div class="section-content">
-              <!-- Introduzione progetti -->
-              <div class="progetti-intro reveal">
+              <div class="progetti-intro">
                 <p>
                   <span class="lang-it">Una selezione dei miei lavori più significativi che mostrano la mia visione del design e le mie competenze.</span>
                   <span class="lang-en">A selection of my most significant works that showcase my design vision and skills.</span>
                 </p>
               </div>
-              
-              <!-- Grid progetti con navigazione -->
+              <!-- Filtri categoria progetti - SOLO barra filtri moderna -->
+              <div class="progetti-filters" id="progettiFilters">
+                <button class="filter-btn active" data-category="all">Tutti</button>
+                <button class="filter-btn" data-category="product">Product Design</button>
+                <button class="filter-btn" data-category="3d">Modellazione 3D</button>
+                <button class="filter-btn" data-category="rendering">Rendering</button>
+                <button class="filter-btn" data-category="prototype">Prototipazione</button>
+              </div>
               <div class="progetti-carousel-container">
-                <button class="progetti-nav progetti-prev" aria-label="Progetti precedenti">
-                  <span aria-hidden="true">&#10094;</span>
-                </button>
-                
                 <div class="progetti-viewport">
                   <div class="progetti-grid" id="progettiGrid">
-                    <!-- Page 1: Progetti 1-2 -->
-                    <div class="progetti-page" data-page="0">
-                      <!-- Progetto 1 - Product Design -->
-                      <div class="progetto-card reveal-left" data-category="product">
-                        <div class="progetto-image-container" data-project="project1">
-                          <div class="decorative-element element-top-right"></div>
-                          <div class="progetto-frame">
-                            <div class="progetto-image-mask">
-                              <img src="immagini/webp/progetti/product design/set da caffè/tazzina_.webp" loading="lazy" alt="Set da Caffè Design" class="progetto-image">
-                              <div class="progetto-image-overlay"></div>
-                            </div>
-                          </div>
-                          <div class="progetto-accent-shape"></div>
-                          <div class="dynamic-shadow"></div>
-                        </div>
-                        <div class="progetto-name-box">
-                          <h3>
-                            <span class="lang-it">Set da Caffè Design</span>
-                            <span class="lang-en">Coffee Set Design</span>
-                          </h3>
-                        </div>
-                      </div>
-                      
-                      <!-- Progetto 2 - Product Design -->
-                      <div class="progetto-card reveal-right" data-category="product">
-                        <div class="progetto-image-container" data-project="project2">
-                          <div class="decorative-element element-bottom-left"></div>
-                          <div class="progetto-frame">
-                            <div class="progetto-image-mask">
-                              <img src="immagini/webp/progetti/product design/la cardanica/cardanica.webp" loading="lazy" alt="Meccanismo Cardanico" class="progetto-image">
-                              <div class="progetto-image-overlay"></div>
-                            </div>
-                          </div>
-                          <div class="progetto-accent-shape"></div>
-                          <div class="dynamic-shadow"></div>
-                        </div>
-                        <div class="progetto-name-box">
-                          <h3>
-                            <span class="lang-it">Meccanismo Cardanico</span>
-                            <span class="lang-en">Cardanic Mechanism</span>
-                          </h3>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <!-- Page 2: Progetti 3-4 -->
-                    <div class="progetti-page" data-page="1">
-                      <!-- Progetto 3 - Product Design -->
-                      <div class="progetto-card reveal-left" data-category="product">
-                        <div class="progetto-image-container" data-project="project3">
-                          <div class="decorative-element element-top-left"></div>
-                          <div class="progetto-frame">
-                            <div class="progetto-image-mask">
-                              <img src="immagini/webp/progetti/product design/lounge milani/untitled555.webp" loading="lazy" alt="Concept Design Industriale" class="progetto-image">
-                              <div class="progetto-image-overlay"></div>
-                            </div>
-                          </div>
-                          <div class="progetto-accent-shape"></div>
-                          <div class="dynamic-shadow"></div>
-                        </div>
-                        <div class="progetto-name-box">
-                          <h3>
-                            <span class="lang-it">Concept Design Industriale</span>
-                            <span class="lang-en">Industrial Concept Design</span>
-                          </h3>
-                        </div>
-                      </div>
-                      
-                      <!-- Progetto 4 -->
-                      <div class="progetto-card reveal-right" data-category="prototype">
-                        <div class="progetto-image-container" data-project="project4">
-                          <div class="decorative-element element-bottom-right"></div>
-                          <div class="progetto-frame">
-                            <div class="progetto-image-mask">
-                              <img src="immagini/webp/progetti/prototipazione/mouse/untitled.webp" loading="lazy" alt="Prototipo Mouse" class="progetto-image">
-                              <div class="progetto-image-overlay"></div>
-                            </div>
-                          </div>
-                          <div class="progetto-accent-shape"></div>
-                          <div class="dynamic-shadow"></div>
-                        </div>
-                        <div class="progetto-name-box">
-                        <h3>
-                          <span class="lang-it">Prototipo Mouse</span>
-                          <span class="lang-en">Mouse Prototype</span>
-                        </h3>
-                      </div>
-                    </div>
-                    
-                    <!-- Page 3: Rendering Projects -->
-                    <div class="progetti-page" data-page="2">
-                      <!-- Rendering Interno Project -->
-                      <div class="progetto-card reveal-left" data-category="rendering">
-                        <div class="progetto-image-container" data-project="project5">
-                          <div class="decorative-element element-top-left"></div>
-                          <div class="progetto-frame">
-                            <div class="progetto-image-mask">
-                              <img src="immagini/webp/progetti/rendering/rendering interno/Render Interno Esame 2.webp" loading="lazy" alt="Interior Design Rendering" class="progetto-image">
-                              <div class="progetto-image-overlay"></div>
-                            </div>
-                          </div>
-                          <div class="progetto-accent-shape"></div>
-                          <div class="dynamic-shadow"></div>
-                        </div>
-                        <div class="progetto-name-box">
-                          <h3>
-                            <span class="lang-it">Rendering Interno</span>
-                            <span class="lang-en">Interior Rendering</span>
-                          </h3>
-                        </div>
-                      </div>
-                      
-                      <!-- Rendering Personale Project -->
-                      <div class="progetto-card reveal-right" data-category="rendering">
-                        <div class="progetto-image-container" data-project="project6">
-                          <div class="decorative-element element-bottom-right"></div>
-                          <div class="progetto-frame">
-                            <div class="progetto-image-mask">
-                              <img src="immagini/webp/progetti/rendering/rendering personale/Render_progetto_esame_3.webp" loading="lazy" alt="Personal Project Rendering" class="progetto-image">
-                              <div class="progetto-image-overlay"></div>
-                            </div>
-                          </div>
-                          <div class="progetto-accent-shape"></div>
-                          <div class="dynamic-shadow"></div>
-                        </div>
-                        <div class="progetto-name-box">
-                          <h3>
-                            <span class="lang-it">Progetto Personale</span>
-                            <span class="lang-en">Personal Project</span>
-                          </h3>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <!-- Page 4: More Rendering Projects -->
-                    <div class="progetti-page" data-page="3">
-                      <!-- Rendering Prodotto Project -->
-                      <div class="progetto-card reveal-left" data-category="rendering">
-                        <div class="progetto-image-container" data-project="project7">
-                          <div class="decorative-element element-top-right"></div>
-                          <div class="progetto-frame">
-                            <div class="progetto-image-mask">
-                              <img src="immagini/webp/progetti/rendering/rendering prodotto/Render Vespa esame.webp" loading="lazy" alt="Product Rendering" class="progetto-image">
-                              <div class="progetto-image-overlay"></div>
-                            </div>
-                          </div>
-                          <div class="progetto-accent-shape"></div>
-                          <div class="dynamic-shadow"></div>
-                        </div>
-                        <div class="progetto-name-box">
-                          <h3>
-                            <span class="lang-it">Rendering Prodotto</span>
-                            <span class="lang-en">Product Rendering</span>
-                          </h3>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <!-- Progetto Vespa 3D -->
-                    <div class="progetto-card reveal-left" data-category="3d">
-                      <div class="progetto-image-container" data-project="project8">
-                        <div class="decorative-element element-top-right"></div>
-                        <div class="progetto-frame">
-                          <div class="progetto-image-mask">
-                            <img src="immagini/webp/progetti/modellazione 3D/vespa/1.1.webp" loading="lazy" alt="Modellazione 3D Vespa" class="progetto-image">
-                            <div class="progetto-image-overlay"></div>
-                          </div>
-                        </div>
-                        <div class="progetto-accent-shape"></div>
-                        <div class="dynamic-shadow"></div>
-                      </div>
-                      <div class="progetto-info">
-                        <h3>
-                          <span class="lang-it">Modellazione 3D Vespa</span>
-                          <span class="lang-en">3D Vespa Modeling</span>
-                        </h3>
-                        <p>
-                          <span class="lang-it">Modellazione tridimensionale di una Vespa classica.</span>
-                          <span class="lang-en">Three-dimensional modeling of a classic Vespa.</span>
-                        </p>
-                      </div>
-                    </div>
+                    <!-- Progetti caricati dinamicamente qui -->
                   </div>
                 </div>
-                
+                <div class="progetti-indicators" id="progettiIndicators">
+                  <!-- Indicatori generati dinamicamente qui -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
                 <button class="progetti-nav progetti-next" aria-label="Progetti successivi">
                   <span aria-hidden="true">&#10095;</span>
                 </button>
                 
                 <!-- Indicatori di pagina -->
-                <div class="progetti-indicators">
-                  <span class="indicator active" data-slide="0"></span>
-                  <span class="indicator" data-slide="1"></span>
-                  <span class="indicator" data-slide="2"></span>
-                  <span class="indicator" data-slide="3"></span>
-                </div>
               </div>
               </div>
             </div>
