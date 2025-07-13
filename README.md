@@ -59,29 +59,28 @@
 
 <p align="center"><strong>Test performance</strong></p>
 
-<p align="center"><a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fgithub-netlify-boilerplate.netlify.app">PageSpeed netlify</a></p>
 
-<p align="center"><a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fgithub-netlify-boilerplate.vercel.app">PageSpeed vercel</a></p>
+<p align="center"><a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fmoonlit-syrniki-9c90d0.netlify.app">PageSpeed Netlify</a></p>
 
-<p align="center"><a href="https://gtmetrix.com/reports/github-netlify-boilerplate.netlify.app/HMFhnoTV/?guest=1">GTMetrix</a></p>
+<p align="center"><a href="https://gtmetrix.com/analyze.html?bmref=https%3A%2F%2Fmoonlit-syrniki-9c90d0.netlify.app">GTMetrix</a></p>
 
 ---
 
 <p align="center"><strong>Test seo</strong></p>
 
-<p align="center"><a href="https://www.seoptimer.com/github-netlify-boilerplate.netlify.app">Seoptimer</a></p>
+<p align="center"><a href="https://www.seoptimer.com/moonlit-syrniki-9c90d0.netlify.app">Seoptimer</a></p>
 
 ---
 
 <p align="center"><strong>Test responsive</strong></p>
 
-<p align="center"><a href="https://responsivedesignchecker.com/checker.php?url=https%3A%2F%2Fgithub-netlify-boilerplate.netlify.app&width=1400&height=700">Responsivedesignchecker</a></p>
+<p align="center"><a href="https://responsivedesignchecker.com/checker.php?url=https%3A%2F%2Fmoonlit-syrniki-9c90d0.netlify.app&width=1400&height=700">Responsivedesignchecker</a></p>
 
 ---
 
 <p align="center"><strong>Test validatore w3c</strong></p>
 
-<p align="center"><a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fgithub-netlify-boilerplate.netlify.app">Test validatore w3c</a></p>
+<p align="center"><a href="https://validator.w3.org/nu/?doc=https%3A%2F%2Fmoonlit-syrniki-9c90d0.netlify.app">Test validatore w3c</a></p>
 
 <p align="center"><a href="https://app.netlify.com/sites/github-netlify-boilerplate/deploys"><img src="https://api.netlify.com/api/v1/badges/70026311-956c-41d1-819d-633391ab5ff2/deploy-status" alt="Netlify Status"></a></p>
 
