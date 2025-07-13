@@ -1,0 +1,64 @@
+/* Dot navigation laterale per sezioni */
+
+.dots-nav {
+  position: fixed;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.dots-nav.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.dots-nav .dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+  border: 2.5px solid #fff;
+  box-shadow: 0 4px 18px 0 rgba(76,29,115,0.13), 0 1.5px 6px 0 rgba(0,0,0,0.10);
+  cursor: pointer;
+  transition: background 0.22s, transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+  outline: none;
+  margin: 0 auto;
+  opacity: 0.85;
+}
+.dots-nav .dot:hover,
+.dots-nav .dot:focus {
+  background: linear-gradient(135deg, #b993d6 0%, #4c1d73 100%);
+  border-color: #4c1d73;
+  box-shadow: 0 6px 24px 0 rgba(76,29,115,0.22), 0 2px 8px 0 rgba(0,0,0,0.13);
+  opacity: 1;
+}
+.dots-nav .dot.active {
+  background: linear-gradient(135deg, #4c1d73 0%, #8ec5fc 100%);
+  border-color: #4c1d73;
+  transform: scale(1.22);
+  box-shadow: 0 8px 32px 0 rgba(76,29,115,0.25), 0 2px 8px 0 rgba(0,0,0,0.15);
+  opacity: 1;
+}
+.dots-nav .dot:focus {
+  outline: 2.5px solid #4c1d73;
+}
+@media (max-width: 900px) {
+  .dots-nav {
+    right: 8px;
+    gap: 13px;
+  }
+  .dots-nav .dot {
+    width: 14px;
+    height: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .dots-nav {
+    display: none;
+  }
+}

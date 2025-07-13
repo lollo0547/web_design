@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="css/project-filters.css">
     <link rel="stylesheet" href="css/text-alignment.css">
     <link rel="stylesheet" href="css/print.css" media="print">
+    <link rel="stylesheet" href="css/dots-navigation.css">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -126,6 +127,16 @@
         </div>
       </div>
     </header>
+
+    <!-- Dot navigation laterale -->
+    <nav class="dots-nav" aria-label="Navigazione sezioni">
+      <a href="#chi-sono" class="dot" data-section="chi-sono" aria-label="Chi sono"></a>
+      <a href="#progetti" class="dot" data-section="progetti" aria-label="Progetti"></a>
+      <a href="#software-skills" class="dot" data-section="software-skills" aria-label="Software skills"></a>
+      <a href="#interessi" class="dot" data-section="interessi" aria-label="Interessi"></a>
+      <a href="#contatti" class="dot" data-section="contatti" aria-label="Contatti"></a>
+      <a href="#faq" class="dot" data-section="faq" aria-label="FAQ"></a>
+    </nav>
     
     <main id="main-content" role="main">
       <!-- Sezione Chi Sono -->
@@ -1871,6 +1882,8 @@
     <script src="js/language-switcher.js" defer></script>
     <script src="js/project-filters.js" defer></script>
     <script src="js/print-cv.js" defer></script>
+
+    <script src="js/dots-navigation.js"></script>
     
     <!-- Privacy Policy Modal -->
     <div id="privacy-modal" class="fullscreen-modal">
