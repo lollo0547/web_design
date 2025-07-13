@@ -80,8 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const end = Math.min(start + projectsPerPage, filtered.length);
     for (let i = start; i < end; i++) {
       const p = filtered[i];
+      const globalIndex = projects.indexOf(p); // posizione nel dataset globale
       const card = document.createElement('div');
       card.className = 'progetto-card';
+      card.setAttribute('data-overlay', `project${globalIndex + 1}`);
       card.innerHTML = `
         <div class="progetto-image-container">
           <div class="progetto-frame">
@@ -99,6 +101,16 @@ document.addEventListener('DOMContentLoaded', function() {
           </h3>
         </div>
       `;
+      // Click per aprire overlay
+      card.addEventListener('click', function() {
+        const overlayId = this.getAttribute('data-overlay');
+        const overlay = document.getElementById(overlayId);
+        if (overlay) {
+          document.querySelectorAll('.project-overlay').forEach(o => o.classList.remove('active'));
+          overlay.classList.add('active');
+          document.body.classList.add('no-scroll');
+        }
+      });
       progettiGrid.appendChild(card);
     }
   }
@@ -121,15 +133,51 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Gestione filtri
+  // Funzione per aggiornare la posizione dell'indicatore
+  function updateFilterIndicator() {
+    const indicator = document.getElementById('filterIndicator');
+    const activeBtn = progettiFilters.querySelector('.filter-btn.active');
+    if (indicator && activeBtn) {
+      // Effetto: shrink e fade leggero durante il movimento
+      indicator.style.transition = 'none';
+      indicator.style.transform = 'scaleX(0.7)';
+      indicator.style.opacity = '0.7';
+      // Calcola posizione e larghezza
+      const left = activeBtn.offsetLeft;
+      const width = activeBtn.offsetWidth;
+      setTimeout(() => {
+        indicator.style.transition =
+          'left 0.45s cubic-bezier(0.34,1.56,0.64,1), width 0.45s cubic-bezier(0.34,1.56,0.64,1), transform 0.45s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s cubic-bezier(0.34,1.56,0.64,1)';
+        indicator.style.left = left + 'px';
+        indicator.style.width = width + 'px';
+        indicator.style.transform = 'scaleX(1)';
+        indicator.style.opacity = '1';
+      }, 20);
+    }
+  }
+
   if (progettiFilters) {
+    // Inizializza posizione indicatore
+    setTimeout(updateFilterIndicator, 100);
+    window.addEventListener('resize', updateFilterIndicator);
     progettiFilters.addEventListener('click', function(e) {
       if (e.target.classList.contains('filter-btn')) {
-        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        e.target.classList.add('active');
-        currentCategory = e.target.getAttribute('data-category');
-        currentPage = 0;
-        renderProjects(currentPage);
-        renderIndicators(currentPage);
+        // Animazione dinamica e fluida tra i filtri
+        const grid = document.getElementById('progettiGrid');
+        grid.style.transition = 'opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+        grid.style.opacity = '0';
+        grid.style.transform = 'translateY(30px) scale(0.98)';
+        setTimeout(() => {
+          document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+          e.target.classList.add('active');
+          currentCategory = e.target.getAttribute('data-category');
+          currentPage = 0;
+          renderProjects(currentPage);
+          renderIndicators(currentPage);
+          grid.style.opacity = '1';
+          grid.style.transform = 'translateY(0) scale(1)';
+          updateFilterIndicator();
+        }, 250);
       }
     });
   }
@@ -140,14 +188,34 @@ document.addEventListener('DOMContentLoaded', function() {
 // end
   
   // Close overlay when clicking outside content
+  function closeOverlay(overlay) {
+    overlay.classList.remove('active');
+    setTimeout(() => {
+      if (!document.querySelector('.project-overlay.active')) {
+        document.body.classList.remove('no-scroll');
+      }
+    }, 200);
+  }
+  function closeAllOverlays() {
+    document.querySelectorAll('.project-overlay').forEach(o => o.classList.remove('active'));
+    document.body.classList.remove('no-scroll');
+  }
   overlays.forEach(overlay => {
+    // Chiudi cliccando sullo sfondo
     overlay.addEventListener('click', function(e) {
       if (e.target === overlay) {
         closeOverlay(overlay);
       }
     });
+    // Chiudi cliccando sulla X
+    const closeBtn = overlay.querySelector('.overlay-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeOverlay(overlay);
+      });
+    }
   });
-  
   // Close overlay with Escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {

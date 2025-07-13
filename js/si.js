@@ -214,13 +214,13 @@ function loadRandomProjectImages() {
     'immagini/webp/progetti/prototipazione/mouse/untitled44.webp',
     
     // Modellazione 3D
-    'immagini/webp/progetti/modellazione%203D/1/1.1.webp',
-    'immagini/webp/progetti/modellazione%203D/1/2.2.webp',
-    'immagini/webp/progetti/modellazione%203D/1/3.webp',
-    'immagini/webp/progetti/modellazione%203D/1/4.webp',
-    'immagini/webp/progetti/modellazione%203D/1/6.webp',
-    'immagini/webp/progetti/modellazione%203D/1/7.webp',
-    'immagini/webp/progetti/modellazione%203D/1/render%208.webp',
+    'immagini/webp/progetti/modellazione%203D/biblioteca/1.1.webp',
+    'immagini/webp/progetti/modellazione%203D/biblioteca/2.2.webp',
+    'immagini/webp/progetti/modellazione%203D/biblioteca/3.webp',
+    'immagini/webp/progetti/modellazione%203D/biblioteca/4.webp',
+    'immagini/webp/progetti/modellazione%203D/biblioteca/6.webp',
+    'immagini/webp/progetti/modellazione%203D/biblioteca/7.webp',
+    'immagini/webp/progetti/modellazione%203D/biblioteca/render%208.webp',
     
     // Rendering - Interno
     'immagini/webp/progetti/rendering/rendering%20interno/Render%20Interno%20Esame%202.webp',
