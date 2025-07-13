@@ -118,6 +118,10 @@
             <span class="lang-it">Lorenzo Giudici</span>
             <span class="lang-en">Lorenzo Giudici</span>
           </h1>
+          <p class="hero-motto">
+            <span class="lang-it">Progettare il futuro, un'idea alla volta.</span>
+            <span class="lang-en">Designing the future, one idea at a time.</span>
+          </p>
           <p class="typing-animation" data-text="Product Designer" aria-label="Professione"></p>
         </div>
         
@@ -167,6 +171,16 @@
                     to pursue a university career in design was inspired by my sister, who is also a designer. My passion for the mountains, on the other hand, was passed on to me by my grandparents
                     during my childhood, but remained in the background until just before the Covid period.</span>
                   </p>
+                <div class="mission-values">
+                  <h3 class="mission-title">
+                    <span class="lang-it">Mission &amp; Valori</span>
+                    <span class="lang-en">Mission &amp; Values</span>
+                  </h3>
+                  <p class="mission-text">
+                    <span class="lang-it">La mia missione è creare soluzioni di design che uniscano funzionalità, estetica e sostenibilità, mettendo sempre l'utente al centro del processo creativo. Credo nel valore dell'innovazione, della collaborazione e della crescita continua, con l'obiettivo di migliorare la vita delle persone attraverso il design.</span>
+                    <span class="lang-en">My mission is to create design solutions that combine functionality, aesthetics, and sustainability, always putting the user at the center of the creative process. I believe in the value of innovation, collaboration, and continuous growth, with the goal of improving people's lives through design.</span>
+                  </p>
+                </div>
                   
                   
                   
@@ -1554,6 +1568,12 @@
                 
                 <div class="contact-form-container reveal-right">
                   <form id="contact-form" class="contact-form">
+                    <!-- Netlify Forms integration -->
+                    <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact">
+                    <div style="display:none">
+                      <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+                    </div>
                     <div class="form-group">
                       <label for="name">Nome e Cognome</label>
                       <input type="text" id="name" name="name" placeholder="Es. Mario Rossi" required>

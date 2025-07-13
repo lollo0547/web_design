@@ -39,6 +39,37 @@
 
 <p align="center"><strong>Anno accademico 2024/2025</strong></p>
 
+---
+
+## Descrizione del Progetto
+
+Portfolio personale di Lorenzo Giudici, Product Designer. Il sito presenta biografia, mission, valori, competenze, progetti, certificazioni, contatti e una sezione FAQ. Il design è moderno, responsive e multilingua (italiano/inglese).
+
+## Funzionalità principali
+- Presentazione personale e professionale
+- Sezione "Chi sono" con mission e valori
+- Portfolio progetti con immagini e descrizioni dettagliate
+- Visualizzazione certificazioni e diplomi
+- Sezione contatti con mappa interattiva Google Maps e form integrato Netlify Forms
+- Sezione FAQ
+- Navigazione multilingua (IT/EN)
+- Tema chiaro/scuro
+
+## Struttura del progetto
+- `index.html` — Pagina principale e unica del sito
+- `css/` — Fogli di stile suddivisi per componenti e funzionalità
+- `js/` — Script JavaScript per interattività, filtri, animazioni, ecc.
+- `immagini/` — Logo, immagini profilo, progetti, icone
+
+## Tecnologie utilizzate
+<p align="center">- HTML5, CSS3, JavaScript
+<p align="center">- Responsive Web Design (media queries)
+<p align="center">- Netlify Forms per la gestione dei contatti
+<p align="center">- Google Maps (iframe)
+<p align="center">- Font: Google Fonts (Poppins)
+
+
+
 <br>
 
 ---
