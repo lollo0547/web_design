@@ -1,3 +1,5 @@
+  // Definizione overlays per gestione overlay-close
+  const overlays = document.querySelectorAll('.project-overlay');
 // Nuova logica Progetti: responsive, usabile, scalabile, indicatori slider
 document.addEventListener('DOMContentLoaded', function() {
   // Simulazione: elenco progetti (in produzione, generare questa lista da backend o build)
@@ -88,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="progetto-image-container">
           <div class="progetto-frame">
             <div class="progetto-image-mask">
-              <img src="${p.img}" loading="lazy" alt="${p.alt}" class="progetto-image">
+              <img src="${p.img}" loading="lazy" alt="${p.alt}" class="progetto-image shadow-effect">
               <div class="progetto-image-overlay"></div>
             </div>
           </div>
@@ -113,6 +115,24 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       progettiGrid.appendChild(card);
     }
+    // Inizializza ombre dinamiche sulle immagini dei progetti
+    setTimeout(() => {
+      document.querySelectorAll('.progetto-image.shadow-effect').forEach(image => {
+        image.addEventListener('mousemove', function(e) {
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const offsetX = (x - centerX) / 25;
+          const offsetY = (y - centerY) / 25;
+          this.style.boxShadow = `${offsetX}px ${offsetY}px 20px rgba(0, 0, 0, 0.18)`;
+        });
+        image.addEventListener('mouseleave', function() {
+          this.style.boxShadow = '';
+        });
+      });
+    }, 10);
   }
 
   function renderIndicators(page) {
