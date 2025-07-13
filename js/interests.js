@@ -86,22 +86,29 @@ function setupInterestCards3DEffect() {
 
 // Function to set up modal functionality
 function setupInterestModals() {
-  const detailButtons = document.querySelectorAll('.interest-detail-btn');
+  const interestCards = document.querySelectorAll('.interest-card');
   const modals = document.querySelectorAll('.interest-modal');
   const closeButtons = document.querySelectorAll('.interest-modal-close');
-  
-  // Open modal when clicking detail button
-  detailButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const modalId = this.getAttribute('data-modal');
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-    });
+
+  // Open modal when clicking the card (data-modal sull'elemento card)
+  interestCards.forEach(card => {
+    // Trova il data-modal associato (se esiste)
+    const btn = card.querySelector('[data-modal]');
+    const modalId = btn ? btn.getAttribute('data-modal') : null;
+    if (modalId) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function(e) {
+        // Evita che il click su link interni o highlight apra il modal
+        if (e.target.closest('.interest-modal-close')) return;
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    }
   });
-  
+
   // Close modal when clicking close button
   closeButtons.forEach(button => {
     button.addEventListener('click', function() {
@@ -110,7 +117,7 @@ function setupInterestModals() {
       document.body.style.overflow = '';
     });
   });
-  
+
   // Close modal when clicking outside modal content
   modals.forEach(modal => {
     modal.addEventListener('click', function(e) {
@@ -120,7 +127,7 @@ function setupInterestModals() {
       }
     });
   });
-  
+
   // Close modal with escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
