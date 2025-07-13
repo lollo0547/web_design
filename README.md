@@ -50,49 +50,6 @@
 
 ---
 
-## Struttura e miglioramenti tecnici del sito
-
-Il portfolio è stato sviluppato con un approccio moderno e accessibile, ponendo particolare attenzione alla velocità di caricamento, responsività e usabilità. Di seguito sono elencate le principali caratteristiche tecniche implementate:
-
-### Sistema di Design
-
-- **Variabili CSS**: Implementato un sistema di design completo con variabili per colori, spaziature, tipografia, bordi e transizioni
-- **Dark Mode**: Supporto per tema chiaro e scuro con transizioni fluide e rispetto delle preferenze di sistema
-- **Colori e contrasti**: Ottimizzati per conformità WCAG 2.1 AA, con miglioramento del contrasto del testo
-- **Sistema di tipografia**: Scala tipografica coerente con rapporti aurei tra dimensioni dei testi
-
-### Ottimizzazioni immagini
-
-- **WebP**: Conversione di tutte le immagini in formato WebP per ridurre la dimensione mantenendo alta qualità
-- **Responsive images**: Implementazione di srcset per caricare immagini ottimizzate in base al dispositivo
-- **Lazy Loading**: Caricamento differito delle immagini fuori dalla viewport con IntersectionObserver
-- **Aspect ratio**: Preservazione dei rapporti dimensionali per evitare layout shift
-
-### Accessibilità
-
-- **Semantica HTML5**: Utilizzo di elementi semantici come nav, main, section, article
-- **ARIA attributes**: Supporto per screen reader con aria-label, aria-expanded, aria-controls
-- **Focus management**: Gestione del focus con indicatori visivi migliorati e skip links
-- **Keyboard navigation**: Completa navigabilità da tastiera con supporto per focus-visible
-- **Reduced motion**: Supporto per preferenze di riduzione del movimento
-
-### Performance
-
-- **Critical CSS**: CSS critico inline per evitare il blocco del rendering
-- **Preload assets**: Precaricamento di risorse critiche come font, logo e hero image
-- **Resource hints**: DNS prefetch e preconnect per connessioni anticipate
-- **Lazy components**: Caricamento differito di componenti non critici
-- **Connection-aware loading**: Ottimizzazione del caricamento delle risorse in base alla velocità di connessione
-
-### UX & UI
-
-- **Animazioni fluide**: Transizioni e animazioni ottimizzate per GPU con un sistema standardizzato
-- **Modal accessibile**: Focus trap, chiusura con ESC, ripristino focus, aria attributes
-- **Feedback visivi**: Indicatori di stato e feedback per interazioni utente
-- **Proporzioni e spaziature**: Sistema di spaziature coerente basato su un'unità di base (8px)
-- **Responsive design**: Layout completamente fluido con breakpoints standard
-
----
 
 <p align="center"><strong>Automazione</strong></p>
 
