@@ -253,7 +253,7 @@
   --transition: 0.25s cubic-bezier(.4,0,.2,1);
   
   /* Font */
-  --font-main: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-main: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   
   /* Z-index layers */
   --z-back: -1;
