@@ -242,7 +242,7 @@ body {
   padding: 0;
   line-height: 1.6;
   color: var(--text-color);
-  background: var(--background-color);
+  background: linear-gradient(135deg, #e0e7ff 0%, #f7f0ff 60%, #dbeafe 100%);
   overflow-x: hidden; /* Previene lo scroll orizzontale */
 }
 
@@ -624,6 +624,15 @@ header {
   scroll-margin-top: 60px; /* Aggiunto per tenere conto della navbar */
   transition: background-color 0.5s ease, opacity 0.8s ease, transform 0.8s ease; /* Combined transitions */
   will-change: transform, opacity; /* Optimize for animations */
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 8px 32px 0 rgba(76,29,115,0.12);
+  border-radius: 22px;
+  padding: 3.5rem 2.5rem;
+  margin-bottom: 3rem;
+  border: 1.5px solid rgba(76,29,115,0.10);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  transition: box-shadow 0.4s, background 0.4s, border 0.4s;
 }
 
 /* Adjust scroll position for navigation links */
@@ -635,6 +644,10 @@ html {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  background: transparent;
+  border-radius: var(--border-radius);
+  box-shadow: none;
+  padding: 0;
 }
 
 .section-title {

@@ -1,3 +1,21 @@
+// Funzione globale per aggiornare la sezione attiva nella navbar
+function updateActiveSection() {
+  const navLinks = document.querySelectorAll('.navbar a');
+  const sections = document.querySelectorAll('section[id]');
+  const scrollPosition = window.scrollY + 100; // Offset for navbar height
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const sectionId = section.getAttribute('id');
+    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+      const activeLink = document.querySelector(`.navbar a[href*="${sectionId}"]`);
+      if (activeLink) activeLink.classList.add('active');
+    }
+  });
+}
 /**
  * Animation Observer and Navbar Handling for Lorenzo Giudici's Portfolio
  * Handles the activation of animations based on scroll position
@@ -83,26 +101,24 @@ document.addEventListener('DOMContentLoaded', function() {
     updateActiveSection();
   });
   
-  // Function to update active section in navbar
-  function updateActiveSection() {
-    const scrollPosition = window.scrollY + 100; // Offset for navbar height
-    
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const sectionId = section.getAttribute('id');
-      
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        // Remove active class from all links
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-        });
-        
-        // Add active class to current section link
-        document.querySelector(`.navbar a[href*="${sectionId}"]`).classList.add('active');
-      }
-    });
-  }
+// Funzione globale per aggiornare la sezione attiva nella navbar
+function updateActiveSection() {
+  const navLinks = document.querySelectorAll('.navbar a');
+  const sections = document.querySelectorAll('section[id]');
+  const scrollPosition = window.scrollY + 100; // Offset for navbar height
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const sectionId = section.getAttribute('id');
+    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+      });
+      const activeLink = document.querySelector(`.navbar a[href*="${sectionId}"]`);
+      if (activeLink) activeLink.classList.add('active');
+    }
+  });
+}
   
   // Add click event to navbar links
   navLinks.forEach(link => {
@@ -466,31 +482,5 @@ function throttle(func, delay) {
  * Modal Functionality for other sections (removed Percorso Scolastico modal)
  */
 document.addEventListener('DOMContentLoaded', function() {
-  // Close modal on ESC key for any future modals
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      // Modal closing will be handled by specific modals if added in the future
-    }
-  });
-  
-  // Toggle burger menu
-  if (modalBurger) {
-    modalBurger.addEventListener('click', function() {
-      const isExpanded = modalBurger.getAttribute('aria-expanded') === 'true';
-      modalBurger.setAttribute('aria-expanded', !isExpanded);
-      modalMenu.classList.toggle('open');
-    });
-  }
-  
-  // Close menu when clicking outside
-  document.addEventListener('click', function(e) {
-    if (modalMenu && modalMenu.classList.contains('open')) {
-      if (!modalMenu.contains(e.target) && e.target !== modalBurger) {
-        modalMenu.classList.remove('open');
-        modalBurger.setAttribute('aria-expanded', 'false');
-      }
-    }
-  });
-  
   // Modal functionality removed - can be re-added if needed for other sections
 });
