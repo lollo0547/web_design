@@ -47,14 +47,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }, 300);
   
-// Navbar and section variables (global)
-const navbar = document.querySelector('.navbar-container');
-const navLinks = document.querySelectorAll('.navbar a');
-const sections = document.querySelectorAll('section[id]');
-let lastScrollTop = 0;
-
-// Define a position to determine when to show navbar (previously was Chi sono section)
-const navShowPosition = 500; // Default position to show navbar
+  // Navbar visibility on scroll
+  const navbar = document.querySelector('.navbar-container');
+  const navLinks = document.querySelectorAll('.navbar a');
+  const sections = document.querySelectorAll('section[id]');
+  let lastScrollTop = 0;
+  
+  // Define a position to determine when to show navbar (previously was Chi sono section)
+  const navShowPosition = 500; // Default position to show navbar
   
   // Show/hide navbar based on scroll position
   window.addEventListener('scroll', function() {
