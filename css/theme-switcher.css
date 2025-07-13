@@ -1,9 +1,6 @@
 /* Theme Switcher Styles */
+
 .theme-switch-wrapper {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: var(--z-fixed);
   display: flex;
   align-items: center;
   background-color: var(--card-bg);

@@ -1,3 +1,13 @@
+.faq-section .section-introduction {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+/* Centra il testo delle introduzioni delle sezioni */
+.section-introduction {
+  text-align: center;
+}
 /* Centra tutti i titoli delle sezioni principali */
 .software-skills-section .section-title,
 .interests-section .section-title,

@@ -24,11 +24,11 @@ function createThemeSwitcher() {
       <span class="theme-switch-icon">🌙</span>
     </div>
   `;
-  
-  // Inseriamo il theme switcher nel DOM
-  const switcherContainer = document.createElement('div');
-  switcherContainer.innerHTML = themeSwitcherHTML;
-  document.body.appendChild(switcherContainer.firstElementChild);
+  // Inseriamo il theme switcher SOLO nel footer
+  const footerThemeSwitcher = document.getElementById('footer-theme-switcher');
+  if (footerThemeSwitcher) {
+    footerThemeSwitcher.innerHTML = themeSwitcherHTML;
+  }
   
   // Otteniamo il riferimento all'elemento toggle
   const themeToggle = document.getElementById('theme-toggle');

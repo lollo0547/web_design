@@ -5,8 +5,8 @@
  */
 
 footer {
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-light);
+  background-color: #000000d0;
+  color: #fff;
   padding: 4rem 0 2rem;
   position: relative;
   overflow: hidden;

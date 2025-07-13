@@ -21,15 +21,10 @@ function createLanguageSwitcher() {
       <button class="language-button" data-lang="en">EN</button>
     </div>
   `;
-  
-  // Inserisci il language switcher nel DOM
-  const languageSwitcherContainer = document.createElement('div');
-  languageSwitcherContainer.innerHTML = languageSwitcherHTML;
-  
-  // Trova la navbar per inserire il selettore
-  const navbar = document.querySelector('.navbar-container');
-  if (navbar) {
-    navbar.appendChild(languageSwitcherContainer.firstElementChild);
+  // Inserisci il language switcher SOLO nel footer
+  const footerLanguageSwitcher = document.getElementById('footer-language-switcher');
+  if (footerLanguageSwitcher) {
+    footerLanguageSwitcher.innerHTML = languageSwitcherHTML;
   }
   
   // Aggiungi event listener ai pulsanti
