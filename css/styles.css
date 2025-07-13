@@ -1,3 +1,49 @@
+/* Griglia progetti: una sola colonna se c'è un solo progetto */
+.progetti-section .progetti-grid:has(.progetto-card:nth-child(2)) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem 2rem;
+}
+.progetti-section .progetti-grid:has(.progetto-card):not(:has(.progetto-card:nth-child(2))) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem 2rem;
+  justify-items: center;
+}
+@media (max-width: 700px) {
+  .progetti-section .progetti-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+.software-skills-section .section-introduction {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
+  font-size: 1.18rem;
+  color: #444;
+  margin-bottom: 2.2rem;
+}
+.section-title.with-gradient {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2.2rem;
+  padding-bottom: 1.2rem;
+  width: fit-content;
+  box-sizing: border-box;
+}
+.section-title,
+.section-title.with-gradient {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
 .faq-section .section-introduction {
   max-width: 700px;
   margin-left: auto;
