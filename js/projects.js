@@ -348,4 +348,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Initialize the first page animations
+  setTimeout(() => {
+    updateProjectGrid(0);
+  }, 500);
 });

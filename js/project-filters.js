@@ -1,5 +1,8 @@
 // File vuoto: tutte le funzioni legacy di filtri, indicatori e pagine sono state rimosse.
 // Questo file non inietta più alcuna barra filtri o markup duplicato.
+if (descEl) {
+  descEl.innerHTML = highlightText(descEl.textContent, query);
+}
 
 // Funzione per rimuovere le evidenziazioni di ricerca
 function removeSearchHighlight(project) {

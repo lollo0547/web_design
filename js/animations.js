@@ -5,9 +5,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Modal burger and menu selectors
-  const modalBurger = document.querySelector('.modal-burger');
-  const modalMenu = document.querySelector('.modal-menu');
   // Selezioniamo tutti gli elementi con le classi reveal
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
   
@@ -82,31 +79,8 @@ const navShowPosition = 500; // Default position to show navbar
     
     lastScrollTop = scrollTop;
     
-  });
-
-// Function to update active section in navbar
-function updateActiveSection() {
-  const scrollPosition = window.scrollY + 100; // Offset for navbar height
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    const sectionId = section.getAttribute('id');
-    
-    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-      // Remove active class from all links
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-      });
-      
-      // Add active class to current section link
-      document.querySelector(`.navbar a[href*="${sectionId}"]`).classList.add('active');
-    }
-  });
-}
-
-// Initialize active section on page load
-updateActiveSection();
+    // Update active section in navbar
+    updateActiveSection();
   });
   
   // Function to update active section in navbar
@@ -153,7 +127,7 @@ updateActiveSection();
   
   // Initialize active section on page load
   updateActiveSection();
-// ...existing code...
+});
 
 /**
  * Mobile Menu Handler
