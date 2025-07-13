@@ -42,24 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // EFFETTO TYPING PER TESTO "PRODUCT DESIGNER" - COMPLETAMENTE RINNOVATO
-  const typingElement = document.querySelector('.typing-animation');
-  if (typingElement) {
-    // Ottiene il testo da data-text
-    const text = typingElement.getAttribute('data-text') || 'Product Designer';
-    
-    // Pulisci qualsiasi contenuto esistente
+  // EFFETTO TYPING PER TUTTI GLI ELEMENTI .typing-animation CON data-text
+  const typingElements = document.querySelectorAll('.typing-animation[data-text]');
+  typingElements.forEach((typingElement, idx) => {
+    const text = typingElement.getAttribute('data-text') || '';
     typingElement.innerHTML = '';
-    
-    // Crea un nuovo span contenitore
     const typingTextSpan = document.createElement('span');
     typingTextSpan.className = 'typing-text';
     typingElement.appendChild(typingTextSpan);
-    
-    // Configura l'animazione
     setTimeout(() => {
       let index = 0;
-      
       function typeText() {
         if (index < text.length) {
           typingTextSpan.textContent += text.charAt(index);
@@ -67,10 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
           setTimeout(typeText, 100);
         }
       }
-      
       typeText();
-    }, 1000);
-  }
+    }, 1000 + idx * 400); // leggero offset per evitare che partano esattamente insieme
+  });
   
   // GESTIONE MENU MOBILE
   const burgerMenu = document.querySelector('.burger-menu');

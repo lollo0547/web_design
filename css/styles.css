@@ -1,3 +1,28 @@
+/* Skip link accessibilità */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 10px;
+  background: #fff;
+  color: #4c1d73;
+  padding: 0.7em 1.2em;
+  border-radius: 6px;
+  font-weight: 700;
+  z-index: 10000;
+  box-shadow: 0 2px 8px rgba(76,29,115,0.08);
+  transition: left 0.2s;
+}
+.skip-link:focus {
+  left: 20px;
+  outline: 2px solid #4c1d73;
+}
+
+/* Migliora outline focus per tutti gli elementi interattivi */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 2px solid #4c1d73;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #e6e0f3;
+}
 /* Griglia progetti: una sola colonna se c'è un solo progetto */
 .progetti-section .progetti-grid:has(.progetto-card:nth-child(2)) {
   display: grid;
