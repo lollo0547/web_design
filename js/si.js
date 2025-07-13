@@ -1,3 +1,14 @@
+  // Scroll fluido per il bottone Contattami
+  const contattamiBtn = document.querySelector('.btn.btn-outline[href="#contatti"]');
+  if (contattamiBtn) {
+    contattamiBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const contattiSection = document.getElementById('contatti');
+      if (contattiSection) {
+        contattiSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 // SCRIPT ESSENZIALI PER LORENZO GIUDICI PORTFOLIO
 document.addEventListener('DOMContentLoaded', function() {
   // Impostazione per il cambio tema

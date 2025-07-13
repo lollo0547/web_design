@@ -1,3 +1,107 @@
+/* Centra tutti i titoli delle sezioni principali */
+.software-skills-section .section-title,
+.interests-section .section-title,
+.contacts-section .section-title,
+.faq-section .section-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Centra il titolo della sezione progetti */
+.progetti-section .section-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Intro compatta per la sezione progetti */
+.compact-intro {
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+  font-size: 1.01rem;
+  color: #444;
+  text-align: center;
+  line-height: 1.4;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.92;
+}
+/* --- CTA BUTTONS MODERNI --- */
+.cta-container {
+  display: flex;
+  gap: 1.1rem;
+  margin: 1.5rem 0 1.5rem 0;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-main);
+  font-size: 1.08rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 2.2em;
+  padding: 0.7em 1.7em;
+  cursor: pointer;
+  transition: background 0.22s, color 0.22s, box-shadow 0.22s, transform 0.18s;
+  box-shadow: 0 2px 12px rgba(76,29,115,0.08);
+  outline: none;
+  text-decoration: none;
+  position: relative;
+  user-select: none;
+}
+.btn-primary {
+  background: linear-gradient(90deg, #7b2ff2 0%, #1e90ff 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px 0 rgba(123,47,242,0.13);
+}
+.btn-primary:hover, .btn-primary:focus {
+  background: linear-gradient(90deg, #1e90ff 0%, #7b2ff2 100%);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 24px 0 rgba(30,144,255,0.13);
+}
+.btn-outline {
+  background: #fff;
+  color: #7b2ff2;
+  border: 2px solid #7b2ff2;
+  box-shadow: 0 2px 12px 0 rgba(123,47,242,0.07);
+}
+.btn-outline:hover, .btn-outline:focus {
+  background: #f3f6ff;
+  color: #4c1d73;
+  border-color: #4c1d73;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 24px 0 rgba(76,29,115,0.10);
+}
+.btn .btn-icon, .btn .print-icon {
+  font-size: 1.2em;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.2em;
+  transition: transform 0.18s;
+}
+.btn-primary .btn-icon {
+  filter: drop-shadow(0 2px 6px #1e90ff44);
+}
+.btn-outline .print-icon {
+  font-size: 1.25em;
+  margin-left: 0.3em;
+}
+.btn:active {
+  transform: scale(0.98);
+}
 /* --- PROGETTI FILTERS BAR --- */
 .progetti-filters {
   display: flex;
