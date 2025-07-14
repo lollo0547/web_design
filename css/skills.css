@@ -461,7 +461,6 @@
   }
   
   .skill-card {
-    padding: 1rem;
     flex-direction: row;
     align-items: center;
   }
