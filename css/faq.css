@@ -17,7 +17,6 @@
 .faq-search-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
   margin: 2.5rem auto 2.5rem auto;
   max-width: 420px;
@@ -26,6 +25,7 @@
   background: rgba(255,255,255,0.7);
   border-radius: 18px;
   box-shadow: 0 4px 18px 0 rgba(76,29,115,0.07);
+  /* nessun centering verticale */
 }
 
 .faq-search {

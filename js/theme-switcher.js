@@ -20,7 +20,7 @@ function createThemeSwitcher() {
       <label class="theme-switch" for="theme-toggle">
         <input type="checkbox" id="theme-toggle">
         <span class="theme-slider"></span>
-        <span class="visually-hidden">Attiva/disattiva tema scuro</span>
+
       </label>
       <span class="theme-switch-icon">🌙</span>
     </div>

@@ -45,13 +45,34 @@ function createLanguageSwitcher() {
 
 // Funzione per cambiare lingua
 function switchLanguage(lang) {
+  // Aggiorna il placeholder della newsletter
+  const newsletterField = document.querySelector('.subscribe-input[data-placeholder-it][data-placeholder-en]');
+  if (newsletterField) {
+    if (lang === 'it') {
+      newsletterField.setAttribute('placeholder', newsletterField.getAttribute('data-placeholder-it'));
+    } else {
+      newsletterField.setAttribute('placeholder', newsletterField.getAttribute('data-placeholder-en'));
+    }
+  }
+  // FAQ: mostra/nascondi la categoria "Tutte" in base alla lingua
+  var faqAllIt = document.querySelector('.faq-categories .faq-category:not(:has(.lang-en))');
+  var faqAllEn = document.querySelector('.faq-categories .faq-category:has(.lang-en)');
+  if (faqAllIt && faqAllEn) {
+    if (lang === 'it') {
+      faqAllIt.style.display = '';
+      faqAllEn.style.display = '';
+    } else {
+      faqAllIt.style.display = 'none';
+      faqAllEn.style.display = '';
+    }
+  }
   // Salva la lingua scelta nel localStorage
   localStorage.setItem('language', lang);
-  
+
   // Nascondi tutti gli elementi della lingua non selezionata
   const itElements = document.querySelectorAll('.lang-it');
   const enElements = document.querySelectorAll('.lang-en');
-  
+
   if (lang === 'it') {
     itElements.forEach(el => el.style.display = 'inline-block');
     enElements.forEach(el => el.style.display = 'none');
@@ -59,10 +80,20 @@ function switchLanguage(lang) {
     itElements.forEach(el => el.style.display = 'none');
     enElements.forEach(el => el.style.display = 'inline-block');
   }
-  
+
+  // Aggiorna i placeholder dei campi della sezione contatti
+  const contactFields = document.querySelectorAll('#contact-form [data-placeholder-it][data-placeholder-en]');
+  contactFields.forEach(field => {
+    if (lang === 'it') {
+      field.setAttribute('placeholder', field.getAttribute('data-placeholder-it'));
+    } else {
+      field.setAttribute('placeholder', field.getAttribute('data-placeholder-en'));
+    }
+  });
+
   // Aggiorna l'attributo lang dell'HTML
   document.documentElement.setAttribute('lang', lang);
-  
+
   // Aggiorna il titolo della pagina in base alla lingua
   updatePageTitle(lang);
 }

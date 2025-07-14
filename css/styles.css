@@ -11,7 +11,7 @@
   grid-column: 2;
   width: 100%;
   height: 56px;
-  background: #fff;
+  /* background rimossa */
   border-radius: 16px;
   box-shadow: 0 4px 24px 0 rgba(76,29,115,0.10), 0 1.5px 8px 0 rgba(76,29,115,0.06);
   display: flex;
@@ -34,8 +34,7 @@
   font-size: 1.1rem;
   padding: 0 1rem;
   border-radius: 8px;
-  background: #f7f3fc;
-  color: #4c1d73;
+  /* background e color rimossi */
   box-shadow: 0 1px 4px 0 rgba(76,29,115,0.07);
 }
 .progetti-mobile-bar.center-search-btn .progetti-search-box {
@@ -98,7 +97,7 @@
 }
 .progetti-menu-link {
   background: none;
-  color: #4c1d73;
+  /* color rimossa */
   border: none;
   border-radius: 6px;
   font-size: 0.98rem;
@@ -107,11 +106,11 @@
   width: 100%;
   text-align: left;
   cursor: pointer;
-  transition: background 0.13s, color 0.13s;
+  transition: background 0.13s;
 }
 .progetti-menu-link:active, .progetti-menu-link:focus {
   background: #f2edfa;
-  color: #7b2ff2;
+  /* color rimossa */
 }
 .progetti-burger-dropdown-arrow {
   display: none;
@@ -179,7 +178,7 @@
     box-shadow: 0 2px 8px rgba(76,29,115,0.08);
     cursor: pointer;
     font-size: 1.3rem;
-    color: #4c1d73;
+    /* color rimossa */
     transition: background 0.18s;
   }
   .progetti-search-btn:active, .progetti-burger-btn:active {
@@ -195,15 +194,11 @@
 /* Migliora contrasto per il filtro attivo (Tutti) su gradienti */
 /* Fix overflow-x and remove wrong CSS nesting */
 .progetti-filters .filter-btn.active {
-  background: #fff !important;
-  color: #222 !important;
+  /* background e color rimossi */
   border: 2px solid #7b2ff2;
   box-shadow: 0 2px 12px 0 rgba(123,47,242,0.10);
 }
-.progetti-filters .filter-btn.active:hover {
-  background: #222 !important;
-  color: #fff !important;
-}
+
 
 html, body {
   overflow-x: hidden !important;

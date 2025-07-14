@@ -161,33 +161,30 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Funzione per gestire il modal della privacy policy
   function setupPrivacyModal() {
-    const privacyLink = document.querySelector('a[data-modal="privacy-modal"]');
+    const privacyLinks = document.querySelectorAll('a[data-modal="privacy-modal"]');
     const privacyModal = document.getElementById('privacy-modal');
     
-    if (privacyLink && privacyModal) {
-      // Apri il modal quando si clicca sul link
-      privacyLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Aggiungi la classe active al modal
-        privacyModal.classList.add('active');
-        
-        // Blocca lo scroll del body
-        document.body.style.overflow = 'hidden';
-        document.documentElement.style.overflow = 'hidden'; // anche per html
-        
-        // Imposta il focus sul modal per l'accessibilità
-        privacyModal.setAttribute('aria-hidden', 'false');
-        privacyModal.focus();
-        
-        // Nasconde gli elementi di screen reader
-        document.querySelectorAll('body > *:not(#privacy-modal)').forEach(element => {
-          if (element !== privacyModal) {
-            element.setAttribute('aria-hidden', 'true');
-            if (element.classList.contains('navbar-container')) {
-              element.style.display = 'none';
+    if (privacyLinks.length > 0 && privacyModal) {
+      privacyLinks.forEach(function(privacyLink) {
+        privacyLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Aggiungi la classe active al modal
+          privacyModal.classList.add('active');
+          // Blocca lo scroll del body
+          document.body.style.overflow = 'hidden';
+          document.documentElement.style.overflow = 'hidden';
+          // Imposta il focus sul modal per l'accessibilità
+          privacyModal.setAttribute('aria-hidden', 'false');
+          privacyModal.focus();
+          // Nasconde gli elementi di screen reader
+          document.querySelectorAll('body > *:not(#privacy-modal)').forEach(element => {
+            if (element !== privacyModal) {
+              element.setAttribute('aria-hidden', 'true');
+              if (element.classList.contains('navbar-container')) {
+                element.style.display = 'none';
+              }
             }
-          }
+          });
         });
       });
       
