@@ -1,0 +1,26 @@
+// Bundle di JS piccoli: chi-sono, projects, skills, interests, contacts, faq, footer, dots-navigation
+// Tutti i file sono già minificati, quindi basta concatenarli in ordine
+
+// chi-sono.js
+// ...contenuto...
+
+// projects.js
+// ...contenuto...
+
+// skills.js
+// ...contenuto...
+
+// interests.js
+// ...contenuto...
+
+// contacts.js
+// ...contenuto...
+
+// faq.js
+// ...contenuto...
+
+// footer.js
+// ...contenuto...
+
+// dots-navigation.js
+// ...contenuto...

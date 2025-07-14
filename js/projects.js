@@ -158,13 +158,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const indicator = document.getElementById('filterIndicator');
     const activeBtn = progettiFilters.querySelector('.filter-btn.active');
     if (indicator && activeBtn) {
+      // Calcola posizione e larghezza PRIMA di modificare lo stile
+      const left = activeBtn.offsetLeft;
+      const width = activeBtn.offsetWidth;
       // Effetto: shrink e fade leggero durante il movimento
       indicator.style.transition = 'none';
       indicator.style.transform = 'scaleX(0.7)';
       indicator.style.opacity = '0.7';
-      // Calcola posizione e larghezza
-      const left = activeBtn.offsetLeft;
-      const width = activeBtn.offsetWidth;
       setTimeout(() => {
         indicator.style.transition =
           'left 0.45s cubic-bezier(0.34,1.56,0.64,1), width 0.45s cubic-bezier(0.34,1.56,0.64,1), transform 0.45s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s cubic-bezier(0.34,1.56,0.64,1)';

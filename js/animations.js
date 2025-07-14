@@ -3,16 +3,20 @@ function updateActiveSection() {
   const navLinks = document.querySelectorAll('.navbar a');
   const sections = document.querySelectorAll('section[id]');
   const scrollPosition = window.scrollY + 100; // Offset for navbar height
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    const sectionId = section.getAttribute('id');
-    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-      });
-      const activeLink = document.querySelector(`.navbar a[href*="${sectionId}"]`);
+  // Prima raccogli tutte le posizioni e dimensioni
+  const sectionData = Array.from(sections).map(section => ({
+    id: section.getAttribute('id'),
+    top: section.offsetTop,
+    height: section.offsetHeight
+  }));
+  // Poi aggiorna la navbar
+  let found = false;
+  sectionData.forEach(({id, top, height}) => {
+    if (!found && scrollPosition >= top && scrollPosition < top + height) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      const activeLink = document.querySelector(`.navbar a[href*="${id}"]`);
       if (activeLink) activeLink.classList.add('active');
+      found = true;
     }
   });
 }

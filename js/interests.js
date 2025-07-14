@@ -92,29 +92,47 @@ function setupInterestModals() {
 
   // Open modal when clicking the card (data-modal sull'elemento card)
   interestCards.forEach(card => {
-    // Trova il data-modal associato (se esiste)
     const btn = card.querySelector('[data-modal]');
     const modalId = btn ? btn.getAttribute('data-modal') : null;
     if (modalId) {
       card.style.cursor = 'pointer';
       card.addEventListener('click', function(e) {
-        // Evita che il click su link interni o highlight apra il modal
         if (e.target.closest('.interest-modal-close')) return;
         const modal = document.getElementById(modalId);
         if (modal) {
           modal.classList.add('active');
           document.body.style.overflow = 'hidden';
+          modal.setAttribute('aria-hidden', 'false');
+          // Sposta il focus sul modal
+          setTimeout(() => {
+            modal.setAttribute('tabindex', '-1');
+            modal.focus();
+          }, 10);
+          // Nascondi il resto della pagina agli screen reader
+          document.querySelectorAll('body > *:not(#' + modalId + ')').forEach(element => {
+            element.setAttribute('aria-hidden', 'true');
+          });
         }
       });
     }
   });
 
+  // Funzione per chiudere il modal e ripristinare lo stato
+  function closeModal(modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+    modal.setAttribute('aria-hidden', 'true');
+    // Ripristina aria-hidden sugli altri elementi
+    document.querySelectorAll('body > *:not(#' + modal.id + ')').forEach(element => {
+      element.removeAttribute('aria-hidden');
+    });
+  }
+
   // Close modal when clicking close button
   closeButtons.forEach(button => {
     button.addEventListener('click', function() {
       const modal = this.closest('.interest-modal');
-      modal.classList.remove('active');
-      document.body.style.overflow = '';
+      closeModal(modal);
     });
   });
 
@@ -122,18 +140,20 @@ function setupInterestModals() {
   modals.forEach(modal => {
     modal.addEventListener('click', function(e) {
       if (e.target === this) {
-        this.classList.remove('active');
-        document.body.style.overflow = '';
+        closeModal(this);
       }
     });
+    // Imposta aria-hidden di default
+    modal.setAttribute('aria-hidden', 'true');
   });
 
   // Close modal with escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
       modals.forEach(modal => {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
+        if (modal.classList.contains('active')) {
+          closeModal(modal);
+        }
       });
     }
   });

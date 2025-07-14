@@ -34,23 +34,50 @@
     
     <!-- CSS stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/skills.css">
-    <link rel="stylesheet" href="css/interests.css">
-    <link rel="stylesheet" href="css/contacts.css">
-    <link rel="stylesheet" href="css/faq.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/theme-switcher.css">
-    <link rel="stylesheet" href="css/language-switcher.css">
-    <link rel="stylesheet" href="css/project-filters.css">
-    <link rel="stylesheet" href="css/text-alignment.css">
+    <link rel="preload" href="css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/skills.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/interests.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/contacts.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/faq.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="css/bundle-small.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="css/print.css" media="print">
-    <link rel="stylesheet" href="css/dots-navigation.css">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Lorenzo Giudici",
+      "url": "https://lorenzogiudici.com/",
+      "image": "https://lorenzogiudici.com/immagini/webp/profile/lorenzo_profile.webp",
+      "jobTitle": "Product Designer",
+      "description": "Portfolio professionale di Lorenzo Giudici, product designer specializzato in design industriale, modellazione 3D e innovazione.",
+      "sameAs": [
+        "https://linkedin.com/",
+        "https://behance.net/",
+        "https://instagram.com/"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Lorenzo Giudici Portfolio",
+      "url": "https://lorenzogiudici.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://lorenzogiudici.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Salta al contenuto principale</a>
@@ -59,7 +86,7 @@
       <nav class="navbar-container" aria-label="Menu principale">
         <div class="logo-container">
           <a href="#" class="logo-link">
-            <img src="immagini/logo.webp" alt="Lorenzo Giudici Logo" class="logo-image">
+            <img src="immagini/logo.webp" alt="Lorenzo Giudici Logo" class="logo-image" loading="eager">
           </a>
         </div>
         
@@ -111,7 +138,7 @@
         
         <!-- Immagine hero principale -->
         <div class="hero-image-container">
-          <img src="immagini/webp/hero/Lorenzo_hero.webp" alt="Ritratto di Lorenzo Giudici - Hero principale" class="hero-image">
+          <img src="immagini/webp/hero/Lorenzo_hero.webp" alt="Ritratto di Lorenzo Giudici - Hero principale" class="hero-image" loading="eager" fetchpriority="high">
         </div>
         
         <div class="hero-content">
@@ -205,7 +232,7 @@
                   <div class="decorative-element element-bottom-right"></div>
                   <div class="profile-frame">
                     <div class="profile-image-mask">
-                      <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici - Product Designer" class="profile-image">
+                      <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici - Product Designer" class="profile-image" loading="lazy">
                       <div class="profile-image-overlay"></div>
                     </div>
                     <div class="profile-backdrop"></div>
@@ -234,7 +261,7 @@
                   <!-- ICDL Computer Essentials -->
                   <div class="skill-card">
                     <div class="skill-logo-wrapper">
-                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo">
+                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo" loading="lazy">
                     </div>
                     <div class="skill-info">
                       <h4 class="skill-name">ICDL - Computer Essentials</h4>
@@ -252,7 +279,7 @@
                   <!-- ICDL Online Essentials -->
                   <div class="skill-card">
                     <div class="skill-logo-wrapper">
-                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo">
+                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo" loading="lazy">
                     </div>
                     <div class="skill-info">
                       <h4 class="skill-name">ICDL - Online Essentials</h4>
@@ -270,7 +297,7 @@
                   <!-- ICDL Word Processing -->
                   <div class="skill-card">
                     <div class="skill-logo-wrapper">
-                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo">
+                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo" loading="lazy">
                     </div>
                     <div class="skill-info">
                       <h4 class="skill-name">ICDL - Word Processing</h4>
@@ -288,7 +315,7 @@
                   <!-- ICDL Spreadsheets -->
                   <div class="skill-card">
                     <div class="skill-logo-wrapper">
-                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo">
+                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo" loading="lazy">
                     </div>
                     <div class="skill-info">
                       <h4 class="skill-name">ICDL - Spreadsheets</h4>
@@ -306,7 +333,7 @@
                   <!-- ICDL 2D CAD -->
                   <div class="skill-card">
                     <div class="skill-logo-wrapper">
-                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo">
+                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo" loading="lazy">
                     </div>
                     <div class="skill-info">
                       <h4 class="skill-name">ICDL - 2D CAD</h4>
@@ -324,7 +351,7 @@
                   <!-- SolidWorks -->
                   <div class="skill-card">
                     <div class="skill-logo-wrapper">
-                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo">
+                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo" loading="lazy">
                     </div>
                     <div class="skill-info">
                       <h4 class="skill-name">SolidWorks Mechanical Design</h4>
@@ -342,7 +369,7 @@
                   <!-- Inglese B2 -->
                   <div class="skill-card">
                     <div class="skill-logo-wrapper">
-                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo">
+                      <img src="immagini/webp/loghi%204/icons8-pergamena-di-laurea-50.webp" alt="Certificazione" class="skill-logo" loading="lazy">
                     </div>
                     <div class="skill-info">
                       <h4 class="skill-name">Inglese B2</h4>
@@ -367,7 +394,7 @@
                   <!-- Diploma Tecnico -->
                   <div class="skill-card">
                     <div class="skill-logo-wrapper">
-                      <img src="immagini/webp/loghi%204/icons8-diploma-50.webp" alt="Diploma" class="skill-logo">
+                      <img src="immagini/webp/loghi%204/icons8-diploma-50.webp" alt="Diploma" class="skill-logo" loading="lazy">
                     </div>
                     <div class="skill-info">
                       <h4 class="skill-name">Diploma di Maturità Tecnica</h4>
@@ -386,7 +413,7 @@
                   <!-- Diploma Accademico -->
                   <div class="skill-card">
                     <div class="skill-logo-wrapper">
-                      <img src="immagini/webp/loghi%204/icons8-diploma-50.webp" alt="Diploma" class="skill-logo">
+                      <img src="immagini/webp/loghi%204/icons8-diploma-50.webp" alt="Diploma" class="skill-logo" loading="lazy">
                     </div>
                     <div class="skill-info">
                       <h4 class="skill-name">Diploma Accademico di Primo Livello</h4>
@@ -468,20 +495,20 @@
                 <div class="overlay-carousel-container">
                   <div class="overlay-carousel-track" data-project="project1-carousel">
                     <div class="overlay-carousel-slide active">
-                      <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/tazzina_.webp" alt="Set da Caffè - Vista Principale" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/tazzina_.webp" alt="Set da Caffè - Vista Principale" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/zuccheriera%202_.webp" alt="Zuccheriera Design" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/zuccheriera%202_.webp" alt="Zuccheriera Design" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/all%2022.webp" alt="Set Completo" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/all%2022.webp" alt="Set Completo" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                   </div>
                 </div>
                 <div class="overlay-thumbnails">
-                  <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/tazzina_.webp" alt="Set da Caffè - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project1-carousel">
-                  <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/zuccheriera%202_.webp" alt="Zuccheriera Design" class="overlay-thumb" data-slide="1" data-carousel="project1-carousel">
-                  <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/all%2022.webp" alt="Set Completo" class="overlay-thumb" data-slide="2" data-carousel="project1-carousel">
+                  <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/tazzina_.webp" alt="Set da Caffè - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project1-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/zuccheriera%202_.webp" alt="Zuccheriera Design" class="overlay-thumb" data-slide="1" data-carousel="project1-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/product%20design/set%20da%20caff%C3%A8/all%2022.webp" alt="Set Completo" class="overlay-thumb" data-slide="2" data-carousel="project1-carousel" loading="lazy">
                 </div>
               </div>
               <div class="overlay-description">
@@ -498,9 +525,9 @@
                   <span class="lang-en">Tools Used</span>
                 </h3>
                 <div class="overlay-tools-icons">
-                  <img src="immagini/webp/loghi/icons8-solidworks-48.webp" alt="SolidWorks" title="SolidWorks">
-                  <img src="immagini/webp/loghi/icons8-blender-48.webp" alt="Blender" title="Blender">
-                  <img src="immagini/webp/loghi/icons8-photoshop-48.webp" alt="Adobe Photoshop" title="Adobe Photoshop">
+                  <img src="immagini/webp/loghi/icons8-solidworks-48.webp" alt="SolidWorks" title="SolidWorks" loading="lazy">
+                  <img src="immagini/webp/loghi/icons8-blender-48.webp" alt="Blender" title="Blender" loading="lazy">
+                  <img src="immagini/webp/loghi/icons8-photoshop-48.webp" alt="Adobe Photoshop" title="Adobe Photoshop" loading="lazy">
                 </div>
               </div>
             </div>
@@ -522,20 +549,20 @@
                 <div class="overlay-carousel-container">
                   <div class="overlay-carousel-track" data-project="project2-carousel">
                     <div class="overlay-carousel-slide active">
-                      <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica.webp" alt="Meccanismo Cardanico - Vista Principale" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica.webp" alt="Meccanismo Cardanico - Vista Principale" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica%20600.webp" alt="Meccanismo Cardanico - Dettaglio" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica%20600.webp" alt="Meccanismo Cardanico - Dettaglio" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica%20900.webp" alt="Meccanismo Cardanico - Vista Alternativa" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica%20900.webp" alt="Meccanismo Cardanico - Vista Alternativa" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                   </div>
                 </div>
                 <div class="overlay-thumbnails">
-                  <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica.webp" alt="Meccanismo Cardanico - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project2-carousel">
-                  <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica%20600.webp" alt="Meccanismo Cardanico - Dettaglio" class="overlay-thumb" data-slide="1" data-carousel="project2-carousel">
-                  <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica%20900.webp" alt="Meccanismo Cardanico - Vista Alternativa" class="overlay-thumb" data-slide="2" data-carousel="project2-carousel">
+                  <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica.webp" alt="Meccanismo Cardanico - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project2-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica%20600.webp" alt="Meccanismo Cardanico - Dettaglio" class="overlay-thumb" data-slide="1" data-carousel="project2-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/product%20design/la%20cardanica/cardanica%20900.webp" alt="Meccanismo Cardanico - Vista Alternativa" class="overlay-thumb" data-slide="2" data-carousel="project2-carousel" loading="lazy">
                 </div>
               </div>
               <div class="overlay-description">
@@ -552,8 +579,8 @@
                   <span class="lang-en">Tools Used</span>
                 </h3>
                 <div class="overlay-tools-icons">
-                  <img src="immagini/webp/loghi/icons8-solidworks-48.webp" alt="SolidWorks" title="SolidWorks">
-                  <img src="immagini/webp/loghi/autocad-seeklogo.webp" alt="AutoCAD" title="AutoCAD">
+                  <img src="immagini/webp/loghi/icons8-solidworks-48.webp" alt="SolidWorks" title="SolidWorks" loading="lazy">
+                  <img src="immagini/webp/loghi/autocad-seeklogo.webp" alt="AutoCAD" title="AutoCAD" loading="lazy">
                 </div>
               </div>
             </div>
@@ -575,20 +602,20 @@
                 <div class="overlay-carousel-container">
                   <div class="overlay-carousel-track" data-project="project3-carousel">
                     <div class="overlay-carousel-slide active">
-                      <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled555.webp" alt="Concept Design - Vista Principale" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled555.webp" alt="Concept Design - Vista Principale" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled202.webp" alt="Concept Design - Dettaglio" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled202.webp" alt="Concept Design - Dettaglio" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled702.webp" alt="Concept Design - Vista Alternativa" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled702.webp" alt="Concept Design - Vista Alternativa" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                   </div>
                 </div>
                 <div class="overlay-thumbnails">
-                  <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled555.webp" alt="Concept Design - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project3-carousel">
-                  <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled202.webp" alt="Concept Design - Dettaglio" class="overlay-thumb" data-slide="1" data-carousel="project3-carousel">
-                  <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled702.webp" alt="Concept Design - Vista Alternativa" class="overlay-thumb" data-slide="2" data-carousel="project3-carousel">
+                  <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled555.webp" alt="Concept Design - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project3-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled202.webp" alt="Concept Design - Dettaglio" class="overlay-thumb" data-slide="1" data-carousel="project3-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/product%20design/lounge%20milani/untitled702.webp" alt="Concept Design - Vista Alternativa" class="overlay-thumb" data-slide="2" data-carousel="project3-carousel" loading="lazy">
                 </div>
               </div>
               <div class="overlay-description">
@@ -605,9 +632,9 @@
                   <span class="lang-en">Tools Used</span>
                 </h3>
                 <div class="overlay-tools-icons">
-                  <img src="immagini/webp/loghi/icons8-rhinoceros-6-48.webp" alt="Rhinoceros" title="Rhinoceros">
-                  <img src="immagini/webp/loghi/icons8-illustrator-48.webp" alt="Adobe Illustrator" title="Adobe Illustrator">
-                  <img src="immagini/webp/loghi/icons8-photoshop-48.webp" alt="Adobe Photoshop" title="Adobe Photoshop">
+                  <img src="immagini/webp/loghi/icons8-rhinoceros-6-48.webp" alt="Rhinoceros" title="Rhinoceros" loading="lazy">
+                  <img src="immagini/webp/loghi/icons8-illustrator-48.webp" alt="Adobe Illustrator" title="Adobe Illustrator" loading="lazy">
+                  <img src="immagini/webp/loghi/icons8-photoshop-48.webp" alt="Adobe Photoshop" title="Adobe Photoshop" loading="lazy">
                 </div>
               </div>
             </div>
@@ -629,20 +656,20 @@
                 <div class="overlay-carousel-container">
                   <div class="overlay-carousel-track" data-project="project4-carousel">
                     <div class="overlay-carousel-slide active">
-                      <img src="immagini/webp/progetti/prototipazione/mouse/untitled.webp" alt="Design Architettonico - Vista Principale" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/prototipazione/mouse/untitled.webp" alt="Design Architettonico - Vista Principale" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/prototipazione/mouse/untitled33.webp" alt="Design Architettonico - Dettaglio" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/prototipazione/mouse/untitled33.webp" alt="Design Architettonico - Dettaglio" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/prototipazione/mouse/untitled44.webp" alt="Design Architettonico - Vista Alternativa" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/prototipazione/mouse/untitled44.webp" alt="Design Architettonico - Vista Alternativa" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                   </div>
                 </div>
                 <div class="overlay-thumbnails">
-                  <img src="immagini/webp/progetti/prototipazione/mouse/untitled.webp" alt="Design Architettonico - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project4-carousel">
-                  <img src="immagini/webp/progetti/prototipazione/mouse/untitled33.webp" alt="Design Architettonico - Dettaglio" class="overlay-thumb" data-slide="1" data-carousel="project4-carousel">
-                  <img src="immagini/webp/progetti/prototipazione/mouse/untitled44.webp" alt="Design Architettonico - Vista Alternativa" class="overlay-thumb" data-slide="2" data-carousel="project4-carousel">
+                  <img src="immagini/webp/progetti/prototipazione/mouse/untitled.webp" alt="Design Architettonico - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project4-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/prototipazione/mouse/untitled33.webp" alt="Design Architettonico - Dettaglio" class="overlay-thumb" data-slide="1" data-carousel="project4-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/prototipazione/mouse/untitled44.webp" alt="Design Architettonico - Vista Alternativa" class="overlay-thumb" data-slide="2" data-carousel="project4-carousel" loading="lazy">
                 </div>
               </div>
               <div class="overlay-description">
@@ -659,9 +686,9 @@
                   <span class="lang-en">Tools Used</span>
                 </h3>
                 <div class="overlay-tools-icons">
-                  <img src="immagini/webp/loghi/icons8-blender-48.webp" alt="Blender" title="Blender">
-                  <img src="immagini/webp/loghi/autocad-seeklogo.webp" alt="AutoCAD" title="AutoCAD">
-                  <img src="immagini/webp/loghi/icons8-adobe-indesign-48.webp" alt="Adobe InDesign" title="Adobe InDesign">
+                  <img src="immagini/webp/loghi/icons8-blender-48.webp" alt="Blender" title="Blender" loading="lazy">
+                  <img src="immagini/webp/loghi/autocad-seeklogo.webp" alt="AutoCAD" title="AutoCAD" loading="lazy">
+                  <img src="immagini/webp/loghi/icons8-adobe-indesign-48.webp" alt="Adobe InDesign" title="Adobe InDesign" loading="lazy">
                 </div>
               </div>
             </div>
@@ -683,28 +710,28 @@
                 <div class="overlay-carousel-container">
                   <div class="overlay-carousel-track" data-project="project5-carousel">
                     <div class="overlay-carousel-slide active">
-                      <img src="immagini/webp/progetti/rendering/rendering%20interno/Render%20Interno%20Esame%202.webp" alt="Rendering Interno - Vista Principale" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20interno/Render%20Interno%20Esame%202.webp" alt="Rendering Interno - Vista Principale" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled.webp" alt="Rendering Interno - Vista 2" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled.webp" alt="Rendering Interno - Vista 2" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled2.webp" alt="Rendering Interno - Vista 3" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled2.webp" alt="Rendering Interno - Vista 3" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled3.webp" alt="Rendering Interno - Vista 4" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled3.webp" alt="Rendering Interno - Vista 4" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled4.webp" alt="Rendering Interno - Vista 5" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled4.webp" alt="Rendering Interno - Vista 5" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                   </div>
                 </div>
                 <div class="overlay-thumbnails">
-                  <img src="immagini/webp/progetti/rendering/rendering%20interno/Render%20Interno%20Esame%202.webp" alt="Rendering Interno - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project5-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled.webp" alt="Rendering Interno - Vista 2" class="overlay-thumb" data-slide="1" data-carousel="project5-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled2.webp" alt="Rendering Interno - Vista 3" class="overlay-thumb" data-slide="2" data-carousel="project5-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled3.webp" alt="Rendering Interno - Vista 4" class="overlay-thumb" data-slide="3" data-carousel="project5-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled4.webp" alt="Rendering Interno - Vista 5" class="overlay-thumb" data-slide="4" data-carousel="project5-carousel">
+                  <img src="immagini/webp/progetti/rendering/rendering%20interno/Render%20Interno%20Esame%202.webp" alt="Rendering Interno - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project5-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled.webp" alt="Rendering Interno - Vista 2" class="overlay-thumb" data-slide="1" data-carousel="project5-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled2.webp" alt="Rendering Interno - Vista 3" class="overlay-thumb" data-slide="2" data-carousel="project5-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled3.webp" alt="Rendering Interno - Vista 4" class="overlay-thumb" data-slide="3" data-carousel="project5-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20interno/Untitled4.webp" alt="Rendering Interno - Vista 5" class="overlay-thumb" data-slide="4" data-carousel="project5-carousel" loading="lazy">
                 </div>
               </div>
               <div class="overlay-description">
@@ -745,28 +772,28 @@
                 <div class="overlay-carousel-container">
                   <div class="overlay-carousel-track" data-project="project6-carousel">
                     <div class="overlay-carousel-slide active">
-                      <img src="immagini/webp/progetti/rendering/rendering%20personale/Render_progetto_esame_3.webp" alt="Rendering Personale - Vista Principale" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20personale/Render_progetto_esame_3.webp" alt="Rendering Personale - Vista Principale" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171951.webp" alt="Rendering Personale - Vista 2" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171951.webp" alt="Rendering Personale - Vista 2" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171953.webp" alt="Rendering Personale - Vista 3" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171953.webp" alt="Rendering Personale - Vista 3" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171955.webp" alt="Rendering Personale - Vista 4" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171955.webp" alt="Rendering Personale - Vista 4" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171957.webp" alt="Rendering Personale - Vista 5" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171957.webp" alt="Rendering Personale - Vista 5" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                   </div>
                 </div>
                 <div class="overlay-thumbnails">
-                  <img src="immagini/webp/progetti/rendering/rendering%20personale/Render_progetto_esame_3.webp" alt="Rendering Personale - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project6-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171951.webp" alt="Rendering Personale - Vista 2" class="overlay-thumb" data-slide="1" data-carousel="project6-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171953.webp" alt="Rendering Personale - Vista 3" class="overlay-thumb" data-slide="2" data-carousel="project6-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171955.webp" alt="Rendering Personale - Vista 4" class="overlay-thumb" data-slide="3" data-carousel="project6-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171957.webp" alt="Rendering Personale - Vista 5" class="overlay-thumb" data-slide="4" data-carousel="project6-carousel">
+                  <img src="immagini/webp/progetti/rendering/rendering%20personale/Render_progetto_esame_3.webp" alt="Rendering Personale - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project6-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171951.webp" alt="Rendering Personale - Vista 2" class="overlay-thumb" data-slide="1" data-carousel="project6-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171953.webp" alt="Rendering Personale - Vista 3" class="overlay-thumb" data-slide="2" data-carousel="project6-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171955.webp" alt="Rendering Personale - Vista 4" class="overlay-thumb" data-slide="3" data-carousel="project6-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20personale/Screenshot%202025-07-11%20171957.webp" alt="Rendering Personale - Vista 5" class="overlay-thumb" data-slide="4" data-carousel="project6-carousel" loading="lazy">
                 </div>
               </div>
               <div class="overlay-description">
@@ -807,28 +834,28 @@
                 <div class="overlay-carousel-container">
                   <div class="overlay-carousel-track" data-project="project7-carousel">
                     <div class="overlay-carousel-slide active">
-                      <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Render%20Vespa%20esame.webp" alt="Rendering Prodotto - Vista Principale" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Render%20Vespa%20esame.webp" alt="Rendering Prodotto - Vista Principale" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled.webp" alt="Rendering Prodotto - Vista 2" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled.webp" alt="Rendering Prodotto - Vista 2" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled2.webp" alt="Rendering Prodotto - Vista 3" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled2.webp" alt="Rendering Prodotto - Vista 3" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled3.webp" alt="Rendering Prodotto - Vista 4" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled3.webp" alt="Rendering Prodotto - Vista 4" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide">
-                      <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled4.webp" alt="Rendering Prodotto - Vista 5" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled4.webp" alt="Rendering Prodotto - Vista 5" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                   </div>
                 </div>
                 <div class="overlay-thumbnails">
-                  <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Render%20Vespa%20esame.webp" alt="Rendering Prodotto - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project7-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled.webp" alt="Rendering Prodotto - Vista 2" class="overlay-thumb" data-slide="1" data-carousel="project7-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled2.webp" alt="Rendering Prodotto - Vista 3" class="overlay-thumb" data-slide="2" data-carousel="project7-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled3.webp" alt="Rendering Prodotto - Vista 4" class="overlay-thumb" data-slide="3" data-carousel="project7-carousel">
-                  <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled4.webp" alt="Rendering Prodotto - Vista 5" class="overlay-thumb" data-slide="4" data-carousel="project7-carousel">
+                  <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Render%20Vespa%20esame.webp" alt="Rendering Prodotto - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project7-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled.webp" alt="Rendering Prodotto - Vista 2" class="overlay-thumb" data-slide="1" data-carousel="project7-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled2.webp" alt="Rendering Prodotto - Vista 3" class="overlay-thumb" data-slide="2" data-carousel="project7-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled3.webp" alt="Rendering Prodotto - Vista 4" class="overlay-thumb" data-slide="3" data-carousel="project7-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/rendering/rendering%20prodotto/Untitled4.webp" alt="Rendering Prodotto - Vista 5" class="overlay-thumb" data-slide="4" data-carousel="project7-carousel" loading="lazy">
                 </div>
               </div>
               <div class="overlay-description">
@@ -872,36 +899,36 @@
                 <div class="overlay-carousel">
                   <div class="overlay-carousel-track" data-project="project8-carousel">
                     <div class="overlay-carousel-slide active" data-slide="0">
-                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/1.1.webp" alt="Vespa 3D - Vista Principale" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/1.1.webp" alt="Vespa 3D - Vista Principale" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide" data-slide="1">
-                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/2.2.webp" alt="Vespa 3D - Vista 2" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/2.2.webp" alt="Vespa 3D - Vista 2" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide" data-slide="2">
-                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/3.webp" alt="Vespa 3D - Vista 3" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/3.webp" alt="Vespa 3D - Vista 3" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide" data-slide="3">
-                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/4.webp" alt="Vespa 3D - Vista 4" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/4.webp" alt="Vespa 3D - Vista 4" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide" data-slide="4">
-                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/6.webp" alt="Vespa 3D - Vista 5" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/6.webp" alt="Vespa 3D - Vista 5" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide" data-slide="5">
-                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/7.webp" alt="Vespa 3D - Vista 6" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/7.webp" alt="Vespa 3D - Vista 6" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                     <div class="overlay-carousel-slide" data-slide="6">
-<img src="immagini/webp/progetti/modellazione%203D/biblioteca/render%208.webp" alt="biblioteca 3D - Vista 7" class="overlay-main-image shadow-effect">
+                      <img src="immagini/webp/progetti/modellazione%203D/biblioteca/render%208.webp" alt="biblioteca 3D - Vista 7" class="overlay-main-image shadow-effect" loading="lazy">
                     </div>
                   </div>
                 </div>
                 <div class="overlay-thumbnails">
-                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/1.1.webp" alt="biblioteca 3D - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project8-carousel">
-                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/2.2.webp" alt="Vbibliotecaespa 3D - Vista 2" class="overlay-thumb" data-slide="1" data-carousel="project8-carousel">
-                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/3.webp" alt="biblioteca 3D - Vista 3" class="overlay-thumb" data-slide="2" data-carousel="project8-carousel">
-                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/4.webp" alt="biblioteca 3D - Vista 4" class="overlay-thumb" data-slide="3" data-carousel="project8-carousel">
-                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/6.webp" alt="biblioteca 3D - Vista 5" class="overlay-thumb" data-slide="4" data-carousel="project8-carousel">
-                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/7.webp" alt="biblioteca 3D - Vista 6" class="overlay-thumb" data-slide="5" data-carousel="project8-carousel">
-<img src="immagini/webp/progetti/modellazione%203D/biblioteca/render%208.webp" alt="biblioteca 3D - Vista 7" class="overlay-thumb" data-slide="6" data-carousel="project8-carousel">
+                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/1.1.webp" alt="biblioteca 3D - Vista Principale" class="overlay-thumb active" data-slide="0" data-carousel="project8-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/2.2.webp" alt="Vespa 3D - Vista 2" class="overlay-thumb" data-slide="1" data-carousel="project8-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/3.webp" alt="biblioteca 3D - Vista 3" class="overlay-thumb" data-slide="2" data-carousel="project8-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/4.webp" alt="biblioteca 3D - Vista 4" class="overlay-thumb" data-slide="3" data-carousel="project8-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/6.webp" alt="biblioteca 3D - Vista 5" class="overlay-thumb" data-slide="4" data-carousel="project8-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/7.webp" alt="biblioteca 3D - Vista 6" class="overlay-thumb" data-slide="5" data-carousel="project8-carousel" loading="lazy">
+                  <img src="immagini/webp/progetti/modellazione%203D/biblioteca/render%208.webp" alt="biblioteca 3D - Vista 7" class="overlay-thumb" data-slide="6" data-carousel="project8-carousel" loading="lazy">
                 </div>
               </div>
               <div class="overlay-description">
@@ -1780,19 +1807,19 @@
           <!-- About Section -->
           <div class="footer-section footer-about">
             <div class="footer-logo">
-              <img src="immagini/logo.webp" alt="Lorenzo Giudici Logo" width="48" height="48">
+              <img src="immagini/logo.webp" alt="Lorenzo Giudici Logo" width="48" height="48" loading="lazy">
               <p>Lorenzo Giudici</p>
             </div>
             <p>Product designer specializzato in design industriale e modellazione 3D. Creo soluzioni innovative che uniscono funzionalità ed estetica.</p>
             <div class="footer-social-links">
               <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
-<img src="immagini/webp/loghi%202/icons8-linkedin-48.webp" alt="LinkedIn">
+                <img src="immagini/webp/loghi%202/icons8-linkedin-48.webp" alt="LinkedIn" loading="lazy">
               </a>
               <a href="https://behance.net/" target="_blank" rel="noopener noreferrer" aria-label="Behance" class="social-icon">
-<img src="immagini/webp/loghi%202/icons8-behance-48.webp" alt="Behance">
+                <img src="immagini/webp/loghi%202/icons8-behance-48.webp" alt="Behance" loading="lazy">
               </a>
               <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
-<img src="immagini/webp/loghi%202/icons8-instagram-logo-48.webp" alt="Instagram">
+                <img src="immagini/webp/loghi%202/icons8-instagram-logo-48.webp" alt="Instagram" loading="lazy">
               </a>
             </div>
           </div>
@@ -1878,19 +1905,11 @@
     <!-- JavaScript -->
     <script src="js/si.js" defer></script>
     <script src="js/animations.js" defer></script>
-    <script src="js/chi-sono.js"></script>
-    <script src="js/projects.js"></script>
-    <script src="js/skills.js"></script>
-    <script src="js/interests.js"></script>
-    <script src="js/contacts.js"></script>
-    <script src="js/faq.js"></script>
-    <script src="js/footer.js"></script>
+    <script src="js/bundle-small.js" defer></script>
     <script src="js/theme-switcher.js" defer></script>
     <script src="js/language-switcher.js" defer></script>
     <script src="js/project-filters.js" defer></script>
     <script src="js/print-cv.js" defer></script>
-
-    <script src="js/dots-navigation.js"></script>
     
     <!-- Privacy Policy Modal -->
     <div id="privacy-modal" class="fullscreen-modal">
