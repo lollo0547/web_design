@@ -34,6 +34,8 @@ function initializeInterestCards() {
   interestCards.forEach(card => {
     observer.observe(card);
   });
+
+  // (Fallback rimosso: ora solo IntersectionObserver gestisce la visibilità)
 }
 
 // Function to set up 3D card effect for desktop users
