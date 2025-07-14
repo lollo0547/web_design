@@ -271,9 +271,7 @@ function loadRandomProjectImages() {
     'immagini/webp/progetti/prototipazione/mouse/untitled33.webp',
     'immagini/webp/progetti/prototipazione/mouse/untitled44.webp',
     
-    // Modellazione 3D
-    'immagini/webp/progetti/modellazione%203D/biblioteca/1.1.webp',
-    'immagini/webp/progetti/modellazione%203D/biblioteca/2.2.webp',
+    // Modellazione 3D - Biblioteca
     'immagini/webp/progetti/modellazione%203D/biblioteca/3.webp',
     'immagini/webp/progetti/modellazione%203D/biblioteca/4.webp',
     'immagini/webp/progetti/modellazione%203D/biblioteca/6.webp',
