@@ -1,6 +1,5 @@
-/* Unione di CSS piccoli: language-switcher, project-filters, text-alignment, dots-navigation, theme-switcher */
+/* Unione di CSS piccoli: language-switcher, project-filters, text-alignment, dots-navigation */
 @import url('language-switcher.css');
 @import url('project-filters.css');
 @import url('text-alignment.css');
 @import url('dots-navigation.css');
-@import url('theme-switcher.css');
