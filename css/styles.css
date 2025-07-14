@@ -4,8 +4,16 @@
   color: #222 !important;
   border: 2px solid #7b2ff2;
   box-shadow: 0 2px 12px 0 rgba(123,47,242,0.10);
+html, body {
+  overflow-x: hidden;
+}
 }
 .progetti-filters .filter-btn.active:hover {
+  html, body {
+    overflow-x: hidden;
+    width: 100vw;
+    position: relative;
+  }
   background: #222 !important;
   color: #fff !important;
 }
