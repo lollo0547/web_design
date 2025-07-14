@@ -1,3 +1,42 @@
+// Dropdown menu mobile progetti
+document.addEventListener('DOMContentLoaded', function() {
+  const burgerBtn = document.querySelector('.progetti-burger-btn');
+  const dropdown = document.getElementById('progettiBurgerDropdown');
+  const menuLinks = document.querySelectorAll('.progetti-menu-link');
+  if (burgerBtn && dropdown) {
+    burgerBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const expanded = burgerBtn.getAttribute('aria-expanded') === 'true';
+      if (!expanded) {
+        dropdown.classList.add('active');
+        burgerBtn.setAttribute('aria-expanded', 'true');
+        dropdown.setAttribute('aria-hidden', 'false');
+      } else {
+        dropdown.classList.remove('active');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+        dropdown.setAttribute('aria-hidden', 'true');
+      }
+    });
+    document.addEventListener('click', function(e) {
+      if (!dropdown.contains(e.target) && !burgerBtn.contains(e.target)) {
+        dropdown.classList.remove('active');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+        dropdown.setAttribute('aria-hidden', 'true');
+      }
+    });
+    menuLinks.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        dropdown.classList.remove('active');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+        dropdown.setAttribute('aria-hidden', 'true');
+        // Simula click sul filtro desktop se presente
+        const cat = btn.getAttribute('data-category');
+        const desktopBtn = document.querySelector('.progetti-filters .filter-btn[data-category="' + cat + '"]');
+        if (desktopBtn) desktopBtn.click();
+      });
+    });
+  }
+});
   // Scroll fluido per il bottone Contattami
   const contattamiBtn = document.querySelector('.btn.btn-outline[href="#contatti"]');
   if (contattamiBtn) {
