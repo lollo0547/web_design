@@ -1,3 +1,8 @@
+/* Dimezza dimensioni tasto stampa cv */
+.print-cv-button {
+  font-size: 0.54rem;
+  padding: 0.35em 0.85em;
+}
 @media (max-width: 768px) {
   .navbar-container {
     justify-content: center;
