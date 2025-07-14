@@ -1,3 +1,57 @@
+@media (max-width: 900px) {
+  .hero {
+    aspect-ratio: 9/16;
+    min-height: 100dvh;
+    min-width: 100vw;
+    max-width: 100vw;
+    max-height: 100dvh;
+  }
+}
+@media (max-width: 779px) {
+  .hero {
+    aspect-ratio: 9/16;
+    min-height: 100dvh;
+    min-width: 100vw;
+    max-width: 100vw;
+    max-height: 100dvh;
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    aspect-ratio: 9/16;
+    min-height: 100dvh;
+    min-width: 100vw;
+    max-width: 100vw;
+    max-height: 100dvh;
+  }
+}
+@media (max-width: 700px) {
+  .hero {
+    aspect-ratio: 9/16;
+    min-height: 100dvh;
+    min-width: 100vw;
+    max-width: 100vw;
+    max-height: 100dvh;
+  }
+}
+@media (max-width: 480px) {
+  .hero {
+    aspect-ratio: 9/16;
+    min-height: 100dvh;
+    min-width: 100vw;
+    max-width: 100vw;
+    max-height: 100dvh;
+  }
+}
+@media (max-width: 900px) {
+  .hero {
+    aspect-ratio: 9/16;
+    min-height: 100dvh;
+    min-width: 100vw;
+    max-width: 100vw;
+    max-height: 100dvh;
+  }
+}
 /* Migliora contrasto per il filtro attivo (Tutti) su gradienti */
 .progetti-filters .filter-btn.active {
   background: #fff !important;
@@ -442,6 +496,11 @@ header {
 --------------------------------*/
 
 .hero {
+  aspect-ratio: 9/16;
+  min-height: 100dvh;
+  min-width: 100vw;
+  max-width: 100vw;
+  max-height: 100dvh;
   position: relative;
   min-height: 100dvh;
   height: 100dvh;
