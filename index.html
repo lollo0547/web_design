@@ -45,6 +45,8 @@
     
     <!-- CSS stylesheets -->
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Preload hero image for LCP optimization -->
+    <link rel="preload" as="image" href="immagini/webp/hero/Lorenzo_hero.webp">
     <link rel="preload" href="css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/skills.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/interests.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -52,7 +54,7 @@
     <link rel="preload" href="css/faq.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="css/footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="css/language-switcher.css">
-    <link rel="stylesheet" href="css/project-filters.css">
+    <link rel="preload" href="css/project-filters.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="stylesheet" href="css/text-alignment.css">
     <link rel="stylesheet" href="css/dots-navigation.css">
     <link rel="stylesheet" href="css/theme-switcher.css">
@@ -61,7 +63,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+    </noscript>
 
     <!-- Structured Data JSON-LD -->
     <script type="application/ld+json">
@@ -156,7 +161,7 @@
         
         <!-- Immagine hero principale -->
         <div class="hero-image-container">
-          <img src="immagini/webp/hero/Lorenzo_hero.webp" alt="Ritratto di Lorenzo Giudici - Hero principale | Portrait of Lorenzo Giudici - Main hero" title="Ritratto di Lorenzo Giudici - Hero principale | Portrait of Lorenzo Giudici - Main hero" class="hero-image" loading="eager" fetchpriority="high">
+          <img src="immagini/webp/hero/Lorenzo_hero.webp" alt="Ritratto di Lorenzo Giudici - Hero principale | Portrait of Lorenzo Giudici - Main hero" title="Ritratto di Lorenzo Giudici - Hero principale | Portrait of Lorenzo Giudici - Main hero" class="hero-image" loading="eager" fetchpriority="high" width="500" height="500">
         </div>
         
         <div class="hero-content">
@@ -250,7 +255,7 @@
                   <div class="decorative-element element-bottom-right"></div>
                   <div class="profile-frame">
                     <div class="profile-image-mask">
-                      <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici - Product Designer" class="profile-image" loading="lazy">
+                      <img src="immagini/webp/profile/lorenzo_profile.webp" alt="Lorenzo Giudici - Product Designer" class="profile-image" loading="lazy" width="488" height="326">
                       <div class="profile-image-overlay"></div>
                     </div>
                     <div class="profile-backdrop"></div>
@@ -1822,7 +1827,9 @@
                       <label for="subject"><span class="lang-it">Oggetto</span><span class="lang-en">Subject</span></label>
                       <input type="text" id="subject" name="subject" placeholder="Es. Richiesta collaborazione" data-placeholder-it="Es. Richiesta collaborazione" data-placeholder-en="e.g. Collaboration request" required>
                       <div class="error-message lang-it">Questo campo è obbligatorio</div>
-                      <div class="error-message lang-en">This field is required</div>
+                      <div class="error-message lang-en">This field
+Elimina le risorse di blocco della visualizzazione Potenziali riduzioni di 1.270 ms
+Alcune risorse bloccano la prima visualizzazione della pagina. Potresti pubblicare le risorse JS/CSS fondamentali incorporate e rimandare tutte le risorse JS/styles non fondamentali.uired</div>
                     </div>
                     <div class="form-group">
                       <label for="message"><span class="lang-it">Messaggio</span><span class="lang-en">Message</span></label>
