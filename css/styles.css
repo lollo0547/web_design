@@ -1,19 +1,25 @@
 @media (max-width: 768px) {
   .navbar-container {
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
-  }
-  .burger-menu {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 101;
+    align-items: center;
   }
   .logo-container {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
+    position: static;
+    margin-right: auto;
+    transform: none;
+    left: unset;
+    top: unset;
+  }
+  .burger-menu {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    left: unset;
+    top: unset;
+    transform: none;
+    z-index: 101;
+    display: block;
   }
 }
 /* Migliora contrasto per il filtro attivo (Tutti) su gradienti */
