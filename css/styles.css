@@ -1701,6 +1701,7 @@ html {
   display: flex;
   flex-direction: column;
   animation: overlayPop 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  padding: 0; /* Rimuove padding per sticky perfetto */
 }
 
 .overlay-header {
@@ -1711,7 +1712,7 @@ html {
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
-  background-color: var(--bg-color);
+  background: var(--bg-color, #fff);
   z-index: 2;
 }
 
