@@ -1,3 +1,58 @@
+/* Migliora contrasto per h3 nella sezione contatti su gradienti */
+.contacts-section h3 {
+  background: #fff !important;
+  color: #222 !important;
+  border-radius: 6px;
+  padding: 0.2em 0.7em;
+  display: inline-block;
+  box-shadow: 0 1px 4px 0 rgba(76,29,115,0.07);
+  transition: background 0.2s, color 0.2s;
+}
+.contacts-section h3:hover {
+  background: #222 !important;
+  color: #fff !important;
+}
+/* Migliora contrasto per i link tel nella sezione contatti */
+.contacts-section a[href^="tel:"] {
+  background: #fff !important;
+  color: #222 !important;
+  border-radius: 6px;
+  padding: 0.2em 0.7em;
+  box-shadow: 0 1px 4px 0 rgba(76,29,115,0.07);
+  transition: background 0.2s, color 0.2s;
+}
+.contacts-section a[href^="tel:"]:hover {
+  background: #222 !important;
+  color: #fff !important;
+}
+/* Migliora contrasto per i link mailto nella sezione contatti */
+.contacts-section a[href^="mailto:"] {
+  background: #fff !important;
+  color: #222 !important;
+  border-radius: 6px;
+  padding: 0.2em 0.7em;
+  box-shadow: 0 1px 4px 0 rgba(76,29,115,0.07);
+  transition: background 0.2s, color 0.2s;
+}
+.contacts-section a[href^="mailto:"]:hover {
+  background: #222 !important;
+  color: #fff !important;
+}
+/* Migliora contrasto per i link della navbar nella sezione contatti */
+.contacts-section .navbar a,
+.contacts-section a[href="#contatti"] {
+  background: #fff !important;
+  color: #222 !important;
+  border-radius: 6px;
+  padding: 0.2em 0.7em;
+  box-shadow: 0 1px 4px 0 rgba(76,29,115,0.07);
+  transition: background 0.2s, color 0.2s;
+}
+.contacts-section .navbar a:hover,
+.contacts-section a[href="#contatti"]:hover {
+  background: #222 !important;
+  color: #fff !important;
+}
 /* 
  * Contatti Section Styles 
  * Stili per la sezione contatti del portfolio di Lorenzo Giudici

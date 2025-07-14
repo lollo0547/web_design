@@ -1,3 +1,18 @@
+/* Migliora contrasto per il link FAQ nella navbar quando si trova nella sezione FAQ */
+.faq-section .navbar a[href="#faq"],
+.faq-section a[href="#faq"] {
+  background: #fff !important;
+  color: #222 !important;
+  border-radius: 6px;
+  padding: 0.2em 0.7em;
+  box-shadow: 0 1px 4px 0 rgba(76,29,115,0.07);
+  transition: background 0.2s, color 0.2s;
+}
+.faq-section .navbar a[href="#faq"]:hover,
+.faq-section a[href="#faq"]:hover {
+  background: #222 !important;
+  color: #fff !important;
+}
 /* Centra il blocco di ricerca FAQ */
 .faq-search-container {
   display: flex;
@@ -20,7 +35,9 @@
   border: 1.5px solid #d1d5db;
   border-radius: 12px;
   outline: none;
-  background: transparent;
+  background: #fff;
+  color: #222;
+  border: 2px solid #222;
   transition: border 0.2s;
   margin-right: 0.7rem;
 }

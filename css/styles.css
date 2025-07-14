@@ -1,3 +1,14 @@
+/* Migliora contrasto per il filtro attivo (Tutti) su gradienti */
+.progetti-filters .filter-btn.active {
+  background: #fff !important;
+  color: #222 !important;
+  border: 2px solid #7b2ff2;
+  box-shadow: 0 2px 12px 0 rgba(123,47,242,0.10);
+}
+.progetti-filters .filter-btn.active:hover {
+  background: #222 !important;
+  color: #fff !important;
+}
 /* Skip link accessibilità */
 .skip-link {
   position: absolute;

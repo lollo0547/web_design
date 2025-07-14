@@ -1,3 +1,139 @@
+@media (max-width: 767px) {
+  .footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.8rem;
+    align-items: center;
+    width: 100%;
+    padding: 2.2rem 0.5rem 1.2rem 0.5rem;
+    background: none;
+  }
+  .footer-section {
+    margin-bottom: 2.8rem;
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 1.2rem;
+  }
+  .footer-section:last-child {
+    border-bottom: none;
+  }
+  .footer-section h3 {
+    font-size: 1.18rem;
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+  .footer-section h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .footer-logo {
+    justify-content: center;
+    margin-bottom: 1.1rem;
+  }
+  .footer-logo img {
+    width: 56px;
+    height: 56px;
+  }
+  .footer-logo p {
+    font-size: 1.25rem;
+  }
+  .footer-about p {
+    font-size: 1.02rem;
+    margin-bottom: 1.3rem;
+    text-align: center;
+  }
+  .footer-social-links {
+    justify-content: center;
+    margin-top: 1.3rem;
+    gap: 1.3rem;
+  }
+  .social-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .footer-nav ul {
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .footer-nav li {
+    margin-bottom: 0.7rem;
+  }
+  .footer-nav a {
+    font-size: 1.08rem;
+    padding: 0.2em 0.5em;
+  }
+  .footer-contact a {
+    justify-content: center;
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+  }
+  .footer-contact svg {
+    min-width: 22px;
+    min-height: 22px;
+  }
+  .footer-subscribe p {
+    font-size: 1.02rem;
+    margin-bottom: 1.1rem;
+    text-align: center;
+  }
+  .subscribe-form {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: stretch;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  .subscribe-input {
+    border-radius: 6px;
+    width: 100%;
+    min-width: 0;
+    font-size: 1.08rem;
+    padding: 0.9rem 1rem;
+  }
+  .subscribe-button {
+    border-radius: 6px;
+    width: 100%;
+    padding: 0.9rem 0;
+    font-size: 1.08rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.7rem;
+    margin-top: 1.2rem;
+  }
+  .footer-bottom p {
+    font-size: 0.98rem;
+  }
+  .back-to-top {
+    right: 12px;
+    bottom: 12px;
+    width: 42px;
+    height: 42px;
+  }
+}
+
+/* Migliora contrasto per h3 Newsletter nel footer su gradienti */
+.footer-section h3 {
+  background: #fff !important;
+  color: #222 !important;
+  border-radius: 6px;
+  padding: 0.2em 0.7em;
+  display: inline-block;
+  box-shadow: 0 1px 4px 0 rgba(76,29,115,0.07);
+  transition: background 0.2s, color 0.2s;
+}
+.footer-section h3:hover {
+  background: #222 !important;
+  color: #fff !important;
+}
 /**
  * Footer Styles
  * 
@@ -225,11 +361,11 @@ footer::after {
 }
 
 .subscribe-input {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #fff !important;
+  color: #222 !important;
+  border: 2px solid #7b2ff2 !important;
   border-radius: 4px 0 0 4px;
   padding: 0.75rem 1rem;
-  color: var(--color-text-light);
   flex-grow: 1;
   min-width: 0;
 }

@@ -1,3 +1,18 @@
+/* Migliora contrasto per il link Interessi nella navbar quando si trova nella sezione interessi */
+.interests-section .navbar a[href="#interessi"],
+.interests-section a[href="#interessi"] {
+  background: #fff !important;
+  color: #222 !important;
+  border-radius: 6px;
+  padding: 0.2em 0.7em;
+  box-shadow: 0 1px 4px 0 rgba(76,29,115,0.07);
+  transition: background 0.2s, color 0.2s;
+}
+.interests-section .navbar a[href="#interessi"]:hover,
+.interests-section a[href="#interessi"]:hover {
+  background: #222 !important;
+  color: #fff !important;
+}
 /* 
  * Interessi Section Styles 
  * Stili per la sezione interessi del portfolio di Lorenzo Giudici
