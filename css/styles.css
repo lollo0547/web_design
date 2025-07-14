@@ -443,8 +443,11 @@ header {
 
 .hero {
   position: relative;
-  min-height: 100vh;
-  height: 100vh;
+  min-height: 100dvh;
+  height: 100dvh;
+  height: 100vh; /* fallback per browser vecchi */
+  width: 100vw;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -453,7 +456,7 @@ header {
   overflow: hidden;
   background: #111; /* Sfondo leggermente più chiaro rispetto al nero puro */
   margin: 0;
-  padding: 0;
+  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
 }
 
 /* Griglia di immagini di sfondo - Layout per scorrimento orizzontale */
