@@ -47,15 +47,15 @@ html, body {
 }
 
 @media (max-width: 900px) {
-  html, body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    box-sizing: border-box;
+  .burger-menu {
     position: relative;
-    max-width: 100vw;
+    left: unset;
+    top: unset;
+    transform: none;
+    z-index: 101;
+    display: block;
   }
 }
-/* Skip link accessibilità */
 .skip-link {
   position: absolute;
   left: -9999px;
