@@ -456,6 +456,10 @@
                 <button class="progetti-search-btn" aria-label="Cerca progetti">
                   <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="18" y1="18" x2="15.5" y2="15.5"/></svg>
                 </button>
+              <div class="progetti-search-box">
+                <input type="text" class="progetti-search-input" placeholder="Cerca nei progetti..." />
+                <button type="button" class="progetti-search-reset" aria-label="Annulla ricerca">&times;</button>
+              </div>
                 <div class="progetti-burger-menu-wrapper">
                   <button class="progetti-burger-btn" aria-label="Menu progetti" aria-haspopup="true" aria-expanded="false">
                     <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -472,21 +476,7 @@
                   </div>
                 </div>
               </div>
-              <!-- Overlay menu mobile progetti -->
-              <div class="progetti-mobile-menu-overlay" id="progettiMobileMenu" tabindex="-1" aria-hidden="true">
-                <div class="progetti-mobile-menu-content">
-                  <button class="progetti-mobile-menu-close" aria-label="Chiudi menu progetti">&times;</button>
-                  <nav class="progetti-mobile-menu-nav">
-                    <ul>
-                      <li><button class="progetti-menu-link" data-category="all">Tutti</button></li>
-                      <li><button class="progetti-menu-link" data-category="product">Product Design</button></li>
-                      <li><button class="progetti-menu-link" data-category="3d">Modellazione 3D</button></li>
-                      <li><button class="progetti-menu-link" data-category="rendering">Rendering</button></li>
-                      <li><button class="progetti-menu-link" data-category="prototype">Prototipazione</button></li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
+              <!-- Overlay menu mobile progetti rimosso -->
               <!-- Filtri categoria progetti - SOLO desktop -->
               <div class="progetti-filters" id="progettiFilters">
                 <button class="filter-btn active" data-category="all">Tutti</button>
@@ -2014,5 +2004,6 @@
         </div>
       </div>
     </div>
-  </body>
+  <script src="js/center-search-btn.js"></script>
+</body>
 </html>

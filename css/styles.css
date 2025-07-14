@@ -1,3 +1,64 @@
+/* Box di ricerca mobile: adattivo e sempre tra i due bottoni */
+.progetti-mobile-bar {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+}
+.progetti-search-box {
+  position: relative;
+  grid-column: 2;
+  width: 100%;
+  height: 56px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(76,29,115,0.10), 0 1.5px 8px 0 rgba(76,29,115,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.35s cubic-bezier(.77,0,.18,1);
+  z-index: 10;
+  transform: scaleX(0);
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+.progetti-search-input {
+  width: 100%;
+  max-width: 360px;
+  height: 38px;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  padding: 0 1rem;
+  border-radius: 8px;
+  background: #f7f3fc;
+  color: #4c1d73;
+  box-shadow: 0 1px 4px 0 rgba(76,29,115,0.07);
+}
+.progetti-mobile-bar.center-search-btn .progetti-search-box {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scaleX(1);
+}
+/* Mostra solo il box di ricerca a comparsa, bottone resta fermo */
+.progetti-mobile-bar {
+  position: relative;
+}
+.progetti-mobile-bar.center-search-btn .progetti-search-btn {
+  position: static;
+  left: auto;
+  transform: none;
+  z-index: 3;
+}
+.progetti-mobile-bar.center-search-btn .progetti-burger-menu-wrapper {
+  position: static;
+  right: auto;
+  top: auto;
+  transform: none;
+}
 /* Dropdown menu mobile progetti */
 .progetti-burger-menu-wrapper {
   position: relative;
@@ -82,7 +143,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 18px 18px 18px;
+    padding: 0 18px;
     box-sizing: border-box;
     background: #fff;
     border-radius: 16px;
@@ -2498,4 +2559,29 @@ html {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
   }
+}
+
+/* Bottone reset ricerca piccolo */
+.progetti-search-reset {
+  margin-left: 6px;
+  background: none;
+  border: none;
+  color: #a48bcf;
+  font-size: 1.2rem;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  padding: 0;
+}
+.progetti-search-reset:hover, .progetti-search-reset:focus {
+  background: #f2edfa;
+  color: #7b2ff2;
+}
+.progetti-search-box {
+  gap: 4px;
 }

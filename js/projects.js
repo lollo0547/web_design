@@ -2,6 +2,30 @@
   const overlays = document.querySelectorAll('.project-overlay');
 // Nuova logica Progetti: responsive, usabile, scalabile, indicatori slider
 document.addEventListener('DOMContentLoaded', function() {
+  // Ricerca progetti mobile
+  const searchInput = document.querySelector('.progetti-search-input');
+  let searchQuery = '';
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      searchQuery = this.value.trim().toLowerCase();
+      currentPage = 0;
+      renderProjects(currentPage);
+      renderIndicators(currentPage);
+    });
+    // Bottone reset ricerca
+    const resetBtn = document.querySelector('.progetti-search-reset');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        searchQuery = '';
+        currentPage = 0;
+        renderProjects(currentPage);
+        renderIndicators(currentPage);
+        searchInput.focus();
+      });
+    }
+  }
   // Simulazione: elenco progetti (in produzione, generare questa lista da backend o build)
   const projects = [
     {
@@ -71,8 +95,14 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentCategory = 'all';
 
   function getFilteredProjects() {
-    if (currentCategory === 'all') return projects;
-    return projects.filter(p => p.category === currentCategory);
+    let filtered = (currentCategory === 'all') ? projects : projects.filter(p => p.category === currentCategory);
+    if (searchQuery) {
+      filtered = filtered.filter(p =>
+        (p.title_it && p.title_it.toLowerCase().includes(searchQuery)) ||
+        (p.title_en && p.title_en.toLowerCase().includes(searchQuery))
+      );
+    }
+    return filtered;
   }
 
   function renderProjects(page) {
