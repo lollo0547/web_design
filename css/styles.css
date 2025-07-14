@@ -47,15 +47,17 @@ html, body {
 }
 
 @media (max-width: 900px) {
-  html, body {
-    overflow-x: hidden !important;
-    width: 100% !important;
-    box-sizing: border-box;
+  .burger-menu {
+    /* margin-left: auto; */
+    /* margin-right: auto; */
     position: relative;
-    max-width: 100vw;
+    left: unset;
+    top: unset;
+    transform: none;
+    z-index: 101;
+    display: block;
   }
 }
-/* Skip link accessibilità */
 .skip-link {
   position: absolute;
   left: -9999px;
@@ -422,7 +424,7 @@ header {
     backdrop-filter: blur(10px);
     z-index: 100;
     box-shadow: 0 2px 8px rgba(90,45,130,0.06);
-    padding: 0.5rem 0;
+    padding: 0.5rem 5vw;
     margin: 0;
     left: 0;
     right: 0;
@@ -731,10 +733,12 @@ header {
 
 /* Additional styles to ensure the scroll-indicator is properly positioned */
 @media (max-width: 779px) {
-  .scroll-indicator {
-    /* For smaller screens, make sure it's centered and short */
-    width: 80px; /* Even shorter on mobile for better proportion */
-    transform: translateX(-50%);
+  .navbar-container {
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
