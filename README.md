@@ -104,7 +104,7 @@ Portfolio personale di Lorenzo Giudici, Product Designer. Il sito presenta biogr
 
 <p align="center"><strong>Test responsive</strong></p>
 
-<p align="center"><a href="https://responsivedesignchecker.com/checker.php?url=https%3A%2F%2Fportofoliolorenzogiudici.netlify.app&width=1400&height=700">Responsivedesignchecker</a></p>
+<p align="center"><a href="https://responsivetesttool.com/">Responsivetesttool</a></p>
 
 ---
 
