@@ -77,7 +77,7 @@ Portfolio personale di Lorenzo Giudici, Product Designer. Il sito presenta biogr
 <p align="center"><strong>Indirizzo di pubblicazione Netlify</strong></p>
 
 <p align="center">Il repository è pubblicato a questo indirizzo</p>
-<p align="center">- Versione Netlify: <a href="https://moonlit-syrniki-9c90d0.netlify.app/">https://moonlit-syrniki-9c90d0.netlify.app/</a></p>
+<p align="center">- Versione Netlify: <a href="[https://moonlit-syrniki-9c90d0.netlify.app/](https://portofoliolorenzogiudici.netlify.app/)">[https://moonlit-syrniki-9c90d0.netlify.app/](https://portofoliolorenzogiudici.netlify.app/)</a></p>
 
 ---
 
