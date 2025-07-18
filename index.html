@@ -184,11 +184,49 @@
     <nav class="dots-nav" aria-label="Navigazione sezioni | Section navigation">
       <a href="#chi-sono" class="dot" data-section="chi-sono" aria-label="Vai alla sezione Chi sono | Go to About section" title="Vai alla sezione Chi sono"></a>
       <a href="#progetti" class="dot" data-section="progetti" aria-label="Vai alla sezione Progetti | Go to Projects section" title="Vai alla sezione Progetti"></a>
+      <a href="#prototipazione" class="dot dot-soccorso-alpino" data-section="prototipazione" aria-label="Vai alla sezione Soccorso Alpino | Go to Soccorso Alpino section" title="Vai alla sezione Soccorso Alpino" style="display:none;"></a>
       <a href="#software-skills" class="dot" data-section="software-skills" aria-label="Vai alla sezione Competenze software | Go to Software Skills section" title="Vai alla sezione Software skills"></a>
       <a href="#interessi" class="dot" data-section="interessi" aria-label="Vai alla sezione Interessi | Go to Interests section" title="Vai alla sezione Interessi"></a>
       <a href="#contatti" class="dot" data-section="contatti" aria-label="Vai alla sezione Contatti | Go to Contacts section" title="Vai alla sezione Contatti"></a>
       <a href="#faq" class="dot" data-section="faq" aria-label="Vai alla sezione FAQ | Go to FAQ section" title="Vai alla sezione FAQ"></a>
     </nav>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const dot = document.querySelector('.dot-soccorso-alpino');
+        if (urlParams.get('img') === '1' && dot) {
+          dot.style.display = 'inline-block';
+        }
+
+        // Evidenziazione dot attivo come per le altre sezioni
+        function setActiveDot() {
+          const sections = [
+            {id: 'chi-sono', dot: document.querySelector('.dot[data-section="chi-sono"]')},
+            {id: 'progetti', dot: document.querySelector('.dot[data-section="progetti"]')},
+            {id: 'prototipazione', dot: document.querySelector('.dot-soccorso-alpino')},
+            {id: 'software-skills', dot: document.querySelector('.dot[data-section="software-skills"]')},
+            {id: 'interessi', dot: document.querySelector('.dot[data-section="interessi"]')},
+            {id: 'contatti', dot: document.querySelector('.dot[data-section="contatti"]')},
+            {id: 'faq', dot: document.querySelector('.dot[data-section="faq"]')}
+          ];
+          let found = false;
+          for (let i = 0; i < sections.length; i++) {
+            const section = document.getElementById(sections[i].id);
+            if (!section || !sections[i].dot) continue;
+            const rect = section.getBoundingClientRect();
+            if (!found && rect.top <= window.innerHeight/2 && rect.bottom > window.innerHeight/2) {
+              sections[i].dot.classList.add('active');
+              found = true;
+            } else {
+              sections[i].dot.classList.remove('active');
+            }
+          }
+        }
+        window.addEventListener('scroll', setActiveDot);
+        window.addEventListener('resize', setActiveDot);
+        setTimeout(setActiveDot, 300); // Per caricamento iniziale
+      });
+    </script>
     
     <main id="main-content">
       <!-- Sezione Chi Sono -->
@@ -549,6 +587,59 @@
         </div>
                 
                 <!-- Indicatori di pagina -->
+      </section>
+
+      <!-- Sezione Prototipazione -->
+      <section id="prototipazione" class="section prototipazione-section" style="display:none;">
+        <div class="container">
+          <div class="section-overlay">
+            <h2 class="section-title with-gradient">
+              <span class="lang-it">Prototipazione</span>
+              <span class="lang-en">Prototyping</span>
+            </h2>
+            <div class="section-introduction">
+              <p class="lang-it">Dalla progettazione alla realizzazione di prototipi fisici e digitali, esploro soluzioni innovative per testare e validare idee di prodotto.</p>
+              <p class="lang-en">From design to the creation of physical and digital prototypes, I explore innovative solutions to test and validate product ideas.</p>
+            </div>
+            <div class="section-content">
+              <div class="progetto-soccorso-alpino">
+                <div style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 2.5em; margin-top: 2.5em; justify-content: center;">
+                  <!-- Colonna testo e immagine -->
+                  <div id="soccorso-alpino-left" style="flex: 1 1 380px; min-width: 300px; max-width: 600px; display: flex; flex-direction: column; gap: 2em;">
+                    <div style="background: #fff; border-radius: 22px; box-shadow: 0 4px 24px 0 rgba(60,30,90,0.08); padding: 2.2em 2em 1.5em 2em;">
+                      <h3 class="project-title" style="margin-top:0; font-size:1.5em; letter-spacing:0.01em;">Soccorso Alpino</h3>
+                      <p class="lang-it" style="margin-bottom:1.2em;">
+                        L'idea consiste in un film realizzato con reticoli gonfiabili, simili a fazzoletti, che possono essere collegati tra loro per formare una struttura modulare più grande. Una volta gonfiati, i reticoli diventano rigidi e possono essere utilizzati in vari modi, come:
+                        <ul style="margin:0 0 0 1.2em; padding:0; list-style: disc inside;">
+                          <li>per il trasporto</li>
+                          <li>immobilizzazione di un arto simile a un’ingessatura</li>
+                          <li>supporto per la schiena durante la camminata</li>
+                        </ul>
+                      </p>
+                      <p class="lang-en" style="margin-bottom:1.2em;">
+                        The constraint as a cue for open design. Create a product useful for rescue and/or that facilitates the transport of people in the mountains or in rough environments. The product must be lightweight, easy to carry and assemble, and usable by a single person in hiking situations where two people are involved. In addition, the product must be accessible.
+                      </p>
+                    </div>
+                    <div style="background: #fff; border-radius: 18px; box-shadow: 0 2px 12px 0 rgba(0,0,0,0.08); padding: 1.2em; display: flex; justify-content: center; align-items: center;">
+                      <img src="immagini/webp/progetti/prototipazione/soccorso_alpino/Opera_senza_titolo 2.webp" alt="Soccorso Alpino concept" style="width:100%; max-width:420px; border-radius:12px; display:block;">
+                    </div>
+                  </div>
+                  <!-- Colonna 3D viewer -->
+                  <div id="soccorso-alpino-right" style="flex: 1 1 320px; min-width: 260px; max-width: 420px; display: flex; justify-content: center; align-items: stretch;">
+                    <div id="soccorso-alpino-renderbox" style="background: #fff; border-radius: 22px; box-shadow: 0 4px 24px 0 rgba(60,30,90,0.08); padding: 1.5em 1.2em; width:100%; display: flex; justify-content: center; align-items: center; max-height: 750px; min-height: 420px;">
+                      <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+                      <model-viewer src="immagini/webp/progetti/prototipazione/soccorso_alpino/untitled2.glb" ar ar-modes="webxr scene-viewer quick-look" environment-image="neutral" auto-rotate camera-controls style="width:100%; max-width:370px; height:420px; max-height:620px; background: #f8f8fa; border-radius: 16px; box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);"></model-viewer>
+                    </div>
+                  </div>
+                </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-background-pattern"></div>
+      </section>
       </section>
       
       <!-- Project Overlays (Hidden by default) -->
@@ -2174,6 +2265,7 @@ Alcune risorse bloccano la prima visualizzazione della pagina. Potresti pubblica
     <script src="js/language-switcher.js" defer></script>
     <script src="js/project-filters.js" defer></script>
     <script src="js/print-cv.js" defer></script>
+    <script src="js/soccorso-alpino-navbar.js" defer></script>
     
     <!-- Privacy Policy Modal -->
     <div id="privacy-modal" class="fullscreen-modal">
